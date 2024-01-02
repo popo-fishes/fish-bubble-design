@@ -7,7 +7,8 @@
     "docs:preview": "vitepress preview ."
   },
   "dependencies": {
-    "vue": "3.4.0"
+    "vue": "3.4.0",
+    "fish-bubble-design": "npm:fish-bubble-design@latest"
   },
   "devDependencies": {
     "vitepress": "1.0.0-rc.34"
