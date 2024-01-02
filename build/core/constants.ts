@@ -38,5 +38,6 @@ export const libraryPackage = resolve(libraryRoot, "package.json");
 /** 全局获取---获取当前版本号 */
 export const getVersion = () => {
   const pathVersion = resolve(libraryRoot, "version");
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(pathVersion).version as string;
 };

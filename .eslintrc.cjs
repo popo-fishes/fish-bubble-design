@@ -20,8 +20,7 @@ module.exports = {
       files: ["**/*.md/*.js", "**/*.md/*.ts"],
       rules: {
         "no-console": "off",
-        "import/no-unresolved": "off",
-        "@typescript-eslint/no-unused-vars": "off"
+        "import/no-unresolved": "off"
       }
     }
   ],

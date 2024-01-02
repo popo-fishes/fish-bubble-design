@@ -5,6 +5,7 @@
 import type { ProjectManifest } from "@pnpm/types";
 
 export const getPackageManifest = (pkgPath: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(pkgPath) as ProjectManifest;
 };
 

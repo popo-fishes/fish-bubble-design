@@ -2,5 +2,3 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npx lint-staged
-
-npx husky add .husky/commit-msg 'if [ -z "$1" ]; then echo "Commit message cannot be empty" && exit 1; fi'

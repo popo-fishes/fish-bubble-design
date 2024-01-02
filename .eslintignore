@@ -1,10 +1,7 @@
 node_modules/
 **/node_modules/
 dist/
-build/
-scripts/**
 mocks/
-.eslintrc.js
-.script-config.js
-vite.config.ts
-.types.d.ts
+pnpm-lock.yaml
+.eslintrc.cjs
+commitlint.js

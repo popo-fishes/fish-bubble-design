@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 /*
  * @Date: 2023-12-31 13:34:29
  * @Description: Modify here please
  */
+
 import { UINAME } from "../build/core/constants";
 import { readFileSync, writeFile } from "fs";
 
