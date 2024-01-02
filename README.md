@@ -3,7 +3,7 @@
  * @Description: Modify here please
 -->
 <p align="center">
-  <img width="300px" src="https://user-images.githubusercontent.com/10731096/95823103-9ce15780-0d5f-11eb-8010-1bd1b5910d4f.png">
+  <img width="300px" src="https://yupao-cdn.oss-cn-beijing.aliyuncs.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
   <br>
 </p>
 
-<p align="center">fish-bubble-design - A Vue.js 3 UI library</p>
+<p align="center">fish-bubble-design - 一个 Vue 3 组件库</p>
 
 ## 注意点
 
