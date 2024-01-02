@@ -4,4 +4,3 @@ dist/
 mocks/
 pnpm-lock.yaml
 .eslintrc.cjs
-commitlint.js
