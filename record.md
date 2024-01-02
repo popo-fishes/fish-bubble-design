@@ -2,6 +2,7 @@
  * @Date: 2024-01-02 09:35:20
  * @Description: Modify here please
 -->
+
 ```shell
   发布之前需要 查看当前使用的 NPM 源地址 才能发布成功，不能发布到非官方源上
 
@@ -14,8 +15,7 @@
   npm config set registry https://registry.npm.taobao.org/
 ```
 
-
-## 注意点
+### 注意点
 
 ```shell
 1. 防止构建出问题，下面包的版本最好锁死
@@ -32,6 +32,12 @@
 3. 你应该解决控制台开发环境的所有警告 || 错误信息！
 
 ```
+
+### todo
+
+1. 添加.husky
+2. docs
+3. 样式问题
 
 当然，请考虑以下好听的UI库名：
 
