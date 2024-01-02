@@ -5,7 +5,9 @@
     "create-global-dts": "ts-node ./scripts/create-global-d.ts",
     "update:version": "tsx scripts/update-version.ts",
     "clean": "rimraf dist",
-    "clean-node_modules": "rimraf -rf node_modules"
+    "clean-node_modules": "rimraf -rf node_modules",
+    "lint": "eslint \"{packages,build,scripts,docs}/**/*.{ts,tsx,js,vue,md}\"",
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*",
@@ -25,6 +27,9 @@
     "@pnpm/types": "^8.4.0",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "@types/fs-extra": "^9.0.13",
     "@types/gulp": "^4.0.9",
     "@types/node": "^20.4.10",
@@ -33,6 +38,8 @@
     "chalk": "^5.0.1",
     "consola": "^2.15.3",
     "eslint": "^8.47.0",
+    "eslint-plugin-jsonc": "^2.3.0",
+    "eslint-plugin-markdown": "^3.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.18.1",
@@ -52,34 +59,13 @@
     "tsx": "^3.6.0",
     "unplugin-vue-macros": "2.7.7",
     "vite-plugin-dts": "^3.7.0",
+    "typescript": "^5.1.6",
     "vue": "3.4.0"
   },
   "engines": {
     "node": ">= 18"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.tsx": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.vue": [
-      "prettier --parser=vue --write",
-      "eslint --fix"
-    ],
-    "*.css": [
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write --parser markdown --prose-wrap never",
-      "eslint --fix"
-    ]
+    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
   }
 }
