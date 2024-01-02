@@ -3,8 +3,8 @@
  * @Description: Modify here please
 -->
 <p align="center">
-  <img width="300px" src="https://yupao-cdn.oss-cn-beijing.aliyuncs.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
-</p>
+  <img width="300px" src="https://cdn.yupaowang.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
+</p>g
 
 <p align="center">
   <a href="https://www.npmjs.org/package/umy-ui">
