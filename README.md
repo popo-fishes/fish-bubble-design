@@ -3,7 +3,7 @@
  * @Description: Modify here please
 -->
 <p align="center">
-  <img width="300px" height="120px" src="https://cdn.yupaowang.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
+  <img width="300px" height="220px" src="https://cdn.yupaowang.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
 </p>
 
 <p align="center">
@@ -20,30 +20,3 @@
 </p>
 
 <p align="center">fish-bubble-design - 一个 Vue 3 组件库</p>
-
-## 注意点
-
-```shell
-1. 防止构建出问题，下面包的版本最好锁死
-/**
-   "vue": "3.4.0",
-   "unplugin-vue-macros": "2.7.7",
-   "@vitejs/plugin-vue": "5.0.1",
-   "@vitejs/plugin-vue-jsx": "3.1.0",
- */
-
-2. 开发组件规范
-...
-
-3. 你应该解决控制台开发环境的所有警告 || 错误信息！
-
-```
-
-当然，请考虑以下好听的UI库名：
-
-Aurora UI
-Flare UI
-fish-bubble-design
-Radiant UI
-Unique - ui
-vogue-ui
