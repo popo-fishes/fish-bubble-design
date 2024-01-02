@@ -1,0 +1,6 @@
+{
+  "name": "@fish-bubble-design/core",
+  "private": true,
+  "license": "MIT",
+  "main": "index.ts"
+}
