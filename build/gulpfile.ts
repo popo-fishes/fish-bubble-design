@@ -39,15 +39,8 @@ export default series(
 
   parallel(
     runTask("buildModules"),
-    runTask("buildFullBundle")
-    // runTask("generateTypesDefinitions")
-    // runTask('buildHelper'),
-    // series(
-    //   withTaskName('buildThemeChalk', () =>
-    //     run('pnpm run -C packages/theme-chalk build')
-    //   ),
-    //   copyFullStyle
-    // )
+    runTask("buildFullBundle"),
+    withTaskName("buildThemeChalk", () => run("pnpm run -C packages/theme-chalk build"))
   ),
   parallel(withTaskName("copyTypesDefinitions", copyTypesDefinitions)),
   parallel(withTaskName("createGlobalDts", () => run("pnpm run create-global-dts"))),

@@ -65,6 +65,10 @@ export const buildModules = async () => {
         cleanVueFileName: true,
         aliasesExclude: Object.keys(getPackageSpacesMap()),
         beforeWriteFile: (filePath, content) => {
+          // When returning 'false' or 'Promise<false>', the file will be skipped
+          if (filePath.indexOf("/theme-chalk/") !== -1) {
+            return false;
+          }
           const paths = writeTsTypesPath(filePath);
           const code = writeTsTypesContent(content);
           return {

@@ -172,12 +172,18 @@ importers:
       '@types/sass':
         specifier: 1.45.0
         version: registry.npmmirror.com/@types/sass@1.45.0
+      gulp-autoprefixer:
+        specifier: ^9.0.0
+        version: registry.npmmirror.com/gulp-autoprefixer@9.0.0(gulp@4.0.2)
+      gulp-clean-css:
+        specifier: ^4.3.0
+        version: registry.npmmirror.com/gulp-clean-css@4.3.0
       gulp-sass:
         specifier: ^5.1.0
         version: registry.npmmirror.com/gulp-sass@5.1.0
       sass:
-        specifier: 1.53.0
-        version: registry.npmmirror.com/sass@1.53.0
+        specifier: 1.69.7
+        version: registry.npmmirror.com/sass@1.69.7
 
 packages:
 
@@ -1936,7 +1942,7 @@ packages:
     version: 1.45.0
     deprecated: This is a stub types definition. sass provides its own type definitions, so you do not need this installed.
     dependencies:
-      sass: registry.npmmirror.com/sass@1.53.0
+      sass: registry.npmmirror.com/sass@1.69.7
     dev: true
 
   registry.npmmirror.com/@types/semver@7.5.6:
@@ -3365,6 +3371,25 @@ packages:
     hasBin: true
     dev: true
 
+  registry.npmmirror.com/autoprefixer@10.4.16(postcss@8.4.32):
+    resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==, tarball: https://registry.npmmirror.com/autoprefixer/-/autoprefixer-10.4.16.tgz}
+    id: registry.npmmirror.com/autoprefixer/10.4.16
+    name: autoprefixer
+    version: 10.4.16
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: registry.npmmirror.com/browserslist@4.22.2
+      caniuse-lite: registry.npmmirror.com/caniuse-lite@1.0.30001572
+      fraction.js: registry.npmmirror.com/fraction.js@4.3.7
+      normalize-range: registry.npmmirror.com/normalize-range@0.1.2
+      picocolors: registry.npmmirror.com/picocolors@1.0.0
+      postcss: registry.npmmirror.com/postcss@8.4.32
+      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+    dev: true
+
   registry.npmmirror.com/bach@1.2.0:
     resolution: {integrity: sha512-bZOOfCb3gXBXbTFXq3OZtGR88LwGeJvzu6szttaIzymOTS4ZttBNOWSv7aLZja2EMycKtRYV0Oa8SNKH/zkxvg==, tarball: https://registry.npmmirror.com/bach/-/bach-1.2.0.tgz}
     name: bach
@@ -3662,6 +3687,15 @@ packages:
       define-property: registry.npmmirror.com/define-property@0.2.5
       isobject: registry.npmmirror.com/isobject@3.0.1
       static-extend: registry.npmmirror.com/static-extend@0.1.2
+    dev: true
+
+  registry.npmmirror.com/clean-css@4.2.3:
+    resolution: {integrity: sha512-VcMWDN54ZN/DS+g58HYL5/n4Zrqe8vHJpGA8KdgUXFU4fuP/aHNw8eld9SyEIyabIMJX/0RaY/fplOo5hYLSFA==, tarball: https://registry.npmmirror.com/clean-css/-/clean-css-4.2.3.tgz}
+    name: clean-css
+    version: 4.2.3
+    engines: {node: '>= 4.0'}
+    dependencies:
+      source-map: registry.npmmirror.com/source-map@0.6.1
     dev: true
 
   registry.npmmirror.com/cli-cursor@4.0.0:
@@ -4113,6 +4147,13 @@ packages:
     dependencies:
       is-plain-object: registry.npmmirror.com/is-plain-object@2.0.4
       object.defaults: registry.npmmirror.com/object.defaults@1.1.0
+    dev: true
+
+  registry.npmmirror.com/easy-transform-stream@1.0.1:
+    resolution: {integrity: sha512-ktkaa6XR7COAR3oj02CF3IOgz2m1hCaY3SfzvKT4Svt2MhHw9XCt+ncJNWfe2TGz31iqzNGZ8spdKQflj+Rlog==, tarball: https://registry.npmmirror.com/easy-transform-stream/-/easy-transform-stream-1.0.1.tgz}
+    name: easy-transform-stream
+    version: 1.0.1
+    engines: {node: '>=14.16'}
     dev: true
 
   registry.npmmirror.com/electron-to-chromium@1.4.616:
@@ -4835,6 +4876,12 @@ packages:
       for-in: registry.npmmirror.com/for-in@1.0.2
     dev: true
 
+  registry.npmmirror.com/fraction.js@4.3.7:
+    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==, tarball: https://registry.npmmirror.com/fraction.js/-/fraction.js-4.3.7.tgz}
+    name: fraction.js
+    version: 4.3.7
+    dev: true
+
   registry.npmmirror.com/fragment-cache@0.2.1:
     resolution: {integrity: sha512-GMBAbW9antB8iZRHLoGw0b3HANt57diZYFO/HL1JGIC1MjKrdmhxvrJbupnVvpys0zsz7yBApXdQyfepKly2kA==, tarball: https://registry.npmmirror.com/fragment-cache/-/fragment-cache-0.2.1.tgz}
     name: fragment-cache
@@ -5123,6 +5170,36 @@ packages:
     version: 1.4.0
     dev: true
 
+  registry.npmmirror.com/gulp-autoprefixer@9.0.0(gulp@4.0.2):
+    resolution: {integrity: sha512-lVQz5fqdjm4RMB1O3xLPtaZNMbFFoGKbV+SN3NJgT9X+PIyYld7dXARpoXIKEZAqE9WC2SoDQU0mxqZahWq07A==, tarball: https://registry.npmmirror.com/gulp-autoprefixer/-/gulp-autoprefixer-9.0.0.tgz}
+    id: registry.npmmirror.com/gulp-autoprefixer/9.0.0
+    name: gulp-autoprefixer
+    version: 9.0.0
+    engines: {node: '>=18'}
+    peerDependencies:
+      gulp: '>=4'
+    peerDependenciesMeta:
+      gulp:
+        optional: true
+    dependencies:
+      autoprefixer: registry.npmmirror.com/autoprefixer@10.4.16(postcss@8.4.32)
+      gulp: registry.npmmirror.com/gulp@4.0.2
+      gulp-plugin-extras: registry.npmmirror.com/gulp-plugin-extras@0.2.2
+      postcss: registry.npmmirror.com/postcss@8.4.32
+      vinyl-sourcemaps-apply: registry.npmmirror.com/vinyl-sourcemaps-apply@0.2.1
+    dev: true
+
+  registry.npmmirror.com/gulp-clean-css@4.3.0:
+    resolution: {integrity: sha512-mGyeT3qqFXTy61j0zOIciS4MkYziF2U594t2Vs9rUnpkEHqfu6aDITMp8xOvZcvdX61Uz3y1mVERRYmjzQF5fg==, tarball: https://registry.npmmirror.com/gulp-clean-css/-/gulp-clean-css-4.3.0.tgz}
+    name: gulp-clean-css
+    version: 4.3.0
+    dependencies:
+      clean-css: registry.npmmirror.com/clean-css@4.2.3
+      plugin-error: registry.npmmirror.com/plugin-error@1.0.1
+      through2: registry.npmmirror.com/through2@3.0.1
+      vinyl-sourcemaps-apply: registry.npmmirror.com/vinyl-sourcemaps-apply@0.2.1
+    dev: true
+
   registry.npmmirror.com/gulp-cli@2.3.0:
     resolution: {integrity: sha512-zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==, tarball: https://registry.npmmirror.com/gulp-cli/-/gulp-cli-2.3.0.tgz}
     name: gulp-cli
@@ -5150,6 +5227,17 @@ packages:
       yargs: registry.npmmirror.com/yargs@7.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  registry.npmmirror.com/gulp-plugin-extras@0.2.2:
+    resolution: {integrity: sha512-0gssXzTNrrOocYBWN4qOZqd03cz3bxhjxVUPZV9iJdBR0ZZbwMQO/OT8hZChYoc9GjKaA5meaqDr6CjkmKA7BA==, tarball: https://registry.npmmirror.com/gulp-plugin-extras/-/gulp-plugin-extras-0.2.2.tgz}
+    name: gulp-plugin-extras
+    version: 0.2.2
+    engines: {node: '>=18'}
+    dependencies:
+      '@types/vinyl': registry.npmmirror.com/@types/vinyl@2.0.11
+      chalk: registry.npmmirror.com/chalk@5.3.0
+      easy-transform-stream: registry.npmmirror.com/easy-transform-stream@1.0.1
     dev: true
 
   registry.npmmirror.com/gulp-sass@5.1.0:
@@ -6401,6 +6489,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  registry.npmmirror.com/normalize-range@0.1.2:
+    resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==, tarball: https://registry.npmmirror.com/normalize-range/-/normalize-range-0.1.2.tgz}
+    name: normalize-range
+    version: 0.1.2
+    engines: {node: '>=0.10.0'}
+    dev: true
+
   registry.npmmirror.com/now-and-later@2.0.1:
     resolution: {integrity: sha512-KGvQ0cB70AQfg107Xvs/Fbu+dGmZoTRJp2TaPwcwQm3/7PteUyN2BCgk8KBMPGBUXZdVwyWS8fDCGFygBm19UQ==, tarball: https://registry.npmmirror.com/now-and-later/-/now-and-later-2.0.1.tgz}
     name: now-and-later
@@ -6829,6 +6924,12 @@ packages:
       util-deprecate: registry.npmmirror.com/util-deprecate@1.0.2
     dev: true
 
+  registry.npmmirror.com/postcss-value-parser@4.2.0:
+    resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==, tarball: https://registry.npmmirror.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz}
+    name: postcss-value-parser
+    version: 4.2.0
+    dev: true
+
   registry.npmmirror.com/postcss@8.4.32:
     resolution: {integrity: sha512-D/kj5JNu6oo2EIy+XL/26JEDTlIbB8hw85G8StOE6L74RQAVVP5rej6wxCNqyMbR4RkPfqvezVbPw81Ngd6Kcw==, tarball: https://registry.npmmirror.com/postcss/-/postcss-8.4.32.tgz}
     name: postcss
@@ -7245,11 +7346,11 @@ packages:
       ret: registry.npmmirror.com/ret@0.1.15
     dev: true
 
-  registry.npmmirror.com/sass@1.53.0:
-    resolution: {integrity: sha512-zb/oMirbKhUgRQ0/GFz8TSAwRq2IlR29vOUJZOx0l8sV+CkHUfHa4u5nqrG+1VceZp7Jfj59SVW9ogdhTvJDcQ==, tarball: https://registry.npmmirror.com/sass/-/sass-1.53.0.tgz}
+  registry.npmmirror.com/sass@1.69.7:
+    resolution: {integrity: sha512-rzj2soDeZ8wtE2egyLXgOOHQvaC2iosZrkF6v3EUG+tBwEvhqUCzm0VP3k9gHF9LXbSrRhT5SksoI56Iw8NPnQ==, tarball: https://registry.npmmirror.com/sass/-/sass-1.69.7.tgz}
     name: sass
-    version: 1.53.0
-    engines: {node: '>=12.0.0'}
+    version: 1.69.7
+    engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: registry.npmmirror.com/chokidar@3.5.3
@@ -7754,6 +7855,14 @@ packages:
     dependencies:
       readable-stream: registry.npmmirror.com/readable-stream@2.3.8
       xtend: registry.npmmirror.com/xtend@4.0.2
+    dev: true
+
+  registry.npmmirror.com/through2@3.0.1:
+    resolution: {integrity: sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==, tarball: https://registry.npmmirror.com/through2/-/through2-3.0.1.tgz}
+    name: through2
+    version: 3.0.1
+    dependencies:
+      readable-stream: registry.npmmirror.com/readable-stream@2.3.8
     dev: true
 
   registry.npmmirror.com/time-stamp@1.1.0:

@@ -1,0 +1,6 @@
+@use "mixins/mixins" as *;
+@use "mixins/function" as *;
+
+@include b(button) {
+  border: getCssVar("color-primary");
+}
