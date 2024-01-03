@@ -42,6 +42,12 @@ importers:
       '@types/node':
         specifier: ^20.4.10
         version: registry.npmmirror.com/@types/node@20.10.6
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.10.0
+        version: registry.npmmirror.com/@typescript-eslint/eslint-plugin@6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+      '@typescript-eslint/parser':
+        specifier: ^6.10.0
+        version: registry.npmmirror.com/@typescript-eslint/parser@6.17.0(eslint@8.56.0)(typescript@5.3.3)
       '@vitejs/plugin-vue':
         specifier: 5.0.1
         version: registry.npmmirror.com/@vitejs/plugin-vue@5.0.1(vite@5.0.10)(vue@3.4.0)
@@ -158,7 +164,20 @@ importers:
 
   packages/hooks: {}
 
-  packages/theme-chalk: {}
+  packages/theme-chalk:
+    devDependencies:
+      '@types/gulp-sass':
+        specifier: ^5.0.0
+        version: registry.npmmirror.com/@types/gulp-sass@5.0.4
+      '@types/sass':
+        specifier: 1.45.0
+        version: registry.npmmirror.com/@types/sass@1.45.0
+      gulp-sass:
+        specifier: ^5.1.0
+        version: registry.npmmirror.com/gulp-sass@5.1.0
+      sass:
+        specifier: 1.53.0
+        version: registry.npmmirror.com/sass@1.53.0
 
 packages:
 
@@ -1826,6 +1845,15 @@ packages:
       '@types/streamx': registry.npmmirror.com/@types/streamx@2.9.5
     dev: true
 
+  registry.npmmirror.com/@types/gulp-sass@5.0.4:
+    resolution: {integrity: sha512-wDgpyM9fRq/k7kn1ZGcoY69Pj8+AlB50U9TKmBdbmHUduy+4b7WZ1zrDl4df43W+IqJegEgen6XAKO2+/RQILA==, tarball: https://registry.npmmirror.com/@types/gulp-sass/-/gulp-sass-5.0.4.tgz}
+    name: '@types/gulp-sass'
+    version: 5.0.4
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node@20.10.6
+      '@types/node-sass': registry.npmmirror.com/@types/node-sass@4.11.7
+    dev: true
+
   registry.npmmirror.com/@types/gulp@4.0.17:
     resolution: {integrity: sha512-+pKQynu2C/HS16kgmDlAicjtFYP8kaa86eE9P0Ae7GB5W29we/E2TIdbOWtEZD5XkpY+jr8fyqfwO6SWZecLpQ==, tarball: https://registry.npmmirror.com/@types/gulp/-/gulp-4.0.17.tgz}
     name: '@types/gulp'
@@ -1872,6 +1900,14 @@ packages:
     version: 1.0.5
     dev: true
 
+  registry.npmmirror.com/@types/node-sass@4.11.7:
+    resolution: {integrity: sha512-QY0sXZGPRzJ2obo66f9zB6S0Uo9PRdcoPKPbyftSoKXub90s4ut/JK3fYHOqmhYhRRVEB3P5o5rEnq2/bWBdeg==, tarball: https://registry.npmmirror.com/@types/node-sass/-/node-sass-4.11.7.tgz}
+    name: '@types/node-sass'
+    version: 4.11.7
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node@20.10.6
+    dev: true
+
   registry.npmmirror.com/@types/node@20.10.6:
     resolution: {integrity: sha512-Vac8H+NlRNNlAmDfGUP7b5h/KA+AtWIzuXy0E6OyP8f1tCLYAtPvKRRDJjAPqhpCb0t6U2j7/xqAuLEebW2kiw==, tarball: https://registry.npmmirror.com/@types/node/-/node-20.10.6.tgz}
     name: '@types/node'
@@ -1892,6 +1928,15 @@ packages:
     version: 1.17.1
     dependencies:
       '@types/node': registry.npmmirror.com/@types/node@20.10.6
+    dev: true
+
+  registry.npmmirror.com/@types/sass@1.45.0:
+    resolution: {integrity: sha512-jn7qwGFmJHwUSphV8zZneO3GmtlgLsmhs/LQyVvQbIIa+fzGMUiHI4HXJZL3FT8MJmgXWbLGiVVY7ElvHq6vDA==, tarball: https://registry.npmmirror.com/@types/sass/-/sass-1.45.0.tgz}
+    name: '@types/sass'
+    version: 1.45.0
+    deprecated: This is a stub types definition. sass provides its own type definitions, so you do not need this installed.
+    dependencies:
+      sass: registry.npmmirror.com/sass@1.53.0
     dev: true
 
   registry.npmmirror.com/@types/semver@7.5.6:
@@ -5107,6 +5152,20 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/gulp-sass@5.1.0:
+    resolution: {integrity: sha512-7VT0uaF+VZCmkNBglfe1b34bxn/AfcssquLKVDYnCDJ3xNBaW7cUuI3p3BQmoKcoKFrs9jdzUxyb+u+NGfL4OQ==, tarball: https://registry.npmmirror.com/gulp-sass/-/gulp-sass-5.1.0.tgz}
+    name: gulp-sass
+    version: 5.1.0
+    engines: {node: '>=12'}
+    dependencies:
+      lodash.clonedeep: registry.npmmirror.com/lodash.clonedeep@4.5.0
+      picocolors: registry.npmmirror.com/picocolors@1.0.0
+      plugin-error: registry.npmmirror.com/plugin-error@1.0.1
+      replace-ext: registry.npmmirror.com/replace-ext@2.0.0
+      strip-ansi: registry.npmmirror.com/strip-ansi@6.0.1
+      vinyl-sourcemaps-apply: registry.npmmirror.com/vinyl-sourcemaps-apply@0.2.1
+    dev: true
+
   registry.npmmirror.com/gulp@4.0.2:
     resolution: {integrity: sha512-dvEs27SCZt2ibF29xYgmnwwCYZxdxhQ/+LFWlbAW8y7jt68L/65402Lz3+CKy0Ov4rOs+NERmDq7YlZaDqUIfA==, tarball: https://registry.npmmirror.com/gulp/-/gulp-4.0.2.tgz}
     name: gulp
@@ -5264,6 +5323,12 @@ packages:
     name: ignore
     version: 5.3.0
     engines: {node: '>= 4'}
+    dev: true
+
+  registry.npmmirror.com/immutable@4.3.4:
+    resolution: {integrity: sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==, tarball: https://registry.npmmirror.com/immutable/-/immutable-4.3.4.tgz}
+    name: immutable
+    version: 4.3.4
     dev: true
 
   registry.npmmirror.com/import-fresh@3.3.0:
@@ -5933,6 +5998,12 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: registry.npmmirror.com/p-locate@5.0.0
+    dev: true
+
+  registry.npmmirror.com/lodash.clonedeep@4.5.0:
+    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==, tarball: https://registry.npmmirror.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz}
+    name: lodash.clonedeep
+    version: 4.5.0
     dev: true
 
   registry.npmmirror.com/lodash.get@4.4.2:
@@ -6729,6 +6800,18 @@ packages:
       pathe: registry.npmmirror.com/pathe@1.1.1
     dev: true
 
+  registry.npmmirror.com/plugin-error@1.0.1:
+    resolution: {integrity: sha512-L1zP0dk7vGweZME2i+EeakvUNqSrdiI3F91TwEoYiGrAfUXmVv6fJIq4g82PAXxNsWOp0J7ZqQy/3Szz0ajTxA==, tarball: https://registry.npmmirror.com/plugin-error/-/plugin-error-1.0.1.tgz}
+    name: plugin-error
+    version: 1.0.1
+    engines: {node: '>= 0.10'}
+    dependencies:
+      ansi-colors: registry.npmmirror.com/ansi-colors@1.1.0
+      arr-diff: registry.npmmirror.com/arr-diff@4.0.0
+      arr-union: registry.npmmirror.com/arr-union@3.1.0
+      extend-shallow: registry.npmmirror.com/extend-shallow@3.0.2
+    dev: true
+
   registry.npmmirror.com/posix-character-classes@0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==, tarball: https://registry.npmmirror.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz}
     name: posix-character-classes
@@ -6955,6 +7038,13 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
+  registry.npmmirror.com/replace-ext@2.0.0:
+    resolution: {integrity: sha512-UszKE5KVK6JvyD92nzMn9cDapSk6w/CaFZ96CnmDMUqH9oowfxF/ZjRITD25H4DnOQClLA4/j7jLGXXLVKxAug==, tarball: https://registry.npmmirror.com/replace-ext/-/replace-ext-2.0.0.tgz}
+    name: replace-ext
+    version: 2.0.0
+    engines: {node: '>= 10'}
+    dev: true
+
   registry.npmmirror.com/replace-homedir@1.0.0:
     resolution: {integrity: sha512-CHPV/GAglbIB1tnQgaiysb8H2yCy8WQ7lcEwQ/eT+kLj0QHV8LnJW0zpqpE7RSkrMSRoa+EBoag86clf7WAgSg==, tarball: https://registry.npmmirror.com/replace-homedir/-/replace-homedir-1.0.0.tgz}
     name: replace-homedir
@@ -7153,6 +7243,18 @@ packages:
     version: 1.1.0
     dependencies:
       ret: registry.npmmirror.com/ret@0.1.15
+    dev: true
+
+  registry.npmmirror.com/sass@1.53.0:
+    resolution: {integrity: sha512-zb/oMirbKhUgRQ0/GFz8TSAwRq2IlR29vOUJZOx0l8sV+CkHUfHa4u5nqrG+1VceZp7Jfj59SVW9ogdhTvJDcQ==, tarball: https://registry.npmmirror.com/sass/-/sass-1.53.0.tgz}
+    name: sass
+    version: 1.53.0
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: registry.npmmirror.com/chokidar@3.5.3
+      immutable: registry.npmmirror.com/immutable@4.3.4
+      source-map-js: registry.npmmirror.com/source-map-js@1.0.2
     dev: true
 
   registry.npmmirror.com/search-insights@2.13.0:
@@ -8178,6 +8280,14 @@ packages:
       now-and-later: registry.npmmirror.com/now-and-later@2.0.1
       remove-bom-buffer: registry.npmmirror.com/remove-bom-buffer@3.0.0
       vinyl: registry.npmmirror.com/vinyl@2.2.1
+    dev: true
+
+  registry.npmmirror.com/vinyl-sourcemaps-apply@0.2.1:
+    resolution: {integrity: sha512-+oDh3KYZBoZC8hfocrbrxbLUeaYtQK7J5WU5Br9VqWqmCll3tFJqKp97GC9GmMsVIL0qnx2DgEDVxdo5EZ5sSw==, tarball: https://registry.npmmirror.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz}
+    name: vinyl-sourcemaps-apply
+    version: 0.2.1
+    dependencies:
+      source-map: registry.npmmirror.com/source-map@0.5.7
     dev: true
 
   registry.npmmirror.com/vinyl@2.2.1:

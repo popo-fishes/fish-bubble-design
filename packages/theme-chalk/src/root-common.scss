@@ -1,0 +1,25 @@
+// CSS3 var
+@use "common/var" as *;
+@use "mixins/_var" as *;
+
+//为了获得更好的性能，如果您真的
+//不需要，因为这可能会引入渲染的重新计算开销。
+// https://lisilinhart.info/posts/css-variables-performance/
+
+// common
+:root {
+  @include set-css-var-value("color-white", $color-white);
+  @include set-css-var-value("color-black", $color-black);
+
+  // --fb-border-radius-#{$type}
+  @include set-component-css-var("border-radius", $border-radius);
+}
+
+// for light
+:root {
+  // --fb-color-#{$type}
+  // --fb-color-#{$type}-light-{$i}
+  @each $type in (primary, success, warning, danger, error, info) {
+    @include set-css-color-type($colors, $type);
+  }
+}

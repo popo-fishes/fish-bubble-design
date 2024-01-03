@@ -1,0 +1,13 @@
+@use "config";
+
+// join var name
+// joinVarName(('button', 'text-color')) => '--fb-button-text-color'
+@function joinVarName($list) {
+  $name: "--" + config.$namespace;
+  @each $item in $list {
+    @if $item != "" {
+      $name: $name + "-" + $item;
+    }
+  }
+  @return $name;
+}
