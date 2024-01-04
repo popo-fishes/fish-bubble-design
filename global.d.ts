@@ -3,8 +3,8 @@
 declare module "@vue/runtime-core" {
   // GlobalComponents for Volar
   export interface GlobalComponents {
-    FButton: (typeof import("fish-bubble-design"))["FButton"];
-    FIcon: (typeof import("fish-bubble-design"))["FIcon"];
+    FbButton: (typeof import("fish-bubble-design"))["FbButton"];
+    FbIcon: (typeof import("fish-bubble-design"))["FbIcon"];
   }
 
   interface ComponentCustomProperties {}

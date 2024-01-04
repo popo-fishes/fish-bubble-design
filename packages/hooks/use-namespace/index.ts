@@ -2,7 +2,13 @@
  * @Date: 2023-11-29 16:17:22
  * @Description: 样式命名空间， 这个在封装组件，遇到样式多时候，是非常好管理的
  */
+import { computed, getCurrentInstance, inject, ref, unref } from "vue";
+import type { InjectionKey, Ref } from "vue";
+
+export const defaultNamespace = "fb";
+
 const statePrefix = "is-";
+
 const _bem = (namespace: string, block: string, blockSuffix: string, element: string, modifier: string) => {
   let cls = `${namespace}-${block}`;
   // 块后缀
@@ -19,6 +25,16 @@ const _bem = (namespace: string, block: string, blockSuffix: string, element: st
   return cls;
 };
 
+export const namespaceContextKey: InjectionKey<Ref<string | undefined>> = Symbol("namespaceContextKey");
+
+export const useGetDerivedNamespace = () => {
+  const derivedNamespace = getCurrentInstance() ? inject(namespaceContextKey, ref(defaultNamespace)) : ref(defaultNamespace);
+  const namespace = computed(() => {
+    return unref(derivedNamespace) || defaultNamespace;
+  });
+  return namespace;
+};
+
 /**
  *
  * @param block 组件块名
@@ -26,7 +42,8 @@ const _bem = (namespace: string, block: string, blockSuffix: string, element: st
  * @returns
  */
 // !!! 封装组件样式 非常重要的方法！
-export const useNamespace = (block: string, defaultNamespace: string) => {
+export const useNamespace = (block: string) => {
+  const defaultNamespace = useGetDerivedNamespace();
   // 默认样式拼接
   const b = (blockSuffix = "") => _bem(defaultNamespace, block, blockSuffix, "", "");
   // 扩展样式拼接

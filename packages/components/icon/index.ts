@@ -6,6 +6,6 @@ import { withInstall } from "@fish-bubble-design/core";
 
 import Icon from "./src/icon.vue";
 
-export const FIcon = withInstall(Icon);
+export const FbIcon = withInstall(Icon);
 
-export default FIcon;
+export default FbIcon;

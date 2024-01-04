@@ -1,11 +1,15 @@
+/* Component chalk variables */
+
 // https://sass-lang.com/documentation/modules/map/
 @use "sass:math";
 @use "sass:map";
 
+@use "../mixins/function.scss" as *;
+
 // 主题配置器 （这里全是变量）
 
 // types
-$types: primary, success, warning, danger, error, info;
+$types: primary, success, warning, danger, info;
 
 // Color
 $colors: () !default;
@@ -14,22 +18,19 @@ $colors: map.deep-merge(
     "white": #ffffff,
     "black": #000000,
     "primary": (
-      "base": #409eff
+      "base": #0092ff
     ),
     "success": (
-      "base": #67c23a
+      "base": #06b578
     ),
     "warning": (
-      "base": #e6a23c
+      "base": #ff8904
     ),
     "danger": (
-      "base": #f56c6c
-    ),
-    "error": (
-      "base": #f56c6c
+      "base": #e8362e
     ),
     "info": (
-      "base": #909399
+      "base": #b7bdc7
     )
   ),
   $colors
@@ -41,7 +42,6 @@ $color-primary: map.get($colors, "primary", "base") !default;
 $color-success: map.get($colors, "success", "base") !default;
 $color-warning: map.get($colors, "warning", "base") !default;
 $color-danger: map.get($colors, "danger", "base") !default;
-$color-error: map.get($colors, "error", "base") !default;
 $color-info: map.get($colors, "info", "base") !default;
 
 // https://sass-lang.com/documentation/values/maps#immutability
@@ -59,15 +59,11 @@ $color-info: map.get($colors, "info", "base") !default;
 
 // $colors.primary.light-i
 // --fb-color-primary-light-i
-// 10% 53a8ff
-// 20% 66b1ff
-// 30% 79bbff
-// 40% 8cc5ff
-// 50% a0cfff
-// 60% b3d8ff
-// 70% c6e2ff
-// 80% d9ecff
-// 90% ecf5ff
+// --fb-color-primary-light-3: #4db3ff;
+// --fb-color-primary-light-5: #80c9ff;
+// --fb-color-primary-light-7: #b3deff;
+// --fb-color-primary-light-8: #cce9ff;
+// --fb-color-primary-light-9: #e6f4ff;
 @each $type in $types {
   @for $i from 1 through 9 {
     @include set-color-mix-level($type, $i, "light", $color-white);
@@ -78,3 +74,27 @@ $color-info: map.get($colors, "info", "base") !default;
 @each $type in $types {
   @include set-color-mix-level($type, 2, "dark", $color-black);
 }
+
+// Button
+// css3 var in packages/theme-chalk/src/button.scss
+$button: () !default;
+$button: map.merge(
+  (
+    "text-color": getCssVar("color-primary"),
+    "bg-color": getCssVar("color-white"),
+    "border-color": getCssVar("color-primary"),
+    // hover时
+    "hover-text-color": getCssVar("color-white"),
+    "hover-bg-color": getCssVar("color-primary"),
+    "hover-border-color": getCssVar("color-primary"),
+    // 点击时
+    "active-text-color": getCssVar("color-white"),
+    "active-bg-color": getCssVar("color-primary", "dark-2"),
+    "active-border-color": getCssVar("color-primary", "dark-2"),
+    // 禁用时
+    "disabled-text-color": getCssVar("color-primary", "light-7"),
+    "disabled-bg-color": getCssVar("color-white"),
+    "disabled-border-color": getCssVar("color-primary", "light-9")
+  ),
+  $button
+);

@@ -26,13 +26,13 @@ function buildThemeChalk() {
       // https://github.com/sindresorhus/gulp-autoprefixer
       .pipe(autoprefixer({ cascade: false }))
       // https://www.npmjs.com/package/gulp-clean-css
-      .pipe(
-        cleanCSS({}, (details) => {
-          consola.success(
-            `${chalk.cyan(details.name)}: ${chalk.yellow(details.stats.originalSize / 1000)} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`
-          );
-        })
-      )
+      // .pipe(
+      //   cleanCSS({}, (details) => {
+      //     consola.success(
+      //       `${chalk.cyan(details.name)}: ${chalk.yellow(details.stats.originalSize / 1000)} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`
+      //     );
+      //   })
+      // )
       // output
       .pipe(dest(distFolder))
   );

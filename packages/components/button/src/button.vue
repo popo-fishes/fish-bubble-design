@@ -4,14 +4,13 @@
 -->
 <script lang="ts" setup>
 import { computed, CSSProperties } from "vue";
-import { FIcon } from "@fish-bubble-design/components/icon";
+import FbIcon from "@fish-bubble-design/components/icon";
 import { useNamespace } from "@fish-bubble-design/hooks";
 
 export interface IButtonProps {
-  /** 按钮类型
-   *  根据UI库得到的类型
-   *  https://www.figma.com/file/rLmfLEQdyxA8IJnR651zcF/%E9%B1%BC%E6%B3%A1%E7%BD%91PC%E7%AB%AF?node-id=1708%3A49868&mode=dev
-   *  剩下的没有的按钮样式，我建议不叠加在组件里面了，自己外面写样式 如宽度 :class="$style.contactBtn"
+  tag?: string;
+  /**
+   *  按钮类型
    */
   type?: "primary" | "default" | "plain" | "undertint";
   /**
@@ -26,21 +25,21 @@ export interface IButtonProps {
   loading?: boolean;
 }
 
+defineOptions({
+  name: "FbButton"
+});
+
 const props = withDefaults(defineProps<IButtonProps>(), {
+  tag: "button",
   type: "default",
   size: "middle"
 });
-
-defineOptions({
-  name: "FButton"
-});
-
 // 事件
 defineEmits({
   click: (evt: MouseEvent) => evt instanceof MouseEvent
 });
 
-const ns = useNamespace("button", "yp");
+const ns = useNamespace("button");
 
 const _props = computed(() => {
   return {
@@ -58,7 +57,8 @@ const buttonStyle = computed<CSSProperties>(() => {
 </script>
 
 <template>
-  <button
+  <component
+    :is="tag"
     v-bind="_props"
     :style="buttonStyle"
     @click="(e) => $emit('click', e)"
@@ -68,7 +68,7 @@ const buttonStyle = computed<CSSProperties>(() => {
       <!-- 你可以自定义加载图标 -->
       <slot v-if="$slots?.loading" name="loading" />
       <!-- 默认加载图标 -->
-      <f-icon v-else icon="yp-jiazai" class="icon-loading" />
+      <fb-icon v-else icon="yp-jiazai" class="icon-loading" />
     </template>
     <!-- 自定义按钮左侧图标 -->
     <template v-else-if="$slots?.icon">
@@ -76,5 +76,5 @@ const buttonStyle = computed<CSSProperties>(() => {
     </template>
     <!-- 默认按钮内容部分 -->
     <span v-if="$slots?.default" class="btn-text"><slot /></span>
-  </button>
+  </component>
 </template>
