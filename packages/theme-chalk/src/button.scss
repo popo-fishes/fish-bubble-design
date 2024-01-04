@@ -3,6 +3,8 @@
 @use "mixins/css-var" as *;
 @use "mixins/function" as *;
 
+@use "./component_internal/wave.scss";
+
 @include b(button) {
   @include set-component-css-var("button", $button);
 }
@@ -28,12 +30,12 @@
       "bg-color": (
         "color",
         $type,
-        "light-9"
+        "light-8"
       ),
       "border-color": (
         "color",
         $type,
-        "light-9"
+        "light-8"
       )
     ),
     "hover": (
@@ -60,12 +62,12 @@
       "bg-color": (
         "color",
         $type,
-        "light-5"
+        "light-6"
       ),
       "border-color": (
         "color",
         $type,
-        "light-5"
+        "light-6"
       )
     )
   );
@@ -78,11 +80,65 @@
 
   &.is-disabled {
     &,
-    &:hover,
-    &:focus {
+    &:hover {
       color: getCssVar("color", $type, "light-5");
-      background-color: getCssVar("color", $type, "light-9");
-      border-color: getCssVar("color", $type, "light-9");
+      background-color: getCssVar("color", $type, "light-8");
+      border-color: getCssVar("color", $type, "light-8");
+    }
+  }
+}
+
+// 鬼透明 -- ghost类型
+@mixin button-ghost($type) {
+  $button-color-types: (
+    "": (
+      "text-color": (
+        "color",
+        $type
+      ),
+      "border-color": (
+        "color",
+        $type
+      )
+    ),
+    "hover": (
+      "text-color": (
+        "color",
+        $type
+      ),
+      "border-color": (
+        "color",
+        $type
+      )
+    ),
+    "active": (
+      "text-color": (
+        "color",
+        $type,
+        "dark-2"
+      ),
+      "border-color": (
+        "color",
+        $type,
+        "dark-2"
+      )
+    )
+  );
+
+  @each $type, $typeMap in $button-color-types {
+    // 背景透明
+    #{getCssVarName('button', $type, 'bg-color')}: transparent;
+    @each $typeColor, $list in $typeMap {
+      #{getCssVarName('button', $type, $typeColor)}: var(#{joinVarName($list)});
+    }
+  }
+
+  &.is-disabled {
+    &,
+    &:hover {
+      color: getCssVar("color", $type, "light-5");
+      background-color: getCssVar("color", $type, "light-8");
+      border-color: getCssVar("color", $type, "light-8");
     }
   }
 }
@@ -91,18 +147,12 @@
 @mixin button-variant($type) {
   $button-color-types: (
     "": (
-      "text-color": (
-        "color",
-        "white"
-      ),
-      "bg-color": (
-        "color",
-        $type
-      ),
-      "border-color": (
-        "color",
-        $type
-      )
+      // 波纹色修改
+      "ripple-color": ("color", $type),
+      // 基本色修改
+      "text-color": ("color", "white"),
+      "bg-color": ("color", $type),
+      "border-color": ("color", $type)
     ),
     "hover": (
       "text-color": (
@@ -159,6 +209,11 @@
   &.is-plain {
     @include button-plain($type);
   }
+
+  // 透明效果时
+  &.is-ghost {
+    @include button-ghost($type);
+  }
 }
 
 @include b(button) {
@@ -166,6 +221,7 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  position: relative;
   cursor: pointer;
   color: getCssVar("button", "text-color");
   box-sizing: border-box;
@@ -183,8 +239,7 @@
   border-radius: 6px;
 
   // 控制交互样式
-  &:hover,
-  &:focus {
+  &:hover {
     color: getCssVar("button", "hover", "text-color");
     border-color: getCssVar("button", "hover", "border-color");
     background-color: getCssVar("button", "hover", "bg-color");
@@ -223,8 +278,7 @@
   // 禁用时
   @include when(disabled) {
     &,
-    &:hover,
-    &:focus {
+    &:hover {
       color: getCssVar("button", "disabled", "text-color");
       cursor: not-allowed;
       background-color: getCssVar("button", "disabled", "bg-color");
@@ -249,6 +303,21 @@
     }
   }
 
+  // 按钮透明时
+  @include when(ghost) {
+    #{getCssVarName("button", "text-color")}: rgba(0, 0, 0, 0.65);
+    #{getCssVarName("button", "bg-color")}: transparent;
+    #{getCssVarName("button", "border-color")}: getCssVar("color-info", "light-7");
+
+    #{getCssVarName("button", "hover", "text-color")}: getCssVar("color-primary");
+    #{getCssVarName("button", "hover", "bg-color")}: transparent;
+    #{getCssVarName("button", "hover", "border-color")}: getCssVar("color-primary");
+
+    #{getCssVarName("button", "active", "text-color")}: getCssVar("color-primary", "dark-2");
+    #{getCssVarName("button", "active", "bg-color")}: transparent;
+    #{getCssVarName("button", "active", "border-color")}: getCssVar("color-primary", "dark-2");
+  }
+
   // 朴素按钮
   @include when(plain) {
     #{getCssVarName("button", "text-color")}: rgba(0, 0, 0, 0.65);
@@ -266,8 +335,7 @@
     // 禁用时
     &.is-disabled {
       &,
-      &:hover,
-      &:focus {
+      &:hover {
         color: getCssVar("color-info", "light-5");
         cursor: not-allowed;
         background-color: getCssVar("color-white");
@@ -291,6 +359,28 @@
   @each $type in (primary, success, warning, danger) {
     @include m($type) {
       @include button-variant($type);
+    }
+  }
+  // 波浪效果
+  @include b(base-wave) {
+    @keyframes button-wave-spread {
+      from {
+        box-shadow: 0 0 0.5px 0 getCssVar("button", "ripple-color");
+      }
+      to {
+        box-shadow: 0 0 0.5px 5px getCssVar("button", "ripple-color");
+      }
+    }
+    @keyframes button-wave-opacity {
+      from {
+        opacity: 0.6;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    @include when(active) {
+      animation-name: button-wave-spread, button-wave-opacity;
     }
   }
 }

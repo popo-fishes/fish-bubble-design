@@ -80,6 +80,9 @@ $color-info: map.get($colors, "info", "base") !default;
 $button: () !default;
 $button: map.merge(
   (
+    // 点击时的波纹色
+    "ripple-color": getCssVar("color-primary"),
+    // 底色
     "text-color": getCssVar("color-primary"),
     "bg-color": getCssVar("color-white"),
     "border-color": getCssVar("color-primary"),
