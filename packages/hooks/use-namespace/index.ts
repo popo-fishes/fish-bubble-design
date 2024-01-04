@@ -45,10 +45,10 @@ export const useGetDerivedNamespace = () => {
 export const useNamespace = (block: string) => {
   const defaultNamespace = useGetDerivedNamespace();
   // 默认样式拼接
-  const b = (blockSuffix = "") => _bem(defaultNamespace, block, blockSuffix, "", "");
+  const b = (blockSuffix = "") => _bem(defaultNamespace.value, block, blockSuffix, "", "");
   // 扩展样式拼接
-  const m = (modifier?: string) => (modifier ? _bem(defaultNamespace, block, "", "", modifier) : "");
-  const e = (element?: string) => (element ? _bem(defaultNamespace, block, "", element, "") : "");
+  const m = (modifier?: string) => (modifier ? _bem(defaultNamespace.value, block, "", "", modifier) : "");
+  const e = (element?: string) => (element ? _bem(defaultNamespace.value, block, "", element, "") : "");
   // 是否存在某个样式
   const is = (name: string, ...args: [boolean | undefined] | []) => {
     const state = args.length >= 1 ? args[0]! : true;
