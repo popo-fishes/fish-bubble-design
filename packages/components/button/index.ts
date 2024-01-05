@@ -3,10 +3,8 @@
  * @Description: Modify here please
  */
 import { withInstall } from "@fish-bubble-design/core";
-import { withInstallFunction } from "@fish-bubble-design/core";
 
 import Button from "./src/button.vue";
-export { withInstallFunction };
 
 export const FbButton = withInstall(Button);
 

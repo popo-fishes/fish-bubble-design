@@ -4,7 +4,8 @@
  */
 import { FbButton } from "@fish-bubble-design/components/button";
 import { FbIcon } from "@fish-bubble-design/components/icon";
+import { FbCheckbox, FbCheckboxGroup } from "@fish-bubble-design/components/checkbox";
 
 import type { Plugin } from "vue";
 
-export default [FbButton, FbIcon] as Plugin[];
+export default [FbButton, FbIcon, FbCheckbox, FbCheckboxGroup] as Plugin[];

@@ -12,6 +12,10 @@
 :root {
   @include set-css-var-value("color-white", $color-white);
   @include set-css-var-value("color-black", $color-black);
+  // 禁止状态下的文字颜色
+  @include set-css-var-value("disabled-text-color", "#a8abb2");
+  // --fb-border-radius-#{$type}
+  @include set-component-css-var("border-radius", $border-radius);
 }
 
 // for light

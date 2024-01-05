@@ -4,7 +4,6 @@
  */
 import installer from "./defaults";
 export * from "@fish-bubble-design/components";
-export * from "@fish-bubble-design/hooks";
 export * from "./make-installer";
 
 export const install = installer.install;

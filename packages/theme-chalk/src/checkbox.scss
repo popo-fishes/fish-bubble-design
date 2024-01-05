@@ -1,0 +1,146 @@
+@use "mixins/mixins" as *;
+@use "common/var" as *;
+@use "mixins/css-var" as *;
+@use "mixins/function" as *;
+@use "mixins/config" as *;
+
+@include b(checkbox) {
+  @include set-component-css-var("checkbox", $checkbox);
+}
+
+@include b(checkbox) {
+  position: relative;
+  cursor: pointer;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  margin-right: 30px;
+  font-weight: 500;
+  font-size: 14px;
+  color: getCssVar("checkbox-text-color");
+
+  @include e(input) {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    position: relative;
+
+    @include when(checked) {
+      .#{$namespace}-checkbox__inner {
+        background-color: getCssVar("checkbox-checked-bg-color");
+        border-color: getCssVar("checkbox-checked-input-border-color");
+        &:after {
+          transform: rotate(45deg) scaleY(1);
+          border-color: getCssVar("checkbox-checked-icon-color");
+        }
+      }
+    }
+    // 禁用时
+    @include when(disabled) {
+      .#{$namespace}-checkbox__inner {
+        background-color: getCssVar("checkbox-disabled-input-fill");
+        border-color: getCssVar("checkbox-disabled-border-color");
+        cursor: not-allowed;
+      }
+      // 禁止状态下有选中了
+      &.is-checked {
+        .#{$namespace}-checkbox__inner {
+          background-color: getCssVar("checkbox-disabled-input-fill");
+          border-color: getCssVar("checkbox-disabled-border-color");
+          &:after {
+            border-color: getCssVar("checkbox-disabled-checked-icon-color");
+          }
+        }
+      }
+    }
+  }
+
+  @include e(inner) {
+    display: inline-block;
+    position: relative;
+    border: getCssVar("checkbox-input-border");
+    border-radius: getCssVar("checkbox-border-radius");
+    box-sizing: border-box;
+    width: getCssVar("checkbox-input-width");
+    height: getCssVar("checkbox-input-height");
+    background-color: getCssVar("checkbox-bg-color");
+    z-index: 1;
+    transition:
+      border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
+      background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
+      outline 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
+    &:after {
+      box-sizing: content-box;
+      content: "";
+      border: 1px solid transparent;
+      border-left: 0;
+      border-top: 0;
+      height: 7px;
+      left: 4px;
+      position: absolute;
+      top: 1px;
+      transform: rotate(45deg) scaleY(0);
+      width: 3px;
+      transition: transform 0.15s ease-in 0.05s;
+      transform-origin: center;
+    }
+
+    &:hover {
+      border-color: getCssVar("checkbox-input-border-color-hover");
+    }
+  }
+
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    left: 10px;
+    margin: 0;
+    width: 0;
+    height: 0;
+    z-index: -1;
+  }
+
+  @include e(label) {
+    display: inline-block;
+    padding-left: 8px;
+    line-height: 1;
+  }
+
+  // 选中时改变label的颜色
+  @include when(checked) {
+    @include e(label) {
+      color: getCssVar("checkbox-checked-text-color");
+    }
+  }
+
+  // 禁用时
+  @include when(disabled) {
+    cursor: not-allowed;
+    @include e(label) {
+      color: getCssVar("checkbox-disabled-text-color");
+      cursor: not-allowed;
+    }
+  }
+  // 半选状态时
+  @include when(indeterminate) {
+    .#{$namespace}-checkbox__inner {
+      background-color: getCssVar("checkbox-checked-bg-color");
+      border-color: getCssVar("checkbox-checked-input-border-color");
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        background-color: getCssVar("checkbox-checked-icon-color");
+        height: 2px;
+        transform: scale(0.5);
+        left: 0;
+        right: 0;
+        top: 5px;
+      }
+    }
+  }
+}

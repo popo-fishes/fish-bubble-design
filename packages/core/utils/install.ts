@@ -1,3 +1,7 @@
+/*
+ * @Date: 2024-01-02 09:35:21
+ * @Description: Modify here please
+ */
 import type { App, AppContext, Plugin } from "vue";
 
 export type SFCWithInstall<T> = T & Plugin;
@@ -28,4 +32,10 @@ export const withInstallFunction = <T>(fn: T, name: string) => {
   };
 
   return fn as SFCInstallWithContext<T>;
+};
+
+export const withNoopInstall = <T>(component: T) => {
+  (component as SFCWithInstall<T>).install = () => {};
+
+  return component as SFCWithInstall<T>;
 };
