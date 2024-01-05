@@ -1,12 +1,17 @@
 
- // 这是自动生成的文件，你不需要更改下面的内容~~~~ 
+ // 这是自动生成的文件，你不需要更改下面的内容~~~~ 33 
 declare module "@vue/runtime-core" {
   // GlobalComponents for Volar
   export interface GlobalComponents {
-    FButton: (typeof import("fish-bubble-design"))["FButton"];
-    FIcon: (typeof import("fish-bubble-design"))["FIcon"];
+    FbButton: (typeof import("fish-bubble-design"))["FbButton"];
+    FbIcon: (typeof import("fish-bubble-design"))["FbIcon"];
+    FbCheckbox: (typeof import("fish-bubble-design"))["FbCheckbox"];
+    FbCheckboxGroup: (typeof import("fish-bubble-design"))["FbCheckboxGroup"];
+    FbDialog: (typeof import("fish-bubble-design"))["FbDialog"];
   }
 
-  interface ComponentCustomProperties {}
+  interface ComponentCustomProperties {
+    $message: (typeof import("fish-bubble-design"))["FbMessage"];
+  }
 }
  export {};

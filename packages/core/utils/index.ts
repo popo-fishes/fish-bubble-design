@@ -3,3 +3,5 @@
  * @Description: Modify here please
  */
 export * from "./install";
+export * from "./dom";
+export * from "./style";

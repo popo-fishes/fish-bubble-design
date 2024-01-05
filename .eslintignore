@@ -2,13 +2,5 @@ node_modules/
 **/node_modules/
 dist/
 mocks/
-example/
-types/
-start/
-types/
-server/*.ts
-utils/inject.ts
-.eslintrc.js
-.script-config.js
-vite.config.ts
-.types.d.ts
+pnpm-lock.yaml
+.eslintrc.cjs

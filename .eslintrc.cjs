@@ -7,10 +7,23 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ["plugin:vue/vue3-essential", "@vue/typescript/recommended"],
+  extends: ["plugin:vue/vue3-essential", "plugin:jsonc/recommended-with-jsonc", "plugin:markdown/recommended", "@vue/typescript/recommended"],
   parserOptions: {
     ecmaVersion: 2020
   },
+  overrides: [
+    {
+      files: ["*.json", "*.json5", "*.jsonc"],
+      parser: "jsonc-eslint-parser"
+    },
+    {
+      files: ["**/*.md/*.js", "**/*.md/*.ts"],
+      rules: {
+        "no-console": "off",
+        "import/no-unresolved": "off"
+      }
+    }
+  ],
   rules: {
     // JavaScript/ESLint 推荐的规则
     "no-console": "error", // 不允许使用 console.log 等

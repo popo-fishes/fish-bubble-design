@@ -1,0 +1,150 @@
+/* Component chalk variables */
+
+// https://sass-lang.com/documentation/modules/map/
+@use "sass:math";
+@use "sass:map";
+
+@use "../mixins/function.scss" as *;
+
+// 主题配置器 （这里全是变量）
+
+// types
+$types: primary, success, warning, danger, info;
+
+// Color
+$colors: () !default;
+$colors: map.deep-merge(
+  (
+    "white": #ffffff,
+    "black": #000000,
+    "primary": (
+      "base": #0092ff
+    ),
+    "success": (
+      "base": #06b578
+    ),
+    "warning": (
+      "base": #ff8904
+    ),
+    "danger": (
+      "base": #e8362e
+    ),
+    "info": (
+      "base": #b7bdc7
+    )
+  ),
+  $colors
+);
+
+$color-white: map.get($colors, "white") !default;
+$color-black: map.get($colors, "black") !default;
+$color-primary: map.get($colors, "primary", "base") !default;
+$color-success: map.get($colors, "success", "base") !default;
+$color-warning: map.get($colors, "warning", "base") !default;
+$color-danger: map.get($colors, "danger", "base") !default;
+$color-info: map.get($colors, "info", "base") !default;
+
+// https://sass-lang.com/documentation/values/maps#immutability
+// mix colors with white/black to generate light/dark level
+@mixin set-color-mix-level($type, $number, $mode: "light", $mix-color: $color-white) {
+  $colors: map.deep-merge(
+    (
+      $type: (
+        "#{$mode}-#{$number}": mix($mix-color, map.get($colors, $type, "base"), math.percentage(math.div($number, 10)))
+      )
+    ),
+    $colors
+  ) !global;
+}
+
+// $colors.primary.light-i
+// --fb-color-primary-light-i
+// --fb-color-primary-light-3: #4db3ff;
+// --fb-color-primary-light-5: #80c9ff;
+// --fb-color-primary-light-7: #b3deff;
+// --fb-color-primary-light-8: #cce9ff;
+// --fb-color-primary-light-9: #e6f4ff;
+@each $type in $types {
+  @for $i from 1 through 9 {
+    @include set-color-mix-level($type, $i, "light", $color-white);
+  }
+}
+
+// --fb-color-primary-dark-2
+@each $type in $types {
+  @include set-color-mix-level($type, 2, "dark", $color-black);
+}
+
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    "base": 4px,
+    "small": 2px,
+    "round": 20px,
+    "circle": 100%
+  ),
+  $border-radius
+);
+
+// Button
+// css3 var in packages/theme-chalk/src/button.scss
+$button: () !default;
+$button: map.merge(
+  (
+    // 点击时的波纹色
+    "ripple-color": getCssVar("color-primary"),
+    // 底色
+    "text-color": getCssVar("color-primary"),
+    "bg-color": getCssVar("color-white"),
+    "border-color": getCssVar("color-primary"),
+    // hover时
+    "hover-text-color": getCssVar("color-white"),
+    "hover-bg-color": getCssVar("color-primary"),
+    "hover-border-color": getCssVar("color-primary"),
+    // 点击时
+    "active-text-color": getCssVar("color-white"),
+    "active-bg-color": getCssVar("color-primary", "dark-2"),
+    "active-border-color": getCssVar("color-primary", "dark-2"),
+    // 禁用时
+    "disabled-text-color": getCssVar("color-primary", "light-7"),
+    "disabled-bg-color": getCssVar("color-white"),
+    "disabled-border-color": getCssVar("color-primary", "light-9")
+  ),
+  $button
+);
+
+// Checkbox
+// css3 var in packages/theme-chalk/src/checkbox.scss
+$checkbox: () !default;
+$checkbox: map.merge(
+  (
+    // 点击时的波纹色
+    "ripple-color": getCssVar("color-primary"),
+    // checkbox宽高
+    "input-height": 16px,
+    "input-width": 16px,
+    // 状态状态的文字颜色
+    "text-color": #606266,
+    // 圆角
+    "border-radius": getCssVar("border-radius-base"),
+    // 正常状态的背景色
+    "bg-color": getCssVar("color-white"),
+    // 正常状态边框
+    "input-border": 1px solid getCssVar("color-info", "light-3"),
+    // 禁用时的边框颜色
+    "disabled-border-color": getCssVar("color-info", "light-3"),
+    // 禁止状态下的背景色
+    "disabled-input-fill": getCssVar("color-info", "light-7"),
+    // 禁止状态下选中时的icon 色
+    "disabled-checked-icon-color": #a8a2b2,
+    // 选中状态下边框色
+    "checked-input-border-color": getCssVar("color-primary"),
+    // 选中状态下背景色
+    "checked-bg-color": getCssVar("color-primary"),
+    // 选中状态下icon 色
+    "checked-icon-color": getCssVar("color", "white"),
+    // 获取焦点边框色
+    "input-border-color-hover": getCssVar("color-primary")
+  ),
+  $checkbox
+);

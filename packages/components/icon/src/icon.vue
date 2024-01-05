@@ -15,7 +15,7 @@ interface Props {
 }
 
 defineOptions({
-  name: "FIcon"
+  name: "FbIcon"
 });
 
 defineProps<Props>();

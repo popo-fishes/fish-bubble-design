@@ -3,20 +3,21 @@
  * @Description: 全局按钮
 -->
 <script lang="ts" setup>
-import { computed, CSSProperties } from "vue";
-import { FIcon } from "@fish-bubble-design/components/icon";
+import { computed, CSSProperties, ref } from "vue";
+import FbIcon from "@fish-bubble-design/components/icon";
 import { useNamespace } from "@fish-bubble-design/hooks";
+import BaseWave from "../../_internal/wave/index.vue";
 
 export interface IButtonProps {
-  /** 按钮类型
-   *  根据UI库得到的类型
-   *  https://www.figma.com/file/rLmfLEQdyxA8IJnR651zcF/%E9%B1%BC%E6%B3%A1%E7%BD%91PC%E7%AB%AF?node-id=1708%3A49868&mode=dev
-   *  剩下的没有的按钮样式，我建议不叠加在组件里面了，自己外面写样式 如宽度 :class="$style.contactBtn"
-   */
-  type?: "primary" | "default" | "plain" | "undertint";
-  /**
-   * 按钮大小, 你还可以外面自己传递class自己修改按钮样式：如宽度 :class="$style.contactBtn"
-   */
+  /** 按钮节点元素 */
+  tag?: string;
+  /** 按钮类型 */
+  type?: "primary" | "success" | "warning" | "danger" | "default";
+  /** 幽灵属性，使按钮背景透明 */
+  ghost?: boolean;
+  /** 确定它是否为普通按钮 */
+  plain?: boolean;
+  /** 按钮大小, 你还可以外面自己传递class自己修改按钮样式：如宽度 :class="$style.contactBtn" */
   size?: "large" | "middle" | "small";
   /** 按钮的宽度， 因为有的地方按钮宽度不统一，其它都是一样的效果。所以添加一个width */
   width?: string | number;
@@ -24,23 +25,28 @@ export interface IButtonProps {
   disabled?: boolean;
   /** 是否加载中, 不建议在非type为primary情况下使用，因为背景颜色冲突看不出效果； 你还可以插槽自定义 loading图标 */
   loading?: boolean;
+  /** 是否需要波浪效果 */
+  wave?: boolean;
 }
 
-const props = withDefaults(defineProps<IButtonProps>(), {
-  type: "default",
-  size: "middle"
-});
-
 defineOptions({
-  name: "FButton"
+  name: "FbButton"
 });
 
+const props = withDefaults(defineProps<IButtonProps>(), {
+  tag: "button",
+  type: "default",
+  size: "middle",
+  wave: true
+});
 // 事件
-defineEmits({
+const emit = defineEmits({
   click: (evt: MouseEvent) => evt instanceof MouseEvent
 });
 
-const ns = useNamespace("button", "yp");
+const ns = useNamespace("button");
+
+const waveElRef = ref<any>(null);
 
 const _props = computed(() => {
   return {
@@ -55,20 +61,28 @@ const buttonStyle = computed<CSSProperties>(() => {
   }
   return style;
 });
+
+const handleClick = (e: MouseEvent): void => {
+  if (!props.disabled && !props.loading) {
+    emit("click", e);
+    waveElRef.value?.play();
+  }
+};
 </script>
 
 <template>
-  <button
+  <component
+    :is="tag"
     v-bind="_props"
     :style="buttonStyle"
-    @click="(e) => $emit('click', e)"
-    :class="[ns.b(), ns.m(type), ns.m(size), ns.is('disabled', disabled), ns.is('loading', loading)]"
+    @click="handleClick"
+    :class="[ns.b(), ns.m(type), ns.m(size), ns.is('disabled', disabled), ns.is('loading', loading), ns.is('plain', plain), ns.is('ghost', ghost)]"
   >
     <template v-if="loading">
       <!-- 你可以自定义加载图标 -->
       <slot v-if="$slots?.loading" name="loading" />
       <!-- 默认加载图标 -->
-      <f-icon v-else icon="yp-jiazai" class="icon-loading" />
+      <fb-icon v-else icon="yp-jiazai" class="icon-loading" />
     </template>
     <!-- 自定义按钮左侧图标 -->
     <template v-else-if="$slots?.icon">
@@ -76,5 +90,7 @@ const buttonStyle = computed<CSSProperties>(() => {
     </template>
     <!-- 默认按钮内容部分 -->
     <span v-if="$slots?.default" class="btn-text"><slot /></span>
-  </button>
+    <!-- 波浪 -->
+    <BaseWave ref="waveElRef" v-if="wave" />
+  </component>
 </template>
