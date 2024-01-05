@@ -2,7 +2,7 @@
  * @Date: 2024-01-02 09:35:21
  * @Description: Modify here please
  */
-import type { App, AppContext, Plugin } from "vue";
+import type { AppContext, Plugin } from "vue";
 
 export type SFCWithInstall<T> = T & Plugin;
 
@@ -23,15 +23,6 @@ export const withInstall = <T, E extends Record<string, any>>(main: T, extra?: E
     }
   }
   return main as SFCWithInstall<T> & E;
-};
-
-export const withInstallFunction = <T>(fn: T, name: string) => {
-  (fn as SFCWithInstall<T>).install = (app: App) => {
-    (fn as SFCInstallWithContext<T>)._context = app._context;
-    app.config.globalProperties[name] = fn;
-  };
-
-  return fn as SFCInstallWithContext<T>;
 };
 
 export const withNoopInstall = <T>(component: T) => {
