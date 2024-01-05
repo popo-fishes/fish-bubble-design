@@ -4,7 +4,7 @@
  */
 import { createVNode, render } from "vue";
 import { isClient } from "@fish-bubble-design/core/shared";
-import MessageConstructor from "./index.vue";
+import MessageConstructor from "./message.vue";
 import type { MessageContext, MessageHandler, MessageOptions, Message, MessageTypedOptions } from "./type";
 import { instances } from "./instance";
 

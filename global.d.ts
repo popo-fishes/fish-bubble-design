@@ -5,8 +5,13 @@ declare module "@vue/runtime-core" {
   export interface GlobalComponents {
     FbButton: (typeof import("fish-bubble-design"))["FbButton"];
     FbIcon: (typeof import("fish-bubble-design"))["FbIcon"];
+    FbCheckbox: (typeof import("fish-bubble-design"))["FbCheckbox"];
+    FbCheckboxGroup: (typeof import("fish-bubble-design"))["FbCheckboxGroup"];
+    FbDialog: (typeof import("fish-bubble-design"))["FbDialog"];
   }
 
-  interface ComponentCustomProperties {}
+  interface ComponentCustomProperties {
+    $message: (typeof import("fish-bubble-design"))["FbMessage"];
+  }
 }
  export {};

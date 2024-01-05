@@ -8,6 +8,7 @@ import type { CSSProperties } from "vue";
 import { useTimeoutFn, useResizeObserver } from "@fish-bubble-design/core/shared";
 import { getLastOffset } from "./instance";
 import FbIcon from "@fish-bubble-design/components/icon";
+import { useNamespace } from "@fish-bubble-design/hooks";
 import type { IMessageProps } from "./type";
 
 const props = withDefaults(defineProps<IMessageProps>(), {
@@ -21,6 +22,8 @@ const props = withDefaults(defineProps<IMessageProps>(), {
 
 // 销毁时暴露事件destroy
 defineEmits<{ (e: "destroy"): void }>();
+
+const ns = useNamespace("message");
 
 const messageRef = ref<HTMLDivElement>();
 const visible = ref(false);
@@ -84,53 +87,17 @@ defineExpose({ bottom, close });
 </script>
 
 <template>
-  <transition name="yp-message-fade" @before-leave="onClose" @after-leave="$emit('destroy')">
+  <transition name="ani-message-fade" @before-leave="onClose" @after-leave="$emit('destroy')">
     <!-- mouseenter，当鼠标滑动到消息容器上，不关闭消息 -->
-    <div v-show="visible" :id="id" :style="customStyle" class="yp-message" ref="messageRef">
+    <div v-show="visible" :id="id" :style="customStyle" :class="[ns.b()]" ref="messageRef">
       <fb-icon :icon="icon.icon" :size="20" :color="icon.color" />
       <slot>
-        <p v-if="!dangerouslyUseHTMLString" class="yp-message__content">
+        <p v-if="!dangerouslyUseHTMLString" :class="[ns.e('content')]">
           {{ message }}
         </p>
-        <p v-else v-html="message" class="yp-message__content" />
+        <p v-else v-html="message" :class="[ns.e('content')]" />
       </slot>
       <fb-icon v-if="showClose" icon="yp-danchuangguanbi" @click.stop="close" :size="18" is-pointer color="rgba(0, 0, 0, 0.65)" />
     </div>
   </transition>
 </template>
-
-<style lang="less">
-.yp-message {
-  max-width: 640px;
-  min-width: 200px;
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 16px;
-  color: var(--65, rgba(0, 0, 0, 0.65));
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #e9edf3;
-  background: var(--100, #fff);
-  box-shadow: 0px 16px 24px 0px rgba(41, 80, 155, 0.1);
-  position: fixed;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  transition:
-    opacity 0.3s,
-    transform 0.4s,
-    top 0.4s;
-  &__content {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 0 12px;
-  }
-}
-.yp-message-fade-enter-from,
-.yp-message-fade-leave-to {
-  opacity: 0;
-  transform: translate(-50%, -100%);
-}
-</style>
