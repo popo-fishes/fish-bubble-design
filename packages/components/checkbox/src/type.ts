@@ -3,6 +3,7 @@
  * @Description: Modify here please
  */
 export interface ICheckboxProps {
+  tag?: string;
   modelValue?: number | string | boolean;
   /** 在Checkbox组中使用时复选框的值 */
   label?: string | boolean | number | object;

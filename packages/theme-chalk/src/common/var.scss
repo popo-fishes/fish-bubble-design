@@ -122,17 +122,17 @@ $checkbox: map.merge(
     "input-height": 14px,
     "input-width": 14px,
     // 状态状态的文字颜色
-    "text-color": getCssVar("color-info", "light-5"),
+    "text-color": #606266,
     // 圆角
     "border-radius": getCssVar("border-radius-small"),
     // 正常状态的背景色
     "bg-color": getCssVar("color-white"),
     // 正常状态边框
-    "input-border": 1px solid getCssVar("color-info", "light-2"),
+    "input-border": 1px solid getCssVar("color-info", "light-3"),
     // 禁用时的边框颜色
-    "disabled-border-color": getCssVar("color-info", "light-2"),
+    "disabled-border-color": getCssVar("color-info", "light-3"),
     // 禁止状态下的背景色
-    "disabled-input-fill": getCssVar("color-info", "light-5"),
+    "disabled-input-fill": getCssVar("color-info", "light-7"),
     // 禁止状态下选中时的icon 色
     "disabled-checked-icon-color": #a8a2b2,
     // 选中状态下的文字颜色

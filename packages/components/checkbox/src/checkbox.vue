@@ -3,7 +3,7 @@
  * @Description: Modify here please
 -->
 <template>
-  <label :class="compKls">
+  <component :is="tag" :class="compKls">
     <span :class="spanKls">
       <span :class="ns.e('inner')" />
       <input
@@ -16,12 +16,14 @@
         :name="name"
         :value="label"
       />
+      <!-- 波纹效果 -->
+      <span class="inner-border" />
     </span>
     <span v-if="hasOwnLabel" :class="ns.e('label')">
       <slot />
       <template v-if="!$slots.default">{{ label }}</template>
     </span>
-  </label>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -36,6 +38,7 @@ defineOptions({ name: "FbCheckbox" });
 
 const props = withDefaults(defineProps<ICheckboxProps>(), {
   label: "",
+  tag: "label",
   value: {
     type: Boolean,
     default: false

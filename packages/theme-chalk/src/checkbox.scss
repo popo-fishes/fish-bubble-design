@@ -8,6 +8,12 @@
   @include set-component-css-var("checkbox", $checkbox);
 }
 
+// 调用自定义函数获取透明度颜色
+$checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
+
+// 输出结果
+// @debug "透明度颜色:", $checkbox-transparentColor-color;
+
 @include b(checkbox) {
   position: relative;
   cursor: pointer;
@@ -26,6 +32,16 @@
     outline: none;
     display: inline-flex;
     position: relative;
+    .inner-border {
+      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: inherit;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: getCssVar("checkbox-border-radius");
+    }
 
     @include when(checked) {
       .#{$namespace}-checkbox__inner {
@@ -101,6 +117,12 @@
     width: 0;
     height: 0;
     z-index: -1;
+
+    &:focus:not(:active) {
+      + .inner-border {
+        box-shadow: 0 0 0 2px $checkbox-transparentColor-color;
+      }
+    }
   }
 
   @include e(label) {
@@ -111,7 +133,7 @@
 
   // 选中时改变label的颜色
   @include when(checked) {
-    @include e(label) {
+    .#{$namespace}-checkbox__label {
       color: getCssVar("checkbox-checked-text-color");
     }
   }
@@ -119,8 +141,8 @@
   // 禁用时
   @include when(disabled) {
     cursor: not-allowed;
-    @include e(label) {
-      color: getCssVar("checkbox-disabled-text-color");
+    .#{$namespace}-checkbox__label {
+      color: getCssVar("disabled-text-color");
       cursor: not-allowed;
     }
   }
