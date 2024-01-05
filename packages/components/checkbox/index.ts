@@ -4,7 +4,7 @@
  */
 import { withInstall, withNoopInstall } from "@fish-bubble-design/core";
 import Checkbox from "./src/checkbox.vue";
-import CheckboxGroup from "./checkbox-group.vue";
+import CheckboxGroup from "./src/checkbox-group.vue";
 
 export const FbCheckbox = withInstall(Checkbox, {
   CheckboxGroup
