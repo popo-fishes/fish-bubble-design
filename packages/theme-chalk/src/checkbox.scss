@@ -8,12 +8,6 @@
   @include set-component-css-var("checkbox", $checkbox);
 }
 
-// 调用自定义函数获取透明度颜色
-$checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
-
-// 输出结果
-// @debug "透明度颜色:", $checkbox-transparentColor-color;
-
 @include b(checkbox) {
   position: relative;
   cursor: pointer;
@@ -32,16 +26,7 @@ $checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
     outline: none;
     display: inline-flex;
     position: relative;
-    .inner-border {
-      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: inherit;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      border-radius: getCssVar("checkbox-border-radius");
-    }
+    border-radius: getCssVar("checkbox-border-radius");
 
     @include when(checked) {
       .#{$namespace}-checkbox__inner {
@@ -71,17 +56,37 @@ $checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
         }
       }
     }
+
+    // 半选状态时
+    @include when(indeterminate) {
+      .#{$namespace}-checkbox__inner {
+        background-color: getCssVar("checkbox-checked-bg-color");
+        border-color: getCssVar("checkbox-checked-input-border-color");
+
+        &::before {
+          content: "";
+          position: absolute;
+          display: block;
+          background-color: getCssVar("checkbox-checked-icon-color");
+          height: 2px;
+          transform: scale(0.5);
+          left: 0;
+          right: 0;
+          top: 5px;
+        }
+      }
+    }
   }
 
   @include e(inner) {
     display: inline-block;
     position: relative;
     border: getCssVar("checkbox-input-border");
-    border-radius: getCssVar("checkbox-border-radius");
     box-sizing: border-box;
     width: getCssVar("checkbox-input-width");
     height: getCssVar("checkbox-input-height");
     background-color: getCssVar("checkbox-bg-color");
+    border-radius: inherit;
     z-index: 1;
     transition:
       border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
@@ -94,7 +99,7 @@ $checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
       border-left: 0;
       border-top: 0;
       height: 7px;
-      left: 4px;
+      left: 5px;
       position: absolute;
       top: 1px;
       transform: rotate(45deg) scaleY(0);
@@ -117,25 +122,12 @@ $checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
     width: 0;
     height: 0;
     z-index: -1;
-
-    &:focus:not(:active) {
-      + .inner-border {
-        box-shadow: 0 0 0 2px $checkbox-transparentColor-color;
-      }
-    }
   }
 
   @include e(label) {
     display: inline-block;
     padding-left: 8px;
     line-height: 1;
-  }
-
-  // 选中时改变label的颜色
-  @include when(checked) {
-    .#{$namespace}-checkbox__label {
-      color: getCssVar("checkbox-checked-text-color");
-    }
   }
 
   // 禁用时
@@ -146,23 +138,27 @@ $checkbox-transparentColor-color: transparent-color($color-primary, 0.5);
       cursor: not-allowed;
     }
   }
-  // 半选状态时
-  @include when(indeterminate) {
-    .#{$namespace}-checkbox__inner {
-      background-color: getCssVar("checkbox-checked-bg-color");
-      border-color: getCssVar("checkbox-checked-input-border-color");
 
-      &::before {
-        content: "";
-        position: absolute;
-        display: block;
-        background-color: getCssVar("checkbox-checked-icon-color");
-        height: 2px;
-        transform: scale(0.5);
-        left: 0;
-        right: 0;
-        top: 5px;
+  // 波浪效果
+  @include b(base-wave) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+
+    @keyframes checkbox-wave-spread {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
       }
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    @include when(active) {
+      border: 2px solid getCssVar("checkbox-ripple-color");
+      animation-name: checkbox-wave-spread;
     }
   }
 }

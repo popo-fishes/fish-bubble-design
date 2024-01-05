@@ -4,7 +4,7 @@
 -->
 <template>
   <component :is="tag" :class="compKls">
-    <span :class="spanKls">
+    <span :class="spanKls" @click="handleClick">
       <span :class="ns.e('inner')" />
       <input
         type="checkbox"
@@ -16,8 +16,8 @@
         :name="name"
         :value="label"
       />
-      <!-- 波纹效果 -->
-      <span class="inner-border" />
+      <!-- 波浪 -->
+      <BaseWave ref="waveElRef" v-if="wave" />
     </span>
     <span v-if="hasOwnLabel" :class="ns.e('label')">
       <slot />
@@ -27,11 +27,12 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots, computed, inject, toRaw } from "vue";
+import { useSlots, computed, inject, toRaw, ref } from "vue";
 import type { ICheckboxProps } from "./type";
 import { isNil, isUndefined, isArray, isBoolean } from "@fish-bubble-design/core/shared/utils";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { checkboxGroupContextKey } from "./constants";
+import BaseWave from "../../_internal/wave/index.vue";
 import type { CheckboxEmits } from "./type";
 
 defineOptions({ name: "FbCheckbox" });
@@ -39,15 +40,14 @@ defineOptions({ name: "FbCheckbox" });
 const props = withDefaults(defineProps<ICheckboxProps>(), {
   label: "",
   tag: "label",
-  value: {
-    type: Boolean,
-    default: false
-  }
+  wave: true
 });
 
 const slots = useSlots();
 
 const emit = defineEmits<CheckboxEmits>();
+
+const waveElRef = ref<any>(null);
 
 const ns = useNamespace("checkbox");
 
@@ -99,5 +99,11 @@ const spanKls = computed(() => {
 const handleChange = (e) => {
   const target = e.target as HTMLInputElement;
   emit("change", target.checked);
+};
+
+const handleClick = (): void => {
+  if (!props.disabled) {
+    waveElRef.value?.play();
+  }
 };
 </script>

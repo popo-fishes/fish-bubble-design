@@ -11,6 +11,8 @@ export interface ICheckboxProps {
   indeterminate?: boolean;
   /* 禁用 */
   disabled?: boolean;
+  /** 是否需要波浪效果 */
+  wave?: boolean;
   /** 原生name属性 */
   name?: string;
 }
