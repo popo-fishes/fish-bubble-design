@@ -4,21 +4,13 @@
 -->
 
 <script lang="ts" setup>
-interface Props {
-  icon: string;
-  // 默认不传递size，size为继承。如果传递了size使用传递的
-  size?: number | string;
-  // 默认不传递color，color为继承。如果传递了color使用传递的
-  color?: string;
-  // 可点击--手指
-  isPointer?: boolean;
-}
+import type { IconProps } from "./type";
 
 defineOptions({
   name: "FbIcon"
 });
 
-defineProps<Props>();
+defineProps<IconProps>();
 </script>
 
 <template>

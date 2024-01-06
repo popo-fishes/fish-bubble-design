@@ -6,7 +6,8 @@
 import type { App } from "vue";
 import * as components from "./components";
 import { version } from "./version";
-export * from "./components";
+
+export * from "@fish-bubble-design/components";
 
 const INSTALLED_KEY = Symbol("INSTALLED_KEY");
 
