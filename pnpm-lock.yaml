@@ -158,6 +158,9 @@ importers:
       '@types/node':
         specifier: '*'
         version: registry.npmmirror.com/@types/node@20.10.6
+      dom-align:
+        specifier: ^1.12.4
+        version: registry.npmmirror.com/dom-align@1.12.4
       vue:
         specifier: 3.4.0
         version: registry.npmmirror.com/vue@3.4.0(typescript@5.3.3)
@@ -4127,6 +4130,12 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: registry.npmmirror.com/esutils@2.0.3
+    dev: true
+
+  registry.npmmirror.com/dom-align@1.12.4:
+    resolution: {integrity: sha512-R8LUSEay/68zE5c8/3BDxiTEvgb4xZTF0RKmAHfiEVN3klfIpXfi2/QCoiWPccVQ0J/ZGdz9OjzL4uJEP/MRAw==, tarball: https://registry.npmmirror.com/dom-align/-/dom-align-1.12.4.tgz}
+    name: dom-align
+    version: 1.12.4
     dev: true
 
   registry.npmmirror.com/duplexify@3.7.1:

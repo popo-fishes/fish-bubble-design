@@ -1,0 +1,19 @@
+// https://cn.vuejs.org/guide/built-ins/transition.html#css-based-transitions
+.yp-popper-in-top-enter-active,
+.yp-popper-in-top-leave-active {
+  opacity: 1;
+  // 缩放
+  transform: scaleY(1);
+  // 过渡动画
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center top;
+}
+
+.yp-popper-in-top-enter-from,
+.yp-popper-in-top-leave-to {
+  opacity: 0;
+  // 缩放
+  transform: scaleY(0);
+}

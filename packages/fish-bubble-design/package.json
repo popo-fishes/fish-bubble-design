@@ -79,7 +79,8 @@
   },
   "devDependencies": {
     "@types/node": "*",
-    "vue": "3.4.0"
+    "vue": "3.4.0",
+    "dom-align": "^1.12.4"
   },
   "browserslist": [
     "> 1%",
