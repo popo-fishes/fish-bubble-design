@@ -7,7 +7,7 @@ import type { CSSProperties } from "vue";
 export interface InputProps {
   modelValue?: string | number | null | undefined;
   size?: "large" | "middle" | "small";
-  /** 类型原生 input 类型 */
+  /** 类型原生 input 类型 | textarea */
   type?: string;
   /** 占位符 */
   placeholder?: string;

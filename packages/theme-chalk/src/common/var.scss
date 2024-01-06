@@ -196,7 +196,7 @@ $input: () !default;
 $input: map.merge(
   (
     // 点击时的波纹色
-    "ripple-color": getCssVar("color-primary"),
+    "ripple-color": transparentColor($color-primary, 0.2),
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
     // 边框

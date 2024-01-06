@@ -33,11 +33,12 @@
     border-color: getCssVar("input-hover-border-color");
   }
 
+  // 波浪效果
   @include when(focus) {
     border-color: getCssVar("input-focus-border-color");
     // 波浪效果
     .#{$namespace}-base-wave {
-      box-shadow: 0 0 0 2px rgba(24, 160, 88, 0.2);
+      box-shadow: 0 0 0 3px getCssVar("input-ripple-color");
       transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
@@ -96,6 +97,7 @@
   width: 100%;
   vertical-align: bottom;
   font-size: getCssVar("font-size", "base");
+  border-radius: getCssVar("input-border-radius");
 
   @include e(inner) {
     position: relative;
@@ -111,14 +113,24 @@
     font-size: inherit;
     background-color: getCssVar("input-bg-color");
     border: getCssVar("input-border");
-    border-radius: getCssVar("input-border-radius");
     transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: inherit;
     outline: none;
     &:focus {
       border-color: getCssVar("input-focus-border-color");
     }
     &::placeholder {
       color: getCssVarWithDefault("input-placeholder-color", map.get($input, "placeholder-color"));
+    }
+  }
+
+  // 波浪效果
+  @include when(focus) {
+    border-color: getCssVar("input-focus-border-color");
+    // 波浪效果
+    .#{$namespace}-base-wave {
+      box-shadow: 0 0 0 2px getCssVar("input-ripple-color");
+      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 }

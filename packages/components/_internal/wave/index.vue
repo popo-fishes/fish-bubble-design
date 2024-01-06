@@ -13,6 +13,7 @@ defineOptions({
 const ns = useNamespace("base-wave");
 
 const selfRef = ref<HTMLElement | null>(null);
+// 主动控制模式
 const activeRef = ref(false);
 let animationTimerId: number | null = null;
 

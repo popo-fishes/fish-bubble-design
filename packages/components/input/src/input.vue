@@ -41,7 +41,7 @@ const wrapperKls = computed(() => {
   if (props.type !== "textarea") {
     return [nsInput.b(), nsInput.m(props.size), nsInput.is("focus", isFocused.value), nsInput.is("disabled", inputDisabled.value)];
   }
-  return [nsTextarea.b()];
+  return [nsTextarea.b(), nsInput.is("focus", isFocused.value)];
 });
 
 const inputDisabled = computed(() => props.disabled);
@@ -143,7 +143,7 @@ defineExpose({
     <!-- 关闭按钮 -->
     <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
     <!-- 波浪 -->
-    <BaseWave ref="waveElRef" />
+    <BaseWave />
   </div>
   <div :class="wrapperKls" ref="wrapperRef" v-if="type == 'textarea'">
     <textarea
@@ -159,6 +159,6 @@ defineExpose({
       @blur="handleBlur"
     />
     <!-- 波浪 -->
-    <BaseWave ref="waveElRef" />
+    <BaseWave />
   </div>
 </template>
