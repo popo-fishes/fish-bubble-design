@@ -229,7 +229,7 @@
   font-size: 14px;
   font-weight: 500;
   user-select: none;
-  height: 40px;
+  height: getCssVar("component-size");
   padding: 0px 16px;
   transition: 0.2s;
   background-color: getCssVar("button", "bg-color");
@@ -346,12 +346,12 @@
 
   @include m(large) {
     border-radius: 8px;
-    height: 48px;
+    height: getCssVar("component-size", "large");
     padding: 0px 24px;
   }
   @include m(small) {
     border-radius: 4px;
-    height: 32px;
+    height: getCssVar("component-size", "small");
     padding: 0px 12px;
   }
 
@@ -363,6 +363,9 @@
   }
   // 波浪效果
   @include b(base-wave) {
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1), cubic-bezier(0, 0, 0.2, 1);
+
     @keyframes button-wave-spread {
       from {
         box-shadow: 0 0 0.5px 0 getCssVar("button", "ripple-color");

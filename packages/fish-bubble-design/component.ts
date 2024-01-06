@@ -11,5 +11,11 @@ export { default as FbCheckbox, FbCheckboxGroup } from "@fish-bubble-design/comp
 
 export { default as FbDialog } from "@fish-bubble-design/components/dialog";
 
+export { default as FbImage } from "@fish-bubble-design/components/image";
+
+export { default as FbImgCaptcha } from "@fish-bubble-design/components/img-captcha";
+
+export { default as FbInput } from "@fish-bubble-design/components/input";
+
 // Plugin
 export { message } from "@fish-bubble-design/components/message";

@@ -16,6 +16,13 @@
   @include set-css-var-value("disabled-text-color", "#a8abb2");
   // --fb-border-radius-#{$type}
   @include set-component-css-var("border-radius", $border-radius);
+  // --fb-font-size-#{$type}
+  @include set-component-css-var("font-size", $font-size);
+  // --fb-text-color-#{$type}
+  @include set-component-css-var("text-color", $text-color);
+
+  // 全局组件的高度，比如input类型的
+  @include set-component-css-var("component-size", $common-component-size);
 }
 
 // for light

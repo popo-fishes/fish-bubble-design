@@ -4,6 +4,8 @@
 @use "mixins/function" as *;
 @use "mixins/config" as *;
 
+@use "./component_internal/wave.scss";
+
 @include b(checkbox) {
   @include set-component-css-var("checkbox", $checkbox);
 }

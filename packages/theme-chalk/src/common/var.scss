@@ -75,6 +75,47 @@ $color-info: map.get($colors, "info", "base") !default;
   @include set-color-mix-level($type, 2, "dark", $color-black);
 }
 
+// 全局组件的高度，比如input类型的
+$common-component-size: () !default;
+$common-component-size: map.merge(
+  (
+    "large": 48px,
+    "default": 40px,
+    "small": 32px
+  ),
+  $common-component-size
+);
+
+// 字体
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    "large": 18px,
+    "medium": 16px,
+    "base": 14px,
+    "small": 13px,
+    "extra-small": 12px
+  ),
+  $font-size
+);
+// 普通文本颜色
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    // 主要的
+    "primary": #303133,
+    // 常规的
+    "regular": #606266,
+    // 次要的
+    "secondary": #909399,
+    // 占位符颜色
+    "placeholder": #a8abb2,
+    // disabled
+    "disabled": #c0c4cc
+  ),
+  $text-color
+);
+// 圆角
 $border-radius: () !default;
 $border-radius: map.merge(
   (
@@ -124,7 +165,7 @@ $checkbox: map.merge(
     "input-height": 16px,
     "input-width": 16px,
     // 状态状态的文字颜色
-    "text-color": #606266,
+    "text-color": getCssVar("text-color-regular"),
     // 圆角
     "border-radius": getCssVar("border-radius-base"),
     // 正常状态的背景色
@@ -142,9 +183,42 @@ $checkbox: map.merge(
     // 选中状态下背景色
     "checked-bg-color": getCssVar("color-primary"),
     // 选中状态下icon 色
-    "checked-icon-color": getCssVar("color", "white"),
+    "checked-icon-color": getCssVar("color-white"),
     // 获取焦点边框色
     "input-border-color-hover": getCssVar("color-primary")
   ),
   $checkbox
+);
+
+// Input
+// css3 var in packages/theme-chalk/src/input.scss
+$input: () !default;
+$input: map.merge(
+  (
+    // 点击时的波纹色
+    "ripple-color": getCssVar("color-primary"),
+    // 文本的颜色
+    "text-color": getCssVar("text-color-regular"),
+    // 边框
+    "border": 1px solid getCssVar("color-info", "light-3"),
+    // hover的边框色
+    "hover-border-color": getCssVar("color-primary"),
+    // 聚焦的边框色
+    "focus-border-color": getCssVar("color-primary"),
+    // 禁止时的背景
+    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    // 输入框的圆角
+    "border-radius": getCssVar("border-radius-base"),
+    // 占位符颜色
+    "placeholder-color": getCssVar("text-color-placeholder"),
+    // 清除按钮颜色
+    "icon-color": getCssVar("text-color-placeholder"),
+    // 清除按钮获取焦点颜色
+    "clear-hover-color": getCssVar("color-primary"),
+    // 输入框背景色
+    "bg-color": getCssVar("color-white"),
+    // 输入框的宽度
+    "width": 100%
+  ),
+  $input
 );
