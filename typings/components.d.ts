@@ -16,7 +16,7 @@ declare module "@vue/runtime-core" {
   }
 
   interface ComponentCustomProperties {
-    $message: (typeof import("../packages/fish-bubble-design"))["FbMessage"];
+    $message: (typeof import("../packages/fish-bubble-design"))["message"];
   }
 }
 

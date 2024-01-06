@@ -70,7 +70,7 @@ export const buildModules = async () => {
             return false;
           }
           const paths = writeTsTypesPath(filePath);
-          const code = writeTsTypesContent(content);
+          const code = writeTsTypesContent(content, filePath);
           return {
             filePath: paths,
             content: code

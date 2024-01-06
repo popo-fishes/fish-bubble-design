@@ -1,0 +1,15 @@
+/*
+ * @Date: 2023-12-29 22:32:59
+ * @Description: Modify here please
+ */
+// components
+export { default as FbButton } from "@fish-bubble-design/components/button";
+
+export { default as FbIcon } from "@fish-bubble-design/components/icon";
+
+export { default as FbCheckbox, FbCheckboxGroup } from "@fish-bubble-design/components/checkbox";
+
+export { default as FbDialog } from "@fish-bubble-design/components/dialog";
+
+// Plugin
+export { message } from "@fish-bubble-design/components/message";
