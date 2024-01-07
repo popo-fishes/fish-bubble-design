@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fish-bubble-design/components':
-        specifier: workspace:*
-        version: link:packages/components
       '@fish-bubble-design/core':
         specifier: workspace:*
         version: link:packages/core

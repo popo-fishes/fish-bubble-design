@@ -52,7 +52,7 @@ export const writeTsTypesPath = (filePath: string): string => {
 // 构建声明文件时：转换内容里面的路径
 export const writeTsTypesContent = (content: string, filePath: string): string => {
   // 改变fish-bubble-design/component.d.ts 里面的路径指向问题
-  if (filePath.indexOf(`${UINAME}/component.d.ts`)) {
+  if (filePath.indexOf(`${UINAME}/component.d.ts`) !== -1) {
     const regex = new RegExp("../components/", "g");
     return content.replace(regex, "./components/");
   } else {
