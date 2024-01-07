@@ -240,6 +240,8 @@ $select: map.merge(
   (
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
+    // hover的边框色
+    "hover-border-color": getCssVar("color-primary"),
     // 禁止时的背景
     "disabled-bg-color": getCssVar("color-info", "light-5"),
     // select的圆角

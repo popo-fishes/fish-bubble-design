@@ -140,10 +140,13 @@ defineExpose({
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <slot name="suffix">
-      <!-- 关闭按钮 -->
-      <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
-    </slot>
+    <span :class="nsInput.e('suffix')">
+      <slot name="suffix">
+        <!-- 关闭按钮 -->
+        <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
+      </slot>
+    </span>
+
     <!-- 波浪 -->
     <BaseWave />
   </div>

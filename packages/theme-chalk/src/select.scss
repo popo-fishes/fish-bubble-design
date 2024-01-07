@@ -14,6 +14,16 @@
 }
 
 @include b(select) {
+  position: relative;
+  line-height: map.get($common-component-size, "default");
+  cursor: pointer;
+
+  @each $size in (large, small) {
+    @include m($size) {
+      line-height: map.get($common-component-size, $size);
+    }
+  }
+
   // 自定义触发器
   @include when(custom) {
     position: relative;
@@ -22,6 +32,8 @@
   @include e(arrow) {
     color: rgba(0, 0, 0, 0.25);
     font-size: 6px;
+    display: block;
+    width: 16px;
   }
 
   @include e(clear) {
@@ -33,6 +45,11 @@
     }
   }
 
+  &:hover {
+    .#{$namespace}-input {
+      border-color: getCssVar("select-hover-border-color");
+    }
+  }
   // 修改input样式
   .#{$namespace}-input {
     border-radius: getCssVar("select-border-radius");
@@ -59,7 +76,7 @@
   position: absolute;
   .dropdown__wrap {
     overflow-y: auto;
-    max-height: getCssVar("select-dropdown, 'max-height");
+    max-height: getCssVar("select-dropdown", "max-height");
     border-radius: getCssVar("select-dropdown", "border-radius");
     border: 1px solid getCssVar("select-dropdown", "border-color");
     background: #fff;
@@ -71,7 +88,7 @@
   .dropdown__item {
     display: inline-flex;
     width: 100%;
-    height: getCssVar("select-dropdown, 'item-height");
+    height: getCssVar("select-dropdown", "item-height");
     padding: 0 8px;
     cursor: pointer;
     align-items: center;
@@ -93,6 +110,9 @@
     &.disabled {
       cursor: not-allowed;
       color: getCssVar("select-dropdown", "item-disabled-text-color");
+      &:hover {
+        background: transparent;
+      }
     }
   }
 }

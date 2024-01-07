@@ -19,7 +19,8 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   placeholder: "请选择",
   placement: "bottom",
   trigger: "hover",
-  clearable: false
+  clearable: false,
+  size: "middle"
 });
 
 defineOptions({
@@ -34,10 +35,8 @@ const emit = defineEmits<ISelectEmits>();
 // select dom信息
 const selectDomWidth = ref<number>(0);
 
-const { selectWrapperRef, showClose, inputValue, isCustomTrigger, optionList, onMouseenter, onMouseleave, handleOptionSelect, handleClearClick } = useSelect(
-  props,
-  emit
-);
+const { selectWrapperRef, reference, showClose, inputValue, isCustomTrigger, optionList, onMouseenter, onMouseleave, handleOptionSelect, handleClearClick } =
+  useSelect(props, emit);
 
 const builtInPlacements = computed(() => {
   return getBuiltInPlacements();
@@ -46,9 +45,9 @@ const builtInPlacements = computed(() => {
 // 下拉菜单的样式
 const selectDownStyle = computed(() => {
   const _width = selectDomWidth.value;
-  // 下拉菜单和选择器同宽。默认将设置 min-width
+  // 下拉菜单和选择器同宽。默认将设置width
   return {
-    "min-width": `${_width}px`,
+    width: `${_width}px`,
     // 你可以外层传递样式
     ...props.dropdownStyle
   };
@@ -86,15 +85,15 @@ provide(
     :popper-style="selectDownStyle"
   >
     <template #default>
-      <div :class="[!isCustomTrigger ? ns.b() : ns.m('custom')]" @mouseenter="onMouseenter" @mouseleave="onMouseleave" v-bind="$attrs">
+      <div :class="[!isCustomTrigger ? ns.b() : ns.m('custom'), ns.m(size)]" @mouseenter="onMouseenter" @mouseleave="onMouseleave" v-bind="$attrs">
         <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
         <slot name="trigger">
           <!-- 默认触发器 -->
-          <fb-input readonly v-model="inputValue">
+          <fb-input ref="reference" :size="size" readonly v-model="inputValue">
             <template #suffix>
               <!-- 不展示关闭按钮才显示箭头 -->
               <fb-icon icon="yp-sanjiao-xia" :class="ns.e('arrow')" v-if="!showClose" />
-              <fb-icon icon="yp-danchuangguanbi" :class="ns.e('clear')" @click="() => handleClearClick()" v-if="showClose" />
+              <fb-icon icon="yp-danchuangguanbi" :class="ns.e('clear')" @click.stop="() => handleClearClick()" v-if="showClose" />
             </template>
           </fb-input>
         </slot>

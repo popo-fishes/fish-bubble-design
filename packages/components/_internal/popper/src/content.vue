@@ -8,7 +8,7 @@
    * being moved to the target container. Can be dynamically changed.
    -->
   <teleport :disabled="isTeleport" :to="container">
-    <transition :name="transitionClass" @after-enter="onAfterShow" @after-leave="onAfterLeave">
+    <transition :name="transitionClass" :duration="500" @after-enter="onAfterShow" @after-leave="onAfterLeave">
       <div
         ref="contentRef"
         :role="role"

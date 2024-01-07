@@ -10,6 +10,8 @@ export interface ISelectProps {
     label: number | string;
     value: number | string;
   }[];
+  /** 选择器大小 */
+  size?: "large" | "middle" | "small";
   /** value值 */
   modelValue?: any;
   /** 占位符 */
