@@ -4,28 +4,28 @@
  * @Description: Modify here please
  */
 import type { App } from "vue";
-import * as components from "./components";
+import * as Components from "./component";
 import { version } from "./version";
-export * from "./components";
+
+export * from "@fish-bubble-design/components";
 
 const INSTALLED_KEY = Symbol("INSTALLED_KEY");
-
-console.log(components);
 
 export const install = function (app: App) {
   if (app[INSTALLED_KEY]) return;
 
   app[INSTALLED_KEY] = true;
 
-  Object.keys(components).forEach((key) => {
-    const component = components[key];
+  Object.keys(Components).forEach((key) => {
+    const component = Components[key];
     // 注册插件
     if (component.install) {
       app.use(component);
     }
   });
 
-  app.config.globalProperties.$message = components.FbMessage;
+  app.config.globalProperties.$message = Components.message;
+  app.config.globalProperties.$prompt = Components.prompt;
 
   return app;
 };

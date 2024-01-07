@@ -9,3 +9,5 @@ import Icon from "./src/icon.vue";
 export const FbIcon = withInstall(Icon);
 
 export default FbIcon;
+
+export * from "./src/type";

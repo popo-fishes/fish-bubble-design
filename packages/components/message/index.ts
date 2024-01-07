@@ -3,8 +3,8 @@
  * @Description: Modify here please
  */
 
-import Message from "./src/method";
+import message from "./src/method";
 
-export default Message;
+export { message };
 
 export * from "./src/type";

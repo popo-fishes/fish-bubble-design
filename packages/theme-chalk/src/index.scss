@@ -1,10 +1,27 @@
 @use "./base.scss";
 // component styles
+
+// button
 @use "./button.scss";
 
+// checkbox
 @use "./checkbox-group.scss";
 @use "./checkbox.scss";
 
+// dialog
 @use "./dialog.scss";
 
+// message
 @use "./message.scss";
+
+// prompt
+@use "./prompt.scss";
+
+// image
+@use "./image.scss";
+
+// input
+@use "./input.scss";
+
+// select
+@use "./select.scss";

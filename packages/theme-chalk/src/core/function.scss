@@ -44,6 +44,6 @@
 }
 
 // 调用自定义函数获取透明度颜色 => transparent-color($color-primary, 0.5) => rgba(0, 146, 255, 0.5)
-@function transparent-color($baseColor, $opacity) {
+@function transparentColor($baseColor, $opacity) {
   @return rgba(red($baseColor), green($baseColor), blue($baseColor), $opacity);
 }

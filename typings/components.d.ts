@@ -13,10 +13,13 @@ declare module "@vue/runtime-core" {
     FbCheckbox: (typeof import("../packages/fish-bubble-design"))["FbCheckbox"];
     FbCheckboxGroup: (typeof import("../packages/fish-bubble-design"))["FbCheckboxGroup"];
     FbDialog: (typeof import("../packages/fish-bubble-design"))["FbDialog"];
+    FbImage: (typeof import("../packages/fish-bubble-design"))["FbImage"];
+    FbImgCaptcha: (typeof import("../packages/fish-bubble-design"))["FbImgCaptcha"];
+    FbInput: (typeof import("../packages/fish-bubble-design"))["FbInput"];
   }
 
   interface ComponentCustomProperties {
-    $message: (typeof import("../packages/fish-bubble-design"))["FbMessage"];
+    $message: (typeof import("../packages/fish-bubble-design"))["message"];
   }
 }
 

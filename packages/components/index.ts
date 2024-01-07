@@ -7,6 +7,10 @@ export * from "./icon";
 export * from "./button";
 export * from "./checkbox";
 export * from "./dialog";
-
+export * from "./image";
+export * from "./img-captcha";
+export * from "./input";
+export * from "./select";
 // plugins
 export * from "./message";
+export * from "./prompt";

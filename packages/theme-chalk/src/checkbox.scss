@@ -1,8 +1,10 @@
-@use "mixins/mixins" as *;
+@use "core/mixins" as *;
 @use "common/var" as *;
-@use "mixins/css-var" as *;
-@use "mixins/function" as *;
-@use "mixins/config" as *;
+@use "core/css-var" as *;
+@use "core/function" as *;
+@use "core/config" as *;
+
+@use "./component_internal/wave.scss";
 
 @include b(checkbox) {
   @include set-component-css-var("checkbox", $checkbox);
@@ -134,7 +136,7 @@
   @include when(disabled) {
     cursor: not-allowed;
     .#{$namespace}-checkbox__label {
-      color: getCssVar("disabled-text-color");
+      color: getCssVar("text-color-disabled");
       cursor: not-allowed;
     }
   }

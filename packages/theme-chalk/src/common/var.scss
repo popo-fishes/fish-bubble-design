@@ -4,7 +4,7 @@
 @use "sass:math";
 @use "sass:map";
 
-@use "../mixins/function.scss" as *;
+@use "../core/function.scss" as *;
 
 // 主题配置器 （这里全是变量）
 
@@ -75,12 +75,53 @@ $color-info: map.get($colors, "info", "base") !default;
   @include set-color-mix-level($type, 2, "dark", $color-black);
 }
 
+// 全局组件的高度，比如input类型的
+$common-component-size: () !default;
+$common-component-size: map.merge(
+  (
+    "large": 48px,
+    "default": 40px,
+    "small": 32px
+  ),
+  $common-component-size
+);
+
+// 字体
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    "large": 18px,
+    "medium": 16px,
+    "base": 14px,
+    "small": 13px,
+    "extra-small": 12px
+  ),
+  $font-size
+);
+// 普通文本颜色
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    // 主要的
+    "primary": #303133,
+    // 常规的
+    "regular": #606266,
+    // 次要的
+    "secondary": #909399,
+    // 占位符颜色
+    "placeholder": #a8abb2,
+    // disabled
+    "disabled": #a8abb2
+  ),
+  $text-color
+);
+// 圆角
 $border-radius: () !default;
 $border-radius: map.merge(
   (
     "base": 4px,
     "small": 2px,
-    "round": 20px,
+    "large": 8px,
     "circle": 100%
   ),
   $border-radius
@@ -124,7 +165,7 @@ $checkbox: map.merge(
     "input-height": 16px,
     "input-width": 16px,
     // 状态状态的文字颜色
-    "text-color": #606266,
+    "text-color": getCssVar("text-color-regular"),
     // 圆角
     "border-radius": getCssVar("border-radius-base"),
     // 正常状态的背景色
@@ -142,9 +183,97 @@ $checkbox: map.merge(
     // 选中状态下背景色
     "checked-bg-color": getCssVar("color-primary"),
     // 选中状态下icon 色
-    "checked-icon-color": getCssVar("color", "white"),
+    "checked-icon-color": getCssVar("color-white"),
     // 获取焦点边框色
     "input-border-color-hover": getCssVar("color-primary")
   ),
   $checkbox
+);
+
+// Input
+// css3 var in packages/theme-chalk/src/input.scss
+$input: () !default;
+$input: map.merge(
+  (
+    // 点击时的波纹色
+    "ripple-color": transparentColor($color-primary, 0.2),
+    // 文本的颜色
+    "text-color": getCssVar("text-color-regular"),
+    // 边框
+    "border": 1px solid getCssVar("color-info", "light-3"),
+    // hover的边框色
+    "hover-border-color": getCssVar("color-primary"),
+    // 聚焦的边框色
+    "focus-border-color": getCssVar("color-primary"),
+    // 禁止时的背景
+    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    // 输入框的圆角
+    "border-radius": getCssVar("border-radius-base"),
+    // 占位符颜色
+    "placeholder-color": getCssVar("text-color-placeholder"),
+    // 清除按钮颜色
+    "icon-color": getCssVar("text-color-placeholder"),
+    // 清除按钮获取焦点颜色
+    "clear-hover-color": getCssVar("color-primary"),
+    // 输入框背景色
+    "bg-color": getCssVar("color-white"),
+    // 输入框的宽度
+    "width": 100%
+  ),
+  $input
+);
+
+// popper
+// Pay attention to the difference between 'popper' and 'popover'
+$popper: () !default;
+$popper: map.merge(
+  (
+    "border-radius": var(#{getCssVarName("popover-border-radius")}, 4px)
+  ),
+  $popper
+);
+
+// select
+// css3 var in packages/theme-chalk/src/select.scss
+$select: () !default;
+$select: map.merge(
+  (
+    // 文本的颜色
+    "text-color": getCssVar("text-color-regular"),
+    // hover的边框色
+    "hover-border-color": getCssVar("color-primary"),
+    // 禁止时的背景
+    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    // select的圆角
+    "border-radius": getCssVar("border-radius-base"),
+    // 占位符颜色
+    "placeholder-color": getCssVar("text-color-placeholder"),
+    // 清除按钮颜色
+    "icon-color": getCssVar("text-color-placeholder"),
+    // 清除按钮获取焦点颜色
+    "clear-hover-color": getCssVar("color-primary"),
+    // select背景色
+    "bg-color": getCssVar("color-white")
+  ),
+  $select
+);
+
+$select-dropdown: () !default;
+$select-dropdown: map.merge(
+  (
+    "max-height": 240px,
+    "border-radius": getCssVar("border-radius-base"),
+    "border-color": #e9edf3,
+    // item的高度
+    "item-height": 36px,
+    // item获取焦点的字体颜色
+    "item-hover-color": getCssVar("color-primary"),
+    // item获取焦点背景色
+    "item-hover-bgcolor": #f5f6fa,
+    // 选中时的字体颜色
+    "selected-text-color": getCssVar("color-primary"),
+    // 禁止状态下的文本颜色
+    "item-disabled-text-color": getCssVar("text-color-disabled")
+  ),
+  $select-dropdown
 );

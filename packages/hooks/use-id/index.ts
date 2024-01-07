@@ -12,7 +12,7 @@ const defaultIdInjection = {
 };
 
 export const useId = (deterministicId?: MaybeRef<string>, namespace?: string): Ref<string> => {
-  const _namespace = namespace || "yp-popper";
+  const _namespace = namespace || "fb-popper";
 
   const idRef = computed(() => unref(deterministicId) || `${_namespace}-id-${defaultIdInjection.prefix}-${defaultIdInjection.current++}`);
 

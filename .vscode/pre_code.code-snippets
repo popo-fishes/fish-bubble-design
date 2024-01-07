@@ -17,6 +17,7 @@
 	  "body": [
     "<script setup lang='ts'>"
        "import { ref, computed } from 'vue'",
+       "import FbIcon from '@fish-bubble-design/components/icon'"
        "interface Props {}"
         "const props = withDefaults(defineProps<Props>(), {});"
         "$1"
@@ -30,4 +31,18 @@
     "$1"
     ]
 	},
+  "导出组件": {
+    "prefix": "ex-com",
+	  "body": [
+       "import { withInstall } from '@fish-bubble-design/core'",
+       "$1"
+       "import Image from './src/image.vue'",
+       "$1"
+       "export const FbImage = withInstall(Image)",
+       "$1"
+       "export default FbImage",
+       "$1"
+       "export * from './src/type'"
+    ]
+  }
 }
