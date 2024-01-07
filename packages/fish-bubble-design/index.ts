@@ -25,6 +25,7 @@ export const install = function (app: App) {
   });
 
   app.config.globalProperties.$message = Components.message;
+  app.config.globalProperties.$prompt = Components.prompt;
 
   return app;
 };

@@ -21,3 +21,4 @@ export { default as FbSelect, FbOption } from "@fish-bubble-design/components/se
 
 // Plugin
 export { message } from "@fish-bubble-design/components/message";
+export { prompt } from "@fish-bubble-design/components/prompt";

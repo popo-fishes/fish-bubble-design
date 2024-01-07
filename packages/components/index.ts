@@ -13,3 +13,4 @@ export * from "./input";
 export * from "./select";
 // plugins
 export * from "./message";
+export * from "./prompt";
