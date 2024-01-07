@@ -1,5 +1,5 @@
-@use "mixins/mixins" as *;
-@use "mixins/config" as *;
+@use "core/mixins" as *;
+@use "core/config" as *;
 
 @include b(image) {
   position: relative;

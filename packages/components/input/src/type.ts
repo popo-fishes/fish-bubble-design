@@ -21,6 +21,8 @@ export interface InputProps {
   clearable?: boolean;
   /** 是否禁用 */
   disabled?: boolean;
+  /** 是否只读 */
+  readonly?: boolean;
   /** input 元素或 textarea 元素的 style */
   inputStyle?: CSSProperties;
 }

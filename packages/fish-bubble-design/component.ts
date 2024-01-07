@@ -17,5 +17,7 @@ export { default as FbImgCaptcha } from "@fish-bubble-design/components/img-capt
 
 export { default as FbInput } from "@fish-bubble-design/components/input";
 
+export { default as FbSelect, FbOption } from "@fish-bubble-design/components/select";
+
 // Plugin
 export { message } from "@fish-bubble-design/components/message";

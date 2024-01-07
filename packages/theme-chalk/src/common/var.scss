@@ -4,7 +4,7 @@
 @use "sass:math";
 @use "sass:map";
 
-@use "../mixins/function.scss" as *;
+@use "../core/function.scss" as *;
 
 // 主题配置器 （这里全是变量）
 
@@ -111,7 +111,7 @@ $text-color: map.merge(
     // 占位符颜色
     "placeholder": #a8abb2,
     // disabled
-    "disabled": #c0c4cc
+    "disabled": #a8abb2
   ),
   $text-color
 );
@@ -121,7 +121,7 @@ $border-radius: map.merge(
   (
     "base": 4px,
     "small": 2px,
-    "round": 20px,
+    "large": 8px,
     "circle": 100%
   ),
   $border-radius
@@ -221,4 +221,57 @@ $input: map.merge(
     "width": 100%
   ),
   $input
+);
+
+// popper
+// Pay attention to the difference between 'popper' and 'popover'
+$popper: () !default;
+$popper: map.merge(
+  (
+    "border-radius": var(#{getCssVarName("popover-border-radius")}, 4px)
+  ),
+  $popper
+);
+
+// select
+// css3 var in packages/theme-chalk/src/select.scss
+$select: () !default;
+$select: map.merge(
+  (
+    // 文本的颜色
+    "text-color": getCssVar("text-color-regular"),
+    // 禁止时的背景
+    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    // select的圆角
+    "border-radius": getCssVar("border-radius-base"),
+    // 占位符颜色
+    "placeholder-color": getCssVar("text-color-placeholder"),
+    // 清除按钮颜色
+    "icon-color": getCssVar("text-color-placeholder"),
+    // 清除按钮获取焦点颜色
+    "clear-hover-color": getCssVar("color-primary"),
+    // select背景色
+    "bg-color": getCssVar("color-white")
+  ),
+  $select
+);
+
+$select-dropdown: () !default;
+$select-dropdown: map.merge(
+  (
+    "max-height": 240px,
+    "border-radius": getCssVar("border-radius-base"),
+    "border-color": #e9edf3,
+    // item的高度
+    "item-height": 36px,
+    // item获取焦点的字体颜色
+    "item-hover-color": getCssVar("color-primary"),
+    // item获取焦点背景色
+    "item-hover-bgcolor": #f5f6fa,
+    // 选中时的字体颜色
+    "selected-text-color": getCssVar("color-primary"),
+    // 禁止状态下的文本颜色
+    "item-disabled-text-color": getCssVar("text-color-disabled")
+  ),
+  $select-dropdown
 );

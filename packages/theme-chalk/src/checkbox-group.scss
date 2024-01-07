@@ -1,4 +1,4 @@
-@use "mixins/mixins" as *;
+@use "core/mixins" as *;
 
 @include b(checkbox-group) {
 }

@@ -10,11 +10,13 @@ export const defaultNamespace = "fb";
 const statePrefix = "is-";
 
 const _bem = (namespace: string, block: string, blockSuffix: string, element: string, modifier: string) => {
+  // 块名
   let cls = `${namespace}-${block}`;
   // 块后缀
   if (blockSuffix) {
     cls += `-${blockSuffix}`;
   }
+  // 节点
   if (element) {
     cls += `__${element}`;
   }
@@ -46,8 +48,9 @@ export const useNamespace = (block: string) => {
   const defaultNamespace = useGetDerivedNamespace();
   // 默认样式拼接
   const b = (blockSuffix = "") => _bem(defaultNamespace.value, block, blockSuffix, "", "");
-  // 扩展样式拼接
+  // 属性
   const m = (modifier?: string) => (modifier ? _bem(defaultNamespace.value, block, "", "", modifier) : "");
+  // 节点
   const e = (element?: string) => (element ? _bem(defaultNamespace.value, block, "", element, "") : "");
   // 是否存在某个样式
   const is = (name: string, ...args: [boolean | undefined] | []) => {

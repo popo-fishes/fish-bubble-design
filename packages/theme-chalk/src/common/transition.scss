@@ -1,6 +1,8 @@
+@use "../core/config" as *;
+
 // https://cn.vuejs.org/guide/built-ins/transition.html#css-based-transitions
-.yp-popper-in-top-enter-active,
-.yp-popper-in-top-leave-active {
+.#{$namespace}-popper-scale-up-transition-enter-active,
+.#{$namespace}-popper-scale-up-transition-leave-active {
   opacity: 1;
   // 缩放
   transform: scaleY(1);
@@ -11,9 +13,8 @@
   transform-origin: center top;
 }
 
-.yp-popper-in-top-enter-from,
-.yp-popper-in-top-leave-to {
-  opacity: 0;
+.#{$namespace}-popper-scale-up-transition-enter-from,
+.#{$namespace}-popper-scale-up-transition-leave-to {
   // 缩放
   transform: scaleY(0);
 }

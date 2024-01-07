@@ -1,7 +1,7 @@
-@use "mixins/mixins" as *;
+@use "core/mixins" as *;
 @use "common/var" as *;
-@use "mixins/css-var" as *;
-@use "mixins/function" as *;
+@use "core/css-var" as *;
+@use "core/function" as *;
 
 @use "./component_internal/wave.scss";
 

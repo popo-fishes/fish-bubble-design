@@ -1,6 +1,6 @@
-@use "mixins/mixins" as *;
-@use "mixins/function" as *;
-@use "mixins/config" as *;
+@use "core/mixins" as *;
+@use "core/function" as *;
+@use "core/config" as *;
 
 @include b(dialog) {
   position: relative;

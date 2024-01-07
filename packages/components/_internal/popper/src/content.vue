@@ -44,7 +44,7 @@ const emit = defineEmits(popperContentEmits);
 
 const props = defineProps<IPopperContentProps>();
 
-const { contentRef, triggerRef, contentStyle, contentClass, updateAlign, role } = usePopperContent(props);
+const { contentRef, triggerRef, contentStyle, contentClass, updateAlign, role, ns } = usePopperContent(props);
 
 // Has it been destroyed
 const isDestroyed = ref(false);
@@ -58,7 +58,7 @@ let timer: ReturnType<typeof setTimeout> | undefined;
 const container = shallowRef<HTMLElement | null>(null);
 
 const transitionClass = computed(() => {
-  return props.transition || `yp-popper-in-top`;
+  return props.transition || `${ns.b()}-scale-up-transition`;
 });
 
 const shouldShow = computed(() => {

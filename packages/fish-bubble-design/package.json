@@ -77,10 +77,12 @@
   "peerDependencies": {
     "vue": "^3.4.0"
   },
+  "dependencies": {
+    "dom-align": "^1.12.4"
+  },
   "devDependencies": {
     "@types/node": "*",
-    "vue": "3.4.0",
-    "dom-align": "^1.12.4"
+    "vue": "3.4.0"
   },
   "browserslist": [
     "> 1%",

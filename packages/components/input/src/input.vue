@@ -130,6 +130,7 @@ defineExpose({
       :style="inputStyle"
       :disabled="inputDisabled"
       :maxlength="maxlength"
+      :readonly="readonly"
       :placeholder="placeholder"
       :type="type"
       @compositionstart="() => (isComposing = true)"
@@ -139,9 +140,10 @@ defineExpose({
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <slot name="suffix" />
-    <!-- 关闭按钮 -->
-    <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
+    <slot name="suffix">
+      <!-- 关闭按钮 -->
+      <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
+    </slot>
     <!-- 波浪 -->
     <BaseWave />
   </div>
@@ -151,6 +153,7 @@ defineExpose({
       :class="nsTextarea.e('inner')"
       :style="inputStyle"
       :disabled="inputDisabled"
+      :readonly="readonly"
       :placeholder="placeholder"
       @compositionstart="() => (isComposing = true)"
       @compositionend="handleCompositionEnd"

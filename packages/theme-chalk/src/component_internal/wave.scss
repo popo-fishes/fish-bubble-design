@@ -1,4 +1,4 @@
-@use "../mixins/mixins" as *;
+@use "../core/mixins" as *;
 
 // 波浪效果
 @include b(base-wave) {

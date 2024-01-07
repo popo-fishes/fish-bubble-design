@@ -42,6 +42,7 @@ export const usePopperContent = (props: IPopperContentProps) => {
   });
 
   return {
+    ns,
     contentRef,
     triggerRef,
     updateAlign,
