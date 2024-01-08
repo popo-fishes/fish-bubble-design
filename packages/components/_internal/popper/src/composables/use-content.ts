@@ -5,7 +5,7 @@
 import { computed, inject, unref, ref } from "vue";
 import type { StyleValue, CSSProperties } from "vue";
 import { alignElement } from "dom-align";
-import { isNumber } from "@fish-bubble-design/core/shared/utils";
+import { isNumber } from "@fish-bubble-design/shared/utils";
 import { useNamespace, useZIndex } from "@fish-bubble-design/hooks";
 import { POPPER_WRAP_INJECTION_KEY, getAlignFromPlacement, defaultAlign } from "../utils";
 import type { IPopperContentProps } from "../content";

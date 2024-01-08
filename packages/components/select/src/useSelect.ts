@@ -4,7 +4,7 @@
  */
 import { ref, computed, useSlots } from "vue";
 import type { ComponentPublicInstance } from "vue";
-import { isClient } from "@fish-bubble-design/core/shared/utils";
+import { isClient } from "@fish-bubble-design/shared/utils";
 import type { ISelectProps, ISelectEmits } from "./type";
 
 export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {

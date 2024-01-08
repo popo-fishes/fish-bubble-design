@@ -20,6 +20,7 @@
     "@fish-bubble-design/components": "workspace:*",
     "@fish-bubble-design/core": "workspace:*",
     "@fish-bubble-design/hooks": "workspace:*",
+    "@fish-bubble-design/shared": "workspace:*",
     "@fish-bubble-design/theme-chalk": "workspace:*"
   },
   "devDependencies": {

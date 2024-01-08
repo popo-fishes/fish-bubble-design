@@ -2,7 +2,7 @@
  * @Date: 2023-11-27 16:36:09
  * @Description: 相同的目标检测
  */
-import { NOOP } from "@fish-bubble-design/core/shared/utils";
+import { NOOP } from "@fish-bubble-design/shared/utils";
 export const useSameTarget = (handleClick?: (e: MouseEvent) => void) => {
   if (!handleClick) {
     return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };

@@ -15,8 +15,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<IButtonProps>(), {
   tag: "button",
-  type: "default",
-  size: "middle",
   wave: true
 });
 // 事件

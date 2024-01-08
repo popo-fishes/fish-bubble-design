@@ -25,10 +25,10 @@
     "./global": {
       "types": "./global.d.ts"
     },
-    "./core": {
-      "types": "./es/core/shared/index.d.ts",
-      "import": "./es/core/shared/index.mjs",
-      "require": "./lib/core/shared/index.js"
+    "./shared": {
+      "types": "./es/shared/index.d.ts",
+      "import": "./es/shared/index.mjs",
+      "require": "./lib/shared/index.js"
     },
     "./es": {
       "types": "./es/index.d.ts",

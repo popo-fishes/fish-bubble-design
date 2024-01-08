@@ -33,7 +33,9 @@
     color: rgba(0, 0, 0, 0.25);
     font-size: 6px;
     display: block;
+    height: 16px;
     width: 16px;
+    line-height: 16px;
   }
 
   @include e(clear) {

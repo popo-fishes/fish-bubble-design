@@ -7,7 +7,7 @@ import { Comment, Fragment, Text, cloneVNode, defineComponent, inject, withDirec
 
 import { FORWARD_REF_INJECTION_KEY, useForwardRefDirective } from "@fish-bubble-design/hooks";
 
-import { isObject, NOOP } from "@fish-bubble-design/core/shared/utils";
+import { isObject, NOOP } from "@fish-bubble-design/shared/utils";
 
 import type { Ref, VNode } from "vue";
 

@@ -3,6 +3,7 @@
  * @Description: Modify here please
  */
 import type { Placement, IPopperProps } from "@fish-bubble-design/components/_internal/popper";
+import type { ComponentSize } from "@fish-bubble-design/core";
 
 export interface ISelectProps {
   /** 选择项数据 */
@@ -11,7 +12,7 @@ export interface ISelectProps {
     value: number | string;
   }[];
   /** 选择器大小 */
-  size?: "large" | "middle" | "small";
+  size?: ComponentSize;
   /** value值 */
   modelValue?: any;
   /** 占位符 */

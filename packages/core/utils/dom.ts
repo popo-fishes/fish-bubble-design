@@ -2,7 +2,7 @@
  * @Date: 2023-12-28 09:58:58
  * @Description: Modify here please
  */
-import { isClient } from "../shared/utils";
+import { isClient } from "@fish-bubble-design/shared/utils";
 
 let scrollBarWidth: number;
 export const getScrollBarWidth = (): number => {

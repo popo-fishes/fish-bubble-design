@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { useSlots, computed, inject, toRaw, ref } from "vue";
 import type { ICheckboxProps, CheckboxEmits } from "./type";
-import { isNil, isUndefined, isArray, isBoolean } from "@fish-bubble-design/core/shared/utils";
+import { isNil, isUndefined, isArray, isBoolean } from "@fish-bubble-design/shared/utils";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { checkboxGroupContextKey } from "./constants";
 import BaseWave from "../../_internal/wave/index.vue";

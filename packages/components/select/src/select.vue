@@ -19,8 +19,7 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   placeholder: "请选择",
   placement: "bottom",
   trigger: "hover",
-  clearable: false,
-  size: "middle"
+  clearable: false
 });
 
 defineOptions({

@@ -79,7 +79,8 @@
     flex-shrink: 0;
     flex-wrap: nowrap;
     height: 100%;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     .closeIcon {
       cursor: pointer;
       width: 24px;

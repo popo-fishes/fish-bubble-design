@@ -4,6 +4,7 @@
 -->
 
 <script lang="ts" setup>
+import { useNamespace } from "@fish-bubble-design/hooks";
 import type { IconProps } from "./type";
 
 defineOptions({
@@ -11,11 +12,10 @@ defineOptions({
 });
 
 defineProps<IconProps>();
+
+const ns = useNamespace("icon");
 </script>
 
 <template>
-  <i
-    :class="['yp-pc', icon, 'yp-base-icon', isPointer ? 'yp-icon--pointer' : '']"
-    :style="[size ? `font-size:${size}px` : '', color ? `color:${color}` : '']"
-  />
+  <i :class="[ns.b(), isPointer ? 'yp-icon--pointer' : '', 'yp-pc', icon]" :style="[size ? `font-size:${size}px` : '', color ? `color:${color}` : '']" />
 </template>

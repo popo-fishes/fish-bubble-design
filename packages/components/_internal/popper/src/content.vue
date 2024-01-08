@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount, unref, watch, onMounted, shallowRef, onBeforeMount } from "vue";
-import { isClient } from "@fish-bubble-design/core/shared/utils";
+import { isClient } from "@fish-bubble-design/shared/utils";
 import { IPopperContentProps, popperContentEmits } from "./content";
 import { usePopperContent } from "./composables/use-content";
 import { getParent } from "./utils";

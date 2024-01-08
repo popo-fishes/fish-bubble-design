@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@fish-bubble-design/components':
+        specifier: workspace:*
+        version: link:packages/components
       '@fish-bubble-design/core':
         specifier: workspace:*
         version: link:packages/core
       '@fish-bubble-design/hooks':
         specifier: workspace:*
         version: link:packages/hooks
+      '@fish-bubble-design/shared':
+        specifier: workspace:*
+        version: link:packages/shared
       '@fish-bubble-design/theme-chalk':
         specifier: workspace:*
         version: link:packages/theme-chalk
@@ -164,6 +170,8 @@ importers:
         version: registry.npmmirror.com/vue@3.4.0(typescript@5.3.3)
 
   packages/hooks: {}
+
+  packages/shared: {}
 
   packages/theme-chalk:
     devDependencies:

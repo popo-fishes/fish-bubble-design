@@ -13,7 +13,7 @@ import { inject, onMounted, watch } from "vue";
 import { OnlyChild } from "../../only-child";
 import { POPPER_WRAP_INJECTION_KEY } from "./utils";
 import { useForwardRef } from "@fish-bubble-design/hooks";
-import { isElement } from "@fish-bubble-design/core/shared/utils";
+import { isElement } from "@fish-bubble-design/shared/utils";
 
 import type { IPopperTriggerProps } from "./trigger";
 

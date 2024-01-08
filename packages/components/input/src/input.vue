@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { ref, computed, shallowRef, watch, nextTick } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks";
-import { isNil } from "@fish-bubble-design/core/shared/utils";
+import { isNil } from "@fish-bubble-design/shared/utils";
 import { useFocusController } from "./useFocusController";
 import BaseWave from "../../_internal/wave/index.vue";
 import FbIcon from "@fish-bubble-design/components/icon";
@@ -19,8 +19,7 @@ defineOptions({ name: "FbInput" });
 
 const props = withDefaults(defineProps<InputProps>(), {
   placeholder: "请输入",
-  type: "text",
-  size: "middle"
+  type: "text"
 });
 
 const nsInput = useNamespace("input");
