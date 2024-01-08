@@ -14,6 +14,7 @@ import VueMacros from "unplugin-vue-macros/rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
+import { terser } from "rollup-plugin-terser";
 
 import { excludeFiles, buildConfigEntries } from "../utils";
 import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent, getPackageSpacesMap } from "../core";
@@ -56,6 +57,16 @@ export const buildModules = async () => {
         // add additional loaders
         loaders: {
           ".vue": "ts"
+        }
+      }),
+      terser({
+        compress: {
+          drop_console: true
+        },
+        mangle: false, // Disable variable name obfuscation
+        output: {
+          beautify: true, // Beautify output
+          comments: false // Delete all comments
         }
       }),
       dts({
