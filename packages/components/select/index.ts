@@ -13,3 +13,5 @@ export const FbSelect = withInstall(Select, {
 export default FbSelect;
 
 export const FbOption = withNoopInstall(Option);
+
+export * from "./src/type";
