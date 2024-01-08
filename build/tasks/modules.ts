@@ -17,7 +17,7 @@ import esbuild from "rollup-plugin-esbuild";
 import { terser } from "rollup-plugin-terser";
 
 import { excludeFiles, buildConfigEntries } from "../utils";
-import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent, getPackageSpacesMap } from "../core";
+import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent } from "../core";
 import { buildOutput, libraryRoot, pkgsRoot, projRoot } from "../core/constants";
 import { ThemeAlias } from "../plugins/alias";
 
@@ -74,7 +74,8 @@ export const buildModules = async () => {
         outDir: resolve(buildOutput, "types"),
         tsconfigPath: resolve(projRoot, "tsconfig.json"),
         cleanVueFileName: true,
-        aliasesExclude: Object.keys(getPackageSpacesMap()),
+        // Now there is no need for alias conversion, we will all use relative paths
+        // aliasesExclude: Object.keys(getPackageSpacesMap())
         beforeWriteFile: (filePath, content) => {
           // When returning 'false' or 'Promise<false>', the file will be skipped
           if (filePath.indexOf("/theme-chalk/") !== -1) {

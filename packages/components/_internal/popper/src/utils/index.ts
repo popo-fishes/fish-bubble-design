@@ -3,8 +3,8 @@
  * @Description: Modify here please
  */
 import { isClient } from "@fish-bubble-design/shared/utils";
-import { AlignType } from "../content";
-import type { IPopperContentProps } from "../content";
+import { AlignType } from "../content-type";
+import type { IPopperContentProps } from "../content-type";
 
 export * from "./constants";
 export * from "./event";

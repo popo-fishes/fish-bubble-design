@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount, unref, watch, onMounted, shallowRef, onBeforeMount } from "vue";
 import { isClient } from "@fish-bubble-design/shared/utils";
-import { IPopperContentProps, popperContentEmits } from "./content";
+import { IPopperContentProps, popperContentEmits } from "./content-type";
 import { usePopperContent } from "./composables/use-content";
 import { getParent } from "./utils";
 
@@ -129,3 +129,4 @@ defineExpose({
   updateAlign
 });
 </script>
+./content-type

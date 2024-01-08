@@ -41,7 +41,7 @@ import { useId } from "@fish-bubble-design/hooks/";
 import { composeEventHandlers } from "./utils";
 import { useDelayedToggle } from "./composables/use-delayed-toggle";
 
-import type { IPopperProps } from "./popper";
+import type { IPopperProps } from "./popper-type";
 
 defineOptions({
   name: "FbPopper"
@@ -178,3 +178,4 @@ defineExpose({
   onClose
 });
 </script>
+./popper-type

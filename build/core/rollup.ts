@@ -9,7 +9,7 @@ import type { OutputOptions, RollupBuild } from "rollup";
 
 export const getPackageSpacesMap = () => {
   // 工程packages目录下的文件
-  const directorys = ["components", "core", "hooks"];
+  const directorys = ["components", "core", "hooks", "shared"];
 
   const packageSpacesEnum: Record<string, string> = {};
 
@@ -51,20 +51,23 @@ export const writeTsTypesPath = (filePath: string): string => {
 
 // 构建声明文件时：转换内容里面的路径
 export const writeTsTypesContent = (content: string, filePath: string): string => {
-  // 改变fish-bubble-design/component.d.ts 里面的路径指向问题
-  if (filePath.indexOf(`${UINAME}/component.d.ts`) !== -1) {
-    const regex = new RegExp("../components/", "g");
-    return content.replace(regex, "./components/");
+  // 改变fish-bubble-design/** 里面的路径指向问题
+  if (filePath.indexOf(`/types/${UINAME}/`) !== -1) {
+    const regex = new RegExp("../components", "g");
+    return content.replace(regex, "./components");
   } else {
-    const spacesMap = getPackageSpacesMap();
-    let code = "";
-    Object.keys(spacesMap).forEach((key) => {
-      if (!code) code = content;
-      {
-        const regex = new RegExp(key, "g");
-        code = code.replace(regex, spacesMap[key]);
-      }
-    });
-    return code;
+    // fish-bubble-design v2版本不需要了，注释掉，不需要进行别名转换！
+    // const spacesMap = getPackageSpacesMap();
+    // let code = "";
+    // Object.keys(spacesMap).forEach((key) => {
+    //   if (!code) code = content;
+    //   {
+    //     const regex = new RegExp(key, "g");
+    //     code = code.replace(regex, spacesMap[key]);
+    //   }
+    // });
+    // return code;
+
+    return content;
   }
 };
