@@ -9,6 +9,8 @@ import { version } from "./version";
 
 export * from "@fish-bubble-design/components";
 
+export * from "@fish-bubble-design/hooks";
+
 const INSTALLED_KEY = Symbol("INSTALLED_KEY");
 
 export const install = function (app: App) {
