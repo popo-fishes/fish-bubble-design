@@ -38,11 +38,11 @@ export default series(
   withTaskName("createOutput", () => mkdir(epOutput, { recursive: true })),
 
   parallel(
-    runTask("buildModules"),
-    runTask("buildFullBundle"),
-    withTaskName("buildThemeChalk", () => run("pnpm run -C packages/theme-chalk build"))
-  ),
-  parallel(withTaskName("copyTypesDefinitions", copyTypesDefinitions)),
-  parallel(withTaskName("createGlobalDts", () => run("pnpm run create-global-dts"))),
-  parallel(withTaskName("copyFiles", copyFiles))
+    runTask("buildModules")
+    // runTask("buildFullBundle")
+    // withTaskName("buildThemeChalk", () => run("pnpm run -C packages/theme-chalk build"))
+  )
+  // parallel(withTaskName("copyTypesDefinitions", copyTypesDefinitions)),
+  // parallel(withTaskName("createGlobalDts", () => run("pnpm run create-global-dts"))),
+  // parallel(withTaskName("copyFiles", copyFiles))
 );

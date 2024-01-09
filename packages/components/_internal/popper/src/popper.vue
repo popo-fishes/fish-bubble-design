@@ -178,4 +178,3 @@ defineExpose({
   onClose
 });
 </script>
-./popper-type

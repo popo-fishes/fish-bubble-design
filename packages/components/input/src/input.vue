@@ -7,7 +7,7 @@ import { ref, computed, shallowRef, watch, nextTick } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { isNil } from "@fish-bubble-design/shared/utils";
 import { useFocusController } from "./useFocusController";
-import BaseWave from "../../_internal/wave/index.vue";
+import BaseWave from "../../_internal/wave/src/wave.vue";
 import FbIcon from "@fish-bubble-design/components/icon";
 
 import type { InputProps, InputEmits } from "./type";

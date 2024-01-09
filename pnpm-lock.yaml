@@ -114,12 +114,12 @@ importers:
       rollup:
         specifier: ^4.9.1
         version: registry.npmmirror.com/rollup@4.9.4
-      rollup-plugin-cleanup:
-        specifier: ^3.2.1
-        version: registry.npmmirror.com/rollup-plugin-cleanup@3.2.1(rollup@4.9.4)
       rollup-plugin-esbuild:
         specifier: ^6.1.0
         version: registry.npmmirror.com/rollup-plugin-esbuild@6.1.0(esbuild@0.19.11)(rollup@4.9.4)
+      rollup-plugin-ignore:
+        specifier: ^1.0.10
+        version: registry.npmmirror.com/rollup-plugin-ignore@1.0.10
       rollup-plugin-terser:
         specifier: ^7.0.2
         version: registry.npmmirror.com/rollup-plugin-terser@7.0.2(rollup@4.9.4)
@@ -4564,12 +4564,6 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
-  registry.npmmirror.com/estree-walker@0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==, tarball: https://registry.npmmirror.com/estree-walker/-/estree-walker-0.6.1.tgz}
-    name: estree-walker
-    version: 0.6.1
-    dev: true
-
   registry.npmmirror.com/estree-walker@1.0.1:
     resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==, tarball: https://registry.npmmirror.com/estree-walker/-/estree-walker-1.0.1.tgz}
     name: estree-walker
@@ -5865,17 +5859,6 @@ packages:
     version: 1.4.0
     dev: true
 
-  registry.npmmirror.com/js-cleanup@1.2.0:
-    resolution: {integrity: sha512-JeDD0yiiSt80fXzAVa/crrS0JDPQljyBG/RpOtaSbyDq03VHa9szJWMaWOYU/bcTn412uMN2MxApXq8v79cUiQ==, tarball: https://registry.npmmirror.com/js-cleanup/-/js-cleanup-1.2.0.tgz}
-    name: js-cleanup
-    version: 1.2.0
-    engines: {node: ^10.14.2 || >=12.0.0}
-    dependencies:
-      magic-string: registry.npmmirror.com/magic-string@0.25.9
-      perf-regexes: registry.npmmirror.com/perf-regexes@1.0.1
-      skip-regex: registry.npmmirror.com/skip-regex@1.0.2
-    dev: true
-
   registry.npmmirror.com/js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, tarball: https://registry.npmmirror.com/js-tokens/-/js-tokens-4.0.0.tgz}
     name: js-tokens
@@ -6906,13 +6889,6 @@ packages:
     version: 1.1.1
     dev: true
 
-  registry.npmmirror.com/perf-regexes@1.0.1:
-    resolution: {integrity: sha512-L7MXxUDtqr4PUaLFCDCXBfGV/6KLIuSEccizDI7JxT+c9x1G1v04BQ4+4oag84SHaCdrBgQAIs/Cqn+flwFPng==, tarball: https://registry.npmmirror.com/perf-regexes/-/perf-regexes-1.0.1.tgz}
-    name: perf-regexes
-    version: 1.0.1
-    engines: {node: '>=6.14'}
-    dev: true
-
   registry.npmmirror.com/picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==, tarball: https://registry.npmmirror.com/picocolors/-/picocolors-1.0.0.tgz}
     name: picocolors
@@ -7365,20 +7341,6 @@ packages:
       glob: registry.npmmirror.com/glob@7.2.3
     dev: true
 
-  registry.npmmirror.com/rollup-plugin-cleanup@3.2.1(rollup@4.9.4):
-    resolution: {integrity: sha512-zuv8EhoO3TpnrU8MX8W7YxSbO4gmOR0ny06Lm3nkFfq0IVKdBUtHwhVzY1OAJyNCIAdLiyPnOrU0KnO0Fri1GQ==, tarball: https://registry.npmmirror.com/rollup-plugin-cleanup/-/rollup-plugin-cleanup-3.2.1.tgz}
-    id: registry.npmmirror.com/rollup-plugin-cleanup/3.2.1
-    name: rollup-plugin-cleanup
-    version: 3.2.1
-    engines: {node: ^10.14.2 || >=12.0.0}
-    peerDependencies:
-      rollup: '>=2.0'
-    dependencies:
-      js-cleanup: registry.npmmirror.com/js-cleanup@1.2.0
-      rollup: registry.npmmirror.com/rollup@4.9.4
-      rollup-pluginutils: registry.npmmirror.com/rollup-pluginutils@2.8.2
-    dev: true
-
   registry.npmmirror.com/rollup-plugin-esbuild@6.1.0(esbuild@0.19.11)(rollup@4.9.4):
     resolution: {integrity: sha512-HPpXU65V8bSpW8eSYPahtUJaJHmbxJGybuf/M8B3bz/6i11YaYHlNNJIQ38gSEV0FyohQOgVxJ2YMEEZtEmwvA==, tarball: https://registry.npmmirror.com/rollup-plugin-esbuild/-/rollup-plugin-esbuild-6.1.0.tgz}
     id: registry.npmmirror.com/rollup-plugin-esbuild/6.1.0
@@ -7399,6 +7361,12 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/rollup-plugin-ignore@1.0.10:
+    resolution: {integrity: sha512-VsbnfwwaTv2Dxl2onubetX/3RnSnplNnjdix0hvF8y2YpqdzlZrjIq6zkcuVJ08XysS8zqW3gt3ORBndFDgsrg==, tarball: https://registry.npmmirror.com/rollup-plugin-ignore/-/rollup-plugin-ignore-1.0.10.tgz}
+    name: rollup-plugin-ignore
+    version: 1.0.10
+    dev: true
+
   registry.npmmirror.com/rollup-plugin-terser@7.0.2(rollup@4.9.4):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==, tarball: https://registry.npmmirror.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz}
     id: registry.npmmirror.com/rollup-plugin-terser/7.0.2
@@ -7413,14 +7381,6 @@ packages:
       rollup: registry.npmmirror.com/rollup@4.9.4
       serialize-javascript: registry.npmmirror.com/serialize-javascript@4.0.0
       terser: registry.npmmirror.com/terser@5.26.0
-    dev: true
-
-  registry.npmmirror.com/rollup-pluginutils@2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==, tarball: https://registry.npmmirror.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz}
-    name: rollup-pluginutils
-    version: 2.8.2
-    dependencies:
-      estree-walker: registry.npmmirror.com/estree-walker@0.6.1
     dev: true
 
   registry.npmmirror.com/rollup@4.9.4:
@@ -7625,13 +7585,6 @@ packages:
       '@polka/url': registry.npmmirror.com/@polka/url@1.0.0-next.24
       mrmime: registry.npmmirror.com/mrmime@2.0.0
       totalist: registry.npmmirror.com/totalist@3.0.1
-    dev: true
-
-  registry.npmmirror.com/skip-regex@1.0.2:
-    resolution: {integrity: sha512-pEjMUbwJ5Pl/6Vn6FsamXHXItJXSRftcibixDmNCWbWhic0hzHrwkMZo0IZ7fMRH9KxcWDFSkzhccB4285PutA==, tarball: https://registry.npmmirror.com/skip-regex/-/skip-regex-1.0.2.tgz}
-    name: skip-regex
-    version: 1.0.2
-    engines: {node: '>=4.2'}
     dev: true
 
   registry.npmmirror.com/slash@3.0.0:

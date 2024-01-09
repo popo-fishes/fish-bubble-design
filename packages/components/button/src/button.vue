@@ -6,7 +6,7 @@
 import { computed, CSSProperties, ref } from "vue";
 import FbIcon from "@fish-bubble-design/components/icon";
 import { useNamespace } from "@fish-bubble-design/hooks";
-import BaseWave from "../../_internal/wave/index.vue";
+import BaseWave from "../../_internal/wave/src/wave.vue";
 import type { IButtonProps } from "./type";
 
 defineOptions({

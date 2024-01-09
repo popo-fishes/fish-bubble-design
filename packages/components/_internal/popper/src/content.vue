@@ -3,12 +3,25 @@
  * @Description: content pop-up
 -->
 <template>
-  <!--
-   * disabled: When the value is' true ', the content will remain in its original position instead of
-   * being moved to the target container. Can be dynamically changed.
-   -->
-  <teleport :disabled="isTeleport" :to="container">
-    <transition :name="transitionClass" :duration="500" @after-enter="onAfterShow" @after-leave="onAfterLeave">
+  <transition :name="transitionClass" v-if="isSSR" @after-enter="onAfterShow" @after-leave="onAfterLeave">
+    <div
+      ref="contentRef"
+      :role="role"
+      v-bind="$attrs"
+      v-show="shouldShow"
+      :style="contentStyle"
+      :class="contentClass"
+      tabindex="-1"
+      @mouseenter="(e) => $emit('mouseenter', e)"
+      @mouseleave="(e) => $emit('mouseleave', e)"
+    >
+      <template v-if="!isDestroyed">
+        <slot />
+      </template>
+    </div>
+  </transition>
+  <teleport :to="container" v-else>
+    <transition :name="transitionClass" @after-enter="onAfterShow" @after-leave="onAfterLeave">
       <div
         ref="contentRef"
         :role="role"
@@ -50,7 +63,7 @@ const { contentRef, triggerRef, contentStyle, contentClass, updateAlign, role, n
 const isDestroyed = ref(false);
 
 // During SSR - insertion is not allowed by default, move to the target container
-const isTeleport = ref(true);
+const isSSR = ref(true);
 
 let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -85,8 +98,8 @@ onBeforeMount(() => {
   }
   if (!container.value) {
     container.value = document.createElement("div");
-    // 改变为可以传送了，不过此时只是传送到了默认容器上；还没在文档上
-    isTeleport.value = false;
+    // Change to Teleport
+    isSSR.value = false;
   }
 });
 
@@ -100,12 +113,12 @@ onBeforeUnmount(() => {
   isDestroyed.value = true;
 });
 
-// 元素已从 DOM 中移除时
+// When the element has been removed from the DOM
 const onAfterLeave = (e) => {
   emit("hide", e);
 };
 
-// 当进入过渡完成时调用
+// Called when the transition is complete
 const onAfterShow = (e) => {
   emit("show", e);
 };
@@ -129,4 +142,3 @@ defineExpose({
   updateAlign
 });
 </script>
-./content-type

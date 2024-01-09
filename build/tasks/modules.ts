@@ -81,6 +81,12 @@ export const buildModules = async () => {
           if (filePath.indexOf("/theme-chalk/") !== -1) {
             return false;
           }
+          // Ignoring declaration files for style
+          const regex = /\/style\/.*\.d\.ts/;
+          if (regex.test(filePath)) {
+            return false;
+          }
+          // transform
           const paths = writeTsTypesPath(filePath);
           const code = writeTsTypesContent(content, filePath);
           return {
