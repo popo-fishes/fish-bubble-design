@@ -19,7 +19,6 @@ import { terser } from "rollup-plugin-terser";
 import { excludeFiles, buildConfigEntries } from "../utils";
 import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent } from "../core";
 import { buildOutput, libraryRoot, pkgsRoot, projRoot } from "../core/constants";
-import { ThemeAlias } from "../plugins/alias";
 
 export const buildModules = async () => {
   const input = excludeFiles(
@@ -32,7 +31,6 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
-      ThemeAlias(),
       VueMacros({
         setupComponent: false,
         setupSFC: false,

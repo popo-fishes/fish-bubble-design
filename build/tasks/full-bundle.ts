@@ -18,8 +18,6 @@ import { epOutput, libraryRoot } from "../core/constants";
 
 import { generateExternal, withTaskName, writeBundles, PKG_BRAND_NAME, getVersion } from "../core";
 
-import { ThemeAlias } from "../plugins/alias";
-
 const version = getVersion();
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`;
@@ -30,7 +28,6 @@ function formatBundleFilename(name: string, minify: boolean, ext: string) {
 
 async function buildFullEntry(minify: boolean) {
   const plugins = [
-    ThemeAlias(),
     VueMacros({
       setupComponent: false,
       setupSFC: false,

@@ -15,9 +15,9 @@ import dartSass from "sass";
 import autoprefixer from "gulp-autoprefixer";
 import cleanCSS from "gulp-clean-css";
 
-import { epOutput, pkgsRoot } from "../../build/core/constants";
-import { withTaskName, run } from "../../build/core";
-import { buildConfig, Module } from "../../build/utils";
+import { epOutput, pkgsRoot } from "../build/core/constants";
+import { withTaskName, run } from "../build/core";
+import { buildConfig, Module } from "../build/utils";
 
 // Directory of temporary style files generated
 const distFolder = path.resolve(__dirname, "dist");
