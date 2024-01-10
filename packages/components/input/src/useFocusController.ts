@@ -3,7 +3,7 @@
  * @Description: Modify here please
  */
 import { getCurrentInstance, ref, shallowRef, watch } from "vue";
-import { isFunction, useEventListener } from "@fish-bubble-design/core/shared";
+import { isFunction, useEventListener } from "@fish-bubble-design/shared";
 import type { ShallowRef } from "vue";
 
 interface UseFocusControllerOptions {

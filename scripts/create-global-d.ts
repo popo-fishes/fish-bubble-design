@@ -12,7 +12,7 @@ try {
 
   const match = code.match(/^declare module "@vue\/runtime-core" {[\s\S]*?^}$/m);
 
-  const tip = "\n // 这是自动生成的文件，你不需要更改下面的内容~~~~ 33 \n";
+  const tip = "\n // 这是自动生成的文件，你不需要更改下面的内容~~~~ \n";
 
   let globalTsCode = tip + (match ? match[0] : code);
 

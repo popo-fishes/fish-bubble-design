@@ -3,10 +3,11 @@
  * @Description: Modify here please
  */
 import type { CSSProperties } from "vue";
+import type { ComponentSize } from "@fish-bubble-design/core";
 
 export interface InputProps {
   modelValue?: string | number | null | undefined;
-  size?: "large" | "middle" | "small";
+  size?: ComponentSize;
   /** 类型原生 input 类型 | textarea */
   type?: string;
   /** 占位符 */

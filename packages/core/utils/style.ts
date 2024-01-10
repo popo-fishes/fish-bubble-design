@@ -2,7 +2,7 @@
  * @Date: 2023-12-28 09:26:59
  * @Description: Modify here please
  */
-import { isObject, isClient } from "../shared/utils";
+import { isObject, isClient } from "@fish-bubble-design/shared/utils";
 import type { CSSProperties } from "vue";
 
 export const classNameToArray = (cls = "") => cls.split(" ").filter((item) => !!item.trim());

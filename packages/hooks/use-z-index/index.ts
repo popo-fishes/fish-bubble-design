@@ -3,7 +3,7 @@
  * @Description: Modify here please
  */
 import { computed, getCurrentInstance, inject, ref, unref } from "vue";
-import { isNumber } from "@fish-bubble-design/core/shared/utils";
+import { isNumber } from "@fish-bubble-design/shared/utils";
 import type { InjectionKey, Ref } from "vue";
 
 const zIndex = ref(0);

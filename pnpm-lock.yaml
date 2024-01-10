@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@fish-bubble-design/components':
+        specifier: workspace:*
+        version: link:packages/components
       '@fish-bubble-design/core':
         specifier: workspace:*
         version: link:packages/core
       '@fish-bubble-design/hooks':
         specifier: workspace:*
         version: link:packages/hooks
+      '@fish-bubble-design/shared':
+        specifier: workspace:*
+        version: link:packages/shared
       '@fish-bubble-design/theme-chalk':
         specifier: workspace:*
         version: link:packages/theme-chalk
@@ -111,6 +117,12 @@ importers:
       rollup-plugin-esbuild:
         specifier: ^6.1.0
         version: registry.npmmirror.com/rollup-plugin-esbuild@6.1.0(esbuild@0.19.11)(rollup@4.9.4)
+      rollup-plugin-ignore:
+        specifier: ^1.0.10
+        version: registry.npmmirror.com/rollup-plugin-ignore@1.0.10
+      rollup-plugin-terser:
+        specifier: ^7.0.2
+        version: registry.npmmirror.com/rollup-plugin-terser@7.0.2(rollup@4.9.4)
       ts-morph:
         specifier: ^14.0.0
         version: registry.npmmirror.com/ts-morph@14.0.0
@@ -164,6 +176,8 @@ importers:
         version: registry.npmmirror.com/vue@3.4.0(typescript@5.3.3)
 
   packages/hooks: {}
+
+  packages/shared: {}
 
   packages/theme-chalk:
     devDependencies:
@@ -1404,6 +1418,15 @@ packages:
     name: '@jridgewell/set-array'
     version: 1.1.2
     engines: {node: '>=6.0.0'}
+    dev: true
+
+  registry.npmmirror.com/@jridgewell/source-map@0.3.5:
+    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==, tarball: https://registry.npmmirror.com/@jridgewell/source-map/-/source-map-0.3.5.tgz}
+    name: '@jridgewell/source-map'
+    version: 0.3.5
+    dependencies:
+      '@jridgewell/gen-mapping': registry.npmmirror.com/@jridgewell/gen-mapping@0.3.3
+      '@jridgewell/trace-mapping': registry.npmmirror.com/@jridgewell/trace-mapping@0.3.20
     dev: true
 
   registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.15:
@@ -3848,6 +3871,12 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
+  registry.npmmirror.com/commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==, tarball: https://registry.npmmirror.com/commander/-/commander-2.20.3.tgz}
+    name: commander
+    version: 2.20.3
+    dev: true
+
   registry.npmmirror.com/commander@9.5.0:
     resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==, tarball: https://registry.npmmirror.com/commander/-/commander-9.5.0.tgz}
     name: commander
@@ -5813,6 +5842,17 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  registry.npmmirror.com/jest-worker@26.6.2:
+    resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==, tarball: https://registry.npmmirror.com/jest-worker/-/jest-worker-26.6.2.tgz}
+    name: jest-worker
+    version: 26.6.2
+    engines: {node: '>= 10.13.0'}
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node@20.10.6
+      merge-stream: registry.npmmirror.com/merge-stream@2.0.0
+      supports-color: registry.npmmirror.com/supports-color@7.2.0
+    dev: true
+
   registry.npmmirror.com/jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==, tarball: https://registry.npmmirror.com/jju/-/jju-1.4.0.tgz}
     name: jju
@@ -7022,6 +7062,14 @@ packages:
     version: 1.2.3
     dev: true
 
+  registry.npmmirror.com/randombytes@2.1.0:
+    resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==, tarball: https://registry.npmmirror.com/randombytes/-/randombytes-2.1.0.tgz}
+    name: randombytes
+    version: 2.1.0
+    dependencies:
+      safe-buffer: registry.npmmirror.com/safe-buffer@5.2.1
+    dev: true
+
   registry.npmmirror.com/read-pkg-up@1.0.1:
     resolution: {integrity: sha512-WD9MTlNtI55IwYUS27iHh9tK3YoIVhxis8yKhLpTqWtml739uXc9NWTpxoHkfZf3+DkCCsXox94/VWZniuZm6A==, tarball: https://registry.npmmirror.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz}
     name: read-pkg-up
@@ -7313,6 +7361,28 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/rollup-plugin-ignore@1.0.10:
+    resolution: {integrity: sha512-VsbnfwwaTv2Dxl2onubetX/3RnSnplNnjdix0hvF8y2YpqdzlZrjIq6zkcuVJ08XysS8zqW3gt3ORBndFDgsrg==, tarball: https://registry.npmmirror.com/rollup-plugin-ignore/-/rollup-plugin-ignore-1.0.10.tgz}
+    name: rollup-plugin-ignore
+    version: 1.0.10
+    dev: true
+
+  registry.npmmirror.com/rollup-plugin-terser@7.0.2(rollup@4.9.4):
+    resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==, tarball: https://registry.npmmirror.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz}
+    id: registry.npmmirror.com/rollup-plugin-terser/7.0.2
+    name: rollup-plugin-terser
+    version: 7.0.2
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+    peerDependencies:
+      rollup: ^2.0.0
+    dependencies:
+      '@babel/code-frame': registry.npmmirror.com/@babel/code-frame@7.23.5
+      jest-worker: registry.npmmirror.com/jest-worker@26.6.2
+      rollup: registry.npmmirror.com/rollup@4.9.4
+      serialize-javascript: registry.npmmirror.com/serialize-javascript@4.0.0
+      terser: registry.npmmirror.com/terser@5.26.0
+    dev: true
+
   registry.npmmirror.com/rollup@4.9.4:
     resolution: {integrity: sha512-2ztU7pY/lrQyXSCnnoU4ICjT/tCG9cdH3/G25ERqE3Lst6vl2BCM5hL2Nw+sslAvAf+ccKsAq1SkKQALyqhR7g==, tarball: https://registry.npmmirror.com/rollup/-/rollup-4.9.4.tgz}
     name: rollup
@@ -7415,6 +7485,14 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: registry.npmmirror.com/lru-cache@6.0.0
+    dev: true
+
+  registry.npmmirror.com/serialize-javascript@4.0.0:
+    resolution: {integrity: sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==, tarball: https://registry.npmmirror.com/serialize-javascript/-/serialize-javascript-4.0.0.tgz}
+    name: serialize-javascript
+    version: 4.0.0
+    dependencies:
+      randombytes: registry.npmmirror.com/randombytes@2.1.0
     dev: true
 
   registry.npmmirror.com/set-blocking@2.0.0:
@@ -7859,6 +7937,19 @@ packages:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==, tarball: https://registry.npmmirror.com/tabbable/-/tabbable-6.2.0.tgz}
     name: tabbable
     version: 6.2.0
+    dev: true
+
+  registry.npmmirror.com/terser@5.26.0:
+    resolution: {integrity: sha512-dytTGoE2oHgbNV9nTzgBEPaqAWvcJNl66VZ0BkJqlvp71IjO8CxdBx/ykCNb47cLnCmCvRZ6ZR0tLkqvZCdVBQ==, tarball: https://registry.npmmirror.com/terser/-/terser-5.26.0.tgz}
+    name: terser
+    version: 5.26.0
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      '@jridgewell/source-map': registry.npmmirror.com/@jridgewell/source-map@0.3.5
+      acorn: registry.npmmirror.com/acorn@8.11.3
+      commander: registry.npmmirror.com/commander@2.20.3
+      source-map-support: registry.npmmirror.com/source-map-support@0.5.21
     dev: true
 
   registry.npmmirror.com/text-table@0.2.0:

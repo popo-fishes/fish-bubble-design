@@ -16,10 +16,10 @@ export function ThemeAlias(): Plugin {
     resolveId(id) {
       if (!id.startsWith(sourceThemeChalk)) return;
 
-      const replaceFn = (id as any).replaceAll || id.replace;
+      const regex = new RegExp(sourceThemeChalk, "g");
 
       return {
-        id: replaceFn(sourceThemeChalk, bundleThemeChalk),
+        id: id.replace(regex, bundleThemeChalk),
         // cover
         external: "absolute"
       };

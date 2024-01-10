@@ -12,7 +12,7 @@ import { POPPER_WRAP_INJECTION_KEY } from "./utils";
 
 import type { PopperWrapInjectionContext } from "./utils";
 
-import type { IPopperWrapProps } from "./wrap";
+import type { IPopperWrapProps } from "./wrap-type";
 
 defineOptions({
   name: "PopperWrap",
@@ -43,3 +43,4 @@ defineExpose(popperProvides);
 
 provide(POPPER_WRAP_INJECTION_KEY, popperProvides);
 </script>
+./wrap-type

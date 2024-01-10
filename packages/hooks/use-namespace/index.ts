@@ -44,8 +44,8 @@ export const useGetDerivedNamespace = () => {
  * @returns
  */
 // !!! 封装组件样式 非常重要的方法！
-export const useNamespace = (block: string) => {
-  const defaultNamespace = useGetDerivedNamespace();
+export const useNamespace = (block: string, namespaceOverrides?: string) => {
+  const defaultNamespace = namespaceOverrides ? ref(namespaceOverrides) : useGetDerivedNamespace();
   // 默认样式拼接
   const b = (blockSuffix = "") => _bem(defaultNamespace.value, block, blockSuffix, "", "");
   // 属性

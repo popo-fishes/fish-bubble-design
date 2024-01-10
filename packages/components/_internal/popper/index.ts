@@ -4,7 +4,7 @@
  */
 import FbPopper from "./src/popper.vue";
 
-export type * from "./src/content";
-export type * from "./src/popper";
+export type * from "./src/content-type";
+export type * from "./src/popper-type";
 
 export default FbPopper;

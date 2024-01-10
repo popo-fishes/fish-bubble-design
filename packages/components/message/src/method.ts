@@ -3,7 +3,7 @@
  * @Description: Modify here please
  */
 import { createVNode, render } from "vue";
-import { isClient } from "@fish-bubble-design/core/shared";
+import { isClient } from "@fish-bubble-design/shared";
 import MessageConstructor from "./message.vue";
 import type { MessageContext, MessageHandler, MessageOptions, Message, MessageTypedOptions } from "./type";
 import { instances } from "./instance";

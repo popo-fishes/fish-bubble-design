@@ -1,12 +1,12 @@
 @use "sass:map";
 
-@use "core/mixins" as *;
-@use "common/var" as *;
-@use "core/css-var" as *;
-@use "core/function" as *;
-@use "core/config" as *;
+@use "../../_styles/core/mixins" as *;
+@use "../../_styles/common/var" as *;
+@use "../../_styles/core/css-var" as *;
+@use "../../_styles/core/function" as *;
+@use "../../_styles/core/config" as *;
 
-@use "./component_internal/wave.scss";
+@use "../../_internal/wave/style";
 
 @include b(input) {
   @include set-component-css-var("input", $input);
@@ -79,7 +79,8 @@
     flex-shrink: 0;
     flex-wrap: nowrap;
     height: 100%;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     .closeIcon {
       cursor: pointer;
       width: 24px;

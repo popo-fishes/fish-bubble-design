@@ -13,18 +13,13 @@
 <script lang="ts" setup>
 import { computed, unref, inject, getCurrentInstance } from "vue";
 import { selectKey } from "./utils";
-
-interface IOptionProps {
-  value: string | number;
-  label: string | number;
-  disabled?: boolean;
-}
+import type { IOption } from "./type";
 
 defineOptions({
   name: "FbOption"
 });
 
-const props = defineProps<IOptionProps>();
+const props = defineProps<IOption>();
 
 const select = inject(selectKey);
 const containerKls = computed(() => [

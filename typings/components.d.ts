@@ -16,10 +16,13 @@ declare module "@vue/runtime-core" {
     FbImage: (typeof import("../packages/fish-bubble-design"))["FbImage"];
     FbImgCaptcha: (typeof import("../packages/fish-bubble-design"))["FbImgCaptcha"];
     FbInput: (typeof import("../packages/fish-bubble-design"))["FbInput"];
+    FbSelect: (typeof import("../packages/fish-bubble-design"))["FbSelect"];
+    FbOption: (typeof import("../packages/fish-bubble-design"))["FbOption"];
   }
 
   interface ComponentCustomProperties {
     $message: (typeof import("../packages/fish-bubble-design"))["message"];
+    $prompt: (typeof import("../packages/fish-bubble-design"))["prompt"];
   }
 }
 

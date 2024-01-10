@@ -19,8 +19,7 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   placeholder: "请选择",
   placement: "bottom",
   trigger: "hover",
-  clearable: false,
-  size: "middle"
+  clearable: false
 });
 
 defineOptions({
@@ -48,7 +47,6 @@ const selectDownStyle = computed(() => {
   // 下拉菜单和选择器同宽。默认将设置width
   return {
     width: `${_width}px`,
-    // 你可以外层传递样式
     ...props.dropdownStyle
   };
 });

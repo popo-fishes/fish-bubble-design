@@ -4,7 +4,7 @@
  */
 import { computed, unref } from "vue";
 import type { Ref } from "vue";
-import type { MaybeRef } from "@fish-bubble-design/core/shared/utils";
+import type { MaybeRef } from "@fish-bubble-design/shared/utils";
 
 const defaultIdInjection = {
   prefix: Math.floor(Math.random() * 10000),

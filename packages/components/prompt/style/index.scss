@@ -1,5 +1,5 @@
-@use "core/mixins" as *;
-@use "core/config" as *;
+@use "../../_styles/core/mixins" as *;
+@use "../../_styles/core/config" as *;
 
 @include b(prompt) {
   .#{$namespace}-dialog__header {

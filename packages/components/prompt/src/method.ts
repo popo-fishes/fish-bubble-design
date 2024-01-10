@@ -3,7 +3,7 @@
  * @Description: prompt 全局提示弹窗，你可以使用$.prompt()呼唤它
  */
 import { createVNode, render } from "vue";
-import { isClient } from "@fish-bubble-design/core/shared/utils";
+import { isClient } from "@fish-bubble-design/shared/utils";
 import type { IPromptProps } from "./type";
 import promptConstructor from "./prompt.vue";
 

@@ -14,9 +14,10 @@ import VueMacros from "unplugin-vue-macros/rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
+import { terser } from "rollup-plugin-terser";
 
 import { excludeFiles, buildConfigEntries } from "../utils";
-import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent, getPackageSpacesMap } from "../core";
+import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent } from "../core";
 import { buildOutput, libraryRoot, pkgsRoot, projRoot } from "../core/constants";
 import { ThemeAlias } from "../plugins/alias";
 
@@ -58,17 +59,30 @@ export const buildModules = async () => {
           ".vue": "ts"
         }
       }),
+      terser({
+        compress: {
+          drop_console: true
+        },
+        mangle: false, // Disable variable name obfuscation
+        output: {
+          beautify: true, // Beautify output
+          comments: false // Delete all comments
+        }
+      }),
       dts({
         entryRoot: pkgsRoot,
         outDir: resolve(buildOutput, "types"),
         tsconfigPath: resolve(projRoot, "tsconfig.json"),
         cleanVueFileName: true,
-        aliasesExclude: Object.keys(getPackageSpacesMap()),
+        // Now there is no need for alias conversion, we will all use relative paths
+        // aliasesExclude: Object.keys(getPackageSpacesMap())
         beforeWriteFile: (filePath, content) => {
           // When returning 'false' or 'Promise<false>', the file will be skipped
           if (filePath.indexOf("/theme-chalk/") !== -1) {
             return false;
           }
+
+          // transform
           const paths = writeTsTypesPath(filePath);
           const code = writeTsTypesContent(content, filePath);
           return {

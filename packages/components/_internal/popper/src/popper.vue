@@ -33,15 +33,15 @@ import { computed, ref, watch, unref, toRef } from "vue";
 import PopperWrap from "./wrap.vue";
 import PopperTrigger from "./trigger.vue";
 import PopperContent from "./content.vue";
-import { isBoolean } from "@fish-bubble-design/core/shared/utils";
+import { isBoolean } from "@fish-bubble-design/shared/utils";
 
-import { onClickOutside } from "@fish-bubble-design/core/shared/onClickOutside";
+import { onClickOutside } from "@fish-bubble-design/shared/onClickOutside";
 import { useId } from "@fish-bubble-design/hooks/";
 
 import { composeEventHandlers } from "./utils";
 import { useDelayedToggle } from "./composables/use-delayed-toggle";
 
-import type { IPopperProps } from "./popper";
+import type { IPopperProps } from "./popper-type";
 
 defineOptions({
   name: "FbPopper"

@@ -2,7 +2,7 @@
  * @Date: 2023-12-19 22:02:19
  * @Description: Using delayed switching
  */
-import { tryOnScopeDispose } from "@fish-bubble-design/core/shared";
+import { tryOnScopeDispose } from "@fish-bubble-design/shared";
 
 type UseDelayedToggleProps = {
   open: (event?: Event) => void;

@@ -1,13 +1,13 @@
 @use "sass:map";
 
-@use "core/mixins" as *;
-@use "common/var" as *;
-@use "common/util" as *;
-@use "core/css-var" as *;
-@use "core/function" as *;
-@use "core/config" as *;
+@use "../../_styles/common/util" as *;
+@use "../../_styles/core/config" as *;
+@use "../../_styles/core/mixins" as *;
+@use "../../_styles/common/var" as *;
+@use "../../_styles/core/css-var" as *;
+@use "../../_styles/core/function" as *;
 
-@use "./component_internal/popper.scss";
+@use "../../_internal/popper/style";
 
 @include b(select) {
   @include set-component-css-var("select", $select);
@@ -31,8 +31,8 @@
 
   @include e(arrow) {
     color: rgba(0, 0, 0, 0.25);
-    font-size: 6px;
-    display: block;
+    font-size: 7px;
+    height: 16px;
     width: 16px;
   }
 

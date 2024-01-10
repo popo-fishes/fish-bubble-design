@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import type { CSSProperties } from "vue";
-import { useTimeoutFn, useResizeObserver } from "@fish-bubble-design/core/shared";
+import { useTimeoutFn, useResizeObserver } from "@fish-bubble-design/shared";
 import { getLastOffset } from "./instance";
 import FbIcon from "@fish-bubble-design/components/icon";
 import { useNamespace } from "@fish-bubble-design/hooks";

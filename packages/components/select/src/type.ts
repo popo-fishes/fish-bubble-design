@@ -3,15 +3,19 @@
  * @Description: Modify here please
  */
 import type { Placement, IPopperProps } from "@fish-bubble-design/components/_internal/popper";
+import type { ComponentSize } from "@fish-bubble-design/core";
+
+export type IOption = {
+  value: string | number;
+  label: string | number;
+  disabled?: boolean;
+};
 
 export interface ISelectProps {
   /** 选择项数据 */
-  options?: {
-    label: number | string;
-    value: number | string;
-  }[];
+  options?: IOption[];
   /** 选择器大小 */
-  size?: "large" | "middle" | "small";
+  size?: ComponentSize;
   /** value值 */
   modelValue?: any;
   /** 占位符 */

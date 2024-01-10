@@ -80,7 +80,7 @@ onBeforeUnmount(() => observer && observer.unobserve(imgDom.value)); // 不观�
 </script>
 
 <template>
-  <div ref="imgDom" :class="ns.b('image')" :style="imgWrapStyle">
+  <div ref="imgDom" :class="ns.b()" :style="imgWrapStyle">
     <!-- 图片地址 -->
     <template v-if="hasImg">
       <a :href="linkUrl" v-if="!!linkUrl" target="_blank">

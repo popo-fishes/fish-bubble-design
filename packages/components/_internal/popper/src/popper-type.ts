@@ -2,9 +2,9 @@
  * @Date: 2023-12-19 12:25:31
  * @Description: Modify here please
  */
-import type { IPopperWrapProps } from "./wrap";
-import type { IPopperTriggerProps } from "./trigger";
-import type { IPopperContentProps } from "./content";
+import type { IPopperWrapProps } from "./wrap-type";
+import type { IPopperTriggerProps } from "./trigger-type";
+import type { IPopperContentProps } from "./content-type";
 
 export interface IPopperProps extends IPopperWrapProps, IPopperTriggerProps, IPopperContentProps {
   /** 主动控制，不在受trigger的值影响 */

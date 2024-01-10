@@ -4,7 +4,7 @@
  * @Description: Modify here please
  */
 import { isRef, onScopeDispose, watch } from "vue";
-import { isClient } from "@fish-bubble-design/core/shared/utils";
+import { isClient } from "@fish-bubble-design/shared/utils";
 import { addClass, getScrollBarWidth, hasClass, getStyle, removeClass } from "@fish-bubble-design/core/utils";
 
 import type { Ref } from "vue";

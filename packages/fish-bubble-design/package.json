@@ -16,55 +16,24 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
   "exports": {
     ".": {
-      "types": "./es/index.d.ts",
       "import": "./es/index.mjs",
-      "require": "./lib/index.js"
+      "require": "./lib/index.js",
+      "types": "./es/index.d.ts"
     },
     "./global": {
       "types": "./global.d.ts"
     },
-    "./core": {
-      "types": "./es/core/shared/index.d.ts",
-      "import": "./es/core/shared/index.mjs",
-      "require": "./lib/core/shared/index.js"
-    },
-    "./es": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.mjs"
-    },
-    "./lib": {
-      "types": "./lib/index.d.ts",
-      "require": "./lib/index.js"
-    },
-    "./es/*.mjs": {
-      "types": "./es/*.d.ts",
-      "import": "./es/*.mjs"
-    },
-    "./es/*": {
-      "types": [
-        "./es/*.d.ts",
-        "./es/*/index.d.ts"
-      ],
-      "import": "./es/*.mjs"
-    },
-    "./lib/*.js": {
-      "types": "./lib/*.d.ts",
-      "require": "./lib/*.js"
-    },
-    "./lib/*": {
-      "types": [
-        "./lib/*.d.ts",
-        "./lib/*/index.d.ts"
-      ],
-      "require": "./lib/*.js"
+    "./shared": {
+      "types": "./es/shared/index.d.ts",
+      "import": "./es/shared/index.mjs",
+      "require": "./lib/shared/index.js"
     },
     "./*": "./*"
   },
-  "unpkg": "dist/index.full.js",
-  "jsdelivr": "dist/index.full.js",
-  "style": "dist/index.css",
   "publishConfig": {
     "access": "public"
   },
