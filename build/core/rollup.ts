@@ -56,8 +56,7 @@ export const writeTsTypesPath = (filePath: string): string => {
 export const writeTsTypesContent = (content: string, filePath: string): string => {
   // 改变fish-bubble-design/** 里面的路径指向问题
   if (filePath.indexOf(`/types/${UINAME}/`) !== -1) {
-    const regex = new RegExp("../components", "g");
-    return content.replace(regex, "./components");
+    return content.replace(/\.\.\/(components|hooks)/g, "./$1");
   } else {
     // fish-bubble-design v2版本不需要了，注释掉，不需要进行别名转换！
     // const spacesMap = getPackageSpacesMap();
