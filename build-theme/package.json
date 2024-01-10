@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "gulp --require @esbuild-kit/cjs-loader"
+    "start": "gulp --require @esbuild-kit/cjs-loader"
   },
   "devDependencies": {
     "@types/gulp-sass": "^5.0.0",

@@ -128,7 +128,6 @@ $border-radius: map.merge(
 );
 
 // Button
-// css3 var in packages/theme-chalk/src/button.scss
 $button: () !default;
 $button: map.merge(
   (
@@ -155,7 +154,6 @@ $button: map.merge(
 );
 
 // Checkbox
-// css3 var in packages/theme-chalk/src/checkbox.scss
 $checkbox: () !default;
 $checkbox: map.merge(
   (
@@ -191,7 +189,6 @@ $checkbox: map.merge(
 );
 
 // Input
-// css3 var in packages/theme-chalk/src/input.scss
 $input: () !default;
 $input: map.merge(
   (
@@ -234,7 +231,6 @@ $popper: map.merge(
 );
 
 // select
-// css3 var in packages/theme-chalk/src/select.scss
 $select: () !default;
 $select: map.merge(
   (

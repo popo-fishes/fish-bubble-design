@@ -23,7 +23,7 @@ import { buildConfig, Module } from "../build/utils";
 const distFolder = path.resolve(__dirname, "dist");
 
 // The style file path of the component
-const componentScssFiles = [];
+const componentScssFiles: string[] = [];
 
 // Exclude files
 async function excludeFiles(cb) {
@@ -170,7 +170,7 @@ const createTotalCssTheme = async () => {
       // https://github.com/sindresorhus/gulp-autoprefixer
       .pipe(autoprefixer({ cascade: false }))
       // https://www.npmjs.com/package/gulp-clean-css
-      // .pipe(cleanCSS({}))
+      .pipe(cleanCSS({}))
       // output
       .pipe(dest(path.resolve(epOutput, "dist")))
   );
@@ -182,6 +182,7 @@ const createTotalCssTheme = async () => {
  */
 const createCommonVarTheme = async () => {
   const commonVarFilePath = componentScssFiles.find((item) => item.includes("_styles\\common\\var.scss"));
+  if (!commonVarFilePath) return;
   const paths = commonVarFilePath.split("\\components\\");
   const currentDir = path.resolve(epOutput, "dist");
   const targetFilePath = path.join(buildConfig.cjs.output.path, "components", paths[1]);
@@ -206,7 +207,7 @@ const createCommonVarTheme = async () => {
 
 // !!! You should pay attention to this order
 const build = series(
-  withTaskName("clean", () => run("pnpm run -C packages/theme-chalk clean")),
+  withTaskName("clean", () => run("pnpm run -C ./build-theme clean")),
 
   withTaskName("createOutput", () => mkdir(path.resolve(epOutput, "dist"), { recursive: true })),
   // create theme-chalk

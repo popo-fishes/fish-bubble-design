@@ -11,4 +11,4 @@ import type { TaskFunction } from "gulp";
 export const withTaskName = <T extends TaskFunction>(name: string, fn: T) => Object.assign(fn, { displayName: name });
 
 // Create task
-export const runTask = (name: string) => withTaskName(`shellTask:${name}`, () => run(`pnpm run build ${name}`, buildRoot));
+export const runTask = (name: string) => withTaskName(`shellTask:${name}`, () => run(`pnpm run start ${name}`, buildRoot));

@@ -39,10 +39,11 @@
   },
   "sideEffects": [
     "dist/*",
-    "theme-chalk/**/*.css",
-    "theme-chalk/src/**/*.less",
+    "es/**/_styles/*",
+    "lib/**/_styles/*",
     "es/components/*/style/*",
-    "lib/components/*/style/*"
+    "lib/components/*/style/*",
+    "*.scss"
   ],
   "peerDependencies": {
     "vue": "^3.4.0"

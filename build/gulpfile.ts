@@ -35,15 +35,15 @@ export const copyTypesDefinitions: TaskFunction = async (cb) => {
 };
 
 export default series(
-  withTaskName("clean", () => run("pnpm run clean")),
+  withTaskName("clean", () => run("pnpm run -C ./build clean")),
   withTaskName("createOutput", () => mkdir(epOutput, { recursive: true })),
 
   parallel(
     runTask("buildModules"),
     runTask("buildFullBundle"),
-    withTaskName("buildThemeChalk", () => run("pnpm run -C packages/theme-chalk build"))
+    withTaskName("buildThemeChalk", () => run("pnpm run -C ./build-theme start"))
   ),
   parallel(withTaskName("copyTypesDefinitions", copyTypesDefinitions)),
-  parallel(withTaskName("createGlobalDts", () => run("pnpm run create-global-dts"))),
+  parallel(withTaskName("createGlobalDts", () => run("pnpm -w run create-global-dts"))),
   parallel(withTaskName("copyFiles", copyFiles))
 );

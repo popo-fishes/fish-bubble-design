@@ -75,11 +75,6 @@ export const buildModules = async () => {
         // Now there is no need for alias conversion, we will all use relative paths
         // aliasesExclude: Object.keys(getPackageSpacesMap())
         beforeWriteFile: (filePath, content) => {
-          // When returning 'false' or 'Promise<false>', the file will be skipped
-          if (filePath.indexOf("/theme-chalk/") !== -1) {
-            return false;
-          }
-
           // transform
           const paths = writeTsTypesPath(filePath);
           const code = writeTsTypesContent(content, filePath);
