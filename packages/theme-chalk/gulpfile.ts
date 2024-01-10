@@ -4,31 +4,30 @@
  * @Description: Modify here please
  */
 import path from "path";
-import chalk from "chalk";
-import { dest, parallel, series, src } from "gulp";
-import glob, { async } from "fast-glob";
+import consola from "consola";
+
 import { copy } from "fs-extra";
 import { readdirSync, statSync, unlinkSync, copyFileSync, writeFileSync } from "fs";
+import { mkdir } from "fs/promises";
+
+import { dest, parallel, series, src } from "gulp";
 import gulpSass from "gulp-sass";
-import { copyFile, mkdir } from "fs/promises";
 import dartSass from "sass";
 import autoprefixer from "gulp-autoprefixer";
 import cleanCSS from "gulp-clean-css";
-import consola from "consola";
-import { epOutput, pkgsRoot, buildOutput } from "../../build/core/constants";
-import { withTaskName, run, runTask } from "../../build/core";
+
+import { epOutput, pkgsRoot } from "../../build/core/constants";
+import { withTaskName, run } from "../../build/core";
 import { buildConfig, Module } from "../../build/utils";
 
-import type { TaskFunction } from "gulp";
-
-// 生成的临时样式文件目录
+// Directory of temporary style files generated
 const distFolder = path.resolve(__dirname, "dist");
-const distBundle = path.resolve(epOutput, "theme-chalk");
-// 组件的样式文件路径
+
+// The style file path of the component
 const componentScssFiles = [];
 
 // Exclude files
-async function excludeFiles() {
+async function excludeFiles(cb) {
   const walkDir = async (dir: string) => {
     // Return the file name or file object in the directory
     readdirSync(dir).forEach((file) => {
@@ -61,17 +60,24 @@ async function excludeFiles() {
     });
   };
   await walkDir(distFolder);
+  cb();
 }
 
 // Copy the packaged CSS file to the file package under the official package
-export const copyCssDir: TaskFunction = async (cb) => {
-  const copyTypes = (module: Module) =>
-    withTaskName(`copyTypes:${module}`, () => {
-      const targetPath = path.resolve(buildConfig[module].output.path, "components");
-      // 递归复制
-      return copy(distFolder, targetPath, { recursive: true });
+export const copyCssDir = (cb) => {
+  const copyTypes = (module: Module) => {
+    const targetPath = path.resolve(buildConfig[module].output.path, "components");
+    // Recursive replication
+    return copy(distFolder, targetPath, { recursive: true });
+  };
+
+  Promise.all([copyTypes("esm"), copyTypes("cjs")])
+    .then(() => {
+      cb();
+    })
+    .catch((error) => {
+      cb(error);
     });
-  return parallel(copyTypes("esm"), copyTypes("cjs"))(cb);
 };
 
 /** create theme-chalk */
@@ -103,26 +109,6 @@ function buildThemeChalk() {
   );
 }
 
-/**
- * copy from dist
- */
-function copyThemeChalkBundle() {
-  return src(`${distFolder}/**`).pipe(dest(distBundle));
-}
-
-/**
- * copy source file to packages
- */
-
-function copyThemeChalkSource() {
-  return src(path.resolve(__dirname, "src/**")).pipe(dest(path.resolve(distBundle, "src")));
-}
-
-const copyFullStyle = async () => {
-  await mkdir(path.resolve(epOutput, "dist"), { recursive: true });
-  await copyFile(path.resolve(epOutput, "theme-chalk/index.css"), path.resolve(epOutput, "dist/index.css"));
-};
-
 // Copy the original scss file to temporary dist
 const copyOriginScssFiles = async () => {
   const copys = (sourcePath, fileName) => {
@@ -140,16 +126,18 @@ const copyOriginScssFiles = async () => {
   });
 };
 
-// Generate overall style file   scss（ 非常重要的）
+// Generate overall style file   scss ( Very important )
 const createTotalScssTheme = async () => {
   // 查询必须是组件的scss文件
   const components = componentScssFiles.filter((item) => {
-    return item.indexOf("\\_internal\\") == -1 && item.includes("index.scss");
+    // 排除components -> _internal内部组件样式，只需要基础样式文件 和 组件本身的样式文件
+    return item.indexOf("\\_internal\\") == -1 && ["base.scss", "index.scss"].some((name) => item.includes(name));
   });
   // console.log(components);
 
   let scssTotalCode = "";
   components.forEach((item) => {
+    // item =>  'D:\\fish-bubble-design\\packages\\components\\button\\style\\index.scss',
     const paths = item.split("\\components\\");
     const currentDir = path.resolve(epOutput, "dist");
     const targetFilePath = path.join(buildConfig.cjs.output.path, "components", paths[1]);
@@ -163,6 +151,7 @@ const createTotalScssTheme = async () => {
     scssTotalCode = scssTotalCode + `@use "${newPath}" as *;\n`;
   });
 
+  // Write an overall entry scss
   const scssTotalPath = path.resolve(epOutput, "dist", "index.scss");
 
   try {
@@ -172,7 +161,8 @@ const createTotalScssTheme = async () => {
     console.error("Error:", err);
   }
 };
-// Generate overall style file  css
+
+// Generate overall style file  css ( Very important )
 const createTotalCssTheme = async () => {
   const currentDir = path.resolve(epOutput, "dist", "index.scss");
   const sass = gulpSass(dartSass);
@@ -193,15 +183,14 @@ const build = series(
   withTaskName("clean", () => run("pnpm run -C packages/theme-chalk clean")),
 
   withTaskName("createOutput", () => mkdir(path.resolve(epOutput, "dist"), { recursive: true })),
-
+  // create theme-chalk
   parallel(withTaskName("buildThemeChalk", buildThemeChalk)),
   parallel(withTaskName("excludeFiles", excludeFiles)),
   parallel(withTaskName("copyOriginScssFiles", copyOriginScssFiles)),
   // Copy temporary style package to formal package
   parallel(withTaskName("copyCssDir", copyCssDir)),
   // Generate overall style file
-  parallel(withTaskName("createTotalScssTheme", createTotalScssTheme))
-  // parallel(withTaskName("createTotalCssTheme", createTotalCssTheme))
+  series(parallel(withTaskName("createTotalScssTheme", createTotalScssTheme)), parallel(withTaskName("createTotalCssTheme", createTotalCssTheme)))
 );
 
 export default build;

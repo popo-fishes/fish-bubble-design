@@ -3,14 +3,15 @@
  * @Description: Modify here please
  */
 import path from "path";
+
 import { copyFile, mkdir } from "fs/promises";
 import { copy } from "fs-extra";
 import { parallel, series } from "gulp";
+import type { TaskFunction } from "gulp";
+
 import { withTaskName, run, runTask } from "./core";
 import { buildOutput, epOutput, libraryPackage, projRoot } from "./core/constants";
-
 import { buildConfig } from "./utils";
-import type { TaskFunction } from "gulp";
 import type { Module } from "./utils";
 
 export * from "./tasks";

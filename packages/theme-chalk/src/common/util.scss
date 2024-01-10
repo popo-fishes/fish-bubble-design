@@ -1,7 +1,0 @@
-/** 禁止选择 */
-@mixin noSelect() {
-  user-select: none; /* 标准的语法 */
-  -webkit-user-select: none; /* Chrome 和 Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-}
