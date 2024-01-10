@@ -1,5 +1,5 @@
 {
-  "name": "@fish-bubble-design/theme-chalk",
+  "name": "@fish-bubble-design/build-theme",
   "version": "0.0.5",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "gulp --require @esbuild-kit/cjs-loader"
+    "start": "gulp --require @esbuild-kit/cjs-loader"
   },
   "devDependencies": {
     "@types/gulp-sass": "^5.0.0",

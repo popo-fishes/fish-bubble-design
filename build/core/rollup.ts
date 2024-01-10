@@ -7,10 +7,10 @@ import { libraryPackage, PKG_PREFIX, UINAME } from ".";
 
 import type { OutputOptions, RollupBuild } from "rollup";
 
-export const getPackageSpacesMap = () => {
-  // 工程packages目录下的文件
-  const directorys = ["components", "core", "hooks", "shared"];
+// 工程packages目录下的文件
+const directorys = ["components", "core", "hooks", "shared"];
 
+export const getPackageSpacesMap = () => {
   const packageSpacesEnum: Record<string, string> = {};
 
   directorys.forEach((item) => {
@@ -56,8 +56,7 @@ export const writeTsTypesPath = (filePath: string): string => {
 export const writeTsTypesContent = (content: string, filePath: string): string => {
   // 改变fish-bubble-design/** 里面的路径指向问题
   if (filePath.indexOf(`/types/${UINAME}/`) !== -1) {
-    const regex = new RegExp("../components", "g");
-    return content.replace(regex, "./components");
+    return content.replace(/\.\.\/(components|hooks|shared|core)/g, "./$1");
   } else {
     // fish-bubble-design v2版本不需要了，注释掉，不需要进行别名转换！
     // const spacesMap = getPackageSpacesMap();

@@ -19,7 +19,6 @@ import { terser } from "rollup-plugin-terser";
 import { excludeFiles, buildConfigEntries } from "../utils";
 import { generateExternal, writeBundles, writeTsTypesPath, writeTsTypesContent } from "../core";
 import { buildOutput, libraryRoot, pkgsRoot, projRoot } from "../core/constants";
-import { ThemeAlias } from "../plugins/alias";
 
 export const buildModules = async () => {
   const input = excludeFiles(
@@ -32,7 +31,6 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
-      ThemeAlias(),
       VueMacros({
         setupComponent: false,
         setupSFC: false,
@@ -77,11 +75,6 @@ export const buildModules = async () => {
         // Now there is no need for alias conversion, we will all use relative paths
         // aliasesExclude: Object.keys(getPackageSpacesMap())
         beforeWriteFile: (filePath, content) => {
-          // When returning 'false' or 'Promise<false>', the file will be skipped
-          if (filePath.indexOf("/theme-chalk/") !== -1) {
-            return false;
-          }
-
           // transform
           const paths = writeTsTypesPath(filePath);
           const code = writeTsTypesContent(content, filePath);

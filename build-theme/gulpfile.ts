@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /*
  * @Date: 2024-01-03 17:10:36
  * @Description: Modify here please
@@ -16,18 +15,18 @@ import dartSass from "sass";
 import autoprefixer from "gulp-autoprefixer";
 import cleanCSS from "gulp-clean-css";
 
-import { epOutput, pkgsRoot } from "../../build/core/constants";
-import { withTaskName, run } from "../../build/core";
-import { buildConfig, Module } from "../../build/utils";
+import { epOutput, pkgsRoot } from "../build/core/constants";
+import { withTaskName, run } from "../build/core";
+import { buildConfig, Module } from "../build/utils";
 
 // Directory of temporary style files generated
 const distFolder = path.resolve(__dirname, "dist");
 
 // The style file path of the component
-const componentScssFiles = [];
+const componentScssFiles: string[] = [];
 
 // Exclude files
-async function excludeFiles(cb) {
+const excludeFiles = async () => {
   const walkDir = async (dir: string) => {
     // Return the file name or file object in the directory
     readdirSync(dir).forEach((file) => {
@@ -49,22 +48,20 @@ async function excludeFiles(cb) {
 
           // Only handled _styles/*.css
           isDeleted = !newPath.match(regex);
-          //  console.log(2, isDeleted);
         }
 
         if (isDeleted) {
           unlinkSync(filePath);
-          console.log(`Deleted file ${filePath}`);
+          consola.warn(`Deleted file ${filePath}`);
         }
       }
     });
   };
   await walkDir(distFolder);
-  cb();
-}
+};
 
 // Copy the packaged CSS file to the file package under the official package
-export const copyCssDir = (cb) => {
+const copyCssDir = (cb) => {
   const copyTypes = (module: Module) => {
     const targetPath = path.resolve(buildConfig[module].output.path, "components");
     // Recursive replication
@@ -81,14 +78,14 @@ export const copyCssDir = (cb) => {
 };
 
 /** create theme-chalk */
-function buildThemeChalk() {
+const buildThemeChalk = () => {
   const sass = gulpSass(dartSass);
   return (
     src(["**/*.scss", "!node_modules/**/*"], {
       cwd: path.resolve(pkgsRoot, "components")
     })
       .on("data", function (file) {
-        // console.log("Processing file:", file.path);
+        // consola.log("Processing file:", file.path);
         componentScssFiles.push(file.path);
       })
       // not use sass.sync().on('error', sass.logError) to throw exception
@@ -107,7 +104,7 @@ function buildThemeChalk() {
       // output
       .pipe(dest(distFolder))
   );
-}
+};
 
 // Copy the original scss file to temporary dist
 const copyOriginScssFiles = async () => {
@@ -117,7 +114,7 @@ const copyOriginScssFiles = async () => {
       copyFileSync(sourcePath, newPath);
       consola.success(`${sourcePath} was copied to ${newPath}`);
     } catch (err) {
-      console.error(err);
+      consola.error(err);
     }
   };
   componentScssFiles.forEach((item) => {
@@ -133,7 +130,7 @@ const createTotalScssTheme = async () => {
     // 排除components -> _internal内部组件样式，只需要基础样式文件 和 组件本身的样式文件
     return item.indexOf("\\_internal\\") == -1 && ["base.scss", "index.scss"].some((name) => item.includes(name));
   });
-  // console.log(components);
+  // consola.log(components);
 
   let scssTotalCode = "";
   components.forEach((item) => {
@@ -144,7 +141,7 @@ const createTotalScssTheme = async () => {
 
     // 计算相对路径
     const relativePath = path.relative(currentDir, targetFilePath);
-    // console.log(currentDir, targetFilePath, relativePath);
+    // consola.log(currentDir, targetFilePath, relativePath);
 
     const newPath = relativePath.replace(/\\/g, "/");
 
@@ -156,9 +153,9 @@ const createTotalScssTheme = async () => {
 
   try {
     writeFileSync(scssTotalPath, scssTotalCode);
-    console.log("The file has been saved!");
+    consola.success("The file has been written!");
   } catch (err) {
-    console.error("Error:", err);
+    consola.error("Error:", err);
   }
 };
 
@@ -178,9 +175,38 @@ const createTotalCssTheme = async () => {
   );
 };
 
+/**
+ * Generate a global variable file and place it in the dist entry,
+ * so that custom themes can be implemented through SCSS variables
+ */
+const createCommonVarTheme = async () => {
+  const commonVarFilePath = componentScssFiles.find((item) => item.includes("_styles\\common\\var.scss"));
+  if (!commonVarFilePath) return;
+  const paths = commonVarFilePath.split("\\components\\");
+  const currentDir = path.resolve(epOutput, "dist");
+  const targetFilePath = path.join(buildConfig.cjs.output.path, "components", paths[1]);
+  // 计算相对路径
+  const relativePath = path.relative(currentDir, targetFilePath);
+
+  // consola.log(commonVarFilePath, relativePath);
+
+  const newPath = relativePath.replace(/\\/g, "/");
+
+  const scssVarCode = `@forward "${newPath}";\n`;
+
+  const scssVarPath = path.resolve(epOutput, "dist", "common-var.scss");
+
+  try {
+    writeFileSync(scssVarPath, scssVarCode);
+    consola.success("The file has been written");
+  } catch (err) {
+    consola.error("Error:", err);
+  }
+};
+
 // !!! You should pay attention to this order
 const build = series(
-  withTaskName("clean", () => run("pnpm run -C packages/theme-chalk clean")),
+  withTaskName("clean", () => run("pnpm run -C ./build-theme clean")),
 
   withTaskName("createOutput", () => mkdir(path.resolve(epOutput, "dist"), { recursive: true })),
   // create theme-chalk
@@ -190,7 +216,11 @@ const build = series(
   // Copy temporary style package to formal package
   parallel(withTaskName("copyCssDir", copyCssDir)),
   // Generate overall style file
-  series(parallel(withTaskName("createTotalScssTheme", createTotalScssTheme)), parallel(withTaskName("createTotalCssTheme", createTotalCssTheme)))
+  parallel(
+    withTaskName("createTotalScssTheme", createTotalScssTheme),
+    withTaskName("createTotalCssTheme", createTotalCssTheme),
+    withTaskName("createCommonVarTheme", createCommonVarTheme)
+  )
 );
 
 export default build;
