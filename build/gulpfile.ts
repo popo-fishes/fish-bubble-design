@@ -3,8 +3,11 @@
  * @Description: Modify here please
  */
 import path from "path";
+import consola from "consola";
+import chalk from "chalk";
 
 import { copyFile, mkdir } from "fs/promises";
+import { readFileSync, writeFile } from "fs";
 import { copy } from "fs-extra";
 import { parallel, series } from "gulp";
 import type { TaskFunction } from "gulp";
@@ -13,17 +16,18 @@ import { withTaskName, run, runTask } from "./core";
 import { buildOutput, epOutput, libraryPackage, projRoot } from "./core/constants";
 import { buildConfig } from "./utils";
 import type { Module } from "./utils";
+import glob, { async } from "fast-glob";
 
 export * from "./tasks";
 
-export const copyFiles = () =>
+const copyFiles = () =>
   Promise.all([
     copyFile(libraryPackage, path.join(epOutput, "package.json")),
     copyFile(path.resolve(projRoot, "README.md"), path.resolve(epOutput, "README.md")),
     copyFile(path.resolve(projRoot, "global.d.ts"), path.resolve(epOutput, "global.d.ts"))
   ]);
 
-export const copyTypesDefinitions: TaskFunction = async (cb) => {
+const copyTypesDefinitions: TaskFunction = (cb) => {
   const typesPath = path.resolve(buildOutput, "types");
   const copyTypes = (module: Module) =>
     withTaskName(`copyTypes:${module}`, () => {
@@ -32,6 +36,55 @@ export const copyTypesDefinitions: TaskFunction = async (cb) => {
       return copy(typesPath, targetPath, { recursive: true });
     });
   return parallel(copyTypes("esm"), copyTypes("cjs"))(cb);
+};
+
+// Create component css.js style entry file
+const createCssJsFile = (cb) => {
+  const esComponents = glob("**/*.{mjs,js}", {
+    cwd: path.resolve(epOutput, "es", "components"),
+    absolute: true,
+    onlyFiles: true
+  });
+  const libComponents = glob("**/*.{mjs,js}", {
+    cwd: path.resolve(epOutput, "lib", "components"),
+    absolute: true,
+    onlyFiles: true
+  });
+
+  Promise.all([libComponents, esComponents])
+    .then((data) => {
+      const styleFileData = [...data[0], ...data[1]].filter((item) => {
+        return item.includes("style/index.js") || item.includes("style/index.mjs");
+      });
+      // consola.log(styleFileData)
+      let num = 0;
+      styleFileData.forEach((item) => {
+        let code = readFileSync(item, "utf-8");
+        const regex = new RegExp(".scss", "g");
+        code = code.replace(regex, ".css");
+
+        const styleDir = item.replace(/\/index\.mjs$|\/index\.js$/g, "");
+
+        let filePath = path.join(styleDir, "css.js");
+        if (item.endsWith(".mjs")) {
+          filePath = path.join(styleDir, "css.mjs");
+        }
+        writeFile(filePath, code, (error) => {
+          if (error) {
+            cb(error);
+            consola.error("An error occurred while writing the file:", error);
+          }
+          num = num + 1;
+          if (num == styleFileData.length) {
+            cb();
+          }
+          consola.success(`Created successfully: ${filePath}`);
+        });
+      });
+    })
+    .catch((error) => {
+      cb(error);
+    });
 };
 
 export default series(
@@ -45,5 +98,12 @@ export default series(
   ),
   parallel(withTaskName("copyTypesDefinitions", copyTypesDefinitions)),
   parallel(withTaskName("createGlobalDts", () => run("pnpm -w run create-global-dts"))),
-  parallel(withTaskName("copyFiles", copyFiles))
+  parallel(withTaskName("copyFiles", copyFiles)),
+  parallel(withTaskName("createCssJsFile", createCssJsFile)),
+  parallel(async () => {
+    for (let i = 0, len = 3; i < len; i++) {
+      consola.log(chalk.cyan(`.....`));
+    }
+    consola.success(chalk.green("---------------Packaging completed--------------"));
+  })
 );

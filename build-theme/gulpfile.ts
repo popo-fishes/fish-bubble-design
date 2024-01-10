@@ -26,7 +26,7 @@ const distFolder = path.resolve(__dirname, "dist");
 const componentScssFiles: string[] = [];
 
 // Exclude files
-async function excludeFiles(cb) {
+const excludeFiles = async () => {
   const walkDir = async (dir: string) => {
     // Return the file name or file object in the directory
     readdirSync(dir).forEach((file) => {
@@ -58,11 +58,10 @@ async function excludeFiles(cb) {
     });
   };
   await walkDir(distFolder);
-  cb();
-}
+};
 
 // Copy the packaged CSS file to the file package under the official package
-export const copyCssDir = (cb) => {
+const copyCssDir = (cb) => {
   const copyTypes = (module: Module) => {
     const targetPath = path.resolve(buildConfig[module].output.path, "components");
     // Recursive replication
@@ -79,7 +78,7 @@ export const copyCssDir = (cb) => {
 };
 
 /** create theme-chalk */
-function buildThemeChalk() {
+const buildThemeChalk = () => {
   const sass = gulpSass(dartSass);
   return (
     src(["**/*.scss", "!node_modules/**/*"], {
@@ -105,7 +104,7 @@ function buildThemeChalk() {
       // output
       .pipe(dest(distFolder))
   );
-}
+};
 
 // Copy the original scss file to temporary dist
 const copyOriginScssFiles = async () => {
