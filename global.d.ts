@@ -13,6 +13,7 @@ declare module "@vue/runtime-core" {
     FbInput: (typeof import("fish-bubble-design"))["FbInput"];
     FbSelect: (typeof import("fish-bubble-design"))["FbSelect"];
     FbOption: (typeof import("fish-bubble-design"))["FbOption"];
+    FbPopper: (typeof import("fish-bubble-design"))["FbPopper"];
   }
 
   interface ComponentCustomProperties {

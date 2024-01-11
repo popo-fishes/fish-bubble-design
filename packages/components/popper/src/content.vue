@@ -7,7 +7,7 @@
     <div
       ref="contentRef"
       :role="role"
-      v-bind="$attrs"
+      v-bind="contentAttrs"
       v-show="shouldShow"
       :style="contentStyle"
       :class="contentClass"
@@ -25,7 +25,7 @@
       <div
         ref="contentRef"
         :role="role"
-        v-bind="$attrs"
+        v-bind="contentAttrs"
         v-show="shouldShow"
         :style="contentStyle"
         :class="contentClass"
@@ -42,8 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeUnmount, unref, watch, onMounted, shallowRef, onBeforeMount } from "vue";
+import { ref, computed, onBeforeUnmount, unref, onMounted, shallowRef, onBeforeMount } from "vue";
 import { isClient } from "@fish-bubble-design/shared/utils";
+import { useNamespace } from "@fish-bubble-design/hooks";
 import { IPopperContentProps, popperContentEmits } from "./content-type";
 import { usePopperContent } from "./composables/use-content";
 import { getParent } from "./utils";
@@ -53,11 +54,13 @@ defineOptions({
   inheritAttrs: false
 });
 
+const prefix = useNamespace("popper").b();
+
 const emit = defineEmits(popperContentEmits);
 
 const props = defineProps<IPopperContentProps>();
 
-const { contentRef, triggerRef, contentStyle, contentClass, updateAlign, role, ns } = usePopperContent(props);
+const { contentRef, triggerRef, instanceRef, contentStyle, contentClass, contentAttrs, update, role } = usePopperContent(props, prefix);
 
 // Has it been destroyed
 const isDestroyed = ref(false);
@@ -65,13 +68,11 @@ const isDestroyed = ref(false);
 // During SSR - insertion is not allowed by default, move to the target container
 const isSSR = ref(true);
 
-let timer: ReturnType<typeof setTimeout> | undefined;
-
 // container
 const container = shallowRef<HTMLElement | null>(null);
 
 const transitionClass = computed(() => {
-  return props.transition || `${ns.b()}-scale-up-transition`;
+  return props.transition || `${prefix}-scale-up-transition`;
 });
 
 const shouldShow = computed(() => {
@@ -105,8 +106,6 @@ onBeforeMount(() => {
 
 onMounted(() => {
   createMountContainer();
-  // Perform a calculation of position once
-  updateAlign();
 });
 
 onBeforeUnmount(() => {
@@ -123,22 +122,14 @@ const onAfterShow = (e) => {
   emit("show", e);
 };
 
-watch(shouldShow, () => {
-  clearTimeout(timer);
-  // Delay and wait until the content node is displayed before we proceed with the alignment
-  timer = setTimeout(() => {
-    updateAlign();
-  });
-});
+const updatePopper = () => update();
 
 defineExpose({
-  /**
-   * @description popper content element
-   */
+  /** popper content element */
   contentRef,
-  /**
-   * @description method for updating align
-   */
-  updateAlign
+  /** popperjs instance */
+  popperInstanceRef: instanceRef,
+  /** updatePopper */
+  updatePopper
 });
 </script>

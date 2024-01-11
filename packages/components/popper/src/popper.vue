@@ -8,8 +8,11 @@
       <slot v-if="$slots.default" />
     </PopperTrigger>
     <PopperContent
-      :popup-placement="popupPlacement"
-      :builtin-placements="builtinPlacements"
+      :fallback-placements="fallbackPlacements"
+      :gpu-acceleration="gpuAcceleration"
+      :offset="offset"
+      :placement="placement"
+      :strategy="strategy"
       :disabled="disabled"
       :open="open"
       :transition="transition"
@@ -52,7 +55,10 @@ const emit = defineEmits(["show", "hide"]);
 const props = withDefaults(defineProps<IPopperProps>(), {
   role: "tooltip",
   trigger: "hover",
-  popupPlacement: "bottom",
+  gpuAcceleration: false,
+  offset: 6,
+  placement: "bottom",
+  strategy: "absolute",
   /** There is no active control by default, it must be important */
   visible: null
 });

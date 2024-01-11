@@ -6,12 +6,12 @@
 <script lang="ts" setup>
 import { computed, ref, provide, reactive } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks/use-namespace";
-import FbPopper from "@fish-bubble-design/components/_internal/popper";
+import FbPopper from "@fish-bubble-design/components/popper";
 import FbIcon from "@fish-bubble-design/components/icon";
 import FbInput from "@fish-bubble-design/components/input";
 import OptionConstructor from "./option.vue";
 import OptionsConstructor from "./options";
-import { getBuiltInPlacements, selectKey, SelectContext } from "./utils";
+import { selectKey, SelectContext } from "./utils";
 import { useSelect } from "./useSelect";
 import type { ISelectProps, ISelectEmits } from "./type";
 
@@ -19,7 +19,8 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   placeholder: "请选择",
   placement: "bottom",
   trigger: "hover",
-  clearable: false
+  clearable: false,
+  isTrigger: false
 });
 
 defineOptions({
@@ -37,10 +38,6 @@ const selectDomWidth = ref<number>(0);
 const { selectWrapperRef, reference, showClose, inputValue, isCustomTrigger, optionList, onMouseenter, onMouseleave, handleOptionSelect, handleClearClick } =
   useSelect(props, emit);
 
-const builtInPlacements = computed(() => {
-  return getBuiltInPlacements();
-});
-
 // 下拉菜单的样式
 const selectDownStyle = computed(() => {
   const _width = selectDomWidth.value;
@@ -55,7 +52,9 @@ const selectDownStyle = computed(() => {
 const getPopupContainer = (triggerNode) => {
   const { width } = triggerNode!.getBoundingClientRect();
   selectDomWidth.value = width;
-  return triggerNode;
+  if (props.isTrigger) {
+    return triggerNode;
+  }
 };
 
 // Options渲染完毕
@@ -75,8 +74,7 @@ provide(
 <template>
   <fb-popper
     ref="selectWrapperRef"
-    :popup-placement="placement"
-    :builtin-placements="builtInPlacements"
+    :placement="placement"
     :trigger="trigger"
     :get-popup-container="getPopupContainer"
     :popper-class="ns.b('dropdown')"

@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { inject, onMounted, watch } from "vue";
-import { OnlyChild } from "../../only-child";
+import { OnlyChild } from "../../_internal/only-child";
 import { POPPER_WRAP_INJECTION_KEY } from "./utils";
 import { useForwardRef } from "@fish-bubble-design/hooks";
 import { isElement } from "@fish-bubble-design/shared/utils";

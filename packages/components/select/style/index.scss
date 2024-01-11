@@ -7,8 +7,6 @@
 @use "../../_styles/core/css-var" as *;
 @use "../../_styles/core/function" as *;
 
-@use "../../_internal/popper/style";
-
 @include b(select) {
   @include set-component-css-var("select", $select);
 }
