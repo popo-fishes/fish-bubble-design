@@ -4,5 +4,3 @@
  */
 
 export * from "./constants";
-
-export * from "./placements";

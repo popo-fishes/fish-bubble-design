@@ -58,9 +58,9 @@ export const buildModules = async () => {
         }
       }),
       terser({
-        compress: {
-          drop_console: true
-        },
+        // compress: {
+        //   drop_console: true
+        // },
         mangle: false, // Disable variable name obfuscation
         output: {
           beautify: true, // Beautify output

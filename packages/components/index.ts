@@ -11,6 +11,8 @@ export * from "./image";
 export * from "./img-captcha";
 export * from "./input";
 export * from "./select";
+export * from "./popper";
+
 // plugins
 export * from "./message";
 export * from "./prompt";

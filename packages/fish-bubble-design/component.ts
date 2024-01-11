@@ -19,6 +19,8 @@ export { default as FbInput } from "@fish-bubble-design/components/input";
 
 export { default as FbSelect, FbOption } from "@fish-bubble-design/components/select";
 
+export { default as FbPopper } from "@fish-bubble-design/components/popper";
+
 // Plugin
 export { message } from "@fish-bubble-design/components/message";
 export { prompt } from "@fish-bubble-design/components/prompt";

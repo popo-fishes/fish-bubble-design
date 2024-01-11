@@ -179,9 +179,9 @@ importers:
 
   packages/fish-bubble-design:
     dependencies:
-      dom-align:
-        specifier: ^1.12.4
-        version: registry.npmmirror.com/dom-align@1.12.4
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: registry.npmmirror.com/@popperjs/core@2.11.8
     devDependencies:
       '@types/node':
         specifier: '*'
@@ -1545,6 +1545,12 @@ packages:
     name: '@polka/url'
     version: 1.0.0-next.24
     dev: true
+
+  registry.npmmirror.com/@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==, tarball: https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz}
+    name: '@popperjs/core'
+    version: 2.11.8
+    dev: false
 
   registry.npmmirror.com/@rollup/plugin-commonjs@22.0.2(rollup@4.9.4):
     resolution: {integrity: sha512-//NdP6iIwPbMTcazYsiBMbJW7gfmpHom33u1beiIoHDEM0Q9clvtQB1T0efvMqHeKsGohiHo97BCPCkBXdscwg==, tarball: https://registry.npmmirror.com/@rollup/plugin-commonjs/-/plugin-commonjs-22.0.2.tgz}

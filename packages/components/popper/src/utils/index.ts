@@ -3,39 +3,9 @@
  * @Description: Modify here please
  */
 import { isClient } from "@fish-bubble-design/shared/utils";
-import { AlignType } from "../content-type";
-import type { IPopperContentProps } from "../content-type";
 
 export * from "./constants";
 export * from "./event";
-
-// 获取对齐位置
-export function getAlignFromPlacement(
-  builtinPlacements: IPopperContentProps["builtinPlacements"],
-  placementStr: IPopperContentProps["popupPlacement"]
-): AlignType {
-  const baseAlign = builtinPlacements[placementStr] || {};
-  return {
-    ...baseAlign
-  };
-}
-
-// 默认对齐
-export const defaultAlign = () => {
-  const autoAdjustOverflow = {
-    adjustX: 1,
-    adjustY: 1
-  };
-
-  const targetOffset = [0, 0];
-
-  return {
-    points: ["tc", "bc"],
-    overflow: autoAdjustOverflow,
-    offset: [0, 4],
-    targetOffset
-  };
-};
 
 // 获取挂载器
 export const getParent = <T>(getContainer: T, triggerNode: HTMLElement | undefined) => {

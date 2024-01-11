@@ -3,5 +3,4 @@
  * @Description: Modify here please
  */
 import "../../_styles/base.scss";
-import "../../popper/style";
 import "./index.scss";
