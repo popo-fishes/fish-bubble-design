@@ -16,7 +16,7 @@ import { withTaskName, run, runTask } from "./core";
 import { buildOutput, epOutput, libraryPackage, projRoot } from "./core/constants";
 import { buildConfig } from "./utils";
 import type { Module } from "./utils";
-import glob, { async } from "fast-glob";
+import glob from "fast-glob";
 
 export * from "./tasks";
 
@@ -59,12 +59,20 @@ const createCssJsFile = (cb) => {
       // consola.log(styleFileData)
       let num = 0;
       styleFileData.forEach((item) => {
+        // 文件后缀
+        const suffix = item.endsWith(".mjs") ? ".mjs" : ".js";
+        // 内容
         let code = readFileSync(item, "utf-8");
+        // 替换scss为css
         const regex = new RegExp(".scss", "g");
         code = code.replace(regex, ".css");
 
-        const styleDir = item.replace(/\/index\.mjs$|\/index\.js$/g, "");
+        // 替换引入其它组件时的路径，如import "../../input/style/index.mjs"; 改变为 import "../../input/style/css.mjs";
+        const regex2 = new RegExp(`style/index${suffix}`, "g");
+        code = code.replace(regex2, `style/css${suffix}`);
 
+        const styleDir = item.replace(/\/index\.mjs$|\/index\.js$/g, "");
+        // 要写入的文件路径
         let filePath = path.join(styleDir, "css.js");
         if (item.endsWith(".mjs")) {
           filePath = path.join(styleDir, "css.mjs");

@@ -54,13 +54,13 @@ defineOptions({
   inheritAttrs: false
 });
 
-const prefix = useNamespace("popper").b();
+const ns = useNamespace("popper");
 
 const emit = defineEmits(popperContentEmits);
 
 const props = defineProps<IPopperContentProps>();
 
-const { contentRef, triggerRef, instanceRef, contentStyle, contentClass, contentAttrs, update, role } = usePopperContent(props, prefix);
+const { contentRef, triggerRef, instanceRef, contentStyle, contentClass, contentAttrs, update, role } = usePopperContent(props, ns.b());
 
 // Has it been destroyed
 const isDestroyed = ref(false);
@@ -72,7 +72,7 @@ const isSSR = ref(true);
 const container = shallowRef<HTMLElement | null>(null);
 
 const transitionClass = computed(() => {
-  return props.transition || `${prefix}-scale-up-transition`;
+  return props.transition || `${unref(ns.namespace)}-zoom-in-top`;
 });
 
 const shouldShow = computed(() => {

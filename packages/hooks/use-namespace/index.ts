@@ -40,18 +40,18 @@ export const useGetDerivedNamespace = () => {
 /**
  *
  * @param block 组件块名
- * @param defaultNamespace 默认前缀
+ * @param namespaceOverrides 默认前缀
  * @returns
  */
 // !!! 封装组件样式 非常重要的方法！
 export const useNamespace = (block: string, namespaceOverrides?: string) => {
-  const defaultNamespace = namespaceOverrides ? ref(namespaceOverrides) : useGetDerivedNamespace();
+  const namespace = namespaceOverrides ? ref(namespaceOverrides) : useGetDerivedNamespace();
   // 默认样式拼接
-  const b = (blockSuffix = "") => _bem(defaultNamespace.value, block, blockSuffix, "", "");
+  const b = (blockSuffix = "") => _bem(namespace.value, block, blockSuffix, "", "");
   // 属性
-  const m = (modifier?: string) => (modifier ? _bem(defaultNamespace.value, block, "", "", modifier) : "");
+  const m = (modifier?: string) => (modifier ? _bem(namespace.value, block, "", "", modifier) : "");
   // 节点
-  const e = (element?: string) => (element ? _bem(defaultNamespace.value, block, "", element, "") : "");
+  const e = (element?: string) => (element ? _bem(namespace.value, block, "", element, "") : "");
   // 是否存在某个样式
   const is = (name: string, ...args: [boolean | undefined] | []) => {
     const state = args.length >= 1 ? args[0]! : true;
@@ -59,6 +59,7 @@ export const useNamespace = (block: string, namespaceOverrides?: string) => {
   };
 
   return {
+    namespace,
     b,
     m,
     e,

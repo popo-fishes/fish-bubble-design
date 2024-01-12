@@ -26,6 +26,8 @@ export interface ISelectProps {
   multiple?: boolean;
   /** 下拉菜单的 style 属性 */
   dropdownStyle?: object;
+  /** 下拉菜单的动画name 遵循https://cn.vuejs.org/guide/built-ins/transition.html#transition */
+  transition?: string;
   /** 弹出位置? 你可以控制下拉菜单在触发对象节点上的某个位置弹出 */
   placement?: IPopperProps["placement"];
   /** 触发方式 */

@@ -127,8 +127,12 @@ const copyOriginScssFiles = async () => {
 const createTotalScssTheme = async () => {
   // 查询必须是组件的scss文件
   const components = componentScssFiles.filter((item) => {
-    // 排除components -> _internal内部组件样式，只需要基础样式文件 和 组件本身的样式文件
-    return item.indexOf("\\_internal\\") == -1 && ["base.scss", "index.scss"].some((name) => item.includes(name));
+    // 基础样式文件 和 组件本身的样式文件
+    if (item.includes("_styles")) {
+      return item.includes("_styles\\base.scss");
+    } else {
+      return item.includes("index.scss");
+    }
   });
   // consola.log(components);
 
