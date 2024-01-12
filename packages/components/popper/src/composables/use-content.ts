@@ -21,7 +21,7 @@ function genModifiers(options: IPopperContentProps) {
     {
       name: "offset",
       options: {
-        offset: [0, offset ?? 12]
+        offset: [0, offset ?? 6]
       }
     },
     // 防止溢出

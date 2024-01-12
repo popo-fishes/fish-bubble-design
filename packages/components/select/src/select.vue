@@ -4,7 +4,7 @@
  * -----todo 远程搜索
 -->
 <script lang="ts" setup>
-import { computed, ref, provide, reactive } from "vue";
+import { computed, ref, provide, reactive, unref } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks/use-namespace";
 import FbPopper from "@fish-bubble-design/components/popper";
 import FbIcon from "@fish-bubble-design/components/icon";
@@ -62,6 +62,10 @@ const onOptionsRendered = (v) => {
   optionList.value = v;
 };
 
+const transition = computed(() => {
+  return `${unref(ns.namespace)}-fade-in-scale-up`;
+});
+
 provide(
   selectKey,
   reactive({
@@ -74,6 +78,7 @@ provide(
 <template>
   <fb-popper
     ref="selectWrapperRef"
+    :transition="transition"
     :placement="placement"
     :trigger="trigger"
     :get-popup-container="getPopupContainer"
