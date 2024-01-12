@@ -63,7 +63,7 @@ const onOptionsRendered = (v) => {
 };
 
 const transition = computed(() => {
-  return `${unref(ns.namespace)}-fade-in-scale-up`;
+  return props.transition || `${unref(ns.namespace)}-fade-in-scale-up`;
 });
 
 provide(
