@@ -6,8 +6,6 @@
 @use "../../_styles/core/function" as *;
 @use "../../_styles/core/config" as *;
 
-@use "../../_internal/wave/style";
-
 @include b(input) {
   @include set-component-css-var("input", $input);
 }

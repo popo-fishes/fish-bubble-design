@@ -3,4 +3,5 @@
  * @Description: Modify here please
  */
 import "../../_styles/base.scss";
+import "../../dialog/style";
 import "./index.scss";

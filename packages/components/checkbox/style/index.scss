@@ -4,8 +4,6 @@
 @use "../../_styles/core/function" as *;
 @use "../../_styles/core/config" as *;
 
-@use "../../_internal/wave/style";
-
 @use "checkbox-group" as *;
 
 @include b(checkbox) {
