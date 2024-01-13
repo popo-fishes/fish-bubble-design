@@ -49,7 +49,8 @@
     "vue": "^3.4.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8"
+    "@popperjs/core": "^2.11.8",
+    "@fish-bubble/icons": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "*",
