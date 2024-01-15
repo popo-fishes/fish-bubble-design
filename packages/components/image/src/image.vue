@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import type { CSSProperties } from "vue";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import FbIcon from "@fish-bubble-design/components/icon";
+import { CanSee } from "@fish-bubble/icons";
 import { useNamespace } from "@fish-bubble-design/hooks";
 
 import type { ImageProps } from "./type";
@@ -89,7 +89,7 @@ onBeforeUnmount(() => observer && observer.unobserve(imgDom.value)); // 不观�
       <img v-else :src="imgSrc" :alt="alt" :class="[ns.e('inner'), imgClass]" />
       <!-- 预览按钮蒙层 -->
       <div :class="ns.e('preview')" v-if="preview">
-        <div class="inner-wrap"><fb-icon icon="yp-chakan-1" class="icon-pv" />预览</div>
+        <div class="inner-wrap"><CanSee class="icon-cansee" />预览</div>
       </div>
     </template>
     <!-- placeholder占位 -->

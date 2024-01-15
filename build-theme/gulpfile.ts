@@ -123,7 +123,7 @@ const copyOriginScssFiles = async () => {
   });
 };
 
-// Generate overall style file   scss ( Very important )
+// Generate overall style file  scss ( Very important )
 const createTotalScssTheme = async () => {
   // 查询必须是组件的scss文件
   const components = componentScssFiles.filter((item) => {
@@ -149,7 +149,7 @@ const createTotalScssTheme = async () => {
 
     const newPath = relativePath.replace(/\\/g, "/");
 
-    scssTotalCode = scssTotalCode + `@use "${newPath}" as *;\n`;
+    scssTotalCode = scssTotalCode + `// ${path.join("components", paths[1])}\n @use "${newPath}" as *;\n`;
   });
 
   // Write an overall entry scss

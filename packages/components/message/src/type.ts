@@ -2,7 +2,7 @@
  * @Date: 2023-11-23 17:28:47
  * @Description: Modify here please
  */
-import type { ComponentInternalInstance } from "vue";
+import type { ComponentInternalInstance, Component } from "vue";
 export interface IMessageProps {
   /** 消息类型 */
   type: "info" | "success" | "warning" | "error";
@@ -16,6 +16,8 @@ export interface IMessageProps {
   id?: string;
   /** 是否显示关闭按钮 */
   showClose?: boolean;
+  /** 自定义图标组件，覆盖`type` */
+  icon?: string | Component;
   /** 层级 */
   zIndex?: number;
   /** 距离窗口顶部的偏移量 */

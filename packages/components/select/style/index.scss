@@ -32,6 +32,8 @@
     font-size: 7px;
     height: 16px;
     width: 16px;
+    transform: rotate(90deg);
+    transition: transform 0.2s;
   }
 
   @include e(clear) {
@@ -57,6 +59,12 @@
       color: getCssVar("select-text-color");
       &::placeholder {
         color: getCssVarWithDefault("select-placeholder-color", map.get($select, "placeholder-color"));
+      }
+    }
+    // 如果输入框获取焦点，给后缀图标旋转下
+    &.is-focus {
+      .#{$namespace}-select__arrow {
+        transform: rotate(0);
       }
     }
     &.is-disabled {

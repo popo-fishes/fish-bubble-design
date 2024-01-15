@@ -180,8 +180,8 @@ importers:
   packages/fish-bubble-design:
     dependencies:
       '@fish-bubble/icons':
-        specifier: ^1.0.1
-        version: registry.npmmirror.com/@fish-bubble/icons@1.0.1(vue@3.4.0)
+        specifier: ^1.0.2
+        version: registry.npmmirror.com/@fish-bubble/icons@1.0.2(vue@3.4.0)
       '@popperjs/core':
         specifier: ^2.11.8
         version: registry.npmmirror.com/@popperjs/core@2.11.8
@@ -1366,11 +1366,11 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  registry.npmmirror.com/@fish-bubble/icons@1.0.1(vue@3.4.0):
-    resolution: {integrity: sha512-WP6vHvqxMwI8oB1bFkMShqPwMhJGmX0t9WSRsG3FNlaSD1GQNsyLaXLrBOAUDDJke/bakl3hmsrIcTpyhx6qCA==, tarball: https://registry.npmmirror.com/@fish-bubble/icons/-/icons-1.0.1.tgz}
-    id: registry.npmmirror.com/@fish-bubble/icons/1.0.1
+  registry.npmmirror.com/@fish-bubble/icons@1.0.2(vue@3.4.0):
+    resolution: {integrity: sha512-tMZjcWRLuhr0KbE7CaGWD2EPwZvh0Zane/8SgqFCJdqEd8694U2aHiJP1J2V8WUpbO9+qbIJDpegwPETzUzafA==, tarball: https://registry.npmmirror.com/@fish-bubble/icons/-/icons-1.0.2.tgz}
+    id: registry.npmmirror.com/@fish-bubble/icons/1.0.2
     name: '@fish-bubble/icons'
-    version: 1.0.1
+    version: 1.0.2
     peerDependencies:
       vue: ^3.4.0
     dependencies:

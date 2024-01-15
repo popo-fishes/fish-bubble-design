@@ -2,6 +2,7 @@
  * @Date: 2023-12-15 20:18:59
  * @Description: Modify here please
  */
+import type { Component } from "vue";
 import type { IPopperProps } from "@fish-bubble-design/components/popper";
 import type { ComponentSize } from "@fish-bubble-design/core";
 
@@ -34,6 +35,10 @@ export interface ISelectProps {
   trigger?: IPopperProps["trigger"];
   /** 是否把菜单放到触发器节点下面，默认放到body */
   isTrigger?: boolean;
+  /** 自定义后缀图标组件 */
+  suffixIcon?: string | Component;
+  /** 自定义清除图标组件 */
+  clearIcon?: string | Component;
 }
 
 export type ISelectEmits = {

@@ -6,7 +6,12 @@
   <fb-dialog v-model:open="visible" :show-close="showClose" @close="onClose" width="440px" top="25vh" :class="ns.b()">
     <template #header>
       <div class="cc-header">
-        <fb-icon icon="yp-liaoyiliao1" v-if="showIcon" class="chat-icon" size="24" color="#0092FF" />
+        <template v-if="showIcon">
+          <!-- 你可以自定义加载图标 -->
+          <slot v-if="$slots?.icon" name="icon" />
+          <!-- 默认加载图标 -->
+          <Chat v-else class="chat-icon" />
+        </template>
         <p class="title">{{ title }}</p>
       </div>
     </template>
@@ -24,9 +29,9 @@
 import { ref } from "vue";
 import type { IPromptProps, IPrompEmits } from "./type";
 import { useNamespace } from "@fish-bubble-design/hooks";
-import FbDialog from "../../dialog";
-import FbIcon from "../../icon";
-import FbButton from "../../button";
+import { Chat } from "@fish-bubble/icons";
+import FbDialog from "@fish-bubble-design/components/dialog";
+import FbButton from "@fish-bubble-design/components/button";
 
 withDefaults(defineProps<IPromptProps>(), {
   title: "温馨提示",
