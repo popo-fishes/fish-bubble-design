@@ -37,8 +37,8 @@
     outline: none;
     cursor: pointer;
     &:hover {
-      i {
-        color: getCssVar("color-primary") !important;
+      .fb-icon {
+        color: getCssVar("color-primary");
       }
     }
   }

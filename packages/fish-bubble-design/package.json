@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@fish-bubble/icons": "^1.0.3"
+    "@fish-bubble/icons": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "*",

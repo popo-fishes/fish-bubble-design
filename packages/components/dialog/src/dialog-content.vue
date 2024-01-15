@@ -5,7 +5,7 @@
 <template>
   <!-- 弹窗关闭按钮 -->
   <button class="closeIconbtn" v-if="showClose" @click="$emit('close')">
-    <close-icon color="#909399" size="20" />
+    <close-icon color="#909399" size="20px" />
   </button>
   <!-- 头部 -->
   <header :class="[ns.e('header')]">
