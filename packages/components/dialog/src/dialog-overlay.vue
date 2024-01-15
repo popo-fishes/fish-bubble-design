@@ -32,8 +32,7 @@
 import { computed } from "vue";
 import type { CSSProperties } from "vue";
 import type { IOverlayProps, IDialogProps } from "./type";
-import { useSameTarget } from "@fish-bubble-design/hooks";
-import { useNamespace } from "@fish-bubble-design/hooks";
+import { useSameTarget, useNamespace } from "@fish-bubble-design/hooks";
 
 const props = defineProps<IOverlayProps & { alignCenter?: IDialogProps["alignCenter"] }>();
 

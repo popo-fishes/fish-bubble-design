@@ -9,7 +9,6 @@ declare module "@vue/runtime-core" {
   // GlobalComponents for Volar
   export interface GlobalComponents {
     FbButton: (typeof import("../packages/fish-bubble-design"))["FbButton"];
-    FbIcon: (typeof import("../packages/fish-bubble-design"))["FbIcon"];
     FbCheckbox: (typeof import("../packages/fish-bubble-design"))["FbCheckbox"];
     FbCheckboxGroup: (typeof import("../packages/fish-bubble-design"))["FbCheckboxGroup"];
     FbDialog: (typeof import("../packages/fish-bubble-design"))["FbDialog"];

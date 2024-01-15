@@ -7,7 +7,7 @@
 import { computed, ref, provide, reactive, unref } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks/use-namespace";
 import FbPopper from "@fish-bubble-design/components/popper";
-import FbIcon from "@fish-bubble-design/components/icon";
+import { ArrowUp, CircleClose } from "@fish-bubble/icons";
 import FbInput from "@fish-bubble-design/components/input";
 import OptionConstructor from "./option.vue";
 import OptionsConstructor from "./options";
@@ -20,7 +20,9 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   placement: "bottom",
   trigger: "hover",
   clearable: false,
-  isTrigger: false
+  isTrigger: false,
+  suffixIcon: ArrowUp,
+  clearIcon: CircleClose
 });
 
 defineOptions({
@@ -93,8 +95,8 @@ provide(
           <fb-input ref="reference" :size="size" readonly v-model="inputValue">
             <template #suffix>
               <!-- 不展示关闭按钮才显示箭头 -->
-              <fb-icon icon="yp-sanjiao-xia" :class="ns.e('arrow')" v-if="!showClose" />
-              <fb-icon icon="yp-danchuangguanbi" :class="ns.e('clear')" @click.stop="() => handleClearClick()" v-if="showClose" />
+              <component :is="suffixIcon" :class="ns.e('arrow')" v-if="suffixIcon && !showClose" />
+              <component :is="clearIcon" :class="ns.e('clear')" @click.stop="() => handleClearClick()" v-if="clearIcon && showClose" />
             </template>
           </fb-input>
         </slot>

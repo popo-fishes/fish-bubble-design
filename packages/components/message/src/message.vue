@@ -7,7 +7,7 @@ import { ref, computed, onMounted } from "vue";
 import type { CSSProperties } from "vue";
 import { useTimeoutFn, useResizeObserver } from "@fish-bubble-design/shared";
 import { getLastOffset } from "./instance";
-import FbIcon from "@fish-bubble-design/components/icon";
+import { CircleClose, WarningFilled, CircleCheckFilled, CircleCloseFilled } from "@fish-bubble/icons";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import type { IMessageProps } from "./type";
 
@@ -29,16 +29,6 @@ const messageRef = ref<HTMLDivElement>();
 const visible = ref(false);
 const height = ref(0);
 
-const icon = computed(() => {
-  const iconMap = {
-    info: { icon: "yp-gantanhao1", color: "#0092ff" },
-    success: { icon: "yp-gougou1", color: "#06B578" },
-    warning: { icon: "yp-gantanhao1", color: "#FF8904" },
-    error: { icon: "yp-shanchu1", color: "#E8362E" }
-  };
-  return iconMap[props.type] || iconMap["info"];
-});
-
 // 最后一个msg的位置
 const lastOffset = computed(() => getLastOffset(props.id));
 
@@ -49,6 +39,16 @@ const customStyle = computed<CSSProperties>(() => ({
   top: `${offset.value}px`,
   zIndex: props?.zIndex
 }));
+
+const iconOption = computed(() => {
+  const iconMap = {
+    info: { icon: WarningFilled, color: "#0092ff" },
+    success: { icon: CircleCheckFilled, color: "#06B578" },
+    warning: { icon: WarningFilled, color: "#FF8904" },
+    error: { icon: CircleCloseFilled, color: "#E8362E" }
+  };
+  return props.icon ? { icon: props.icon, color: iconMap[props.type].color } : iconMap[props.type || "icon"];
+});
 
 // 当前msg的位置：主要是为了下一个msg 获取 当前这个的位置。我们这里暴露下
 // 当前的就是当前的msg高度 + 现在的top值
@@ -90,14 +90,14 @@ defineExpose({ bottom, close });
   <transition name="ani-message-fade" @before-leave="onClose" @after-leave="$emit('destroy')">
     <!-- mouseenter，当鼠标滑动到消息容器上，不关闭消息 -->
     <div v-show="visible" :id="id" :style="customStyle" :class="[ns.b()]" ref="messageRef">
-      <fb-icon :icon="icon.icon" :size="20" :color="icon.color" />
+      <component :is="iconOption.icon" :size="20" :color="iconOption.color" />
       <slot>
         <p v-if="!dangerouslyUseHTMLString" :class="[ns.e('content')]">
           {{ message }}
         </p>
         <p v-else v-html="message" :class="[ns.e('content')]" />
       </slot>
-      <fb-icon v-if="showClose" icon="yp-danchuangguanbi" @click.stop="close" :size="18" is-pointer color="rgba(0, 0, 0, 0.65)" />
+      <CircleClose v-if="showClose" @click.stop="close" class="icon-close" />
     </div>
   </transition>
 </template>

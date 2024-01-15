@@ -6,9 +6,10 @@
 import { ref, computed, shallowRef, watch, nextTick } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { isNil } from "@fish-bubble-design/shared/utils";
+import { CircleClose } from "@fish-bubble/icons";
+
 import { useFocusController } from "./useFocusController";
 import BaseWave from "../../_internal/wave/src/wave.vue";
-import FbIcon from "@fish-bubble-design/components/icon";
 
 import type { InputProps, InputEmits } from "./type";
 type TargetElement = HTMLInputElement | HTMLTextAreaElement;
@@ -142,7 +143,7 @@ defineExpose({
     <span :class="nsInput.e('suffix')">
       <slot name="suffix">
         <!-- 关闭按钮 -->
-        <fb-icon icon="yp-danchuangguanbi" v-if="showClear" class="closeIcon" @click="clear" />
+        <CircleClose v-if="showClear" class="closeIcon" @click="clear" />
       </slot>
     </span>
 

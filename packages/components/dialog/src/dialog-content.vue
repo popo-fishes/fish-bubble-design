@@ -5,7 +5,7 @@
 <template>
   <!-- 弹窗关闭按钮 -->
   <button class="closeIconbtn" v-if="showClose" @click="$emit('close')">
-    <fb-icon icon="yp-guanbi" color="#909399" size="20" />
+    <close-icon color="#909399" size="20" />
   </button>
   <!-- 头部 -->
   <header :class="[ns.e('header')]">
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import type { IDialogContentProps } from "./type";
-import FbIcon from "@fish-bubble-design/components/icon";
+import { Close as CloseIcon } from "@fish-bubble/icons";
 import { useNamespace } from "@fish-bubble-design/hooks";
 const ns = useNamespace("dialog");
 // 属性

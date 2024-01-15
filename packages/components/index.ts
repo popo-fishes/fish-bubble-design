@@ -3,7 +3,6 @@
  * @Description: Modify here please
  */
 // components
-export * from "./icon";
 export * from "./button";
 export * from "./checkbox";
 export * from "./dialog";

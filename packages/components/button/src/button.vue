@@ -4,7 +4,7 @@
 -->
 <script lang="ts" setup>
 import { computed, CSSProperties, ref } from "vue";
-import FbIcon from "@fish-bubble-design/components/icon";
+import { Loading } from "@fish-bubble/icons";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import BaseWave from "../../_internal/wave/src/wave.vue";
 import type { IButtonProps } from "./type";
@@ -60,7 +60,7 @@ const handleClick = (e: MouseEvent): void => {
       <!-- 你可以自定义加载图标 -->
       <slot v-if="$slots?.loading" name="loading" />
       <!-- 默认加载图标 -->
-      <fb-icon v-else icon="yp-jiazai" class="icon-loading" />
+      <Loading v-else class="icon-loading" />
     </template>
     <!-- 自定义按钮左侧图标 -->
     <template v-else-if="$slots?.icon">
