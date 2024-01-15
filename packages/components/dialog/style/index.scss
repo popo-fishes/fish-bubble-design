@@ -36,9 +36,13 @@
     border: none;
     outline: none;
     cursor: pointer;
+    .fb-icon {
+      color: #909399;
+      font-size: 20px;
+    }
     &:hover {
-      i {
-        color: getCssVar("color-primary") !important;
+      .fb-icon {
+        color: getCssVar("color-primary");
       }
     }
   }
