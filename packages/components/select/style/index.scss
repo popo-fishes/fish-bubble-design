@@ -29,10 +29,10 @@
 
   @include e(arrow) {
     color: rgba(0, 0, 0, 0.25);
-    font-size: 7px;
+    font-size: 16px;
     height: 16px;
     width: 16px;
-    transform: rotate(90deg);
+    transform: rotate(180deg);
     transition: transform 0.2s;
   }
 
