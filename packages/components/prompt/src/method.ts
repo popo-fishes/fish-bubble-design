@@ -1,6 +1,6 @@
 /*
  * @Date: 2023-11-30 15:40:41
- * @Description: prompt 全局提示弹窗，你可以使用$.prompt()呼唤它
+ * @Description: prompt 全局提示弹窗
  */
 import { createVNode, render } from "vue";
 import { isClient } from "@fish-bubble-design/shared/utils";

@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-11-28 16:30:59
- * @Description: 全局提示弹窗，你可以使用$.prompt()呼唤它
+ * @Description: 全局提示弹窗
 -->
 <template>
   <fb-dialog v-model:open="visible" :show-close="showClose" @close="onClose" width="440px" top="25vh" :class="ns.b()">

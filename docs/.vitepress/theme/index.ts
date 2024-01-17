@@ -1,17 +1,21 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import './style.css'
+/*
+ * @Date: 2024-01-16 19:00:26
+ * @Description: Modify here please
+ */
+import DefaultTheme from "vitepress/theme";
+
+import { VPDemo } from "../vitepress";
+
+import FishBubbleDesign from "fish-bubble-design";
+import "../../index.scss";
 
 export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
-  enhanceApp({ app, router, siteData }) {
-    // ...
+  ...DefaultTheme,
+  enhanceApp(ctx) {
+    DefaultTheme.enhanceApp(ctx);
+
+    ctx.app.use(FishBubbleDesign);
+
+    ctx.app.component("Demo", VPDemo);
   }
-} satisfies Theme
+};
