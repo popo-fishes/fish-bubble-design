@@ -18,6 +18,7 @@ declare module "@vue/runtime-core" {
     FbSelect: (typeof import("../packages/fish-bubble-design"))["FbSelect"];
     FbOption: (typeof import("../packages/fish-bubble-design"))["FbOption"];
     FbPopper: (typeof import("../packages/fish-bubble-design"))["FbPopper"];
+    FbCollapseTransition: (typeof import("../packages/fish-bubble-design"))["FbCollapseTransition"];
   }
 
   interface ComponentCustomProperties {

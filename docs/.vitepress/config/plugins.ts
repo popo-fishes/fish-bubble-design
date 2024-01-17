@@ -10,7 +10,8 @@ import type Token from "markdown-it/lib/token";
 
 import { highlight } from "../utils/highlight";
 import { docRoot } from "./paths";
-const localMd = MarkdownIt();
+import tag from "./tag";
+const localMd = MarkdownIt().use(tag);
 
 interface ContainerOpts {
   marker?: string | undefined;
@@ -18,6 +19,7 @@ interface ContainerOpts {
   render?(tokens: Token[], index: number): string;
 }
 export const mdPlugin = (md: MarkdownIt) => {
+  md.use(tag);
   md.use(mdContainer, "demo", {
     validate(params) {
       return !!params.trim().match(/^demo\s*(.*)$/);

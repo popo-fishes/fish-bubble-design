@@ -3,16 +3,18 @@
  * @Description: Modify here please
  */
 import { defineConfig } from "vitepress";
+import { head } from "./config/head";
 import { mdPlugin } from "./config/plugins";
 export default defineConfig({
   title: "Fish Bubble",
   description: "A desktop component library based on Vue 3.0 prepared for developers",
   lang: "cn-ZH",
   lastUpdated: true,
+  head,
   themeConfig: {
-    logo: "/favicon.ico",
-    siteTitle: "Fish Bubble",
-    outline: 3,
+    logo: "/fb-logo.png",
+    siteTitle: "",
+    outline: 2,
     socialLinks: [{ icon: "github", link: "https://github.com/u-fish-bubble/fish-bubble-design" }],
     nav: [
       {
@@ -25,7 +27,10 @@ export default defineConfig({
       "/components": [
         {
           text: "Basic 基础组件",
-          items: [{ text: "Button组件", link: "/components/button" }]
+          items: [
+            { text: "Button 按钮", link: "/components/button" },
+            { text: "Icon 图标", link: "/components/icon" }
+          ]
         },
         {
           text: "复杂组件",

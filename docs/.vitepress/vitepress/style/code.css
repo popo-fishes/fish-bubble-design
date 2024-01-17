@@ -915,3 +915,28 @@ div[class*="language-"].line-numbers-mode {
 .sticky {
   position: sticky;
 }
+
+.vp-doc h2 {
+  margin-top: 30px !important;
+  border-top: none !important;
+}
+.custom-block.tip {
+  background-color: rgba(64, 158, 255, 0.1);
+  border-left: 3px solid var(--fb-color-primary);
+}
+.vp-doc th,
+.vp-doc td {
+  border: none !important;
+}
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent !important;
+}
+
+.vp-doc thead tr {
+  border-top: none !important;
+}
+.vp-doc tbody {
+  tr:first-of-type {
+    border-top: none !important;
+  }
+}

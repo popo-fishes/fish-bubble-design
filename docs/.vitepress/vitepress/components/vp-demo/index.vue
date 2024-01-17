@@ -4,27 +4,16 @@
     <p text="sm" v-html="decodedDescription" />
     <div class="example">
       <Example :path="path" />
-      <ElDivider class="m-0" />
       <div class="op-btns">
-        <ElTooltip content="复制代码" :show-arrow="false">
-          <ElIcon :size="16" class="op-btn" @click="copyCode">
-            <CopyDocument />
-          </ElIcon>
-        </ElTooltip>
-        <ElTooltip content="查看源代码" :show-arrow="false">
-          <ElIcon :size="16" class="op-btn" @click="toggleSourceVisible()">
-            <View />
-          </ElIcon>
-        </ElTooltip>
+        <Copy :size="16" class="op-btn" @click="copyCode" />
+        <CanSee :size="16" class="op-btn" @click="toggleSourceVisible()" />
       </div>
-      <ElCollapseTransition>
+      <FbCollapseTransition>
         <SourceCode v-show="sourceVisible" :source="source" />
-      </ElCollapseTransition>
-      <Transition name="el-fade-in-linear">
+      </FbCollapseTransition>
+      <Transition name="fb-zoom-in-top">
         <div v-show="sourceVisible" class="example-float-control" @click="toggleSourceVisible(false)">
-          <ElIcon :size="16">
-            <CaretTop />
-          </ElIcon>
+          <Top :size="16" />
           <span>隐藏源代码</span>
         </div>
       </Transition>
@@ -35,6 +24,8 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useClipboard, useToggle } from "@vueuse/core";
+import { Copy, CanSee, Top } from "@fish-bubble/icons";
+import { message } from "fish-bubble-design";
 
 import Example from "./vp-example.vue";
 import SourceCode from "./vp-source-code.vue";
@@ -60,13 +51,14 @@ const copyCode = async () => {
   }
   try {
     await copy();
+    message.success("复制成功！");
   } catch (e: any) {}
 };
 </script>
 <style lang="scss" scoped>
 .example {
   border: 1px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 4px;
   .m-0 {
     margin: 0;
   }
@@ -76,6 +68,7 @@ const copyCode = async () => {
     align-items: center;
     justify-content: flex-end;
     height: 2.5rem;
+    border-top: 1px solid #dcdfe6;
 
     .el-icon {
       &:hover {
