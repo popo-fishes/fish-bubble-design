@@ -59,6 +59,7 @@ const copyCode = async () => {
 .example {
   border: 1px solid var(--border-color);
   border-radius: 4px;
+
   .m-0 {
     margin: 0;
   }
@@ -68,7 +69,7 @@ const copyCode = async () => {
     align-items: center;
     justify-content: flex-end;
     height: 2.5rem;
-    border-top: 1px solid #dcdfe6;
+    border-top: 1px solid var(--border-color);
 
     .el-icon {
       &:hover {
@@ -120,5 +121,8 @@ const copyCode = async () => {
       color: var(--fb-color-primary);
     }
   }
+}
+.dark .example-float-control {
+  background-color: #141414 !important;
 }
 </style>

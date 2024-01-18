@@ -9,7 +9,7 @@ export default defineConfig({
   title: "Fish Bubble",
   description: "A desktop component library based on Vue 3.0 prepared for developers",
   lang: "cn-ZH",
-  lastUpdated: true,
+  lastUpdated: false,
   head,
   themeConfig: {
     logo: "/fb-logo.png",

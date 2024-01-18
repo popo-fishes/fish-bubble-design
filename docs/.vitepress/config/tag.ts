@@ -7,10 +7,24 @@ import type MarkdownIt from "markdown-it";
 export default (md: MarkdownIt): void => {
   md.renderer.rules.text = (tokens, idx) => {
     const token = tokens[idx];
-    const tagRegExp = /^\^\(([^)]*)\)/;
-    console.log(tagRegExp.test(token.content), token.content);
+    const tagRegExp = /^\^\[.*\]$/;
     if (tagRegExp.test(token.content)) {
-      return `<span class="type-tag">${token.content.slice(5)}</span>`;
+      // 判断多个值 /分割
+      const parts = token.content.split("/");
+      let code = "";
+      if (parts.length) {
+        parts.forEach((item, index) => {
+          const regex = /\^\[(.+)\]/;
+          const matches = item.match(regex);
+          // console.log(matches);
+          if (matches && matches.length) {
+            code = code + `${index > 0 ? "<span class='type-tag-line'>/</span>" : ""} <span class="type-tag">${matches[1]}</span>`;
+          }
+        });
+        console.log(code);
+        return code;
+      }
+      return token.content;
     } else {
       return token.content;
     }

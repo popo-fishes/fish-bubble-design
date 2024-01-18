@@ -916,6 +916,7 @@ div[class*="language-"].line-numbers-mode {
   position: sticky;
 }
 
+/* 修改文档部分 */
 .vp-doc h2 {
   margin-top: 30px !important;
   border-top: none !important;
@@ -939,4 +940,24 @@ div[class*="language-"].line-numbers-mode {
   tr:first-of-type {
     border-top: none !important;
   }
+}
+
+.vp-doc .type-tag {
+  color: #c41d7f;
+  font-size: 13px;
+}
+
+.vp-doc .type-tag-line {
+  color: #c41d7f;
+  font-size: 13px;
+  margin: 0 10px;
+}
+.vp-doc table {
+  display: table;
+  margin-top: 0 !important;
+  width: 100%;
+}
+.vp-doc h3 {
+  margin-bottom: 15px !important;
+  font-size: 16px;
 }
