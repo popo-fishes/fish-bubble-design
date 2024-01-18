@@ -2,6 +2,10 @@
  * @Date: 2024-01-16 19:00:26
  * @Description: Modify here please
  */
+/*
+ * @Date: 2024-01-16 19:00:26
+ * @Description: Modify here please
+ */
 import { defineConfig } from "vitepress";
 import { head } from "./config/head";
 import { mdPlugin } from "./config/plugins";
@@ -12,14 +16,14 @@ export default defineConfig({
   lastUpdated: false,
   head,
   themeConfig: {
-    logo: "/fb-logo.png",
+    logo: "/logo.png",
     siteTitle: "",
     outline: 2,
     socialLinks: [{ icon: "github", link: "https://github.com/u-fish-bubble/fish-bubble-design" }],
     nav: [
       {
         text: "指南",
-        link: "/components/"
+        link: "/guide/"
       },
       { text: "组件", link: "/components/button" }
     ],

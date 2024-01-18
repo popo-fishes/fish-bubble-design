@@ -3,7 +3,8 @@
 // css variables
 :root {
   // layouts
-  --vp-screen-max-width: 1376px;
+  --vp-screen-max-width: 1200px;
+  --vp-layout-max-width: 1500px !important;
   --vp-c-brand: var(--fb-color-primary);
   --vp-c-brand-light: var(--fb-color-primary-light-3);
   --vp-c-brand-lighter: var(--fb-color-primary-light-5);
