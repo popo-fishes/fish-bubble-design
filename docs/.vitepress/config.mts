@@ -23,7 +23,7 @@ export default defineConfig({
     nav: [
       {
         text: "指南",
-        link: "/guide/"
+        link: "/guide/installation"
       },
       { text: "组件", link: "/components/button" }
     ],
@@ -56,7 +56,8 @@ export default defineConfig({
             { text: "table组件", link: "/components/TTable/base.md" }
           ]
         }
-      ]
+      ],
+      "/guide": [{ text: "安装", link: "/components/installation" }]
     }
   },
   markdown: {
