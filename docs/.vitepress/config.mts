@@ -42,10 +42,8 @@ export default defineConfig({
         {
           text: "数据录入",
           items: [
-            {
-              text: "Select 选择器",
-              link: "/components/select"
-            }
+            { text: "Select 选择器", link: "/components/select" },
+            { text: "Input 输入框", link: "/components/input" }
           ]
         }
       ],
