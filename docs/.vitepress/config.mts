@@ -30,34 +30,23 @@ export default defineConfig({
     sidebar: {
       "/components": [
         {
-          text: "Basic 基础组件",
+          text: "基础组件",
           items: [
             { text: "Button 按钮", link: "/components/button" },
             { text: "Icon 图标", link: "/components/icon" }
           ]
         },
         {
-          text: "复杂组件",
+          text: "数据录入",
           items: [
             {
-              text: "下拉选择表格组件",
-              link: "/components/TSelectTable/base.md"
-            },
-            {
-              text: "TAdaptivePage组件",
-              link: "/components/TAdaptivePage/base.md"
-            },
-            {
-              text: "条件查询组件",
-              link: "/components/TQueryCondition/base.md"
-            },
-            { text: "表单组件", link: "/components/TForm/base.md" },
-            { text: "模块表单组件", link: "/components/TModuleForm/base.md" },
-            { text: "table组件", link: "/components/TTable/base.md" }
+              text: "Select 选择器",
+              link: "/components/select"
+            }
           ]
         }
       ],
-      "/guide": [{ text: "安装", link: "/components/installation" }]
+      "/guide": [{ text: "安装", link: "/guide/installation" }]
     }
   },
   markdown: {

@@ -5,7 +5,7 @@
 import { h } from "vue";
 import DefaultTheme from "vitepress/theme";
 
-import { VPDemo, VPAsideOutlineBefore, VPAdvSpace } from "../vitepress";
+import { VPDemo, VPAsideOutlineBefore, VPAdvSpace, Iconlist } from "../vitepress";
 
 import FishBubbleDesign from "fish-bubble-design";
 import "../../index.scss";
@@ -18,6 +18,8 @@ export default {
     ctx.app.use(FishBubbleDesign);
 
     ctx.app.component("Demo", VPDemo);
+
+    ctx.app.component("Iconlist", Iconlist);
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

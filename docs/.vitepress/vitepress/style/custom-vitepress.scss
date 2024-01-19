@@ -4,19 +4,31 @@
     border: none !important;
     align-items: center !important;
     justify-content: center !important;
+    min-width: 204px !important;
   }
   .logo {
     height: 60px !important;
+    width: 204px !important;
   }
   .appearance + .social-links::before {
     display: none;
   }
+  .content-body {
+    background-color: transparent !important;
+  }
+  background-color: hsl(0 0% 100% /0.6);
+  backdrop-filter: saturate(50%) blur(8px);
 }
+.dark .VPNav {
+  background-color: hsla(0, 1%, 13%, 0.637);
+}
+
 .VPNavBar.has-sidebar .divider {
   padding-left: 0 !important;
 }
 .VPNavBarMenuLink.active {
   color: var(--brand-color) !important;
+  border-bottom: 1px solid var(--brand-color);
 }
 .VPNavBarMenuLink {
   :hover {
@@ -78,7 +90,7 @@
     background-color: var(--link-active-bg-color) !important;
     border-radius: 8px !important;
     .text {
-      font-weight: 600 !important;
+      font-weight: 500 !important;
       color: var(--brand-color) !important;
       transition: color 0.25s !important;
     }

@@ -67,7 +67,7 @@ const copyCode = async () => {
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     height: 2.5rem;
     border-top: 1px solid var(--border-color);
 

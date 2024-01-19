@@ -918,12 +918,11 @@ div[class*="language-"].line-numbers-mode {
 
 /* 修改文档部分 */
 .vp-doc h2 {
-  margin-top: 30px !important;
+  margin-top: 0 !important;
   border-top: none !important;
 }
 .custom-block.tip {
   background-color: rgba(64, 158, 255, 0.1);
-  border-left: 3px solid var(--fb-color-primary);
 }
 .vp-doc th,
 .vp-doc td {

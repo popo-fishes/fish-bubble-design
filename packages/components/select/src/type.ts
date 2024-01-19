@@ -23,6 +23,8 @@ export interface ISelectProps {
   placeholder?: string;
   /** 是否可以清空选项 */
   clearable?: boolean;
+  /** 是否禁用 */
+  disabled?: boolean;
   /** 是否多选  todo */
   multiple?: boolean;
   /** 下拉菜单的 style 属性 */

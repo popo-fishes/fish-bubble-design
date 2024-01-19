@@ -1,51 +1,49 @@
 ---
-title: Button
+title: Select
 lang: cn-ZH
 ---
 
-# Button 按钮
+# Select 选择器
 
-按钮用来触发一些操作。
+选择组件用于从选项列表中收集用户提供的信息
 
 ## 基础用法
 
-:::demo 使用 `type`、`plain`、 和 `ghost` 来定义按钮的样式。
-
-button/basic
-
-:::
-
-## 禁用状态
-
-:::demo 按钮可以被禁用。
-
-button/disabled
-
-:::
-
-## 加载状态按钮
-
-点击按钮来加载数据，并向用户反馈加载状态。
-
-通过设置 loading 属性为 true 来显示加载中状态。
+菜单位于其发光元素下方，除非它们靠近视口的底部
 
 :::tip
 
-您可以使用 loading 插槽自定义您的loading图标
+1.  其中trigger可以控制如何触发下拉菜单，trigger: `click` | `hover`
+2.  在options 中，设定 disabled 值为 true，即可禁用该选项.
 
 :::
 
 :::demo
 
-button/loading
+select/basic
 
 :::
 
 ## 尺寸
 
-:::demo 除了默认的大小, 可使用 large和small两种值。
+:::tip
 
-button/size
+1. 除了默认的大小, 可使用 `large`和`small`两种值。
+2. 此外你还可以配置`clearable`来达到可以清空值。
+
+:::
+
+:::demo
+
+select/size
+
+:::
+
+## 自定义模板
+
+:::demo 你可以自定义如何来渲染每一个选项，将自定义的 HTML 模板插入 fb-option 的 slot 中即可。
+
+select/custom
 
 :::
 

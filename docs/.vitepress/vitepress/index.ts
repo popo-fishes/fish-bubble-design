@@ -12,5 +12,6 @@ import "./style/custom-vitepress.scss";
 import VPDemo from "./components/vp-demo/index.vue";
 import VPAsideOutlineBefore from "./components/aside-outline-before/index.vue";
 import VPAdvSpace from "./components/adv-space/index.vue";
+import Iconlist from "./components/icon-list/index.vue";
 
-export { VPDemo, VPAsideOutlineBefore, VPAdvSpace };
+export { VPDemo, VPAsideOutlineBefore, VPAdvSpace, Iconlist };
