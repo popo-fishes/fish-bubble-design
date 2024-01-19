@@ -29,6 +29,6 @@ const value = ref(null);
 
 <template>
   <div class="mb-4">
-    <fb-select v-model="value" :options="options" trigger="click" />
+    <fb-select v-model="value" :options="options" />
   </div>
 </template>

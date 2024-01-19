@@ -23,8 +23,9 @@
   }
 
   // 自定义触发器
-  @include when(custom) {
+  @include m(custom) {
     position: relative;
+    line-height: normal;
   }
 
   @include e(arrow) {

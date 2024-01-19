@@ -6,13 +6,16 @@
   --vp-screen-max-width: 1200px;
   --vp-layout-max-width: 1500px !important;
   --vp-c-brand: var(--fb-color-primary);
+  --vp-c-brand-1: var(--fb-color-primary);
   --vp-c-brand-light: var(--fb-color-primary-light-3);
   --vp-c-brand-lighter: var(--fb-color-primary-light-5);
   --vp-c-brand-lightest: : var(--fb-color-primary-light-7);
   --vp-c-brand-dark: : var(--fb-color-primary-dark-2);
   --vp-c-brand-darker: var(--fb-color-primary);
+  --vp-custom-block-tip-code-bg: var(--vp-code-block-bg);
   --vp-code-color: var(--fb-color-primary-light-3);
   --vp-code-bg: #f5f7fa;
+  --vp-c-text-1: #606266;
   --vp-code-block-bg: #f5f7fa;
   // colors
   --text-color: var(--fb-text-color-primary);
@@ -88,4 +91,5 @@
   --vp-code-bg: #262727;
   --vp-code-color: #e5eaf3;
   --border-color: #4c4d4f;
+  --vp-c-text-1: rgba(255, 255, 245, 0.86);
 }

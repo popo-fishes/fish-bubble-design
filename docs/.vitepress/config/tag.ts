@@ -8,7 +8,10 @@ export default (md: MarkdownIt): void => {
   md.renderer.rules.text = (tokens, idx) => {
     const token = tokens[idx];
     const tagRegExp = /^\^\[.*\]$/;
-    if (tagRegExp.test(token.content)) {
+
+    // 去掉空格
+    const trimmedStr = token.content.trim();
+    if (tagRegExp.test(trimmedStr)) {
       // 判断多个值 /分割
       const parts = token.content.split("/");
       let code = "";
@@ -21,7 +24,7 @@ export default (md: MarkdownIt): void => {
             code = code + `${index > 0 ? "<span class='type-tag-line'>/</span>" : ""} <span class="type-tag">${matches[1]}</span>`;
           }
         });
-        console.log(code);
+        // console.log(code);
         return code;
       }
       return token.content;

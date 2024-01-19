@@ -18,7 +18,10 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.png",
     siteTitle: "",
-    outline: 2,
+    outline: {
+      level: [2, 3],
+      label: "页面导航"
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/u-fish-bubble/fish-bubble-design" }],
     nav: [
       {

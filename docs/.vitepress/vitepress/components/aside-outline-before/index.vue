@@ -8,23 +8,18 @@ import { useRoute } from "vitepress";
 
 const route = useRoute();
 
-function updateAsideTitle() {
-  setTimeout(() => {
-    const AsideOutlineTitle = document.querySelector(".content .outline-title");
-    if (AsideOutlineTitle) {
-      AsideOutlineTitle.textContent = "页面导航";
-    }
-  }, 200);
+function updateRoute() {
+  console.log(route.path);
 }
 
 onMounted(() => {
-  updateAsideTitle();
+  updateRoute();
 });
 
 watch(
   () => route.path,
   () => {
-    updateAsideTitle();
+    updateRoute();
   }
 );
 </script>

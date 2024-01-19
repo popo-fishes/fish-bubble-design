@@ -9,18 +9,19 @@ lang: cn-ZH
 
 ## 基础用法
 
-菜单位于其发光元素下方，除非它们靠近视口的底部
+菜单位于其发光元素下方，除非它们靠近视口的底部。
 
-:::tip
+:::demo 在options 中，设定 disabled 值为 true，即可禁用该选项。
 
-1.  其中trigger可以控制如何触发下拉菜单，trigger: `click` | `hover`
-2.  在options 中，设定 disabled 值为 true，即可禁用该选项.
+select/basic
 
 :::
 
-:::demo
+## 自定义菜单项
 
-select/basic
+:::demo 你可以自定义如何来渲染每一个选项，将自定义的 HTML 模板插入 fb-option 的 slot 中即可。
+
+select/custom
 
 :::
 
@@ -39,26 +40,45 @@ select/size
 
 :::
 
-## 自定义模板
+## 自定义触发器
 
-:::demo 你可以自定义如何来渲染每一个选项，将自定义的 HTML 模板插入 fb-option 的 slot 中即可。
+你可以自定义触发器，来实现文本选择模式
+:::demo 其中trigger可以控制如何触发下拉菜单，trigger: `click` | `hover`
 
-select/custom
+select/trigger
 
 :::
 
 ## API
 
-### 属性
+### Select props
 
-| 属性名   | 说明                     | 类型                                   | 默认值 |
-| -------- | ------------------------ | -------------------------------------- | ------ |
-| tag      | 自定义元素标签           | ^[string] / ^[Component]               | button |
-| type     | 类型                     | `primary` `success` `warning` `danger` | —      |
-| plain    | 是否为次要按钮           | ^[boolean]                             | false  |
-| ghost    | 幽灵属性，使按钮背景透明 | ^[boolean]                             | false  |
-| size     | 按钮大小                 | `large` `middle` `small`               | middle |
-| width    | 按钮的宽度               | ^[string] / ^[Component]               | —      |
-| disabled | 按钮失效状态             | ^[boolean]                             | false  |
-| loading  | 设置按钮载入状态         | ^[boolean]                             | false  |
-| wave     | 是否需要波浪动效         | ^[boolean]                             | false  |
+| 属性名        | 说明                                                     | 类型                                                             | 默认值  |
+| ------------- | -------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
+| v-model       | 选中项绑定值                                             | ^[string] / ^[number]                                            | —       |
+| placeholder   | 占位符                                                   | ^[string]                                                        | 请选择  |
+| clearable     | 是否可以清空选项                                         | ^[boolean]                                                       | false   |
+| disabled      | 是否禁用                                                 | ^[boolean]                                                       | false   |
+| multiple      | 是否多选（todo）                                         | ^[boolean]                                                       | false   |
+| dropdownStyle | 下拉菜单的 style 属性                                    | ^[CSSProperties]                                                 | —       |
+| transition    | 下拉菜单的动画name（遵循vuejs transition内置组件的name） | ^[string]                                                        | —       |
+| placement     | 下拉菜单弹出位置                                         | `top` `top-start` `top-end` `bottom` `bottom-start` `bottom-end` | bottom  |
+| trigger       | 触发方式                                                 | `hover` `click`                                                  | click   |
+| isTrigger     | 是否把菜单放到触发器节点下面，默认放到body               | ^[boolean]                                                       | false   |
+| suffixIcon    | 自定义后缀图标组件                                       | ^[string] / ^[Component]                                         | —       |
+| clearIcon     | 自定义清除图标组件                                       | ^[string] / ^[Component]                                         | —       |
+| size          | 大小                                                     | `large` `default` `small`                                        | default |
+
+### Select Events
+
+| 属性名 | 说明                 | 类型                               |
+| ------ | -------------------- | ---------------------------------- |
+| change | 选中值发生变化时触发 | ^[Function] `(value: any) => void` |
+
+### Option props
+
+| 属性名   | 说明         | 类型                  | 默认值 |
+| -------- | ------------ | --------------------- | ------ |
+| value    | 选中项绑定值 | ^[string] / ^[number] | —      |
+| label    | 选项上的标签 | ^[string]             | —      |
+| disabled | 是否禁用     | ^[boolean]            | false  |

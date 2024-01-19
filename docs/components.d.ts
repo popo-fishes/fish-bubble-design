@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
     AsideOutlineBefore: typeof import('./.vitepress/vitepress/components/aside-outline-before/index.vue')['default']
     Home: typeof import('./.vitepress/vitepress/components/home/index.vue')['default']
     IconList: typeof import('./.vitepress/vitepress/components/icon-list/index.vue')['default']
-    VpApp: typeof import('./.vitepress/vitepress/components/vp-app.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo/index.vue')['default']
     VpExample: typeof import('./.vitepress/vitepress/components/vp-demo/vp-example.vue')['default']
     VpSourceCode: typeof import('./.vitepress/vitepress/components/vp-demo/vp-source-code.vue')['default']
