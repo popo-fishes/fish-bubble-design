@@ -1,52 +1,66 @@
 ---
-title: Select
+title: Input
 lang: cn-ZH
 ---
 
-# Select 选择器
+# Input 输入框
 
-选择组件用于从选项列表中收集用户提供的信息
+输入框允许用户在 UI 中输入文本, 它们通常出现在表单和对话框中
 
 ## 基础用法
 
-菜单位于其发光元素下方，除非它们靠近视口的底部。
+:::demo 你可以配置`clearable`来清空输入框的值
 
-:::demo 在options 中，设定 disabled 值为 true，即可禁用该选项。
-
-select/basic
+input/basic
 
 :::
 
-## 自定义菜单项
+## 禁用状态
 
-:::demo 你可以自定义如何来渲染每一个选项，将自定义的 HTML 模板插入 fb-option 的 slot 中即可。
+:::demo 通过 `disabled` 属性指定是否禁用 input 组件
 
-select/custom
+input/disabled
+
+:::
+
+## 限制输入格式
+
+:::demo 使用 allow-input 限制输入框的输入格式，你可以使用它来达到修饰的效果
+
+input/format
+
+:::
+
+## 前缀和后缀
+
+:::demo 在输入框上添加前缀或后缀图标。
+
+input/icon
+
+:::
+
+## 带标签的
+
+在输入框上添加前缀或后缀标签，需要自己写一点点代码
+:::demo 保持组件的简洁性，维护性; 组件内部不处理一些非输入框的需求。
+
+input/label
+
+:::
+
+## 文本域
+
+:::demo 添加 `type="textarea"` 属性, 用于多行输入。
+
+input/textarea
 
 :::
 
 ## 尺寸
 
-:::tip
+:::demo 除了默认的大小, 可使用 `large`和`small`两种值
 
-1. 除了默认的大小, 可使用 `large`和`small`两种值。
-2. 此外你还可以配置`clearable`来达到可以清空值。
-3. 你还可以设置`disabled`来禁用select
-
-:::
-
-:::demo
-
-select/size
-
-:::
-
-## 自定义触发器
-
-你可以自定义触发器，来实现文本选择模式
-:::demo 其中trigger可以控制如何触发下拉菜单，trigger: `click` | `hover`
-
-select/trigger
+input/size
 
 :::
 

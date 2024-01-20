@@ -196,8 +196,8 @@ $input: map.merge(
     "ripple-color": transparentColor($color-primary, 0.2),
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
-    // 边框
-    "border": 1px solid getCssVar("color-info", "light-3"),
+    // 边框色
+    "border-color": getCssVar("color-info", "light-3"),
     // hover的边框色
     "hover-border-color": getCssVar("color-primary"),
     // 聚焦的边框色

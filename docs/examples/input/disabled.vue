@@ -5,11 +5,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const value = ref("hahahh");
+const value = ref("我被禁用了");
 </script>
 
 <template>
   <div class="mb-4">
-    <fb-input v-model:model-value="value" placeholder="基本的 input" clearable />
+    <fb-input v-model="value" placeholder="基本的 input" disabled />
   </div>
 </template>

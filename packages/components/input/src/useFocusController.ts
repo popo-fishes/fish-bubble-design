@@ -35,8 +35,7 @@ export function useFocusController<T extends HTMLElement>(
   const handleBlur = (event: FocusEvent) => {
     const cancelBlur = isFunction(beforeBlur) ? beforeBlur(event) : false;
 
-    // 先注释，解决在输入框中插槽右边按钮，导致点击插槽部分节点失去不了焦点
-    //  if (cancelBlur || (event.relatedTarget && wrapperRef.value?.contains(event.relatedTarget as Node))) return;
+    if (cancelBlur || (event.relatedTarget && wrapperRef.value?.contains(event.relatedTarget as Node))) return;
 
     isFocused.value = false;
     emit("blur", event);

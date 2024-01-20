@@ -43,7 +43,24 @@ export default defineConfig({
           text: "数据录入",
           items: [
             { text: "Select 选择器", link: "/components/select" },
-            { text: "Input 输入框", link: "/components/input" }
+            { text: "Input 输入框", link: "/components/input" },
+            { text: "Checkbox 复选框", link: "/components/input2" },
+            { text: "Radio 单选框", link: "/components/input3" },
+            { text: "Switch 开关", link: "/components/input4" },
+            { text: "ImgCaptcha 图文验证码", link: "2ss22" },
+            { text: "DatePicker 日期选择框", link: "3222ss33" },
+            { text: "Form 表单", link: "/components/input333" }
+          ]
+        },
+        {
+          text: "反馈",
+          items: [
+            { text: "Dialog 对话框", link: "/components/select5" },
+            { text: "message 全局提示", link: "/components/input6" },
+            { text: "Prompt 确认框", link: "/components/input7" },
+            { text: "Radio 单选框", link: "/components/input8" },
+            { text: "Switch 开关", link: "/components/input9" },
+            { text: "DatePicker 日期选择框", link: "1aa00" }
           ]
         }
       ],
