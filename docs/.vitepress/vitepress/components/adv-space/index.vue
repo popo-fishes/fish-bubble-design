@@ -13,7 +13,7 @@
 <style lang="scss">
 .adv-space-box {
   width: calc(var(--vp-sidebar-width) - 64px);
-  padding: 48px 0px 10px 0;
+  padding: 20px 0px 10px 0;
   img {
     width: 100%;
     height: 126px;

@@ -66,34 +66,43 @@ input/size
 
 ## API
 
-### Select props
+### Input props
 
-| 属性名        | 说明                                                     | 类型                                                             | 默认值  |
-| ------------- | -------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| v-model       | 选中项绑定值                                             | ^[string] / ^[number]                                            | —       |
-| placeholder   | 占位符                                                   | ^[string]                                                        | 请选择  |
-| clearable     | 是否可以清空选项                                         | ^[boolean]                                                       | false   |
-| disabled      | 是否禁用                                                 | ^[boolean]                                                       | false   |
-| multiple      | 是否多选（todo）                                         | ^[boolean]                                                       | false   |
-| dropdownStyle | 下拉菜单的 style 属性                                    | ^[CSSProperties]                                                 | —       |
-| transition    | 下拉菜单的动画name（遵循vuejs transition内置组件的name） | ^[string]                                                        | —       |
-| placement     | 下拉菜单弹出位置                                         | `top` `top-start` `top-end` `bottom` `bottom-start` `bottom-end` | bottom  |
-| trigger       | 触发方式                                                 | `hover` `click`                                                  | click   |
-| isTrigger     | 是否把菜单放到触发器节点下面，默认放到body               | ^[boolean]                                                       | false   |
-| suffixIcon    | 自定义后缀图标组件                                       | ^[string] / ^[Component]                                         | —       |
-| clearIcon     | 自定义清除图标组件                                       | ^[string] / ^[Component]                                         | —       |
-| size          | 大小                                                     | `large` `default` `small`                                        | default |
+| 属性名      | 说明                                                              | 类型                                     | 默认值  |
+| ----------- | ----------------------------------------------------------------- | ---------------------------------------- | ------- |
+| v-model     | 输入框内容                                                        | ^[string] / ^[number]                    | —       |
+| placeholder | 占位符                                                            | ^[string]                                | 请输入  |
+| clearable   | 可以点击清除图标删除内容                                          | ^[boolean]                               | false   |
+| disabled    | 是否禁用                                                          | ^[boolean]                               | false   |
+| readonly    | 是否只读                                                          | ^[boolean]                               | false   |
+| inputStyle  | input 元素或 textarea 元素的 style                                | ^[CSSProperties]                         | —       |
+| autofocus   | 是否自动获取焦点                                                  | ^[boolean]                               | false   |
+| maxlength   | 最大输入长度                                                      | ^[number]                                | —       |
+| size        | 大小                                                              | `large` `default` `small`                | default |
+| type        | 类型原生 input 类型 \| textarea                                   | ^[string]                                | text    |
+| allowInput  | 校验当前的输入是否合法，如果返回 false 输入框便不会响应此次的输入 | ^[Function] `(value: string) => boolean` | —       |
 
-### Select Events
+### Input Events
 
-| 属性名 | 说明                 | 类型                               |
-| ------ | -------------------- | ---------------------------------- |
-| change | 选中值发生变化时触发 | ^[Function] `(value: any) => void` |
+| 属性名 | 说明                                                        | 类型        |
+| ------ | ----------------------------------------------------------- | ----------- |
+| change | 仅当 modelValue 改变时，当输入框失去焦点或用户按Enter时触发 | ^[Function] |
+| input  | Input 值改变时触发                                          | ^[Function] |
+| blur   | 当选择器的输入框失去焦点时触发                              | ^[Function] |
+| focus  | 当选择器的输入框获得焦点时触发                              | ^[Function] |
 
-### Option props
+### Input defineExpose
 
-| 属性名   | 说明         | 类型                  | 默认值 |
-| -------- | ------------ | --------------------- | ------ |
-| value    | 选中项绑定值 | ^[string] / ^[number] | —      |
-| label    | 选项上的标签 | ^[string]             | —      |
-| disabled | 是否禁用     | ^[boolean]            | false  |
+| 名称  | 说明                       | 类型        |
+| ----- | -------------------------- | ----------- |
+| blur  | 使 input 失去焦点          | ^[Function] |
+| focus | 使 input 获取焦点          | ^[Function] |
+| clear | 清除 input 值              | ^[Function] |
+| ref   | HTML元素 input 或 textarea | ^[object]   |
+
+### Slots
+
+| 插槽名 | 说明                                      |
+| ------ | ----------------------------------------- |
+| prefix | 设置前置标签，只对非 type="textarea" 有效 |
+| suffix | 设置后置标签，只对非 type="textarea" 有效 |
