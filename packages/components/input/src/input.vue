@@ -134,10 +134,6 @@ const handleMouseEnter = (evt: MouseEvent) => {
 };
 
 defineExpose({
-  /** @description HTML input element */
-  inputRef,
-  /** @description HTML textarea element */
-  textareaRef,
   /** @description HTML element, input or textarea */
   ref: _ref,
   /** @description HTML input element native method */

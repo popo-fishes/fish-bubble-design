@@ -45,6 +45,8 @@
 }
 .VPSidebar {
   background-color: #fff !important;
+  padding-top: 0px !important;
+  top: var(--vp-nav-height) !important;
   .curtain {
     background-color: transparent !important;
     width: 100%;

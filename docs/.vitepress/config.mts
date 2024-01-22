@@ -44,7 +44,7 @@ export default defineConfig({
           items: [
             { text: "Select 选择器", link: "/components/select" },
             { text: "Input 输入框", link: "/components/input" },
-            { text: "Checkbox 复选框", link: "/components/input2" },
+            { text: "Checkbox 多选框", link: "/components/input2" },
             { text: "Radio 单选框", link: "/components/input3" },
             { text: "Switch 开关", link: "/components/input4" },
             { text: "ImgCaptcha 图文验证码", link: "2ss22" },
