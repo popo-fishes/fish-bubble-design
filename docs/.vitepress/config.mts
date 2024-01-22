@@ -16,7 +16,7 @@ export default defineConfig({
   lastUpdated: false,
   head,
   themeConfig: {
-    logo: "/logo.png",
+    logo: "/fb-logo.png",
     siteTitle: "",
     outline: {
       level: [2, 3],
