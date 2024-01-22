@@ -23,8 +23,9 @@
   }
 
   // 自定义触发器
-  @include when(custom) {
+  @include m(custom) {
     position: relative;
+    line-height: normal;
   }
 
   @include e(arrow) {
@@ -68,6 +69,7 @@
       }
     }
     &.is-disabled {
+      @include set-css-var-value("select-hover-border-color", getCssVar("color-info", "light-3"));
       background-color: getCssVar("select-disabled-bg-color");
     }
   }
@@ -85,8 +87,11 @@
     max-height: getCssVar("select-dropdown", "max-height");
     border-radius: getCssVar("select-dropdown", "border-radius");
     border: 1px solid getCssVar("select-dropdown", "border-color");
-    background: #fff;
-    box-shadow: 0px 16px 24px 0px rgba(41, 80, 155, 0.1);
+    background: getCssVar("select-dropdown", "bg-color");
+    box-shadow:
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
     overflow-x: hidden;
     @include scrollbarStyle();
   }

@@ -10,13 +10,12 @@
     "strict": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "lib": ["WebWorker"],
+    "jsx": "preserve",
     "paths": {
-      "fish-bubble-design": ["../packages/fish-bubble-design"],
-      "~/*": ["./.vitepress/vitepress/*"]
+      "~/*": ["./.vitepress/vitepress/*"],
+      "fish-bubble-design": ["../packages/fish-bubble-design"]
     },
-    "types": ["../typings/components"],
-    "jsx": "preserve"
+    "types": ["../typings/components"]
   },
   "include": ["**/*", ".vitepress/**/*"],
   "exclude": ["node_modules"]

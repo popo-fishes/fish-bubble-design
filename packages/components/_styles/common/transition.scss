@@ -77,3 +77,12 @@
   opacity: 1;
   transform: scale(1);
 }
+
+//  折叠面板
+.#{$namespace}-collapse-transition-leave-active,
+.#{$namespace}-collapse-transition-enter-active {
+  transition:
+    0.3s max-height ease-in-out,
+    0.3s padding-top ease-in-out,
+    0.3s padding-bottom ease-in-out;
+}

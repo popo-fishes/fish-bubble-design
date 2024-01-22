@@ -7,8 +7,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rimraf ../dist",
-    "start": "gulp --require @esbuild-kit/cjs-loader"
+    "start": "gulp --require @esbuild-kit/cjs-loader",
+    "clean": "rimraf ../dist"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

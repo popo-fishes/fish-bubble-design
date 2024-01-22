@@ -19,7 +19,7 @@
   display: inline-flex;
   align-items: center;
   background-color: getCssVar("input-bg-color");
-  border: getCssVar("input-border");
+  border: 1px solid getCssVar("input-border-color");
   border-radius: getCssVar("input-border-radius");
   font-size: getCssVar("font-size", "base");
   height: map.get($common-component-size, "default");
@@ -38,7 +38,7 @@
     border-color: getCssVar("input-focus-border-color");
     // 波浪效果
     .#{$namespace}-base-wave {
-      box-shadow: 0 0 0 3px getCssVar("input-ripple-color");
+      box-shadow: 0 0 0 3.5px getCssVar("input-ripple-color");
       transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
@@ -46,6 +46,7 @@
   @include when(disabled) {
     cursor: not-allowed;
     background-color: getCssVar("input-disabled-bg-color");
+    @include set-css-var-value("input-hover-border-color", getCssVar("color-info", "light-3"));
     .#{$namespace}-input__inner {
       cursor: not-allowed;
     }
@@ -71,6 +72,15 @@
       color: getCssVarWithDefault("input-placeholder-color", map.get($input, "placeholder-color"));
     }
   }
+  @include e(prefix) {
+    display: inline-flex;
+    white-space: nowrap;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
   @include e(suffix) {
     display: inline-flex;
     white-space: nowrap;
@@ -84,6 +94,7 @@
       width: 24px;
       line-height: 24px;
       text-align: center;
+      justify-content: center;
       color: getCssVar("input-icon-color");
       &:hover {
         color: getCssVar("input-clear-hover-color");
@@ -122,7 +133,7 @@
     color: getCssVar("input-text-color");
     font-size: inherit;
     background-color: getCssVar("input-bg-color");
-    border: getCssVar("input-border");
+    border: 1px solid getCssVar("input-border-color");
     transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     border-radius: inherit;
     outline: none;
@@ -139,7 +150,7 @@
     border-color: getCssVar("input-focus-border-color");
     // 波浪效果
     .#{$namespace}-base-wave {
-      box-shadow: 0 0 0 2px getCssVar("input-ripple-color");
+      box-shadow: 0 0 0 3.5px getCssVar("input-ripple-color");
       transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }

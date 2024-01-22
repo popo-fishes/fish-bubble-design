@@ -3,7 +3,7 @@
  * @Description: Modify here please
 -->
 <p align="center">
-  <img width="300px" height="250px" src="https://cdn.yupaowang.com/yupao_pc/images/pl/fish-bubble-design-logo.png">
+  <img width="300px" height="250px" src="https://cdn.yupaowang.com/yupao_pc/images/pl/fb-logo-max.png">
 </p>
 
 <p align="center">

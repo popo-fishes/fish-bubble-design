@@ -33,8 +33,7 @@ const usePopperTimeout = () => {
 export const useDelayedToggle = ({ open, close, hideAfterTime, showAfterTime }: UseDelayedToggleProps) => {
   const { registerTimeout } = usePopperTimeout();
 
-  const options = { showAfterTime: hideAfterTime || 0, hideAfterTime: showAfterTime || 200 };
-
+  const options = { showAfterTime: showAfterTime || 0, hideAfterTime: hideAfterTime ?? 200 };
   const onOpen = (event?: Event) => {
     registerTimeout(() => {
       open(event);

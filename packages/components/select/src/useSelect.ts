@@ -45,7 +45,7 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
 
   // 是否可以清空选项
   const showClose = computed(() => {
-    const hasValue = props.multiple ? Array.isArray(props.modelValue) && props.modelValue.length > 0 : inputValue;
+    const hasValue = props.multiple ? Array.isArray(props.modelValue) && props.modelValue.length > 0 : inputValue.value;
     // 开启清除，获取焦点， 并且存在值
     const criteria = props.clearable && inputHovering.value && hasValue;
     return criteria;

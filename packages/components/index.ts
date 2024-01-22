@@ -11,6 +11,7 @@ export * from "./img-captcha";
 export * from "./input";
 export * from "./select";
 export * from "./popper";
+export * from "./collapse-transition";
 
 // plugins
 export * from "./message";

@@ -1,21 +1,58 @@
 {
-  "hash": "4a759b3b",
-  "configHash": "925ff1f6",
-  "lockfileHash": "07c8cd4b",
-  "browserHash": "5d06b8ff",
+  "hash": "f469ccdb",
+  "configHash": "3a4fc52a",
+  "lockfileHash": "8312ff9d",
+  "browserHash": "7c4e1e1f",
   "optimized": {
+    "@popperjs/core": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/index.js",
+      "file": "@popperjs_core.js",
+      "fileHash": "7f6dde28",
+      "needsInterop": false
+    },
+    "@fish-bubble/icons": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@fish-bubble+icons@1.0.4_vue@3.4.0/node_modules/@fish-bubble/icons/dist/index.mjs",
+      "file": "@fish-bubble_icons.js",
+      "fileHash": "a5b58e6a",
+      "needsInterop": false
+    },
     "vue": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vue@3.4.0_typescript@5.3.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "1d9123cf",
+      "fileHash": "736a1695",
+      "needsInterop": false
+    },
+    "markdown-it": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it@13.0.2/node_modules/markdown-it/index.js",
+      "file": "markdown-it.js",
+      "fileHash": "bffa6542",
+      "needsInterop": true
+    },
+    "markdown-it-container": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it-container@3.0.0/node_modules/markdown-it-container/index.js",
+      "file": "markdown-it-container.js",
+      "fileHash": "3ac811e3",
+      "needsInterop": true
+    },
+    "@vueuse/core": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.7.2_vue@3.4.14/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "03253b12",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "48d4d0dd",
+      "fileHash": "d9175d94",
       "needsInterop": false
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-TXZRC5VA": {
+      "file": "chunk-TXZRC5VA.js"
+    },
+    "chunk-NIBQISYW": {
+      "file": "chunk-NIBQISYW.js"
+    }
+  }
 }

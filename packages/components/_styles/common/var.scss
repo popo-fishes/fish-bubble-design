@@ -120,7 +120,7 @@ $border-radius: () !default;
 $border-radius: map.merge(
   (
     "base": 4px,
-    "small": 2px,
+    "small": 3px,
     "large": 8px,
     "circle": 100%
   ),
@@ -196,14 +196,14 @@ $input: map.merge(
     "ripple-color": transparentColor($color-primary, 0.2),
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
-    // 边框
-    "border": 1px solid getCssVar("color-info", "light-3"),
+    // 边框色
+    "border-color": getCssVar("color-info", "light-3"),
     // hover的边框色
     "hover-border-color": getCssVar("color-primary"),
     // 聚焦的边框色
     "focus-border-color": getCssVar("color-primary"),
     // 禁止时的背景
-    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    "disabled-bg-color": getCssVar("color-info", "light-8"),
     // 输入框的圆角
     "border-radius": getCssVar("border-radius-base"),
     // 占位符颜色
@@ -239,7 +239,7 @@ $select: map.merge(
     // hover的边框色
     "hover-border-color": getCssVar("color-primary"),
     // 禁止时的背景
-    "disabled-bg-color": getCssVar("color-info", "light-5"),
+    "disabled-bg-color": getCssVar("color-info", "light-8"),
     // select的圆角
     "border-radius": getCssVar("border-radius-base"),
     // 占位符颜色
@@ -258,8 +258,9 @@ $select-dropdown: () !default;
 $select-dropdown: map.merge(
   (
     "max-height": 240px,
-    "border-radius": getCssVar("border-radius-base"),
-    "border-color": #e9edf3,
+    "border-radius": getCssVar("border-radius-small"),
+    "bg-color": getCssVar("color-white"),
+    "border-color": getCssVar("color-white"),
     // item的高度
     "item-height": 36px,
     // item获取焦点的字体颜色

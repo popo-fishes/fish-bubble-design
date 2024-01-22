@@ -18,7 +18,7 @@ import type { ISelectProps, ISelectEmits } from "./type";
 const props = withDefaults(defineProps<ISelectProps>(), {
   placeholder: "请选择",
   placement: "bottom",
-  trigger: "hover",
+  trigger: "click",
   clearable: false,
   isTrigger: false,
   suffixIcon: ArrowUp,
@@ -83,6 +83,9 @@ provide(
     :transition="transition"
     :placement="placement"
     :trigger="trigger"
+    :offset="5"
+    :hide-after-time="0"
+    :disabled="props.disabled"
     :get-popup-container="getPopupContainer"
     :popper-class="ns.b('dropdown')"
     :popper-style="selectDownStyle"
@@ -92,7 +95,7 @@ provide(
         <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
         <slot name="trigger">
           <!-- 默认触发器 -->
-          <fb-input ref="reference" :size="size" readonly v-model="inputValue">
+          <fb-input ref="reference" :disabled="props.disabled" :size="size" readonly v-model="inputValue">
             <template #suffix>
               <!-- 不展示关闭按钮才显示箭头 -->
               <component :is="suffixIcon" :class="ns.e('arrow')" v-if="suffixIcon && !showClose" />
