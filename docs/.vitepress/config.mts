@@ -28,7 +28,8 @@ export default defineConfig({
         text: "指南",
         link: "/guide/installation"
       },
-      { text: "组件", link: "/components/button" }
+      { text: "组件", link: "/components/button" },
+      { text: "功能", link: "/components/functions" }
     ],
     sidebar: {
       "/components": [
@@ -64,7 +65,13 @@ export default defineConfig({
           ]
         }
       ],
-      "/guide": [{ text: "安装", link: "/guide/installation" }]
+      "/guide": [
+        { text: "Fish Bubble", link: "/guide/installation" },
+        { text: "快速开始", link: "/guide/quickstart" },
+        { text: "定制主题", link: "/guide/theming" },
+        { text: "国际化", link: "/guide/i18n" },
+        { text: "暗黑模式", link: "/guide/dark" }
+      ]
     }
   },
   markdown: {
