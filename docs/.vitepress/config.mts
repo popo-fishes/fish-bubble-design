@@ -26,13 +26,14 @@ export default defineConfig({
     nav: [
       {
         text: "指南",
-        link: "/guide/installation"
+        link: "/guide/installation",
+        activeMatch: "/guide/"
       },
-      { text: "组件", link: "/components/button" },
-      { text: "功能", link: "/components/functions" }
+      { text: "组件", link: "/components/button", activeMatch: "/components/" },
+      { text: "功能", link: "/functions/is", activeMatch: "/functions/" }
     ],
     sidebar: {
-      "/components": [
+      "/components/": [
         {
           text: "基础组件",
           items: [
@@ -65,12 +66,32 @@ export default defineConfig({
           ]
         }
       ],
-      "/guide": [
+      "/guide/": [
         { text: "Fish Bubble", link: "/guide/installation" },
         { text: "快速开始", link: "/guide/quickstart" },
         { text: "定制主题", link: "/guide/theming" },
         { text: "国际化", link: "/guide/i18n" },
         { text: "暗黑模式", link: "/guide/dark" }
+      ],
+      "/functions/": [
+        {
+          text: "基础",
+          items: [
+            { text: "is判断", link: "/functions/is" },
+            { text: "unrefElement", link: "/functions/unrefElement" },
+            { text: "onClickOutside", link: "/functions/onClickOutside" },
+            { text: "useDebounceFn", link: "/functions/useDebounceFn" },
+            { text: "useThrottleFn", link: "/functions/useThrottleFn" },
+            { text: "useSubmitFn", link: "/functions/useSubmitFn" }
+          ]
+        },
+        {
+          text: "浏览器",
+          items: [
+            { text: "useEventListener", link: "/functions/useEventListener" },
+            { text: "useResizeObserver", link: "/functions/useResizeObserver" }
+          ]
+        }
       ]
     }
   },

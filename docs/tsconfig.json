@@ -13,7 +13,8 @@
     "jsx": "preserve",
     "paths": {
       "~/*": ["./.vitepress/vitepress/*"],
-      "fish-bubble-design": ["../packages/fish-bubble-design"]
+      "fish-bubble-design": ["../packages/fish-bubble-design"],
+      "fish-bubble-design/shared": ["../packages/shared"]
     },
     "types": ["../typings/components"]
   },

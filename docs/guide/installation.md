@@ -28,7 +28,7 @@ title: 安装
 
 - 支持服务端渲染.
 
-- Electron.
+- 支持Electron桌面应用.
 
 ## 兼容性
 
@@ -40,8 +40,8 @@ fish-bubble-design 使用了Vue3.4.x版本， 由于 Vue 3 不再支持 IE11，f
 
 ## 使用包管理器
 
-**我们建议您使用包管理器 (NPM, [Yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) 安装 fish-bubble-design**,
-然后您就可以使用打包工具, 例如 [Vite](https://vitejs.dev) 或者 [webpack](https://webpack.js.org/).
+**我们建议您使用包管理器 (npm, [yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) 安装 fish-bubble-design**,
+然后您就可以使用打包工具, 例如 [vite](https://vitejs.dev) 或者 [webpack](https://webpack.js.org/).
 
 ```shell
 # NPM
@@ -54,7 +54,7 @@ $ yarn add fish-bubble-design
 $ pnpm i fish-bubble-design
 ```
 
-如果您的网络环境不好，建议使用相关镜像服务 [cnpm](https://github.com/cnpm/cnpm) 或 [Alibaba](https://registry.npmmirror.com/) 镜像.
+如果您的网络环境不好，建议使用相关镜像服务 [cnpm](https://github.com/cnpm/cnpm) 或 [alibaba](https://registry.npmmirror.com/) 镜像.
 
 ## 使用CDN
 
