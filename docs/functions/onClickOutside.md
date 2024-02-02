@@ -2,7 +2,7 @@
 title: onClickOutside
 ---
 
-## onClickOutside
+# onClickOutside
 
 监听元素外部的点击。对于modal或下拉菜单很有用。
 

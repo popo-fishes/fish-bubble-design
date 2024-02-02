@@ -52,7 +52,9 @@ async function buildFullEntry(minify: boolean) {
       },
       define: {
         "process.env.NODE_ENV": JSON.stringify("production")
-      }
+      },
+      treeShaking: true,
+      legalComments: "eof"
     })
   ];
 

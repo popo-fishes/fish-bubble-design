@@ -30,7 +30,7 @@ export default defineConfig({
         activeMatch: "/guide/"
       },
       { text: "组件", link: "/components/button", activeMatch: "/components/" },
-      { text: "功能", link: "/functions/is", activeMatch: "/functions/" }
+      { text: "扩展", link: "/functions/is", activeMatch: "/functions/" }
     ],
     sidebar: {
       "/components/": [
