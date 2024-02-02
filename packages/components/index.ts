@@ -12,6 +12,7 @@ export * from "./input";
 export * from "./select";
 export * from "./popper";
 export * from "./collapse-transition";
+export * from "./tag";
 
 // plugins
 export * from "./message";

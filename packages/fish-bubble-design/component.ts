@@ -21,6 +21,8 @@ export { default as FbPopper } from "@fish-bubble-design/components/popper";
 
 export { default as FbCollapseTransition } from "@fish-bubble-design/components/collapse-transition";
 
+export { default as FbTag } from "@fish-bubble-design/components/tag";
+
 // Plugin
 export { message } from "@fish-bubble-design/components/message";
 export { prompt } from "@fish-bubble-design/components/prompt";
