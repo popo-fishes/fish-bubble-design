@@ -69,6 +69,7 @@ select/trigger
 | suffixIcon            | 自定义后缀图标组件                                       | ^[string] / ^[Component]                                         | —       |
 | clearIcon             | 自定义清除图标组件                                       | ^[string] / ^[Component]                                         | —       |
 | size                  | 大小                                                     | `large` `default` `small`                                        | default |
+| wave                  | 当触发器是input(默认)时，是否需要获取焦点波浪效果        | ^[boolean]                                                       | true    |
 
 ### Select Events
 
