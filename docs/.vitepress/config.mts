@@ -61,7 +61,7 @@ export default defineConfig({
           text: "反馈",
           items: [
             { text: "Dialog 对话框", link: "/components/dialog" },
-            { text: "message 全局提示", link: "/components/message" },
+            { text: "Message 全局提示", link: "/components/message" },
             { text: "Prompt 确认框", link: "/components/prompt" },
             { text: "Popover 气泡卡片", link: "/components/popover" }
           ]
