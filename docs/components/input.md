@@ -68,19 +68,19 @@ input/size
 
 ### Input props
 
-| 属性名      | 说明                                                              | 类型                                     | 默认值  |
-| ----------- | ----------------------------------------------------------------- | ---------------------------------------- | ------- |
-| v-model     | 输入框内容                                                        | ^[string] / ^[number]                    | —       |
-| placeholder | 占位符                                                            | ^[string]                                | 请输入  |
-| clearable   | 可以点击清除图标删除内容                                          | ^[boolean]                               | false   |
-| disabled    | 是否禁用                                                          | ^[boolean]                               | false   |
-| readonly    | 是否只读                                                          | ^[boolean]                               | false   |
-| inputStyle  | input 元素或 textarea 元素的 style                                | ^[CSSProperties]                         | —       |
-| autofocus   | 是否自动获取焦点                                                  | ^[boolean]                               | false   |
-| maxlength   | 最大输入长度                                                      | ^[number]                                | —       |
-| size        | 大小                                                              | `large` `default` `small`                | default |
-| type        | 类型原生 input 类型 \| textarea                                   | ^[string]                                | text    |
-| allowInput  | 校验当前的输入是否合法，如果返回 false 输入框便不会响应此次的输入 | ^[Function] `(value: string) => boolean` | —       |
+| 属性名                | 说明                                                              | 类型                                     | 默认值  |
+| --------------------- | ----------------------------------------------------------------- | ---------------------------------------- | ------- |
+| model-value / v-model | 输入框内容                                                        | ^[string] / ^[number]                    | —       |
+| placeholder           | 占位符                                                            | ^[string]                                | 请输入  |
+| clearable             | 可以点击清除图标删除内容                                          | ^[boolean]                               | false   |
+| disabled              | 是否禁用                                                          | ^[boolean]                               | false   |
+| readonly              | 是否只读                                                          | ^[boolean]                               | false   |
+| inputStyle            | input 元素或 textarea 元素的 style                                | ^[CSSProperties]                         | —       |
+| autofocus             | 是否自动获取焦点                                                  | ^[boolean]                               | false   |
+| maxlength             | 最大输入长度                                                      | ^[number]                                | —       |
+| size                  | 大小                                                              | `large` `default` `small`                | default |
+| type                  | 类型原生 input 类型 \| textarea                                   | ^[string]                                | text    |
+| allowInput            | 校验当前的输入是否合法，如果返回 false 输入框便不会响应此次的输入 | ^[Function] `(value: string) => boolean` | —       |
 
 ### Input Events
 

@@ -24,13 +24,13 @@ $colors: map.deep-merge(
       "base": #06b578
     ),
     "warning": (
-      "base": #ff8904
+      "base": #e6a23c
     ),
     "danger": (
-      "base": #e8362e
+      "base": #f56c6c
     ),
     "info": (
-      "base": #b7bdc7
+      "base": #909399
     )
   ),
   $colors
@@ -111,7 +111,7 @@ $text-color: map.merge(
     // 占位符颜色
     "placeholder": #a8abb2,
     // disabled
-    "disabled": #a8abb2
+    "disabled": #c0c4cc
   ),
   $text-color
 );
@@ -169,11 +169,11 @@ $checkbox: map.merge(
     // 正常状态的背景色
     "bg-color": getCssVar("color-white"),
     // 正常状态边框
-    "input-border": 1px solid getCssVar("color-info", "light-3"),
+    "input-border": 1px solid getCssVar("color-info", "light-5"),
     // 禁用时的边框颜色
-    "disabled-border-color": getCssVar("color-info", "light-3"),
+    "disabled-border-color": getCssVar("color-info", "light-5"),
     // 禁止状态下的背景色
-    "disabled-input-fill": getCssVar("color-info", "light-7"),
+    "disabled-input-fill": getCssVar("color-info", "light-8"),
     // 禁止状态下选中时的icon 色
     "disabled-checked-icon-color": #a8a2b2,
     // 选中状态下边框色
@@ -197,13 +197,13 @@ $input: map.merge(
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
     // 边框色
-    "border-color": getCssVar("color-info", "light-3"),
+    "border-color": getCssVar("color-info", "light-6"),
     // hover的边框色
     "hover-border-color": getCssVar("color-primary"),
     // 聚焦的边框色
     "focus-border-color": getCssVar("color-primary"),
     // 禁止时的背景
-    "disabled-bg-color": getCssVar("color-info", "light-8"),
+    "disabled-bg-color": getCssVar("color-info", "light-9"),
     // 输入框的圆角
     "border-radius": getCssVar("border-radius-base"),
     // 占位符颜色
@@ -239,7 +239,7 @@ $select: map.merge(
     // hover的边框色
     "hover-border-color": getCssVar("color-primary"),
     // 禁止时的背景
-    "disabled-bg-color": getCssVar("color-info", "light-8"),
+    "disabled-bg-color": getCssVar("color-info", "light-9"),
     // select的圆角
     "border-radius": getCssVar("border-radius-base"),
     // 占位符颜色
@@ -273,4 +273,16 @@ $select-dropdown: map.merge(
     "item-disabled-text-color": getCssVar("text-color-disabled")
   ),
   $select-dropdown
+);
+
+// Tag
+$tag: () !default;
+$tag: map.merge(
+  (
+    // 字体大小
+    "font-size": 12px,
+    "border-radius": 4px,
+    "border-radius-rounded": 9999px
+  ),
+  $tag
 );

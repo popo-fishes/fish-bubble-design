@@ -1,49 +1,49 @@
 {
-  "hash": "48e22857",
-  "configHash": "b80dfea7",
-  "lockfileHash": "8312ff9d",
-  "browserHash": "123adc78",
+  "hash": "eac122e8",
+  "configHash": "a5688c75",
+  "lockfileHash": "8280a5ab",
+  "browserHash": "342e7034",
   "optimized": {
     "@popperjs/core": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/index.js",
       "file": "@popperjs_core.js",
-      "fileHash": "56a05a12",
+      "fileHash": "7d400648",
       "needsInterop": false
     },
     "@fish-bubble/icons": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@fish-bubble+icons@1.0.4_vue@3.4.0/node_modules/@fish-bubble/icons/dist/index.mjs",
       "file": "@fish-bubble_icons.js",
-      "fileHash": "d612d4a3",
+      "fileHash": "dbaef646",
       "needsInterop": false
     },
     "vue": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vue@3.4.0_typescript@5.3.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "a1b1ad99",
+      "fileHash": "5f9a4ae6",
       "needsInterop": false
     },
     "markdown-it": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it@13.0.2/node_modules/markdown-it/index.js",
       "file": "markdown-it.js",
-      "fileHash": "bd5872f3",
+      "fileHash": "29d3c5a0",
       "needsInterop": true
     },
     "markdown-it-container": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it-container@3.0.0/node_modules/markdown-it-container/index.js",
       "file": "markdown-it-container.js",
-      "fileHash": "4b5fc7db",
+      "fileHash": "564588c8",
       "needsInterop": true
     },
     "@vueuse/core": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.7.2_vue@3.4.14/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.7.2_vue@3.4.0/node_modules/@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "9085e2b7",
+      "fileHash": "460c0277",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "c0271855",
+      "fileHash": "f5797205",
       "needsInterop": false
     }
   },

@@ -3,7 +3,8 @@
  * @Description: Modify here please
 -->
 <template>
-  <span :class="containerKls" @click="handleClick">
+  <span :class="containerKls" :style="containerStyle" @click="handleClick">
+    <slot name="icon" />
     <span :class="ns.e('content')">
       <slot />
     </span>
@@ -28,6 +29,8 @@ interface ITagProps {
   round?: boolean;
   /** 是否可关闭 */
   closable?: boolean;
+  /** 自定义背景色 */
+  color?: string;
 }
 
 defineOptions({
@@ -36,7 +39,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<ITagProps>(), {
   type: "",
-  effect: "plain"
+  effect: "light"
 });
 
 const emit = defineEmits({
@@ -47,8 +50,12 @@ const emit = defineEmits({
 const ns = useNamespace("tag");
 
 const containerKls = computed(() => {
-  const { type, effect, closable, round, size } = props;
-  return [ns.b(), ns.is("closable", closable), ns.m(type), ns.m(size), ns.m(effect), ns.is("round", round)];
+  const { type, effect, closable, round, size, color } = props;
+  return [ns.b(), ns.is("closable", closable), ns.m(type), ns.m(size), ns.m(effect), ns.is("round", round), ns.is("color", !!color)];
+});
+
+const containerStyle = computed(() => {
+  return props.color ? { backgroundColor: props.color } : {};
 });
 
 // methods

@@ -46,7 +46,7 @@
   @include when(disabled) {
     cursor: not-allowed;
     background-color: getCssVar("input-disabled-bg-color");
-    @include set-css-var-value("input-hover-border-color", getCssVar("color-info", "light-3"));
+    @include set-css-var-value("input-hover-border-color", getCssVar("color-info", "light-6"));
     .#{$namespace}-input__inner {
       cursor: not-allowed;
     }

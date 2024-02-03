@@ -6,7 +6,7 @@
 import { onMounted, computed } from "vue";
 import type { CSSProperties } from "vue";
 
-import { useCaptcha } from "./use-captcha";
+import { useCaptcha, generateRandomId } from "./use-captcha";
 import { useNamespace } from "@fish-bubble-design/hooks";
 
 import type { ImgCaptchaProps } from "./type";
@@ -22,7 +22,11 @@ defineOptions({
   name: "FbImgCaptcha"
 });
 
-const { imgCaptchaCode, refresh, init } = useCaptcha(props);
+const nodeId = computed(() => {
+  return "imgCaptcha" + generateRandomId();
+});
+
+const { imgCaptchaCode, refresh, init } = useCaptcha(props, nodeId.value);
 
 const ns = useNamespace("img-captcha");
 
@@ -61,5 +65,5 @@ defineExpose({ validate });
 </script>
 
 <template>
-  <div id="imgCaptcha" :class="ns.b()" :style="style" />
+  <div :id="nodeId" :class="ns.b()" :style="style" />
 </template>
