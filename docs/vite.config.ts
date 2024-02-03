@@ -28,8 +28,8 @@ if (process.env.DOC_ENV !== "production") {
       replacement: resolve(projRoot, "packages/fish-bubble-design/index.ts")
     },
     {
-      find: /^fish-bubble-design\/(es|lib)\/(.*)$/,
-      replacement: `${resolve(projRoot, "packages")}/$2`
+      find: "fish-bubble-design/shared",
+      replacement: resolve(projRoot, "packages/shared/index.ts")
     }
   );
 }
