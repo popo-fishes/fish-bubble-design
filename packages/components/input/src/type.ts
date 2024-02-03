@@ -27,6 +27,8 @@ export interface InputProps {
   readonly?: boolean;
   /** input 元素或 textarea 元素的 style */
   inputStyle?: CSSProperties;
+  /** 是否需要波浪效果 */
+  wave?: boolean;
 }
 
 export type InputEmits = {

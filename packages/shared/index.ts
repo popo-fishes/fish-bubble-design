@@ -12,5 +12,6 @@ export * from "./useEventListener";
 export * from "./useThrottleFn";
 export * from "./useTimeoutFn";
 export * from "./useResizeObserver";
+export * from "./useSubmitFn";
 
 export * from "./utils";

@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeUnmount, unref, onMounted, shallowRef, onBeforeMount } from "vue";
+import { ref, computed, onBeforeUnmount, unref, onMounted, shallowRef, onBeforeMount, watch, nextTick } from "vue";
 import { isClient } from "@fish-bubble-design/shared/utils";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { IPopperContentProps, popperContentEmits } from "./content-type";
@@ -60,7 +60,7 @@ const emit = defineEmits(popperContentEmits);
 
 const props = defineProps<IPopperContentProps>();
 
-const { contentRef, triggerRef, instanceRef, contentStyle, contentClass, contentAttrs, update, role } = usePopperContent(props, ns.b());
+const { contentRef, triggerRef, instanceRef, contentStyle, contentClass, contentAttrs, update, role, forceUpdate } = usePopperContent(props, ns.b());
 
 // Has it been destroyed
 const isDestroyed = ref(false);
@@ -70,6 +70,9 @@ const isSSR = ref(true);
 
 // container
 const container = shallowRef<HTMLElement | null>(null);
+
+let parent: HTMLElement | null = null;
+let timer: any = null;
 
 const transitionClass = computed(() => {
   return props.transition || `${unref(ns.namespace)}-zoom-in-top`;
@@ -85,7 +88,6 @@ const createMountContainer = () => {
     return null;
   }
   if (container.value && !container.value.parentNode) {
-    let parent: HTMLElement | null = null;
     parent = getParent(props.getPopupContainer, triggerRef.value);
     if (parent) {
       parent.appendChild(container.value);
@@ -105,11 +107,18 @@ onBeforeMount(() => {
 });
 
 onMounted(() => {
-  createMountContainer();
+  // 如果persistent为true代表，页面加载出来了就需要创建节点。否则就是根据open的值动态添加 删除节点
+  if (props.persistent) {
+    createMountContainer();
+  }
 });
 
 onBeforeUnmount(() => {
   isDestroyed.value = true;
+
+  if (parent && parent?.contains(container.value)) {
+    parent.removeChild(container.value);
+  }
 });
 
 // When the element has been removed from the DOM
@@ -121,6 +130,30 @@ const onAfterLeave = (e) => {
 const onAfterShow = (e) => {
   emit("show", e);
 };
+
+watch(
+  () => unref(shouldShow),
+  (val) => {
+    // 如果persistent为false,代表打开时就需要创建节点，关闭时，就需要销毁节点
+    if (!props.persistent) {
+      timer && clearTimeout(timer);
+      if (val) {
+        createMountContainer();
+        nextTick(() => {
+          forceUpdate();
+        });
+      } else {
+        timer = setTimeout(() => {
+          if (parent && parent?.contains(container.value)) {
+            parent.removeChild(container.value);
+          }
+        }, 300);
+      }
+    }
+  },
+  // 设置 flush: 'post' 将会使侦听器延迟到组件渲染之后再执行
+  { flush: "post" }
+);
 
 const updatePopper = () => update();
 

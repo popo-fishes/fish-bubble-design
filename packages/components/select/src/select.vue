@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   trigger: "click",
   clearable: false,
   isTrigger: false,
+  wave: true,
   suffixIcon: ArrowUp,
   clearIcon: CircleClose
 });
@@ -95,7 +96,7 @@ provide(
         <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
         <slot name="trigger">
           <!-- 默认触发器 -->
-          <fb-input ref="reference" :disabled="props.disabled" :size="size" readonly v-model="inputValue">
+          <fb-input ref="reference" :disabled="props.disabled" :wave="wave" :size="size" readonly v-model="inputValue">
             <template #suffix>
               <!-- 不展示关闭按钮才显示箭头 -->
               <component :is="suffixIcon" :class="ns.e('arrow')" v-if="suffixIcon && !showClose" />

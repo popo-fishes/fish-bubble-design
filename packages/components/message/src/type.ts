@@ -11,7 +11,7 @@ export interface IMessageProps {
   /** 自动关闭的延时，单位秒。设为 0 时不自动关闭 */
   duration?: number;
   /** 是否将 message 属性作为 HTML 片段处理 */
-  dangerouslyUseHTMLString?: boolean;
+  isHtml?: boolean;
   /** 节点ID */
   id?: string;
   /** 是否显示关闭按钮 */

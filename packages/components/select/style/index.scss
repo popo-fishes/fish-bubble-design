@@ -69,7 +69,7 @@
       }
     }
     &.is-disabled {
-      @include set-css-var-value("select-hover-border-color", getCssVar("color-info", "light-3"));
+      @include set-css-var-value("select-hover-border-color", getCssVar("color-info", "light-6"));
       background-color: getCssVar("select-disabled-bg-color");
     }
   }

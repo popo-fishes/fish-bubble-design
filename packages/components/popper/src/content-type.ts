@@ -31,9 +31,11 @@ export interface IPopperContentProps {
   popperClass?: ClassType;
   /** 弹窗的style属性 */
   popperStyle?: StyleValue;
+  /** 设置为 false 时, Popper会根据open的值动态添加 删除节点， 否则它只是被隐藏了  */
+  persistent?: boolean;
   /** 弹窗层级 */
   zIndex?: number;
-  /**菜单渲染父节点。默认渲染到 body 上 */
+  /** 菜单渲染父节点。默认渲染到 body 上 */
   getPopupContainer?: (el: any) => HTMLElement;
 }
 

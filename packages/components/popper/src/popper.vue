@@ -12,6 +12,7 @@
       :gpu-acceleration="gpuAcceleration"
       :offset="offset"
       :placement="placement"
+      :persistent="persistent"
       :strategy="strategy"
       :disabled="disabled"
       :open="open"
@@ -56,6 +57,7 @@ const props = withDefaults(defineProps<IPopperProps>(), {
   role: "tooltip",
   trigger: "hover",
   gpuAcceleration: false,
+  persistent: true,
   offset: 6,
   placement: "bottom",
   strategy: "absolute",

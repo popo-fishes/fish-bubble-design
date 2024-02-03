@@ -26,12 +26,14 @@ export default defineConfig({
     nav: [
       {
         text: "指南",
-        link: "/guide/installation"
+        link: "/guide/installation",
+        activeMatch: "/guide/"
       },
-      { text: "组件", link: "/components/button" }
+      { text: "组件", link: "/components/button", activeMatch: "/components/" },
+      { text: "扩展", link: "/functions/is", activeMatch: "/functions/" }
     ],
     sidebar: {
-      "/components": [
+      "/components/": [
         {
           text: "基础组件",
           items: [
@@ -44,27 +46,54 @@ export default defineConfig({
           items: [
             { text: "Select 选择器", link: "/components/select" },
             { text: "Input 输入框", link: "/components/input" },
-            { text: "Checkbox 多选框", link: "/components/input2" },
-            { text: "Radio 单选框", link: "/components/input3" },
-            { text: "Switch 开关", link: "/components/input4" },
-            { text: "ImgCaptcha 图文验证码", link: "2ss22" },
-            { text: "DatePicker 日期选择框", link: "3222ss33" },
-            { text: "Form 表单", link: "/components/input333" }
+            { text: "Checkbox 多选框", link: "/components/checkbox" },
+            { text: "ImgCaptcha 图文验证码", link: "/components/imgCaptcha" }
+          ]
+        },
+        {
+          text: "数据展示",
+          items: [
+            { text: "Image 图片", link: "/components/image" },
+            { text: "Tag 标签", link: "/components/tag" }
           ]
         },
         {
           text: "反馈",
           items: [
-            { text: "Dialog 对话框", link: "/components/select5" },
-            { text: "message 全局提示", link: "/components/input6" },
-            { text: "Prompt 确认框", link: "/components/input7" },
-            { text: "Radio 单选框", link: "/components/input8" },
-            { text: "Switch 开关", link: "/components/input9" },
-            { text: "DatePicker 日期选择框", link: "1aa00" }
+            { text: "Dialog 对话框", link: "/components/dialog" },
+            { text: "message 全局提示", link: "/components/message" },
+            { text: "Prompt 确认框", link: "/components/prompt" },
+            { text: "Popover 气泡卡片", link: "/components/popover" }
           ]
         }
       ],
-      "/guide": [{ text: "安装", link: "/guide/installation" }]
+      "/guide/": [
+        { text: "Fish Bubble", link: "/guide/installation" },
+        { text: "快速开始", link: "/guide/quickstart" },
+        { text: "定制主题", link: "/guide/theming" },
+        { text: "国际化", link: "/guide/i18n" },
+        { text: "暗黑模式", link: "/guide/dark" }
+      ],
+      "/functions/": [
+        {
+          text: "基础",
+          items: [
+            { text: "is判断", link: "/functions/is" },
+            { text: "unrefElement", link: "/functions/unrefElement" },
+            { text: "onClickOutside", link: "/functions/onClickOutside" },
+            { text: "useDebounceFn", link: "/functions/useDebounceFn" },
+            { text: "useThrottleFn", link: "/functions/useThrottleFn" },
+            { text: "useSubmitFn", link: "/functions/useSubmitFn" }
+          ]
+        },
+        {
+          text: "浏览器",
+          items: [
+            { text: "useEventListener", link: "/functions/useEventListener" },
+            { text: "useResizeObserver", link: "/functions/useResizeObserver" }
+          ]
+        }
+      ]
     }
   },
   markdown: {

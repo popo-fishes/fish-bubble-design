@@ -4,6 +4,8 @@
  */
 import { ref } from "vue";
 
+import { isClient } from "@fish-bubble-design/shared";
+
 import type { ImgCaptchaProps } from "./type";
 
 /** 生成字母数组 */
@@ -30,10 +32,21 @@ const numArr = "0,1,2,3,4,5,6,7,8,9".split(",");
 /** 字母数组 */
 const letterArr = getAllLetter();
 
-export const useCaptcha = (props: ImgCaptchaProps) => {
+export function generateRandomId(isCanv?: boolean) {
+  if (!isClient) return isCanv ? "imgCaptchaCanvas" : "imgCaptcha";
+  const randomId = Math.random().toString(36).substring(2, 9); // 生成一个长度为 9 的随机字符串
+  const element = document.getElementById(randomId); // 在 DOM 中查找是否存在相同 ID 的元素
+  if (element) {
+    // 如果存在相同 ID 的元素，则递归调用函数生成新的随机 ID
+    return generateRandomId(isCanv);
+  }
+  return randomId;
+}
+
+export const useCaptcha = (props: ImgCaptchaProps, nodeId: string) => {
   const { width, height, id, canvasId, size, type } = {
-    id: "imgCaptcha",
-    canvasId: "imgCaptchaCanvas",
+    id: nodeId,
+    canvasId: generateRandomId(true),
     ...props
   };
 

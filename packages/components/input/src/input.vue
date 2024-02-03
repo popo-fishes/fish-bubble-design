@@ -23,7 +23,8 @@ defineOptions({ name: "FbInput", inheritAttrs: false });
 
 const props = withDefaults(defineProps<InputProps>(), {
   placeholder: "请输入",
-  type: "text"
+  type: "text",
+  wave: true
 });
 
 const nsInput = useNamespace("input");
@@ -177,7 +178,7 @@ defineExpose({
     </span>
 
     <!-- 波浪 -->
-    <BaseWave />
+    <BaseWave v-if="wave" />
   </div>
   <div :class="wrapperKls" :style="wrapperStyle" ref="wrapperRef" v-if="type == 'textarea'">
     <textarea
@@ -195,6 +196,6 @@ defineExpose({
       @blur="handleBlur"
     />
     <!-- 波浪 -->
-    <BaseWave />
+    <BaseWave v-if="wave" />
   </div>
 </template>
