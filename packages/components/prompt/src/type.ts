@@ -3,9 +3,6 @@
  * @Date: 2023-11-29 10:23:51
  * @Description: Modify here please
  */
-import type { IDialogProps } from "@fish-bubble-design/components/dialog";
-
-type IDialogOptions = Pick<IDialogProps, "showClose">;
 
 export type IPrompEmits = {
   /**
@@ -17,7 +14,7 @@ export type IPrompEmits = {
   (e: "ok"): void;
 };
 
-export interface IPromptProps extends IDialogOptions {
+export interface IPromptProps {
   /** 内容 */
   content: string;
   /** 标题 */
@@ -28,4 +25,8 @@ export interface IPromptProps extends IDialogOptions {
   cancelText?: string;
   /** 是否显示 标题的 icon图标 */
   showIcon?: boolean;
+  /** 是否显示关闭按钮 */
+  showClose?: boolean;
+  /** 是否显示关闭按钮 */
+  width?: string | number;
 }

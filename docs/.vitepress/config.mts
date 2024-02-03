@@ -52,14 +52,18 @@ export default defineConfig({
         },
         {
           text: "数据展示",
-          items: [{ text: "Tag 标签", link: "/components/tag" }]
+          items: [
+            { text: "Image 图片", link: "/components/image" },
+            { text: "Tag 标签", link: "/components/tag" }
+          ]
         },
         {
           text: "反馈",
           items: [
-            { text: "Dialog 对话框", link: "/components/select5" },
-            { text: "message 全局提示", link: "/components/input6" },
-            { text: "Prompt 确认框", link: "/components/input7" }
+            { text: "Dialog 对话框", link: "/components/dialog" },
+            { text: "message 全局提示", link: "/components/message" },
+            { text: "Prompt 确认框", link: "/components/prompt" },
+            { text: "Popover 气泡卡片", link: "/components/popover" }
           ]
         }
       ],

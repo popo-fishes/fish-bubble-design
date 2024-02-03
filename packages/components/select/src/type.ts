@@ -41,6 +41,8 @@ export interface ISelectProps {
   suffixIcon?: string | Component;
   /** 自定义清除图标组件 */
   clearIcon?: string | Component;
+  /** 是否需要波浪效果，如何触发器是一个输入框时，这个属性是有用的 */
+  wave?: boolean;
 }
 
 export type ISelectEmits = {

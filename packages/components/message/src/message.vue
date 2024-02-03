@@ -92,7 +92,7 @@ defineExpose({ bottom, close });
     <div v-show="visible" :id="id" :style="customStyle" :class="[ns.b()]" ref="messageRef">
       <component :is="iconOption.icon" :size="20" :color="iconOption.color" />
       <slot>
-        <p v-if="!dangerouslyUseHTMLString" :class="[ns.e('content')]">
+        <p v-if="!isHtml" :class="[ns.e('content')]">
           {{ message }}
         </p>
         <p v-else v-html="message" :class="[ns.e('content')]" />

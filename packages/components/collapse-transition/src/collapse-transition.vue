@@ -10,6 +10,7 @@
 <script lang="ts" setup>
 import { useNamespace } from "@fish-bubble-design/hooks";
 
+// 折叠器动画
 defineOptions({
   name: "FbCollapseTransition"
 });

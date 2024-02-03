@@ -3,7 +3,7 @@
  * @Description: 全局提示弹窗
 -->
 <template>
-  <fb-dialog v-model:open="visible" :show-close="showClose" @close="onClose" width="440px" top="25vh" :class="ns.b()">
+  <fb-dialog v-model:open="visible" :show-close="showClose" @close="onClose" :width="width" top="25vh" :class="ns.b()">
     <template #header>
       <div class="cc-header">
         <template v-if="showIcon">
@@ -37,6 +37,7 @@ withDefaults(defineProps<IPromptProps>(), {
   title: "温馨提示",
   okText: "确认",
   cancelText: "取消",
+  width: "440px",
   showClose: true,
   showIcon: true
 });

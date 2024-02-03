@@ -11,6 +11,7 @@ export * from "./img-captcha";
 export * from "./input";
 export * from "./select";
 export * from "./popper";
+// 折叠器动画
 export * from "./collapse-transition";
 export * from "./tag";
 
