@@ -30,13 +30,13 @@ app.mount("#app");
 
 此种方式需要分别注册组件子组件，如 Button，并且注册后仅在当前组件中有效。所以我们推荐使用上述两种方式。
 
-```typescript
+```vue
 <template>
   <fb-button>Add</fb-button>
 </template>
 
 <script setup lang="ts">
- import { FbButton } from 'fish-bubble-design';
+import { FbButton } from "fish-bubble-design";
 </script>
 ```
 

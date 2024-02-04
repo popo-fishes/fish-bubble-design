@@ -209,9 +209,7 @@ $input: map.merge(
     // 占位符颜色
     "placeholder-color": getCssVar("text-color-placeholder"),
     // 清除按钮颜色
-    "icon-color": getCssVar("text-color-placeholder"),
-    // 清除按钮获取焦点颜色
-    "clear-hover-color": getCssVar("color-primary"),
+    "clear-icon-color": rgba(0, 0, 0, 0.25),
     // 输入框背景色
     "bg-color": getCssVar("color-white"),
     // 输入框的宽度
@@ -245,9 +243,7 @@ $select: map.merge(
     // 占位符颜色
     "placeholder-color": getCssVar("text-color-placeholder"),
     // 清除按钮颜色
-    "icon-color": getCssVar("text-color-placeholder"),
-    // 清除按钮获取焦点颜色
-    "clear-hover-color": getCssVar("color-primary"),
+    "clear-icon-color": rgba(0, 0, 0, 0.25),
     // select背景色
     "bg-color": getCssVar("color-white")
   ),

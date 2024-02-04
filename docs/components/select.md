@@ -25,6 +25,15 @@ select/custom
 
 :::
 
+## 多选
+
+多选选择器使用 tag 组件来展示已选中的选项。
+:::demo 设置 multiple 属性即可启用多选， 此时 v-model 的值为当前选中值所组成的数组
+
+select/multiple
+
+:::
+
 ## 尺寸
 
 :::tip

@@ -39,11 +39,8 @@
 
   @include e(clear) {
     cursor: pointer;
-    color: getCssVar("select-icon-color");
+    color: getCssVar("select-clear-icon-color");
     font-size: 14px;
-    &:hover {
-      color: getCssVar("select-clear-hover-color");
-    }
   }
 
   &:hover {

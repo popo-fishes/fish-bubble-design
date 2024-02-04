@@ -4,8 +4,7 @@ title: is判断
 
 ## is判断
 
-我们内置了很多基础类型判断，你不必关心`体积`，这些都是按需加载的。<br/>
-你可以如下使用：
+我们内置了很多基础类型判断, 你可以如下使用：
 
 ```ts
 import { isEmpty } from "fish-bubble-design/shared";
@@ -35,7 +34,6 @@ export declare const isElement: (e: unknown) => e is Element;
 export declare const isClient: boolean;
 // 无活动
 export declare const NOOP: () => void;
-export declare const isIOS: boolean;
 ```
 
 ## type类型

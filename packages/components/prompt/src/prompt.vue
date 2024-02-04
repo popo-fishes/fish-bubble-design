@@ -15,25 +15,32 @@
         <p class="title">{{ title }}</p>
       </div>
     </template>
-    <p class="dec" v-html="content" />
+    <slot>
+      <p class="dec" v-html="content" />
+    </slot>
+
     <template #footer>
-      <div class="cc-footer">
-        <fb-button plain @click="onCancel" v-if="cancelText">{{ cancelText }}</fb-button>
-        <fb-button type="primary" @click="onConfirm" v-if="okText">{{ okText }}</fb-button>
-      </div>
+      <slot name="footer">
+        <div class="cc-footer">
+          <fb-button plain @click="onCancel" v-if="cancelText">{{ cancelText }}</fb-button>
+          <fb-button type="primary" @click="onConfirm" v-if="okText">{{ okText }}</fb-button>
+        </div>
+      </slot>
     </template>
   </fb-dialog>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch, unref } from "vue";
 import type { IPromptProps, IPrompEmits } from "./type";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { Chat } from "@fish-bubble/icons";
 import FbDialog from "@fish-bubble-design/components/dialog";
 import FbButton from "@fish-bubble-design/components/button";
 
-withDefaults(defineProps<IPromptProps>(), {
+defineOptions({ name: "FbPrompt" });
+
+const props = withDefaults(defineProps<IPromptProps>(), {
   title: "温馨提示",
   okText: "确认",
   cancelText: "取消",
@@ -47,7 +54,8 @@ const emit = defineEmits<IPrompEmits>();
 
 const ns = useNamespace("prompt");
 
-const visible = ref(true);
+// 打开弹窗开关
+const visible = ref(false);
 
 // 关闭弹窗的触发目标，可能是关闭按钮，可能是图标关闭（这个有可能别人需要用到点击了什么目标）
 const cancelType = ref<string | null>(null);
@@ -89,6 +97,23 @@ const onConfirm = () => {
 const close = () => {
   visible.value = false;
 };
+
+watch(
+  () => unref(props.open),
+  (val) => {
+    visible.value = val;
+  },
+  { immediate: true }
+);
+
+watch(
+  () => unref(visible),
+  (val) => {
+    if (!val) {
+      emit("update:open", false);
+    }
+  }
+);
 
 // 暴露属性
 defineExpose({ close });

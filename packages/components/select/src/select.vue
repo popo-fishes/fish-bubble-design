@@ -7,7 +7,7 @@
 import { computed, ref, provide, reactive, unref } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks/use-namespace";
 import FbPopper from "@fish-bubble-design/components/popper";
-import { ArrowUp, CircleClose } from "@fish-bubble/icons";
+import { ArrowUp, CircleCloseFilled } from "@fish-bubble/icons";
 import FbInput from "@fish-bubble-design/components/input";
 import OptionConstructor from "./option.vue";
 import OptionsConstructor from "./options";
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<ISelectProps>(), {
   isTrigger: false,
   wave: true,
   suffixIcon: ArrowUp,
-  clearIcon: CircleClose
+  clearIcon: CircleCloseFilled
 });
 
 defineOptions({

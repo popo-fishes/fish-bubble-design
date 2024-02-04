@@ -2,10 +2,6 @@
  * @Date: 2024-01-16 19:00:26
  * @Description: Modify here please
  */
-/*
- * @Date: 2024-01-16 19:00:26
- * @Description: Modify here please
- */
 import { defineConfig } from "vitepress";
 import { head } from "./config/head";
 import { mdPlugin } from "./config/plugins";
@@ -31,7 +27,7 @@ export default defineConfig({
         activeMatch: "/guide/"
       },
       { text: "组件", link: "/components/button", activeMatch: "/components/" },
-      { text: "扩展", link: "/functions/is", activeMatch: "/functions/" }
+      { text: "扩展", link: "/functions/extend", activeMatch: "/functions/" }
     ],
     sidebar: {
       "/components/": [
@@ -76,10 +72,10 @@ export default defineConfig({
         { text: "暗黑模式", link: "/guide/dark" }
       ],
       "/functions/": [
+        { text: "扩展", link: "/functions/extend" },
         {
           text: "基础",
           items: [
-            { text: "is判断", link: "/functions/is" },
             { text: "unrefElement", link: "/functions/unrefElement" },
             { text: "onClickOutside", link: "/functions/onClickOutside" },
             { text: "useDebounceFn", link: "/functions/useDebounceFn" },
@@ -92,6 +88,14 @@ export default defineConfig({
           items: [
             { text: "useEventListener", link: "/functions/useEventListener" },
             { text: "useResizeObserver", link: "/functions/useResizeObserver" }
+          ]
+        },
+        {
+          text: "工具集",
+          items: [
+            { text: "is判断", link: "/functions/is" },
+            { text: "字符串", link: "/functions/stringUtil" },
+            { text: "数组", link: "/functions/arrayUtil" }
           ]
         }
       ]

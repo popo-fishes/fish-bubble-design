@@ -32,7 +32,8 @@ const prompt = (options?: IOptions) => {
       options?.onCancel?.(e);
       // 销毁弹窗
       render(null, container);
-    }
+    },
+    open: true
   };
   // 创建虚拟dom
   const vnode = createVNode(promptConstructor, props);

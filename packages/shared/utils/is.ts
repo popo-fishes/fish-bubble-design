@@ -30,10 +30,8 @@ export const isElement = (e: unknown): e is Element => {
   return e instanceof Element;
 };
 
-// 判断客户端，给组件封装用的，不是业务的判断
+// 是否客户端
 export const isClient = typeof window !== "undefined" && typeof document !== "undefined";
-
-export const NOOP = () => {};
 
 export const isIOS = /* #__PURE__ */ getIsIOS();
 

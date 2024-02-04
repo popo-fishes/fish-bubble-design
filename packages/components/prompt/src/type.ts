@@ -12,11 +12,12 @@ export type IPrompEmits = {
    */
   (e: "cancel", { type }: { type: "notBtn" | "cancel" }): void;
   (e: "ok"): void;
+  (e: "update:open", value: boolean): void;
 };
 
 export interface IPromptProps {
   /** 内容 */
-  content: string;
+  content?: string;
   /** 标题 */
   title?: string;
   /** 确认按钮的文字 */
@@ -29,4 +30,6 @@ export interface IPromptProps {
   showClose?: boolean;
   /** 是否显示关闭按钮 */
   width?: string | number;
+  /** 打开弹窗 */
+  open?: boolean;
 }
