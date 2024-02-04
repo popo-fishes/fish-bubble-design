@@ -18,7 +18,7 @@
     <p class="dec" v-html="content" />
     <template #footer>
       <div class="cc-footer">
-        <fb-button type="primary" plain @click="onCancel" v-if="cancelText">{{ cancelText }}</fb-button>
+        <fb-button plain @click="onCancel" v-if="cancelText">{{ cancelText }}</fb-button>
         <fb-button type="primary" @click="onConfirm" v-if="okText">{{ okText }}</fb-button>
       </div>
     </template>

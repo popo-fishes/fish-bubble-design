@@ -71,12 +71,6 @@ const copyCode = async () => {
     height: 2.5rem;
     border-top: 1px solid var(--border-color);
 
-    .el-icon {
-      &:hover {
-        color: var(--text-color);
-      }
-    }
-
     .op-btn {
       margin: 0 0.5rem;
       cursor: pointer;
