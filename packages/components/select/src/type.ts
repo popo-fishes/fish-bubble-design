@@ -25,7 +25,7 @@ export interface ISelectProps {
   clearable?: boolean;
   /** 是否禁用 */
   disabled?: boolean;
-  /** 是否多选  todo */
+  /** 是否多选  */
   multiple?: boolean;
   /** 下拉菜单的 style 属性 */
   dropdownStyle?: object;
@@ -43,9 +43,23 @@ export interface ISelectProps {
   clearIcon?: string | Component;
   /** 是否需要波浪效果，如何触发器是一个输入框时，这个属性是有用的 */
   wave?: boolean;
+  /** 组件是否可筛选 */
+  filterable?: boolean;
+  /** 是否正在从远程获取数据 */
+  loading?: boolean;
+  /** 从服务器加载数据时显示的文本  */
+  loadingText?: string;
+  /** 其中的选项是否从服务器远程加载 */
+  remote?: boolean;
+  /** 搜索条件无匹配时显示的文字，也可以使用 empty 插槽设置，默认是 “No matching data'” */
+  noMatchText?: string;
+  /** 无选项时显示的文字，也可以使用 empty 插槽设置自定义内容，默认是 “No data” */
+  noDataText?: string;
 }
 
 export type ISelectEmits = {
   (e: "update:modelValue", value: number | string): void;
   (e: "change", value: number | string): void;
+  (e: "focus", value: any): void;
+  (e: "blur", event: any): void;
 };

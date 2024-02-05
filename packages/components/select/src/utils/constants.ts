@@ -3,13 +3,14 @@
  * @Description: Modify here please
  */
 import type { InjectionKey } from "vue";
+import type { ISelectProps } from "../type";
 
 export interface SelectContext {
-  props: {
-    modelValue?: string | number | unknown | unknown[];
-    hideIcon?: boolean;
-  };
+  props: ISelectProps;
+  states: any;
   handleOptionSelect(vm: unknown): void;
+  onOptionCreate(vm: any): void;
+  onOptionDestroy(key: number | string | Record<string, string>, vm: any): void;
 }
 
 export const selectKey: InjectionKey<SelectContext> = Symbol("FbSelect");

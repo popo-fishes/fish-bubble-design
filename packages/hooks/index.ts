@@ -3,3 +3,4 @@ export * from "./use-forward-ref";
 export * from "./use-id";
 export * from "./use-same-target";
 export * from "./use-z-index";
+export * from "./use-focus-controller";

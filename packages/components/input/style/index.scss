@@ -38,7 +38,7 @@
     border-color: getCssVar("input-focus-border-color");
     // 波浪效果
     .#{$namespace}-base-wave {
-      box-shadow: 0 0 0 3.5px getCssVar("input-ripple-color");
+      box-shadow: 0 0 0 3px getCssVar("input-ripple-color");
       transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
@@ -46,7 +46,9 @@
   @include when(disabled) {
     cursor: not-allowed;
     background-color: getCssVar("input-disabled-bg-color");
-    @include set-css-var-value("input-hover-border-color", getCssVar("color-info", "light-6"));
+    &:hover {
+      border-color: getCssVar("color-info", "light-6");
+    }
     .#{$namespace}-input__inner {
       cursor: not-allowed;
     }
@@ -148,7 +150,7 @@
     border-color: getCssVar("input-focus-border-color");
     // 波浪效果
     .#{$namespace}-base-wave {
-      box-shadow: 0 0 0 3.5px getCssVar("input-ripple-color");
+      box-shadow: 0 0 0 3px getCssVar("input-ripple-color");
       transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }

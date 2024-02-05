@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, unref, inject, getCurrentInstance } from "vue";
+import { computed, unref, inject, getCurrentInstance, onBeforeUnmount } from "vue";
 import { selectKey } from "./utils";
 import type { IOption } from "./type";
 
@@ -22,6 +22,7 @@ defineOptions({
 const props = defineProps<IOption>();
 
 const select = inject(selectKey);
+
 const containerKls = computed(() => [
   "dropdown__item",
   {
@@ -30,7 +31,9 @@ const containerKls = computed(() => [
   }
 ]);
 
-const vm = getCurrentInstance().proxy;
+const vm = getCurrentInstance().proxy as any;
+
+select.onOptionCreate(vm);
 
 const itemSelected = computed(() => {
   return select.props.modelValue == props.value;
@@ -45,4 +48,9 @@ const selectOptionClick = () => {
     select.handleOptionSelect(vm);
   }
 };
+
+onBeforeUnmount(() => {
+  const key = vm.value;
+  select.onOptionDestroy(key, vm);
+});
 </script>

@@ -9,7 +9,7 @@ import { useNamespace } from "@fish-bubble-design/hooks";
 import { isNil } from "@fish-bubble-design/shared/utils";
 import { CircleCloseFilled } from "@fish-bubble/icons";
 
-import { useFocusController } from "./useFocusController";
+import { useFocusController } from "@fish-bubble-design/hooks";
 import BaseWave from "../../_internal/wave/src/wave.vue";
 
 import type { InputProps, InputEmits } from "./type";
