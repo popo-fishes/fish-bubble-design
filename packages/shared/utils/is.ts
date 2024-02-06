@@ -4,6 +4,11 @@
  */
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
+export const toRawType = (value) => {
+  // extract "RawType" from strings like "[object RawType]"
+  // console.log(toTypeString(value));
+  return toTypeString(value).slice(8, -1);
+};
 
 export const isArray = Array.isArray;
 export const isMap = (val) => toTypeString(val) === "[object Map]";

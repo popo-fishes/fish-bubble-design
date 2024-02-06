@@ -15,13 +15,18 @@ import { selectKey, SelectContext } from "./utils";
 import { useSelect } from "./useSelect";
 import type { ISelectProps, ISelectEmits } from "./type";
 
+const MINIMUM_INPUT_WIDTH = 11;
+
 const props = withDefaults(defineProps<ISelectProps>(), {
   placement: "bottom",
   trigger: "click",
+  presentMode: "text",
   clearable: false,
   isTrigger: false,
   wave: true,
   filterable: true,
+  multiple: true,
+  multipleLimit: 0,
   suffixIcon: ArrowUp,
   clearIcon: CircleCloseFilled
 });
@@ -42,6 +47,8 @@ const {
   wrapperRef,
   calculatorRef,
   inputRef,
+  popperRef,
+  menuRef,
   showClose,
   states,
   isCustomTrigger,
@@ -57,14 +64,17 @@ const {
   expanded,
   currentPlaceholder,
   selectDisabled,
-  inputStyle,
   handleBlur,
   handleFocus,
   handleCompositionStart,
   handleCompositionEnd,
   onInput,
   isFocused,
-  toggleMenu
+  toggleMenu,
+  showTagList,
+  onDeleteTag,
+  emptyText,
+  filteredOptionsCount
 } = useSelect(props, emit);
 
 // 下拉菜单的样式
@@ -76,6 +86,11 @@ const selectDownStyle = computed(() => {
     ...props.dropdownStyle
   };
 });
+
+// 输入框样式
+const inputStyle = computed(() => ({
+  width: `${Math.max(states.calculatorWidth, MINIMUM_INPUT_WIDTH)}px`
+}));
 
 // 挂载的触发器
 const getPopupContainer = (triggerNode) => {
@@ -108,6 +123,7 @@ provide(
 
 <template>
   <fb-popper
+    ref="popperRef"
     :transition="transition"
     :placement="placement"
     :trigger="trigger"
@@ -117,6 +133,7 @@ provide(
     :get-popup-container="getPopupContainer"
     :popper-class="ns.b('dropdown')"
     :popper-style="selectDownStyle"
+    @hide="states.isBeforeHide = false"
   >
     <template #default>
       <div
@@ -136,7 +153,26 @@ provide(
       >
         <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
         <slot name="trigger" v-if="isCustomTrigger" />
-        <div :class="ns.e('selection')" v-else>
+        <div
+          :class="[
+            ns.e('selection'),
+            // 如果是多选且不带搜索功能且presentMode为text时，样式变为一行显示，超出影藏省略符
+            ns.is('select-mode-text-wrap', multiple && presentMode == 'text' && !filterable)
+          ]"
+          v-else
+        >
+          <!-- 多选时，回显内容 -->
+          <div v-for="(item, index) in showTagList" :key="item.value" :class="ns.e('selected-item')">
+            <!-- tag回显格式 -->
+            <fb-tag v-if="presentMode == 'tag'" :closable="!selectDisabled && !item.isDisabled" :size="size" type="info" @close="onDeleteTag($event, item)">
+              <span class="tags-text">
+                {{ item.currentLabel }}
+              </span>
+            </fb-tag>
+            <!-- 文本回显格式 -->
+            <span v-else :class="['mode-text-label', index < showTagList.length - 1 ? 'showLine' : '']">{{ item.currentLabel }}</span>
+          </div>
+          <!-- 带搜索时的显示 -->
           <div v-if="!selectDisabled" :class="[ns.e('input-wrapper'), ns.is('hidden', !filterable)]">
             <input
               ref="inputRef"
@@ -155,28 +191,43 @@ provide(
             />
             <span v-if="filterable" ref="calculatorRef" aria-hidden="true" :class="ns.e('input-val')" v-text="states.inputValue" />
           </div>
+          <!-- 单选时 和 未选择时的节点显示 -->
           <div v-if="shouldShowPlaceholder" :class="[ns.e('placeholder'), ns.is('transparent', !hasModelValue || (expanded && !states.inputValue))]">
             <span>{{ currentPlaceholder }}</span>
           </div>
         </div>
         <div :class="ns.e('suffix')">
           <!-- 不展示关闭按钮才显示箭头 -->
-          <component :is="suffixIcon" :class="ns.e('arrow')" v-if="suffixIcon && !showClose" />
-          <component :is="clearIcon" :class="ns.e('closeIcon')" @click.stop="() => handleClearClick()" v-if="clearIcon && showClose" />
+          <component :is="suffixIcon" :class="[ns.e('arrow'), ns.is('reverse', expanded)]" v-if="suffixIcon && !showClose" />
+          <component :is="clearIcon" :class="ns.e('clear')" @click.stop="() => handleClearClick()" v-if="clearIcon && showClose" />
         </div>
         <!-- 波浪 -->
         <BaseWave v-if="wave" />
       </div>
     </template>
     <template #popup>
-      <div class="dropdown__wrap">
-        <ul class="dropdown__list">
+      <div class="dropdown__wrap" ref="menuRef">
+        <div v-if="$slots.header">
+          <slot name="header" />
+        </div>
+        <ul class="dropdown__list" v-show="states.options.size > 0 && !loading">
           <OptionsConstructor>
             <slot>
               <OptionConstructor v-bind="item" v-for="(item, i) in options || []" :key="i" />
             </slot>
           </OptionsConstructor>
         </ul>
+        <div v-if="$slots.loading && loading" class="dropdown-loading">
+          <slot name="loading" />
+        </div>
+        <div v-else-if="loading || filteredOptionsCount === 0" class="dropdown-empty">
+          <slot name="empty">
+            <span>{{ emptyText }}</span>
+          </slot>
+        </div>
+        <div v-if="$slots.footer">
+          <slot name="footer" />
+        </div>
       </div>
     </template>
   </fb-popper>

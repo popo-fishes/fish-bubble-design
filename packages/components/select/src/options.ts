@@ -3,26 +3,16 @@
  * @Description: Modify here please
  */
 import { defineComponent, inject } from "vue";
+import { isEqual } from "lodash-unified";
 import type { Component, VNode, VNodeNormalizedChildren } from "vue";
 import { selectKey } from "./utils";
 
 export default defineComponent({
   name: "Options",
-  emits: ["update-options"],
-  setup(_, { slots, emit }) {
+  setup(_, { slots }) {
     const select = inject(selectKey);
 
     let cachedOptions: any[] = [];
-
-    function isSameOptions(a: any[], b: any[]) {
-      if (a.length !== b.length) return false;
-      for (const [index] of a.entries()) {
-        if (JSON.stringify(a[index]) != JSON.stringify(b[index])) {
-          return false;
-        }
-      }
-      return true;
-    }
 
     return () => {
       const children = slots.default?.();
@@ -44,7 +34,7 @@ export default defineComponent({
         filterOptions(children![0]?.children);
       }
 
-      if (!isSameOptions(valueList, cachedOptions)) {
+      if (!isEqual(valueList, cachedOptions)) {
         cachedOptions = valueList;
         if (select) {
           select.states.optionValues = valueList;

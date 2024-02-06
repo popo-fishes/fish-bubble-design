@@ -12,7 +12,7 @@
   npm config set registry https://registry.npmjs.org/
 
   切换淘宝源：
-  npm config set registry https://registry.npm.taobao.org/
+  npm config set registry https://registry.npmmirror.com
 ```
 
 ### 注意点

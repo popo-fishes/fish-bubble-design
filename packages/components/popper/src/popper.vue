@@ -8,6 +8,7 @@
       <slot v-if="$slots.default" />
     </PopperTrigger>
     <PopperContent
+      ref="contentRef"
       :fallback-placements="fallbackPlacements"
       :gpu-acceleration="gpuAcceleration"
       :offset="offset"
@@ -40,7 +41,7 @@ import PopperContent from "./content.vue";
 import { isBoolean } from "@fish-bubble-design/shared/utils";
 
 import { onClickOutside } from "@fish-bubble-design/shared/onClickOutside";
-import { useId } from "@fish-bubble-design/hooks/";
+import { useId } from "@fish-bubble-design/hooks";
 
 import { composeEventHandlers } from "./utils";
 import { useDelayedToggle } from "./composables/use-delayed-toggle";
@@ -68,6 +69,7 @@ const props = withDefaults(defineProps<IPopperProps>(), {
 const id = useId();
 
 const popperRef = ref();
+const contentRef = ref<any>();
 
 // 停止手柄
 let stopHandle: ReturnType<typeof onClickOutside>;
@@ -147,6 +149,13 @@ const onContentHide = (e) => {
   emit("hide", e);
 };
 
+const updatePopper = () => {
+  const popperComponent = unref(contentRef);
+  if (popperComponent) {
+    popperComponent?.updatePopper();
+  }
+};
+
 watch(
   () => unref(open),
   (val) => {
@@ -183,6 +192,8 @@ defineExpose({
   /** open popper*/
   onOpen,
   /** close popper*/
-  onClose
+  onClose,
+  /** update popper*/
+  updatePopper
 });
 </script>

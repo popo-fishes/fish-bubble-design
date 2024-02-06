@@ -74,7 +74,11 @@ onMounted(() => {
         img.src = props.src;
         img.onload = () => {
           timer = setTimeout(() => {
-            load.value = true;
+            if (!props.src) {
+              load.value = false;
+            } else {
+              load.value = true;
+            }
           }, 200);
         };
         // 当内容可见

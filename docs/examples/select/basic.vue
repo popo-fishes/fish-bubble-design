@@ -5,30 +5,20 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 const options = [
-  { label: "Everybody's Got Something to Hide Except Me and My Monkey", value: "1", disabled: true },
-  { label: "Drive My Car", value: "2" },
-  { label: "Norwegian Wood", value: "3" },
-  { label: "You Won't See", value: "4", disabled: true },
-  { label: "Nowhere Man", value: "5" },
-  { label: "Think For Yourself", value: "6" },
-  { label: "Everybody's Got Something to Hide Except Me and My Monkey", value: "11", disabled: true },
-  { label: "Drive My Car", value: "12" },
-  { label: "Norwegian Wood", value: "13" },
-  { label: "You Won't See", value: "14", disabled: true },
-  { label: "Nowhere Man", value: "15" },
-  { label: "Think For Yourself", value: "16" },
-  { label: "Everybody's Got Something to Hide Except Me and My Monkey", value: "21", disabled: true },
-  { label: "Drive My Car", value: "22" },
-  { label: "Norwegian Wood", value: "23" },
-  { label: "You Won't See", value: "24", disabled: true },
-  { label: "Nowhere Man", value: "52" },
-  { label: "Think For Yourself", value: "62" }
+  { label: "a1a1a1a1a1", value: "1", disabled: true },
+  { label: "b1b1b1b1", value: "2" },
+  { label: "c2c2c2c2", value: "3" },
+  { label: "d3d3d3d3", value: "4", disabled: true },
+  { label: "e3e3e3e3e3", value: "5" },
+  { label: "f3f3f3f3", value: "6" },
+  { label: "g4g4g4g4", value: "11", disabled: true },
+  { label: "h4h4h4h4", value: "12" }
 ];
 const value = ref(null);
 </script>
 
 <template>
   <div class="mb-4">
-    <fb-select v-model:model-value="value" :options="options" />
+    <fb-select v-model="value" :options="options" style="width: 300px" />
   </div>
 </template>
