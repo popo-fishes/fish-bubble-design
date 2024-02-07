@@ -2,38 +2,28 @@
  * @Date: 2023-12-20 19:43:43
  * @Description: Modify here please
  */
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
+import { isEqual } from "lodash-unified";
 import type { Component, VNode, VNodeNormalizedChildren } from "vue";
+import { selectKey } from "./utils";
 
 export default defineComponent({
   name: "Options",
-  emits: ["update-options"],
-  setup(_, { slots, emit }) {
-    let cachedOptions: any[] = [];
+  setup(_, { slots }) {
+    const select = inject(selectKey);
 
-    function isSameOptions(a: any[], b: any[]) {
-      if (a.length !== b.length) return false;
-      for (const [index] of a.entries()) {
-        if (JSON.stringify(a[index]) != JSON.stringify(b[index])) {
-          return false;
-        }
-      }
-      return true;
-    }
+    let cachedOptions: any[] = [];
 
     return () => {
       const children = slots.default?.();
-      const filteredOptions: any[] = [];
+      const valueList: any[] = [];
 
       function filterOptions(children?: VNodeNormalizedChildren) {
         if (!Array.isArray(children)) return;
         (children as VNode[]).forEach((item) => {
           const name = ((item?.type || {}) as Component)?.name;
           if (name === "FbOption") {
-            filteredOptions.push({
-              label: item.props?.label,
-              value: item.props?.value
-            });
+            valueList.push(item.props?.value);
           } else if (Array.isArray(item.children)) {
             filterOptions(item.children);
           }
@@ -44,9 +34,11 @@ export default defineComponent({
         filterOptions(children![0]?.children);
       }
 
-      if (!isSameOptions(filteredOptions, cachedOptions)) {
-        cachedOptions = filteredOptions;
-        emit("update-options", filteredOptions);
+      if (!isEqual(valueList, cachedOptions)) {
+        cachedOptions = valueList;
+        if (select) {
+          select.states.optionValues = valueList;
+        }
       }
 
       return children;

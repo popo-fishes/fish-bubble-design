@@ -4,6 +4,11 @@
  */
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
+export const toRawType = (value) => {
+  // extract "RawType" from strings like "[object RawType]"
+  // console.log(toTypeString(value));
+  return toTypeString(value).slice(8, -1);
+};
 
 export const isArray = Array.isArray;
 export const isMap = (val) => toTypeString(val) === "[object Map]";
@@ -30,10 +35,8 @@ export const isElement = (e: unknown): e is Element => {
   return e instanceof Element;
 };
 
-// 判断客户端，给组件封装用的，不是业务的判断
+// 是否客户端
 export const isClient = typeof window !== "undefined" && typeof document !== "undefined";
-
-export const NOOP = () => {};
 
 export const isIOS = /* #__PURE__ */ getIsIOS();
 

@@ -1,55 +1,76 @@
 {
-  "hash": "eac122e8",
-  "configHash": "a5688c75",
-  "lockfileHash": "8280a5ab",
-  "browserHash": "342e7034",
+  "hash": "477fc2dd",
+  "configHash": "79cc88b6",
+  "lockfileHash": "a8b53ea3",
+  "browserHash": "e16ad2ee",
   "optimized": {
     "@popperjs/core": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/index.js",
+      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/index.js",
       "file": "@popperjs_core.js",
-      "fileHash": "7d400648",
+      "fileHash": "197bf5e4",
       "needsInterop": false
     },
     "@fish-bubble/icons": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@fish-bubble+icons@1.0.4_vue@3.4.0/node_modules/@fish-bubble/icons/dist/index.mjs",
+      "src": "../../../../node_modules/.pnpm/@fish-bubble+icons@1.0.4_vue@3.4.0/node_modules/@fish-bubble/icons/dist/index.mjs",
       "file": "@fish-bubble_icons.js",
-      "fileHash": "dbaef646",
+      "fileHash": "20b0c716",
+      "needsInterop": false
+    },
+    "lodash": {
+      "src": "../../../../node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/lodash.js",
+      "file": "lodash.js",
+      "fileHash": "93b8b9df",
+      "needsInterop": true
+    },
+    "lodash-es": {
+      "src": "../../../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/lodash.js",
+      "file": "lodash-es.js",
+      "fileHash": "0fe4dbbc",
+      "needsInterop": false
+    },
+    "lodash-unified": {
+      "src": "../../../../node_modules/.pnpm/lodash-unified@1.0.3_@types+lodash-es@4.17.12_lodash-es@4.17.21_lodash@4.17.21/node_modules/lodash-unified/import.js",
+      "file": "lodash-unified.js",
+      "fileHash": "26638f42",
       "needsInterop": false
     },
     "vue": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vue@3.4.0_typescript@5.3.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.4.0_typescript@5.3.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "5f9a4ae6",
+      "fileHash": "984a4f28",
       "needsInterop": false
     },
     "markdown-it": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it@13.0.2/node_modules/markdown-it/index.js",
+      "src": "../../../../node_modules/.pnpm/markdown-it@13.0.2/node_modules/markdown-it/index.js",
       "file": "markdown-it.js",
-      "fileHash": "29d3c5a0",
+      "fileHash": "c5e9d003",
       "needsInterop": true
     },
     "markdown-it-container": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+markdown-it-container@3.0.0/node_modules/markdown-it-container/index.js",
+      "src": "../../../../node_modules/.pnpm/markdown-it-container@3.0.0/node_modules/markdown-it-container/index.js",
       "file": "markdown-it-container.js",
-      "fileHash": "564588c8",
+      "fileHash": "32b19299",
       "needsInterop": true
     },
     "@vueuse/core": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.7.2_vue@3.4.0/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@10.7.2_vue@3.4.0/node_modules/@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "460c0277",
+      "fileHash": "489ad6f2",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "f5797205",
+      "fileHash": "384072bf",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-TXZRC5VA": {
-      "file": "chunk-TXZRC5VA.js"
+    "chunk-BNPOPI77": {
+      "file": "chunk-BNPOPI77.js"
+    },
+    "chunk-34DQDCFM": {
+      "file": "chunk-34DQDCFM.js"
     },
     "chunk-NIBQISYW": {
       "file": "chunk-NIBQISYW.js"

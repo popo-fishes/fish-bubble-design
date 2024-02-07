@@ -11,14 +11,133 @@
   @include set-component-css-var("select", $select);
 }
 
-@include b(select) {
-  position: relative;
-  line-height: map.get($common-component-size, "default");
-  cursor: pointer;
+$select-wrapper-padding: () !default;
+$select-wrapper-padding: map.merge(
+  (
+    "large": 8px 12px,
+    "default": 6px 12px,
+    "small": 2px 12px
+  ),
+  $select-wrapper-padding
+);
 
-  @each $size in (large, small) {
-    @include m($size) {
-      line-height: map.get($common-component-size, $size);
+$select-item-height: () !default;
+$select-item-height: map.merge(
+  (
+    "large": 28px,
+    "default": 24px,
+    "small": 24px
+  ),
+  $select-item-height
+);
+
+$select-item-gap: () !default;
+$select-item-gap: map.merge(
+  (
+    "large": 6px,
+    "default": 6px,
+    "small": 4px
+  ),
+  $select-item-gap
+);
+
+@include b(select) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  padding: map.get($select-wrapper-padding, "default");
+  min-height: map.get($common-component-size, "default");
+  line-height: map.get($select-item-height, "default");
+  border-radius: getCssVar("select-border-radius");
+  background-color: getCssVar("select-bg-color");
+  transition: 0.3s;
+  outline: none;
+  border: 1px solid getCssVar("select-border-color");
+
+  &:hover {
+    border-color: getCssVar("select-hover-border-color");
+  }
+
+  @include when(filterable) {
+    cursor: text;
+  }
+
+  @include when(focused) {
+    border-color: getCssVar("select-focus-border-color");
+    // 波浪效果
+    .#{$namespace}-base-wave {
+      box-shadow: 0 0 0 3px getCssVar("select-ripple-color");
+      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    background-color: getCssVar("select", "disabled-bg-color");
+    color: getCssVar("text-color", "placeholder");
+
+    &:hover {
+      border-color: getCssVar("color-info", "light-6");
+    }
+
+    .#{$namespace}-select__arrow {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(selection) {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    @include when(select-mode-text-wrap) {
+      display: block;
+      min-height: map.get($select-item-height, "default");
+      @include utils-ellipsis;
+      .#{$namespace}-select__selected-item {
+        display: inline-flex;
+      }
+    }
+  }
+
+  @include e(suffix) {
+    display: inline-flex;
+    white-space: nowrap;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    @include e(arrow) {
+      color: rgba(0, 0, 0, 0.25);
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      transform: rotate(180deg);
+      transition: transform 0.2s;
+      cursor: pointer;
+      @include when(reverse) {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    @include e(clear) {
+      cursor: pointer;
+      width: 24px;
+      line-height: 24px;
+      text-align: center;
+      justify-content: center;
+      font-size: 16px;
+      color: getCssVar("select-clear-icon-color");
     }
   }
 
@@ -28,49 +147,101 @@
     line-height: normal;
   }
 
-  @include e(arrow) {
-    color: rgba(0, 0, 0, 0.25);
-    font-size: 16px;
-    height: 16px;
-    width: 16px;
-    transform: rotate(180deg);
-    transition: transform 0.2s;
-  }
+  @include e(placeholder) {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    @include utils-ellipsis;
+    color: var(#{getCssVarName("input-text-color")}, map.get($input, "text-color"));
 
-  @include e(clear) {
-    cursor: pointer;
-    color: getCssVar("select-icon-color");
-    font-size: 14px;
-    &:hover {
-      color: getCssVar("select-clear-hover-color");
+    @include when(transparent) {
+      user-select: none;
+      color: getCssVar("text-color", "placeholder");
     }
   }
 
-  &:hover {
-    .#{$namespace}-input {
-      border-color: getCssVar("select-hover-border-color");
+  @include e(selected-item) {
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+    margin-right: map.get($select-item-gap, "default");
+    .tags-text {
+      display: block;
+      line-height: normal;
+      @include utils-ellipsis;
     }
-  }
-  // 修改input样式
-  .#{$namespace}-input {
-    border-radius: getCssVar("select-border-radius");
-    background-color: getCssVar("select-bg-color");
-
-    .#{$namespace}-input__inner {
-      color: getCssVar("select-text-color");
-      &::placeholder {
-        color: getCssVarWithDefault("select-placeholder-color", map.get($select, "placeholder-color"));
+    .mode-text-label {
+      color: var(#{getCssVarName("input-text-color")}, map.get($input, "text-color"));
+    }
+    .splitter-label {
+      &::after {
+        content: "、";
+        width: 5px;
+        height: initial;
       }
     }
-    // 如果输入框获取焦点，给后缀图标旋转下
-    &.is-focus {
-      .#{$namespace}-select__arrow {
-        transform: rotate(0);
-      }
+  }
+
+  @include e(input-wrapper) {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+
+    @include when(hidden) {
+      position: absolute;
+      opacity: 0;
+      display: none;
     }
-    &.is-disabled {
-      @include set-css-var-value("select-hover-border-color", getCssVar("color-info", "light-6"));
-      background-color: getCssVar("select-disabled-bg-color");
+  }
+
+  @include e(input) {
+    border: none;
+    outline: none;
+    padding: 0;
+    color: getCssVar("text-color-regular");
+    font-size: inherit;
+    font-family: inherit;
+    appearance: none;
+    height: map.get($select-item-height, "default");
+    max-width: 100%;
+    background-color: transparent;
+
+    @include when(disabled) {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(input-val) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+    visibility: hidden;
+    white-space: pre;
+    overflow: hidden;
+    color: #303133;
+  }
+
+  @each $size in (large, small) {
+    @include m($size) {
+      padding: map.get($select-wrapper-padding, $size);
+      min-height: map.get($common-component-size, $size);
+      line-height: map.get($select-item-height, $size);
+
+      .#{$namespace}-select__selection {
+        @include when(select-mode-text-wrap) {
+          min-height: map.get($select-item-height, $size);
+        }
+        .#{$namespace}-select__selected-item {
+          margin-right: map.get($select-item-gap, $size);
+        }
+      }
+      .#{$namespace}-select__input {
+        height: map.get($select-item-height, $size);
+      }
     }
   }
 }
@@ -127,5 +298,19 @@
         background: transparent;
       }
     }
+  }
+  .dropdown-empty {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: #909399;
+    font-size: 14px;
+  }
+  .dropdown-loading {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: #909399;
+    font-size: 14px;
   }
 }

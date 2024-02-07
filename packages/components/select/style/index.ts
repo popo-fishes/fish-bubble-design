@@ -4,5 +4,5 @@
  */
 import "../../_styles/base.scss";
 import "../../popper/style";
-import "../../input/style";
+import "../../_internal/wave/style";
 import "./index.scss";

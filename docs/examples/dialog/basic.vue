@@ -7,7 +7,7 @@
     <p>Some contents...</p>
     <template #footer>
       <div :class="ss['dialog-footer']">
-        <fb-button @click="dialogVisible = false">Cancel</fb-button>
+        <fb-button plain @click="dialogVisible = false">Cancel</fb-button>
         <fb-button type="primary" @click="dialogVisible = false"> Confirm </fb-button>
       </div>
     </template>

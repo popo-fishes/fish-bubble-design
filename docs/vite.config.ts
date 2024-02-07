@@ -19,20 +19,28 @@ const alias: Alias[] = [
   {
     find: "~/",
     replacement: `${resolve(__dirname, "./.vitepress/vitepress")}/`
+  },
+  {
+    find: /^fish-bubble-design(\/(es|lib))?$/,
+    replacement: resolve(projRoot, "packages/fish-bubble-design/index.ts")
+  },
+  {
+    find: "fish-bubble-design/shared",
+    replacement: resolve(projRoot, "packages/shared/index.ts")
   }
 ];
-if (process.env.DOC_ENV !== "production") {
-  alias.push(
-    {
-      find: /^fish-bubble-design(\/(es|lib))?$/,
-      replacement: resolve(projRoot, "packages/fish-bubble-design/index.ts")
-    },
-    {
-      find: "fish-bubble-design/shared",
-      replacement: resolve(projRoot, "packages/shared/index.ts")
-    }
-  );
-}
+// if (process.env.DOC_ENV !== "production") {
+//   alias.push(
+//     {
+//       find: /^fish-bubble-design(\/(es|lib))?$/,
+//       replacement: resolve(projRoot, "packages/fish-bubble-design/index.ts")
+//     },
+//     {
+//       find: "fish-bubble-design/shared",
+//       replacement: resolve(projRoot, "packages/shared/index.ts")
+//     }
+//   );
+// }
 
 export default defineConfig(async () => {
   const { dependencies: epDeps } = JSON.parse(readFileSync(libraryPackage, "utf8"));

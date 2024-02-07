@@ -10,6 +10,7 @@ node_modules
 
 # Bundle
 dist
+./.vitepress/fish-bubble-docs/**
 
 ./*.yaml
 

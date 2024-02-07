@@ -6,6 +6,7 @@ export * from "./toValue";
 export * from "./tryOnScopeDispose";
 export * from "./unrefElement";
 export * from "./onClickOutside";
+export * from "./onClickOutside/directive";
 
 export * from "./useDebounceFn";
 export * from "./useEventListener";

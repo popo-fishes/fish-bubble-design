@@ -8,6 +8,7 @@
       <slot v-if="$slots.default" />
     </PopperTrigger>
     <PopperContent
+      ref="popperContentRef"
       :fallback-placements="fallbackPlacements"
       :gpu-acceleration="gpuAcceleration"
       :offset="offset"
@@ -40,7 +41,7 @@ import PopperContent from "./content.vue";
 import { isBoolean } from "@fish-bubble-design/shared/utils";
 
 import { onClickOutside } from "@fish-bubble-design/shared/onClickOutside";
-import { useId } from "@fish-bubble-design/hooks/";
+import { useId } from "@fish-bubble-design/hooks";
 
 import { composeEventHandlers } from "./utils";
 import { useDelayedToggle } from "./composables/use-delayed-toggle";
@@ -66,8 +67,10 @@ const props = withDefaults(defineProps<IPopperProps>(), {
 });
 
 const id = useId();
-
+// 获取popper节点容器
 const popperRef = ref();
+// 下拉菜单的内容组件实例ref
+const popperContentRef = ref<any>();
 
 // 停止手柄
 let stopHandle: ReturnType<typeof onClickOutside>;
@@ -147,6 +150,21 @@ const onContentHide = (e) => {
   emit("hide", e);
 };
 
+const updatePopper = () => {
+  const popperComponent = unref(popperContentRef);
+  if (popperComponent) {
+    popperComponent?.updatePopper();
+  }
+};
+
+const isFocusInsideContent = (event?: FocusEvent) => {
+  const popperContent: HTMLElement | undefined = popperRef.value?.contentRef;
+  // 相关目标
+  const activeElement = (event?.relatedTarget as Node) || document.activeElement;
+  // 当前节点目标是否在popperContent下拉菜单中
+  return popperContent && popperContent.contains(activeElement);
+};
+
 watch(
   () => unref(open),
   (val) => {
@@ -178,11 +196,15 @@ watch(
 );
 
 defineExpose({
-  /** popper component instance */
+  /** popper component */
   popperRef,
   /** open popper*/
   onOpen,
   /** close popper*/
-  onClose
+  onClose,
+  /** update popper*/
+  updatePopper,
+  /** 验证当前焦点目标是--提示内容中的节点 */
+  isFocusInsideContent
 });
 </script>

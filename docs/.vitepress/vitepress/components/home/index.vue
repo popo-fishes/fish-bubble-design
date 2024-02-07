@@ -62,6 +62,7 @@ const props = withDefaults(defineProps<Props>(), {});
     margin: 0 auto;
     padding-top: 90px;
     text-align: center;
+
     .title {
       font-size: 48px;
       font-weight: 800;

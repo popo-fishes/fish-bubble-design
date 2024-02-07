@@ -7,9 +7,9 @@ import { ref, computed, shallowRef, watch, nextTick, onMounted, useAttrs } from 
 import type { StyleValue } from "vue";
 import { useNamespace } from "@fish-bubble-design/hooks";
 import { isNil } from "@fish-bubble-design/shared/utils";
-import { CircleClose } from "@fish-bubble/icons";
+import { CircleCloseFilled } from "@fish-bubble/icons";
 
-import { useFocusController } from "./useFocusController";
+import { useFocusController } from "@fish-bubble-design/hooks";
 import BaseWave from "../../_internal/wave/src/wave.vue";
 
 import type { InputProps, InputEmits } from "./type";
@@ -174,7 +174,7 @@ defineExpose({
         <slot name="suffix" />
       </template>
       <!-- 关闭按钮 -->
-      <CircleClose v-if="showClear" class="closeIcon" @click="clear" />
+      <CircleCloseFilled v-if="showClear" class="closeIcon" @click="clear" />
     </span>
 
     <!-- 波浪 -->
