@@ -193,7 +193,6 @@ $select-item-gap: map.merge(
     @include when(hidden) {
       position: absolute;
       opacity: 0;
-      display: none;
     }
   }
 
