@@ -94,6 +94,7 @@ export const usePopper = (
     update: () => unref(instanceRef)?.update(),
     // 它用于强制更新 Popper 的位置，即使没有发生任何可能引起 Popper 位置变化的事件（如窗口大小改变，滚动等）
     forceUpdate: () => unref(instanceRef)?.forceUpdate(),
+    // 实例
     instanceRef: computed(() => unref(instanceRef))
   };
 };

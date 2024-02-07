@@ -46,7 +46,15 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
   const expanded = ref(false);
 
   // 输入框事件hooks
-  const { wrapperRef, isFocused, handleFocus, handleBlur } = useFocusController(inputRef);
+  const { wrapperRef, isFocused, handleFocus, handleBlur } = useFocusController(inputRef, {
+    beforeBlur(event) {
+      // 是内容元素的焦点
+      return popperRef.value?.isFocusInsideContent(event);
+    },
+    afterBlur() {
+      expanded.value = false;
+    }
+  });
 
   // 输入框事件处理
   const { handleCompositionStart, handleCompositionEnd } = useInput((e) => onInput(e));
@@ -66,11 +74,12 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
       : props.modelValue !== undefined && props.modelValue !== null && props.modelValue !== "";
   });
 
-  // 下拉菜单数据文本
+  // 下拉菜单空数据文本判断
   const emptyText = computed(() => {
     if (props.loading) {
       return props.loadingText || "Loading";
     } else {
+      // 如果是搜索时，输入框不存在值，且没有数据，就返回false,然后dropdownMenuVisible计算属性会用到。
       if (props.remote && !states.inputValue && states.options.size === 0) return false;
       // options.length > 0 && filteredOptionsCount筛选没有数据
       if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
@@ -336,6 +345,7 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
   const getOption = (value) => {
     let option: any;
     const isObjectValue = toRawType(value).toLowerCase() === "object";
+
     if (isObjectValue) {
       // eslint-disable-next-line no-console
       console.error("Option value cannot be an object");
@@ -348,10 +358,12 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
       const cachedOption = cachedOptionsArray.value[i];
 
       const isEqualValue = cachedOption.value === value;
+
       if (isEqualValue) {
         option = {
           value,
-          currentLabel: cachedOption.currentLabel,
+          // ！！cachedOption.currentLabel是一个响应对象，不能直接把cachedOption.currentLabel 赋值
+          currentLabel: unref(cachedOption.currentLabel),
           isDisabled: cachedOption.disabled
         };
         break;
@@ -372,6 +384,7 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
   watch(
     () => expanded.value,
     (val) => {
+      // console.log(val);
       // 打开时查询
       if (val) {
         handleQueryChange(states.inputValue);

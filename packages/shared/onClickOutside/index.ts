@@ -26,7 +26,7 @@ export interface OnClickOutsideOptions {
 let _iOSWorkaround = false;
 
 /**
- * 倾听元素外部的click
+ * 监听元素外部的click
  * @param target
  * @param handler
  * @param options

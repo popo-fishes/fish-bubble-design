@@ -158,8 +158,6 @@ watch(
 const updatePopper = () => update();
 
 defineExpose({
-  /** popper content element */
-  contentRef,
   /** popperjs instance */
   popperInstanceRef: instanceRef,
   /** updatePopper */

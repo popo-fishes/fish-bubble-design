@@ -8,7 +8,7 @@
       <slot v-if="$slots.default" />
     </PopperTrigger>
     <PopperContent
-      ref="contentRef"
+      ref="popperContentRef"
       :fallback-placements="fallbackPlacements"
       :gpu-acceleration="gpuAcceleration"
       :offset="offset"
@@ -67,9 +67,10 @@ const props = withDefaults(defineProps<IPopperProps>(), {
 });
 
 const id = useId();
-
+// 获取popper节点容器
 const popperRef = ref();
-const contentRef = ref<any>();
+// 下拉菜单的内容组件实例ref
+const popperContentRef = ref<any>();
 
 // 停止手柄
 let stopHandle: ReturnType<typeof onClickOutside>;
@@ -150,10 +151,18 @@ const onContentHide = (e) => {
 };
 
 const updatePopper = () => {
-  const popperComponent = unref(contentRef);
+  const popperComponent = unref(popperContentRef);
   if (popperComponent) {
     popperComponent?.updatePopper();
   }
+};
+
+const isFocusInsideContent = (event?: FocusEvent) => {
+  const popperContent: HTMLElement | undefined = popperRef.value?.contentRef;
+  // 相关目标
+  const activeElement = (event?.relatedTarget as Node) || document.activeElement;
+  // 当前节点目标是否在popperContent下拉菜单中
+  return popperContent && popperContent.contains(activeElement);
 };
 
 watch(
@@ -187,13 +196,15 @@ watch(
 );
 
 defineExpose({
-  /** popper component instance */
+  /** popper component */
   popperRef,
   /** open popper*/
   onOpen,
   /** close popper*/
   onClose,
   /** update popper*/
-  updatePopper
+  updatePopper,
+  /** 验证当前焦点目标是--提示内容中的节点 */
+  isFocusInsideContent
 });
 </script>

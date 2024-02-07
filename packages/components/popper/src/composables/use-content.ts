@@ -7,9 +7,7 @@ import type { StyleValue, CSSProperties } from "vue";
 import type { Modifier } from "@popperjs/core";
 
 import { isNumber } from "@fish-bubble-design/shared/utils";
-import { useZIndex } from "@fish-bubble-design/hooks";
-
-import { usePopper, PartialOptions } from "./use-popper";
+import { useZIndex, usePopper, PartialOptions } from "@fish-bubble-design/hooks";
 
 import { POPPER_WRAP_INJECTION_KEY } from "../utils";
 import type { IPopperContentProps } from "../content-type";
@@ -105,6 +103,7 @@ export const usePopperContent = (props: IPopperContentProps, prefix: string) => 
     contentRef,
     triggerRef,
     instanceRef,
+
     role,
     contentClass,
     contentAttrs,

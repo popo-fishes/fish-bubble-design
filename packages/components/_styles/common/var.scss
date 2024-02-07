@@ -194,6 +194,10 @@ $input: map.merge(
   (
     // 点击时的波纹色
     "ripple-color": transparentColor($color-primary, 0.2),
+    // 输入框背景色
+    "bg-color": getCssVar("color-white"),
+    // 输入框的宽度
+    "width": 100%,
     // 文本的颜色
     "text-color": getCssVar("text-color-regular"),
     // 边框色
@@ -209,11 +213,7 @@ $input: map.merge(
     // 占位符颜色
     "placeholder-color": getCssVar("text-color-placeholder"),
     // 清除按钮颜色
-    "clear-icon-color": rgba(0, 0, 0, 0.25),
-    // 输入框背景色
-    "bg-color": getCssVar("color-white"),
-    // 输入框的宽度
-    "width": 100%
+    "clear-icon-color": rgba(0, 0, 0, 0.25)
   ),
   $input
 );
@@ -234,6 +234,8 @@ $select: map.merge(
   (
     // 点击时的波纹色
     "ripple-color": transparentColor($color-primary, 0.2),
+    // select背景色
+    "bg-color": getCssVar("color-white"),
     // 边框色
     "border-color": getCssVar("color-info", "light-6"),
     // hover的边框色
@@ -244,12 +246,8 @@ $select: map.merge(
     "disabled-bg-color": getCssVar("color-info", "light-9"),
     // 输入框的圆角
     "border-radius": getCssVar("border-radius-base"),
-    // 占位符颜色
-    "placeholder-color": getCssVar("text-color-placeholder"),
     // 清除按钮颜色
-    "clear-icon-color": rgba(0, 0, 0, 0.25),
-    // select背景色
-    "bg-color": getCssVar("color-white")
+    "clear-icon-color": rgba(0, 0, 0, 0.25)
   ),
   $select
 );

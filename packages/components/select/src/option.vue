@@ -97,6 +97,7 @@ onBeforeUnmount(() => {
   // 如果未选择该选项，请将其删除
   nextTick(() => {
     if (select.states.options.get(key) === vm && !doesSelected) {
+      // console.log(key, 2);
       select.states.cachedOptions.delete(key);
     }
   });
@@ -109,6 +110,7 @@ watch(
     // 如果值变化了，则重新添加
     if (!isEqual(val, oldVal)) {
       select.onOptionDestroy(oldVal, vm);
+      // console.log(val, 1);
       select.onOptionCreate(vm);
     }
   }

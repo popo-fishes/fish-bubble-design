@@ -98,7 +98,6 @@ $select-item-gap: map.merge(
     align-items: center;
     flex: 1;
     min-width: 0;
-    gap: map.get($select-item-gap, "default");
     @include when(select-mode-text-wrap) {
       display: block;
       min-height: map.get($select-item-height, "default");
@@ -167,6 +166,7 @@ $select-item-gap: map.merge(
     display: flex;
     flex-wrap: wrap;
     user-select: none;
+    margin-right: map.get($select-item-gap, "default");
     .tags-text {
       display: block;
       line-height: normal;
@@ -175,7 +175,7 @@ $select-item-gap: map.merge(
     .mode-text-label {
       color: var(#{getCssVarName("input-text-color")}, map.get($input, "text-color"));
     }
-    .showLine {
+    .splitter-label {
       &::after {
         content: "、";
         width: 5px;
@@ -232,9 +232,11 @@ $select-item-gap: map.merge(
       line-height: map.get($select-item-height, $size);
 
       .#{$namespace}-select__selection {
-        gap: map.get($select-item-gap, $size);
         @include when(select-mode-text-wrap) {
           min-height: map.get($select-item-height, $size);
+        }
+        .#{$namespace}-select__selected-item {
+          margin-right: map.get($select-item-gap, $size);
         }
       }
       .#{$namespace}-select__input {

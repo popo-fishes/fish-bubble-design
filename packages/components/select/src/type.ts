@@ -45,7 +45,7 @@ export interface ISelectProps {
   wave?: boolean;
   /** 当 multiple 和 filterable被设置为 true 时，是否在选中一个选项后保留当前的搜索关键词 */
   reserveKeyword?: boolean;
-  /** 最大选择数量 0为不限制*/
+  /** 最大选择数量 0为不限制 */
   multipleLimit?: number;
   /** 组件是否可筛选 */
   filterable?: boolean;
@@ -61,9 +61,9 @@ export interface ISelectProps {
   loadingText?: string;
   /** 其中的选项是否从服务器远程加载 */
   remote?: boolean;
-  /** 搜索条件无匹配时显示的文字，也可以使用 empty 插槽设置，默认是 “No matching data'” */
+  /** 搜索条件无匹配时显示的文字，也可以使用 empty 插槽设置 */
   noMatchText?: string;
-  /** 无选项时显示的文字，也可以使用 empty 插槽设置自定义内容，默认是 “No data” */
+  /** 无选项时显示的文字，也可以使用 empty 插槽设置自定义内容 */
   noDataText?: string;
 }
 
@@ -73,5 +73,5 @@ export type ISelectEmits = {
   (e: "focus", value: any): void;
   (e: "blur", event: any): void;
   (e: "visible-change", v: boolean): void;
-  (e: "remove-tag", v: any): void;
+  (e: "remove-tag", value: any): void;
 };

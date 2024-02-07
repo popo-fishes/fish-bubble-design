@@ -20,12 +20,9 @@ const MINIMUM_INPUT_WIDTH = 11;
 const props = withDefaults(defineProps<ISelectProps>(), {
   placement: "bottom",
   trigger: "click",
-  presentMode: "text",
-  clearable: false,
-  isTrigger: false,
+  presentMode: "tag",
   wave: true,
-  filterable: true,
-  multiple: true,
+  reserveKeyword: true,
   multipleLimit: 0,
   suffixIcon: ArrowUp,
   clearIcon: CircleCloseFilled
@@ -49,6 +46,7 @@ const {
   inputRef,
   popperRef,
   menuRef,
+
   showClose,
   states,
   isCustomTrigger,
@@ -105,9 +103,21 @@ const transition = computed(() => {
   return props.transition || `${unref(ns.namespace)}-fade-in-scale-up`;
 });
 
-const handleClickOutside = (event: Event) => {
-  expanded.value = false;
-};
+const contentRef = computed(() => {
+  return popperRef.value?.popperRef.contentRef;
+});
+
+const onClickOutsideHandler = [
+  (ev) => {
+    expanded.value = false;
+  },
+  { ignore: [contentRef] }
+];
+
+// (呈现, 回显)模式是否为text文本
+const isPresentModeText = computed(() => {
+  return props.multiple && props.presentMode == "text" && !props.filterable;
+});
 
 provide(
   selectKey,
@@ -128,8 +138,8 @@ provide(
     :placement="placement"
     :trigger="trigger"
     :offset="5"
-    :hide-after-time="0"
-    :visible="dropdownMenuVisible"
+    :hide-after-time="trigger == 'hover' ? 200 : 0"
+    :visible="trigger == 'hover' ? null : dropdownMenuVisible"
     :get-popup-container="getPopupContainer"
     :popper-class="ns.b('dropdown')"
     :popper-style="selectDownStyle"
@@ -140,12 +150,13 @@ provide(
         :class="[
           !isCustomTrigger ? ns.b() : ns.m('custom'),
           ns.m(size),
-          ns.is('focused', isFocused),
-          ns.is('filterable', filterable),
+          ns.is('hovering', states.inputHovering),
+          ns.is('focused', isFocused && !isCustomTrigger),
+          ns.is('filterable', filterable && !isCustomTrigger),
           ns.is('disabled', selectDisabled)
         ]"
         ref="wrapperRef"
-        v-on-click-outside="handleClickOutside"
+        v-on-click-outside="onClickOutsideHandler"
         @mouseenter="onMouseenter"
         @mouseleave="onMouseleave"
         @click.stop="toggleMenu"
@@ -153,13 +164,14 @@ provide(
       >
         <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
         <slot name="trigger" v-if="isCustomTrigger" />
+        <!-- select核心节点 -->
         <div
+          v-else
           :class="[
             ns.e('selection'),
             // 如果是多选且不带搜索功能且presentMode为text时，样式变为一行显示，超出影藏省略符
-            ns.is('select-mode-text-wrap', multiple && presentMode == 'text' && !filterable)
+            ns.is('select-mode-text-wrap', isPresentModeText)
           ]"
-          v-else
         >
           <!-- 多选时，回显内容 -->
           <div v-for="(item, index) in showTagList" :key="item.value" :class="ns.e('selected-item')">
@@ -170,9 +182,9 @@ provide(
               </span>
             </fb-tag>
             <!-- 文本回显格式 -->
-            <span v-else :class="['mode-text-label', index < showTagList.length - 1 ? 'showLine' : '']">{{ item.currentLabel }}</span>
+            <span v-else :class="['mode-text-label', index < showTagList.length - 1 ? 'splitter-label' : '']">{{ item.currentLabel }}</span>
           </div>
-          <!-- 带搜索时的显示 -->
+          <!-- selectDisabled禁止时节点不渲染， filterable带搜索时的display -->
           <div v-if="!selectDisabled" :class="[ns.e('input-wrapper'), ns.is('hidden', !filterable)]">
             <input
               ref="inputRef"
@@ -192,17 +204,25 @@ provide(
             <span v-if="filterable" ref="calculatorRef" aria-hidden="true" :class="ns.e('input-val')" v-text="states.inputValue" />
           </div>
           <!-- 单选时 和 未选择时的节点显示 -->
-          <div v-if="shouldShowPlaceholder" :class="[ns.e('placeholder'), ns.is('transparent', !hasModelValue || (expanded && !states.inputValue))]">
+          <div
+            v-if="shouldShowPlaceholder"
+            :class="[
+              ns.e('placeholder'),
+              // transparent透明，当不存在值时 或者 下拉菜单展开 && 输入框没有值时
+              ns.is('transparent', !hasModelValue || (expanded && !states.inputValue))
+            ]"
+          >
             <span>{{ currentPlaceholder }}</span>
           </div>
         </div>
-        <div :class="ns.e('suffix')">
+        <!-- 不是自定义触发器才显示suffix -->
+        <div :class="ns.e('suffix')" v-if="!isCustomTrigger">
           <!-- 不展示关闭按钮才显示箭头 -->
           <component :is="suffixIcon" :class="[ns.e('arrow'), ns.is('reverse', expanded)]" v-if="suffixIcon && !showClose" />
           <component :is="clearIcon" :class="ns.e('clear')" @click.stop="() => handleClearClick()" v-if="clearIcon && showClose" />
         </div>
         <!-- 波浪 -->
-        <BaseWave v-if="wave" />
+        <BaseWave v-if="wave && !isCustomTrigger" />
       </div>
     </template>
     <template #popup>
@@ -220,7 +240,7 @@ provide(
         <div v-if="$slots.loading && loading" class="dropdown-loading">
           <slot name="loading" />
         </div>
-        <div v-else-if="loading || filteredOptionsCount === 0" class="dropdown-empty">
+        <div v-else-if="(loading || filteredOptionsCount === 0) && emptyText" class="dropdown-empty">
           <slot name="empty">
             <span>{{ emptyText }}</span>
           </slot>
