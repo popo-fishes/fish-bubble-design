@@ -41,7 +41,7 @@ export interface ISelectProps {
   suffixIcon?: string | Component;
   /** 自定义清除图标组件 */
   clearIcon?: string | Component;
-  /** 是否需要波浪效果，如何触发器是一个输入框时，这个属性是有用的 */
+  /** 是否需要波浪效果 */
   wave?: boolean;
   /** 当 multiple 和 filterable被设置为 true 时，是否在选中一个选项后保留当前的搜索关键词 */
   reserveKeyword?: boolean;

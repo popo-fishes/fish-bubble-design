@@ -43,7 +43,7 @@ checkbox/all
 | name                  | CheckboxGroup 下所有 input[type="checkbox"] 的 name 属性 | ^[string]                   | —      |
 | indeterminate         | 设置不确定状态，仅负责样式控制                           | ^[boolean]                  | false  |
 | disabled              | 是否禁用                                                 | ^[boolean]                  | false  |
-| wave                  | 是否需要点击波浪效果                                     | ^[boolean]                  | false  |
+| wave                  | 是否需要点击波浪效果                                     | ^[boolean]                  | true   |
 
 ### Checkbox Events
 
