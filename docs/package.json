@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev .",
-    "clean": "rimraf ./.vitepress/fish-bubble-docs",
-    "docs:build": "pnpm run clean && vitepress build .",
+    "docs:build": "rimraf ./dist && vitepress build .",
     "docs:preview": "vitepress preview .",
     "create-fb-scss": "tsx ./create-fb-scss.ts"
   },

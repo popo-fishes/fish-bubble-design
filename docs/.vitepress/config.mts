@@ -10,7 +10,7 @@ export default defineConfig({
   description: "A desktop component library based on Vue 3.0 prepared for developers",
   lang: "cn-ZH",
   lastUpdated: false,
-  outDir: "./.vitepress/fish-bubble-docs",
+  outDir: "./dist",
   head,
   themeConfig: {
     logo: "/fb-logo.png",
