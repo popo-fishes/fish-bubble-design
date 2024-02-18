@@ -495,10 +495,6 @@ div[class*="language-"].line-numbers-mode {
   margin-left: 12px;
 }
 
-* {
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }
