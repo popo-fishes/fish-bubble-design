@@ -92,7 +92,7 @@ select/trigger
 | transition            | 下拉菜单的动画name（遵循vuejs transition内置组件的name）                            | ^[string]                                                        | —       |
 | placement             | 下拉菜单弹出位置                                                                    | `top` `top-start` `top-end` `bottom` `bottom-start` `bottom-end` | bottom  |
 | trigger               | 触发方式                                                                            | `hover` `click`                                                  | click   |
-| isTrigger             | 是否把菜单放到触发器节点下面，默认放到body                                          | ^[boolean]                                                       | false   |
+| isTriggerPopup        | 是否把菜单挂载到触发器节点下，默认时挂载在body节点下                                | ^[boolean]                                                       | false   |
 | suffixIcon            | 自定义后缀图标组件                                                                  | ^[string] / ^[Component]                                         | —       |
 | clearIcon             | 自定义清除图标组件                                                                  | ^[string] / ^[Component]                                         | —       |
 | size                  | 大小                                                                                | `large` `default` `small`                                        | default |

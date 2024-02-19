@@ -90,11 +90,11 @@ const inputStyle = computed(() => ({
   width: `${Math.max(states.calculatorWidth, MINIMUM_INPUT_WIDTH)}px`
 }));
 
-// 挂载的触发器
+// popup挂载到容器
 const getPopupContainer = (triggerNode) => {
   const { width } = triggerNode!.getBoundingClientRect();
   selectDomWidth.value = width;
-  if (props.isTrigger) {
+  if (props.isTriggerPopup) {
     return triggerNode;
   }
 };
