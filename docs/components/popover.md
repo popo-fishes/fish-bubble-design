@@ -36,22 +36,22 @@ popover/style
 
 ### Popover props
 
-| 属性名            | 说明                                                                                                                                   | 类型                                     | 默认值   |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | -------- |
-| trigger           | 触发方式                                                                                                                               | `hover` `click`                          | —        |
-| persistent        | 设置为 false 时, Popper会根据open的值动态添加 删除节点， 否则它只是被隐藏了                                                            | ^[boolean]                               | true     |
-| offset            | 出现位置的偏移量                                                                                                                       | ^[number]                                | 6        |
-| placement         | [出现的位置](https://popper.js.org/docs/v2/constructors/#options)                                                                      | ^[string]                                | bottom   |
-| strategy          | 描述要使用的定位策略。默认情况下，它是absolute                                                                                         | ^[string]                                | absolute |
-| visible           | 受控模式，来控制它的显示与关闭                                                                                                         | ^[boolean]                               | —        |
-| hideAfterTime     | 消失的延迟，以毫秒为单位                                                                                                               | ^[number]                                | 200      |
-| showAfterTime     | 出现延迟，以毫秒为单位                                                                                                                 | ^[number]                                | 0        |
-| transition        | 动画名称                                                                                                                               | ^[string]                                | —        |
-| disabled          | 是否禁止                                                                                                                               | ^[boolean]                               | false    |
-| popperClass       | popper 添加类名                                                                                                                        | ^[string]                                | —        |
-| popperStyle       | popper添加style                                                                                                                        | ^[vue“StyleValue”]                       | —        |
-| zIndex            | popper层级                                                                                                                             | ^[number]                                | —        |
-| getPopupContainer | 菜单渲染父节点。默认渲染到 body 上, Function的参数是当前的触发器节点；非常有用，如果你想挂在到当前触发器节点下，你可以返回这个node参数 | ^[Function] `(node:HTMLElement) => void` | —        |
+| 属性名            | 说明                                                                                                     | 类型                                     | 默认值   |
+| ----------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------- | -------- |
+| trigger           | 触发方式                                                                                                 | `hover` `click`                          | —        |
+| persistent        | 设置为 false 时, Popper会根据open的值动态添加 删除节点， 否则它只是被隐藏了                              | ^[boolean]                               | true     |
+| offset            | 出现位置的偏移量                                                                                         | ^[number]                                | 6        |
+| placement         | [出现的位置](https://popper.js.org/docs/v2/constructors/#options)                                        | ^[string]                                | bottom   |
+| strategy          | 描述要使用的定位策略。默认情况下，它是absolute                                                           | ^[string]                                | absolute |
+| visible           | 受控模式，来控制它的显示与关闭                                                                           | ^[boolean]                               | —        |
+| hideAfterTime     | 消失的延迟，以毫秒为单位                                                                                 | ^[number]                                | 200      |
+| showAfterTime     | 出现延迟，以毫秒为单位                                                                                   | ^[number]                                | 0        |
+| transition        | 动画名称                                                                                                 | ^[string]                                | —        |
+| disabled          | 是否禁止                                                                                                 | ^[boolean]                               | false    |
+| popperClass       | popper 添加类名                                                                                          | ^[string]                                | —        |
+| popperStyle       | popper添加style                                                                                          | ^[vue“StyleValue”]                       | —        |
+| zIndex            | popper层级                                                                                               | ^[number]                                | —        |
+| getPopupContainer | 菜单挂载的节点。默认挂载body上, 方法参数是当前触发器节点；如果想挂载到触发器节点下，可以返回这个node参数 | ^[Function] `(node:HTMLElement) => void` | —        |
 
 ### Popover Events
 
