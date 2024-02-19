@@ -162,8 +162,8 @@ provide(
         @click.stop="toggleMenu"
         v-bind="$attrs"
       >
-        <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽, isCustomTrigger属性可以控制样式 -->
-        <slot name="trigger" v-if="isCustomTrigger" />
+        <!-- 我们为外面暴露了自定义触发对象，不需要使用默认的触发节点，可以自定义插槽 -->
+        <slot name="trigger" v-if="isCustomTrigger" v-bind="{ selectedLabel: currentPlaceholder }" />
         <!-- select核心节点 -->
         <div
           v-else

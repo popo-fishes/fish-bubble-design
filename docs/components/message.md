@@ -54,8 +54,8 @@ message/html
 | zIndex    | 层级                                         | ^[number]                          | 500    |
 | offset    | 距离窗口顶部的偏移量                         | ^[number]                          | 20     |
 
-### Message method
+### Message defineExpose
 
-| 属性名   | 说明         | 类型                           |
+| 名称     | 说明         | 类型                           |
 | -------- | ------------ | ------------------------------ |
 | closeAll | 关闭所有消息 | ^[Function] `(e: any) => void` |

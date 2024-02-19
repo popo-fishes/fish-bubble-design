@@ -230,6 +230,10 @@ export const useSelect = (props: ISelectProps, emit: ISelectEmits) => {
       emitChange(option.value);
       // 单选时关闭菜单
       expanded.value = false;
+      // 如果是trigger == hover，就主动关闭菜单
+      if (props.trigger == "hover") {
+        popperRef.value?.onClose?.();
+      }
     }
     // 获取焦点
     focus();

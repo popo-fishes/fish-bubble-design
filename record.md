@@ -32,17 +32,3 @@
 3. 你应该解决控制台开发环境的所有警告 || 错误信息！
 
 ```
-
-### todo
-
-2. docs
-3. 样式问题
-
-当然，请考虑以下好听的UI库名：
-
-Aurora UI
-Flare UI
-fish-bubble-design
-Radiant UI
-Unique - ui
-vogue-ui

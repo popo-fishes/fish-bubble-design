@@ -63,4 +63,4 @@ button/size
 | width    | 按钮的宽度               | ^[string] / ^[number]                  | —       |
 | disabled | 按钮失效状态             | ^[boolean]                             | false   |
 | loading  | 设置按钮载入状态         | ^[boolean]                             | false   |
-| wave     | 是否需要波浪动效         | ^[boolean]                             | false   |
+| wave     | 是否需要波浪动效         | ^[boolean]                             | true    |

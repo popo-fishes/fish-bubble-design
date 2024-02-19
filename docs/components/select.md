@@ -120,14 +120,14 @@ select/trigger
 
 ### Select Slots
 
-| 插槽名  | 说明                  |
-| ------- | --------------------- |
-| default | option 组件列表       |
-| header  | 下拉列表顶部的内容    |
-| footer  | 下拉列表底部的内容    |
-| empty   | 无选项时的内容        |
-| loading | 自定义loading时的内容 |
-| trigger | 自定义触发器节点      |
+| 插槽名  | 说明                  | 参数                                                                                                                                   |
+| ------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| default | option 组件列表       | —                                                                                                                                      |
+| header  | 下拉列表顶部的内容    | —                                                                                                                                      |
+| footer  | 下拉列表底部的内容    | —                                                                                                                                      |
+| empty   | 无选项时的内容        | —                                                                                                                                      |
+| loading | 自定义loading时的内容 | —                                                                                                                                      |
+| trigger | 自定义触发器节点      | {selectedLabel: 选中的值，当没选择时，这个值是placeholder} [作用域插槽](https://cn.vuejs.org/guide/components/slots.html#scoped-slots) |
 
 ### Option props
 

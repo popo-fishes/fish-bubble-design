@@ -60,9 +60,9 @@ popover/style
 | hide   | popup消失时触发 | ^[Function] |
 | show   | popup显示时触发 | ^[Function] |
 
-### Popover method
+### Popover defineExpose
 
-| 属性名       | 说明                                            | 类型        |
+| 名称         | 说明                                            | 类型        |
 | ------------ | ----------------------------------------------- | ----------- |
 | popperRef    | fb-popper 组件实例                              | ^[object]   |
 | onOpen       | onOpen 方法控制显示状态                         | ^[Function] |
