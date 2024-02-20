@@ -138,7 +138,7 @@ provide(
     :placement="placement"
     :trigger="trigger"
     :offset="5"
-    :hide-after-time="trigger == 'hover' ? 200 : 0"
+    :hide-after-time="trigger == 'hover' ? 100 : 0"
     :visible="trigger == 'hover' ? null : dropdownMenuVisible"
     :get-popup-container="getPopupContainer"
     :popper-class="ns.b('dropdown')"
