@@ -6,9 +6,8 @@
 import { computed, ref, onMounted, watch } from "vue";
 import type { CSSProperties } from "vue";
 import type { IDialogProps } from "./type";
-import { useLockscreen } from "./use-lockscreen";
 import { isClient } from "@fish-bubble-design/shared/utils";
-import { useNamespace } from "@fish-bubble-design/hooks";
+import { useNamespace, useLockscreen } from "@fish-bubble-design/hooks";
 
 import DialogOverlay from "./dialog-overlay.vue";
 import DialogContent from "./dialog-content.vue";
