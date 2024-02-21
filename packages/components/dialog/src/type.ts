@@ -17,7 +17,7 @@ export type IOverlayProps = {
 
 /** 弹窗Dialog盒子相关 */
 export interface IDialogProps extends IOverlayProps, IDialogContentProps {
-  /** 默认给弹窗挂到那个地方：了解teleport内置组件属性 */
+  /** 默认给弹窗挂到哪个地方：了解teleport内置组件属性 */
   appendTo?: string;
   /** dialog CSS 中的 margin-top 值，默认为 15vh */
   top?: string;
