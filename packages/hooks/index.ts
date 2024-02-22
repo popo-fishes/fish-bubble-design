@@ -9,3 +9,4 @@ export * from "./use-same-target";
 export * from "./use-z-index";
 export * from "./use-focus-controller";
 export * from "./use-popper";
+export * from "./use-lockscreen";

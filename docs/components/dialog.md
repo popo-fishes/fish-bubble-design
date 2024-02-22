@@ -38,10 +38,10 @@ dialog/center
 | closeOnClickModal | 点击蒙层是否可以关闭                                                                           | ^[boolean]            | false  |
 | showClose         | 是否显示关闭按钮                                                                               | ^[boolean]            | true   |
 | title             | 弹窗标题                                                                                       | ^[string]             | —      |
-| zIndex            | 层级                                                                                           | ^[number]             | 999    |
+| zIndex            | 和原生的 CSS 的 z-index 相同，改变 z 轴的顺序                                                  | ^[number]             | —      |
 | overlayClass      | 遮罩的自定义类名                                                                               | ^[string]             | —      |
 | lockScroll        | 否在 Dialog 出现时将 body 滚动锁定                                                             | ^[boolean]            | true   |
-| appendTo          | 默认给弹窗挂到那个地方：了解teleport内置组件属性                                               | ^[string]             | body   |
+| appendTo          | 默认给弹窗挂到哪个地方：了解teleport内置组件属性                                               | ^[string]             | body   |
 | beforeClose       | 关闭前的回调，会暂停 Dialog 的关闭. 回调函数内执行 done 参数方法的时候才是真正关闭对话框的时候 | ^[Function]           | —      |
 
 ### Dialog Events

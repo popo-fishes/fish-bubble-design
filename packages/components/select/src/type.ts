@@ -35,8 +35,8 @@ export interface ISelectProps {
   placement?: IPopperProps["placement"];
   /** 触发方式 */
   trigger?: IPopperProps["trigger"];
-  /** 是否把菜单放到触发器节点下面，默认放到body */
-  isTrigger?: boolean;
+  /** 是否把菜单挂载到触发器节点下，默认时挂载在body节点下 */
+  isTriggerPopup?: boolean;
   /** 自定义后缀图标组件 */
   suffixIcon?: string | Component;
   /** 自定义清除图标组件 */

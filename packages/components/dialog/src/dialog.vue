@@ -6,9 +6,9 @@
 import { computed, ref, onMounted, watch } from "vue";
 import type { CSSProperties } from "vue";
 import type { IDialogProps } from "./type";
-import { useLockscreen } from "./use-lockscreen";
-import { isClient } from "@fish-bubble-design/shared/utils";
-import { useNamespace } from "@fish-bubble-design/hooks";
+import { useZIndex } from "@fish-bubble-design/hooks";
+import { isClient, isNumber } from "@fish-bubble-design/shared/utils";
+import { useNamespace, useLockscreen } from "@fish-bubble-design/hooks";
 
 import DialogOverlay from "./dialog-overlay.vue";
 import DialogContent from "./dialog-content.vue";
@@ -22,7 +22,6 @@ defineOptions({
 const props = withDefaults(defineProps<IDialogProps>(), {
   modal: true,
   appendTo: "body",
-  zIndex: 999,
   alignCenter: false,
   closeOnClickModal: false,
   showClose: true,
@@ -39,6 +38,10 @@ const emit = defineEmits({
 
 // 弹窗控制器
 const visible = ref(false);
+
+const { nextZIndex } = useZIndex();
+
+const contentZIndex = ref<number>(isNumber(props.zIndex) ? props.zIndex : nextZIndex());
 
 // dialog样式
 const dialogStyle = computed<CSSProperties>(() => {
@@ -114,7 +117,7 @@ watch(
         v-show="visible"
         :modal="props.modal"
         :overlay-class="props.overlayClass"
-        :z-index="props.zIndex"
+        :z-index="contentZIndex"
         :align-center="props.alignCenter"
         @click="onModalClick"
       >
