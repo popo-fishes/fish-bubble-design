@@ -44,7 +44,7 @@ popover/style
 | placement         | [出现的位置](https://popper.js.org/docs/v2/constructors/#options)                                        | ^[string]                                | bottom   |
 | strategy          | 描述要使用的定位策略。默认情况下，它是absolute                                                           | ^[string]                                | absolute |
 | visible           | 受控模式，来控制它的显示与关闭                                                                           | ^[boolean]                               | —        |
-| hideAfterTime     | 消失的延迟，以毫秒为单位                                                                                 | ^[number]                                | 200      |
+| hideAfterTime     | 消失的延迟，以毫秒为单位（这个的意义主要是延迟切换，不然hover到下拉菜单节点时，菜单就影藏了）            | ^[number]                                | 200      |
 | showAfterTime     | 出现延迟，以毫秒为单位                                                                                   | ^[number]                                | 0        |
 | transition        | 动画名称                                                                                                 | ^[string]                                | —        |
 | disabled          | 是否禁止                                                                                                 | ^[boolean]                               | false    |
@@ -62,12 +62,12 @@ popover/style
 
 ### Popover defineExpose
 
-| 名称         | 说明                                            | 类型        |
-| ------------ | ----------------------------------------------- | ----------- |
-| popperRef    | fb-popper 组件实例                              | ^[object]   |
-| onOpen       | onOpen 方法控制显示状态                         | ^[Function] |
-| onClose      | onClose 方法控制显示状态                        | ^[Function] |
-| updatePopper | 使用popperRef.contentRef.updatePopper()更新位置 | ^[Function] |
+| 名称         | 说明                                                                             | 类型                         |
+| ------------ | -------------------------------------------------------------------------------- | ---------------------------- |
+| popperRef    | fb-popper 组件实例                                                               | ^[object]                    |
+| onOpen       | onOpen 方法控制显示状态                                                          | ^[Function]                  |
+| onClose      | onClose 方法控制显示状态, 可以传递一个time来覆盖hideAfterTime，为0时立马关闭弹窗 | ^[Function] `(time) => void` |
+| updatePopper | 使用popperRef.contentRef.updatePopper()更新位置                                  | ^[Function]                  |
 
 ### Slots
 
