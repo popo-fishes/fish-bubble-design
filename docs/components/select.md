@@ -87,7 +87,7 @@ select/trigger
 | placeholder           | 占位符                                                                              | ^[string]                                                        | 请选择  |
 | clearable             | 是否可以清空选项                                                                    | ^[boolean]                                                       | false   |
 | disabled              | 是否禁用                                                                            | ^[boolean]                                                       | false   |
-| multiple              | 是否多选（todo）                                                                    | ^[boolean]                                                       | false   |
+| multiple              | 是否多选                                                                            | ^[boolean]                                                       | false   |
 | dropdownStyle         | 下拉菜单的 style 属性                                                               | ^[CSSProperties]                                                 | —       |
 | transition            | 下拉菜单的动画name（遵循vuejs transition内置组件的name）                            | ^[string]                                                        | —       |
 | placement             | 下拉菜单弹出位置                                                                    | `top` `top-start` `top-end` `bottom` `bottom-start` `bottom-end` | bottom  |
