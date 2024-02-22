@@ -34,16 +34,25 @@ export const useDelayedToggle = ({ open, close, hideAfterTime, showAfterTime }: 
   const { registerTimeout } = usePopperTimeout();
 
   const options = { showAfterTime: showAfterTime || 0, hideAfterTime: hideAfterTime ?? 200 };
-  const onOpen = (event?: Event) => {
-    registerTimeout(() => {
-      open(event);
-    }, options.showAfterTime);
+  // 主动打开
+  const onOpen = (time?: number) => {
+    if (time == 0) {
+      open();
+    } else {
+      registerTimeout(() => {
+        open();
+      }, time || options.showAfterTime);
+    }
   };
-
-  const onClose = (event?: Event) => {
-    registerTimeout(() => {
-      close(event);
-    }, options.hideAfterTime);
+  // 主动关闭，你可以传递一个time来覆盖hideAfterTime，因为有时候你想立马结束关闭弹窗
+  const onClose = (time?: number) => {
+    if (time == 0) {
+      close();
+    } else {
+      registerTimeout(() => {
+        close();
+      }, time || options.hideAfterTime);
+    }
   };
 
   return {
