@@ -12,6 +12,7 @@ export default defineConfig({
   lastUpdated: false,
   outDir: "./dist",
   head,
+  base: "./",
   themeConfig: {
     logo: "/fb-logo.png",
     siteTitle: "",
