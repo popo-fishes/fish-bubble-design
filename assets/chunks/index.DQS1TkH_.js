@@ -1,1 +1,0 @@
-import{t as d}from"./index.ulJxoR5h.js";import{t as f}from"./index.CDbkkFrc.js";function T(r,l){let t,o=0;const{wait:c,leading:a}={wait:300,leading:!1,...l},e=d(c),n=()=>{t&&(clearTimeout(t),t=void 0)},m=(...u)=>{const i=()=>{o=Date.now(),r(...u)};n();const s=Date.now()-o;s>e&&a?i():t=setTimeout(i,a?e:Math.max(0,e-s))};return f(n),m}export{T as u};
