@@ -12,7 +12,8 @@ export default defineConfig({
   lastUpdated: false,
   outDir: "./dist",
   head,
-  base: "./",
+  // base: https://vitepress.dev/zh/reference/site-config#base
+  base: "/fish-bubble-design/",
   themeConfig: {
     logo: "/fb-logo.png",
     siteTitle: "",
