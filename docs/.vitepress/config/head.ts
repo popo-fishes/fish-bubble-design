@@ -13,7 +13,7 @@ export const head: HeadConfig[] = [
     "link",
     {
       rel: "icon",
-      href: "/fb-logo.ico",
+      href: "/fish-bubble-design/fb-logo.ico",
       type: "image/svg+xm"
     }
   ],
