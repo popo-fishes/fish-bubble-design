@@ -21,7 +21,7 @@ export default defineConfig({
       level: [2, 3],
       label: "页面导航"
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/u-fish-bubble/fish-bubble-design" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/fish-popo/fish-bubble-design" }],
     nav: [
       {
         text: "指南",
