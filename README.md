@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/npm/v/fish-bubble-design.svg" />
   </a>
   <a href="https://bundlephobia.com/package/fish-bubble-design">
-    <img src="https://bundlephobia.com/package/fish-bubble-design" />
+    <img src="https://badgen.net/bundlephobia/minzip/fish-bubble-design?style=flat-square" />
   </a>
   <a href="https://npmcharts.com/compare/fish-bubble-design?minimal=true">
     <img src="https://img.shields.io/npm/dm/umy-ui.svg" />
