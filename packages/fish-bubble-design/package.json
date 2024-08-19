@@ -13,6 +13,10 @@
     "vue3.0"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fish-popo/fish-bubble-design.git"
+  },
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
