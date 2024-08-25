@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fish-popo/fish-bubble-design.git"
+    "url": "git+https://github.com/popo-fishes/fish-bubble-design.git"
   },
   "main": "lib/index.js",
   "module": "es/index.mjs",
